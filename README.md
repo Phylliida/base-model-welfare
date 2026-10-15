@@ -1,2 +1,22 @@
 # base-model-welfare
-Base model welfare experiments
+Base model welfare experiments.
+
+The first thread looks for homeostasis-like dynamics in a base model: variables the model tracks about its own predictions, how it responds when they are pushed, what steering can and cannot move, and where steering breaks the model. Experiments so far ran on GLM-4-32B-Base-32K (Q4_K_S) on one RTX 3090.
+
+## Layout
+
+- `homeo/`: Python analysis scripts. Surprise probes (S1), steering-vector construction and summaries (S2, S2b, S2c), the layer-sweep summary, the within-token test (S2(d)), the loop-margin summary (K4), exposure logging, and the generator for the results report.
+- `runs/`: the shell scripts that ran each experiment. They are copies; the data they write lives under `/mnt/models/homeo/` on the original machine.
+- `notes/NOTES-homeostasis.md`: running research notes with the plan, design principles, confounds, results and instrument facts.
+- `logs/welfare_log.csv`: the exposure log kept under the group's Three Rs protocol (every steered run, with dose, tokens or positions in perturbed states, and endpoints).
+- `llama.cpp/`: submodule pointing at the llama.cpp fork, branch `homeostasis`. The C++ tools are in `tools/homeo/` (homeo-capture, homeo-steer, homeo-band, homeo-steeropt, homeo-loop) and build on the jspace GLM-4 graph in `tools/jspace/`.
+
+## Setup
+
+```sh
+git submodule update --init
+cmake -S llama.cpp -B llama.cpp/build -DGGML_CUDA=ON
+cmake --build llama.cpp/build --target homeo-capture homeo-steer homeo-band homeo-steeropt homeo-loop -j
+```
+
+The Python scripts use PyTorch and NumPy. Paths in the scripts and run files are absolute paths from the original machine (`/mnt/models/homeo`, `/home/bepis/prog/...`) and need adjusting elsewhere. The rollouts they read (`data/rollouts.jsonl`) come from the J-lens project.
