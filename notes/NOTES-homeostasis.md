@@ -245,6 +245,44 @@ Validated on synthetic data:
 | p-reading boost | +0.24 | +0.24 |
 | Identity bias correlated with the band | +0.16 | −0.02 |
 
+### VL1: The value lens (started 2026-10-14)
+
+From the Value Lens proposal (https://claude.ai/artifact/DvMrx6NYbLuAgj8ZrNc6FM): price residual directions by their effect on the model's own future predictive success.
+
+- **Tool:** `llama.cpp/tools/homeo/homeo-value.cpp`, plus a `per_position` option on `jlens_build_forward_steer`, which makes the steering slot [n_embd, n_tokens].
+  - Teacher-forced windows of real text (fineweb ids, 192 tokens), with a per-position zero slot after block 40.
+  - For each target t, one backward pass of l_t alone gives d l_t / d h_s for every s ≤ t, at layer 40 and at the read layers 44, 50 and 56. Gradients above the slot come from the same pass.
+  - Accumulated per position: **now** (k = 0), **short** (k = 1..8) and **fut** (k = 1..32). Saved for the positions with a full horizon (s = 32..158, 127 per window).
+  - f16 output, 18 MB per window, at 75 s per window.
+- **Label-leak trap.** `ggml_cross_entropy_loss`'s backward is (softmax − y)/T for every row, which assumes each label row sums to 1. All-zero rows leak softmax gradients. Fix: every row carries the model's own distribution as its label (zero gradient), and only row t carries the one-hot token. This did not affect S2(c), whose label rows were full distributions.
+- **Validation.**
+  - *Finite differences* (`--fd-check`):
+    - Along g_now, the now ratio is 0.90–1.09 at ε = 2–8, falling with ε (curvature).
+    - Along g_fut, the short and fut ratios scatter around 1 (0.79–1.37) at ε = 2–16. The scatter is FD noise from 8-bit activation rounding summed over 32 tokens; random directions are noise-dominated.
+    - A first, apparently systematic factor of about 2 was a bug in the check itself: steered passes overwrote the stored self-labels.
+  - *Layer consistency:* layer-44 gradients read above a layer-40 slot are bitwise identical to a slot at 44.
+  - *Lag profile:* mean |d l_{s+k}/d h_s| at L40 is 0.158 (k = 0), 0.060 (1), 0.037 (2), 0.026 (4), 0.014 (8) and 0.006 (32). The 32-token horizon captures most of it.
+- **Run:** `runs/value/run.sh`, 1,200 windows (152k positions), about 25 h → `/mnt/models/homeo/value/`.
+  - Then `runs/value/followup.sh` runs the scenario set (`homeo/value_scenarios_prep.py`), the analyses (`homeo/value_lens.py`: library prices against random directions, price structure with split-half checks, contexts ranked by level / stakes / progress with decoded text), and `homeo/value_scenarios.py`.
+  - The scenario set covers Antra's three scenarios: phrase and single-token loops paired with main-run windows, model-written worldbuilding fiction, and fineweb's easiest and hardest tenths.
+  - No steering apart from the FD checks (logged).
+- **Independent code review (2026-10-14).** It found no result-affecting bugs. It verified, against the ggml CPU and CUDA kernels:
+  - the self-label leak fix (the residual from the fast-math softmax is ~3e-4 of |g_fut|, below f16 rounding);
+  - gscale = −T;
+  - column offsets and alignment (corr of |g_now(s)| with 1 − p(x_{s+1}) is +0.69 at shift 0, ~0 at ±1);
+  - grad retention (outputs are never reused in place);
+  - the tokenizer (gpt2 byte-level, no BOS);
+  - the scenario windows.
+
+  Minor fixes applied:
+  - fsync before rename, and resume checks the .bin size;
+  - the follow-up checks every step and runs only if the main run finished;
+  - the fiction capture strips llama-completion's "[end of text]" and checks the exit code;
+  - scenario labels (positions 100–158).
+
+  4 of the first 17 windows straddle a document boundary (blank lines), so `value_lens.py --clean` drops positions whose horizon contains a blank-line token: 3% of positions. Both versions are reported.
+- **Restart.** The machine crashed at about 22:35 after 17 windows. The run was resumed at 23:10 with the rebuilt binary, whose window 0 is byte-identical to the original's.
+
 ### S2 design
 
 Can one steering vector, scaled, make the model pick tokens of a chosen probability level p?

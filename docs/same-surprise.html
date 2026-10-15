@@ -1,0 +1,338 @@
+<title>Same Surprise, Different Tail</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one column (~760px) that reads top to bottom: what is compared, one shared strength control,
+   a token-count picture, then the per-likelihood boost chart, then the check. Condition hues are constant
+   across every chart (slate = unsteered, amber = temperature, teal = vector); crimson only ever means junk. */
+:root {
+  --bg: #f5f6f7;
+  --surface: #eaedf0;
+  --fg: #1a2027;
+  --muted: #5b6672;
+  --rule: #d4d9de;
+  --c-base: #5d6b7c;
+  --c-temp: #b8720b;
+  --c-vec: #12808a;
+  --c-junk: #b8324a;
+  --font-display: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #12161a; --surface: #1b2127; --fg: #e4e8ec; --muted: #9aa5b1; --rule: #2c343c;
+    --c-base: #9aa7b6; --c-temp: #e3a33f; --c-vec: #4cc0c8; --c-junk: #f07a8e;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #12161a; --surface: #1b2127; --fg: #e4e8ec; --muted: #9aa5b1; --rule: #2c343c;
+  --c-base: #9aa7b6; --c-temp: #e3a33f; --c-vec: #4cc0c8; --c-junk: #f07a8e;
+  color-scheme: dark;
+}
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 1.0625rem; line-height: 1.55; }
+.wrap { max-width: 48rem; margin: 0 auto; padding-inline: 18px; padding-block: 30px 72px; }
+.eyebrow { font: 500 0.75rem var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 6px; }
+h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(2rem, 6vw, 2.7rem); line-height: 1.08; margin: 0 0 12px; text-wrap: balance; }
+.deck { font-size: 1.2rem; color: var(--muted); margin: 0 0 26px; line-height: 1.45; max-width: 40rem; }
+h2 { font-family: var(--font-display); font-weight: 600; font-size: 1.45rem; line-height: 1.2; margin: 40px 0 6px; text-wrap: balance; }
+p { margin: 0 0 12px; max-width: 42rem; }
+.who { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 10px; margin: 0 0 8px; padding: 0; list-style: none; }
+.who li { border-top: 3px solid var(--sw); padding: 8px 2px 0; min-width: 0; }
+.who b { display: block; font-weight: 600; }
+.who span { color: var(--muted); font-size: 0.95rem; }
+.sw-base { --sw: var(--c-base); } .sw-temp { --sw: var(--c-temp); } .sw-vec { --sw: var(--c-vec); }
+
+.control { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 2; background: var(--bg); padding-block: 12px 10px; margin-top: 18px; border-bottom: 1px solid var(--rule); }
+.control-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.control-label { font: 500 0.75rem var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 6px; overflow: hidden; }
+.seg button { font: 500 0.9rem var(--font-mono); background: var(--bg); color: var(--fg); border: 0; border-left: 1px solid var(--rule); padding: 7px 12px; cursor: pointer; min-width: 3.4rem; }
+.seg button:first-child { border-left: 0; }
+.seg button[aria-pressed="true"] { background: var(--c-vec); color: var(--bg); }
+.seg button:focus-visible { outline: 2px solid var(--fg); outline-offset: -2px; }
+.state { margin: 8px 0 0; font-size: 0.98rem; min-height: 2.8em; }
+.state .chip { display: inline-block; font: 500 0.72rem var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 7px; border-radius: 3px; margin-right: 8px; vertical-align: 0.1em; color: var(--bg); background: var(--chip); }
+.stats { display: flex; flex-wrap: wrap; gap: 4px 18px; font: 0.82rem var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; margin-top: 4px; }
+
+figure { margin: 18px 0 8px; }
+figcaption { font-size: 0.92rem; color: var(--muted); margin-top: 8px; max-width: 42rem; }
+.strip { margin: 0 0 14px; }
+.strip-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 2px 12px; margin-bottom: 4px; }
+.strip-name { font-weight: 600; }
+.strip-name small { font-weight: 400; color: var(--muted); font-family: var(--font-mono); font-size: 0.8rem; margin-left: 6px; }
+.counts { font: 0.82rem var(--font-mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+.counts .junkn { color: var(--c-junk); font-weight: 500; }
+.strip svg { display: block; width: 100%; height: auto; }
+.key { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 0.88rem; color: var(--muted); margin: 6px 0 0; padding: 0; list-style: none; }
+.key li { display: flex; align-items: center; gap: 6px; }
+.ramp { display: inline-flex; gap: 2px; }
+.ramp i { width: 10px; height: 10px; border-radius: 1px; display: inline-block; }
+
+.chart { overflow-x: auto; }
+.chart svg { display: block; width: 100%; min-width: 540px; height: auto; font-family: var(--font-mono); }
+.grid { stroke: var(--rule); stroke-width: 1; fill: none; }
+.axis { stroke: var(--muted); stroke-width: 1; fill: none; }
+.tick { fill: var(--muted); font-size: 11.5px; }
+.axlabel { fill: var(--fg); font-size: 12.5px; }
+.zone { stroke: none; }
+.zone-pl { fill: var(--c-vec); fill-opacity: 0.07; }
+.zone-junk { fill: var(--c-junk); fill-opacity: 0.07; }
+.zlabel { font-size: 11.5px; fill: var(--muted); letter-spacing: 0.04em; }
+.zlabel.junk { fill: var(--c-junk); }
+.one { stroke: var(--c-base); stroke-width: 1.5; stroke-dasharray: 5 4; fill: none; }
+.ln { fill: none; stroke-width: 2.6; stroke-linejoin: round; stroke-linecap: round; }
+.ln-temp { stroke: var(--c-temp); } .ln-vec { stroke: var(--c-vec); }
+.dt-temp { fill: var(--c-temp); } .dt-vec { fill: var(--c-vec); }
+.lbl { font-size: 12.5px; font-weight: 500; }
+.lbl-temp { fill: var(--c-temp); } .lbl-vec { fill: var(--c-vec); } .lbl-base { fill: var(--c-base); }
+
+.takeaways { margin: 22px 0 0; padding: 14px 18px 4px; background: var(--surface); border-radius: 6px; }
+.takeaways ul { margin: 0 0 10px; padding-left: 1.2em; }
+.takeaways li { margin: 0 0 6px; }
+.note { font-size: 0.92rem; color: var(--muted); }
+code { font-family: var(--font-mono); font-size: 0.85em; background: var(--surface); padding: 1px 4px; border-radius: 3px; overflow-wrap: anywhere; }
+@media (prefers-reduced-motion: no-preference) { .strip rect, .ln, circle { transition: fill 0.25s, opacity 0.25s; } }
+</style>
+
+<div class="wrap">
+  <p class="eyebrow">GLM-4-32B-Base &middot; steering after layer 56 &middot; S2(d)</p>
+  <h1>Same Surprise, Different Tail</h1>
+  <p class="deck">Plain temperature and a late-layer steering vector can raise the model's average surprise by the same amount. Temperature spills the extra probability into junk tokens. The vector keeps it among plausible ones, until it is pushed too hard.</p>
+
+  <ul class="who">
+    <li class="sw-base"><b>Unsteered</b><span>The model's own next-token distribution.</span></li>
+    <li class="sw-temp"><b>Temperature</b><span>Every probability raised to the power 1/T, with T tuned at each position so the average surprise matches the vector's.</span></li>
+    <li class="sw-vec"><b>Vector</b><span>The layer-56 direction the optimizer learned for "favor tokens with p ≈ 0.03", added at every position.</span></li>
+  </ul>
+
+  <div class="control" role="group" aria-labelledby="ctl-label">
+    <div class="control-row">
+      <span class="control-label" id="ctl-label">Vector strength</span>
+      <div class="seg" id="seg"></div>
+    </div>
+    <p class="state" id="state" aria-live="polite"></p>
+  </div>
+
+  <h2>Out of 1,000 sampled tokens, where do they come from?</h2>
+  <p>Each square is one sampled next token. Its shade says how likely the <em>unsteered</em> model thought that token was. Squares are sorted, so very likely tokens fill from the left and junk ends up at the right.</p>
+  <figure>
+    <div id="strips"></div>
+    <ul class="key" id="key"></ul>
+    <figcaption>Counts are the expected number per 1,000 samples, averaged over 4,048 positions in 16 held-out documents. They come from exact next-token distributions, not from actual sampling.</figcaption>
+  </figure>
+
+  <h2>How much is each kind of token boosted?</h2>
+  <p>The same comparison, measured precisely. Each point shows how many times more often tokens of that likelihood get picked than without steering. The dashed line at ×1 means no change.</p>
+  <figure>
+    <div class="chart" id="mult"></div>
+    <figcaption>Horizontal axis: how likely the unsteered model thought a token was, from near-certain on the left to one in ten billion on the right. Points beyond ×1,000 or below ×0.25 are drawn as arrows on the edge they leave through.</figcaption>
+  </figure>
+
+  <div class="takeaways">
+    <ul>
+      <li><strong>At ×4 the two are equally surprising, but differently shaped.</strong> Temperature makes junk tokens (below 1 in 10,000) more than twice as common, and the rarest ones about 300 times more likely. The vector leaves junk where it was and moves the mass into plausible alternatives instead.</li>
+      <li><strong>It works like truncation followed by temperature</strong>, the min-p or top-p trick samplers use, which suggests the model internally separates its plausible tail from its junk tail.</li>
+      <li><strong>It is a shape, not a dial for one band.</strong> The vector learned for p ≈ 0.1 makes a similar shape that does not center on 0.1.</li>
+      <li><strong>Past about 1× the residual norm it breaks.</strong> At ×16 the vector floods the junk tail too, and at ×32 most samples are junk for both.</li>
+    </ul>
+  </div>
+
+  <h2>Check: a steered temperature vector really is temperature</h2>
+  <p>The same measurement can tell the two apart. The layer-50 vector the optimizer learned for a "temperature 1.3" target lands on exact temperature from the top token down to about one in a hundred million. It only falls a bit short in the very deepest tail, which holds almost no probability.</p>
+  <figure>
+    <div class="chart" id="check"></div>
+    <figcaption>Temperature vector at its learned size (0.14× the residual norm) against exact temperature T = 1.23, matched the same way.</figcaption>
+  </figure>
+
+  <p class="note">Data: <code>/mnt/models/homeo/s2big/ladder_p0.03_sweep_L56.json</code> and <code>ladder_temp1.3_sweep_L50.json</code> (homeo-steer, teacher-forced). The temperature match is per position, on mean surprisal under the unsteered distribution. Likelihood groups use the unsteered probability: very likely p &gt; 0.32, plausible 0.001 to 0.32, rare 0.0001 to 0.001, junk below 0.0001.</p>
+</div>
+
+<script>
+(function () {
+  var D = {"base":[0.7913,0.08545,0.04782,0.02832,0.02917,0.01182,0.004282,0.001321,0.0003833,0.0001172,3.579e-05,1.131e-06],"vec":[{"k":1.0,"frac":0.075,"mass":[0.7786,0.08698,0.05201,0.03199,0.03253,0.0122,0.004066,0.001178,0.000333,0.0001023,3.142e-05,9.736e-07],"tmass":[0.782,0.08648,0.05014,0.03042,0.03154,0.01268,0.004603,0.001465,0.0004516,0.0001482,5.781e-05,3.795e-06],"T":1.041,"Es":0.8726,"KL":0.003759,"agree":0.9847},{"k":4.0,"frac":0.298,"mass":[0.7258,0.08854,0.06512,0.04732,0.04984,0.01663,0.004876,0.001293,0.0003669,0.0001205,4.265e-05,2.254e-06],"tmass":[0.7476,0.08673,0.05552,0.03703,0.04137,0.01788,0.007525,0.003138,0.001427,0.0007422,0.0007221,0.0003497],"T":1.2,"Es":1.1,"KL":0.07526,"agree":0.9395},{"k":16.0,"frac":1.193,"mass":[0.5035,0.06778,0.06242,0.0541,0.0754,0.0471,0.04296,0.0375,0.02879,0.02378,0.03046,0.0262],"tmass":[0.5815,0.06613,0.04793,0.03751,0.05341,0.03642,0.02756,0.02105,0.01717,0.0166,0.03849,0.05626],"T":1.683,"Es":4.471,"KL":2.346,"agree":0.7026},{"k":32.0,"frac":2.386,"mass":[0.01506,0.002118,0.00259,0.002182,0.004279,0.00439,0.007908,0.01239,0.02204,0.04345,0.2015,0.6821],"tmass":[0.009637,0.00114,0.001258,0.001218,0.002857,0.004085,0.006954,0.01264,0.02371,0.04734,0.2219,0.6672],"T":6.014,"Es":24.46,"KL":15.78,"agree":0.1302}],"tvec":[{"k":1.0,"frac":0.143,"mass":[0.7503,0.08042,0.05128,0.03556,0.04251,0.02144,0.01039,0.004644,0.001996,0.0008688,0.0005233,7.71e-05],"tmass":[0.7493,0.08049,0.05238,0.03598,0.04284,0.02101,0.009874,0.004351,0.001938,0.0009381,0.000709,0.0001594],"T":1.231,"Es":1.153,"KL":0.04588,"agree":0.9681}]};
+
+  // bin i spans log10 p in (EDGES[i], EDGES[i-1]]; centers for plotting (the last bin is open-ended)
+  var CENTERS = [-0.25, -0.75, -1.25, -1.75, -2.5, -3.5, -4.5, -5.5, -6.5, -7.5, -9, -11];
+  var REGION_OF_BIN = [0, 1, 1, 1, 1, 2, 3, 3, 3, 3, 3, 3];
+  var REGIONS = ['very likely', 'plausible', 'rare', 'junk'];
+  var STATES = [
+    { chip: 'about the same', text: 'At 0.08× the residual norm the vector is barely distinguishable from temperature.' },
+    { chip: 'different tail', text: 'At 0.3× the residual norm it is exactly as surprising as temperature 1.20, but the extra probability stays among plausible tokens.' },
+    { chip: 'breaking down', text: 'At 1.2× the residual norm the vector floods the junk tail too, more than matched temperature does in the middle of it.' },
+    { chip: 'destroyed', text: 'At 2.4× the residual norm most samples are junk for both: the model has stopped predicting text.' }
+  ];
+  var NS = 'http://www.w3.org/2000/svg';
+  function el(tag, attrs, parent) {
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function counts1000(mass) { // per-region counts out of 1000, largest remainder
+    var s = [0, 0, 0, 0], tot = 0;
+    mass.forEach(function (m, i) { s[REGION_OF_BIN[i]] += m; tot += m; });
+    var raw = s.map(function (x) { return x / tot * 1000; });
+    var fl = raw.map(Math.floor), left = 1000 - fl.reduce(function (a, b) { return a + b; }, 0);
+    raw.map(function (x, i) { return [x - fl[i], i]; }).sort(function (a, b) { return b[0] - a[0]; })
+      .slice(0, left).forEach(function (p) { fl[p[1]]++; });
+    return fl;
+  }
+
+  // ---- strength control ----
+  var seg = document.getElementById('seg'), cur = 1;
+  D.vec.forEach(function (v, i) {
+    var b = document.createElement('button');
+    b.type = 'button'; b.id = 'dose-' + v.k;
+    b.textContent = '×' + v.k;
+    b.setAttribute('aria-pressed', i === cur ? 'true' : 'false');
+    b.setAttribute('aria-label', 'Vector at ' + v.k + ' times its learned size');
+    b.addEventListener('click', function () { cur = i; render(); });
+    seg.appendChild(b);
+  });
+
+  // ---- waffle strips: 100 columns x 10 rows, filled column by column, left to right ----
+  var COLS = 100, ROWS = 10, CELL = 7, GAP = 1.4;
+  var W = COLS * (CELL + GAP), H = ROWS * (CELL + GAP);
+  var stripsEl = document.getElementById('strips');
+  var ROWDEF = [
+    { key: 'base', name: 'Unsteered', cls: 'base' },
+    { key: 'temp', name: 'Temperature', cls: 'temp' },
+    { key: 'vec', name: 'Vector', cls: 'vec' }
+  ];
+  var strips = ROWDEF.map(function (r) {
+    var wrap = document.createElement('div'); wrap.className = 'strip';
+    var head = document.createElement('div'); head.className = 'strip-head';
+    var name = document.createElement('div'); name.className = 'strip-name';
+    var cnt = document.createElement('div'); cnt.className = 'counts';
+    head.appendChild(name); head.appendChild(cnt); wrap.appendChild(head);
+    var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img' }, wrap);
+    var cells = [];
+    for (var c = 0; c < COLS; c++) for (var rr = 0; rr < ROWS; rr++) {
+      cells.push(el('rect', { x: c * (CELL + GAP), y: rr * (CELL + GAP), width: CELL, height: CELL, rx: 1.2 }, svg));
+    }
+    stripsEl.appendChild(wrap);
+    return { def: r, name: name, cnt: cnt, svg: svg, cells: cells };
+  });
+  // shade per region: tint of the condition color, junk always crimson
+  var SHADE = [0.2, 0.55, 1.0];
+  function fillFor(cls, region) {
+    if (region === 3) return 'var(--c-junk)';
+    return 'color-mix(in srgb, var(--c-' + cls + ') ' + Math.round(SHADE[region] * 100) + '%, var(--bg))';
+  }
+  // key
+  var key = document.getElementById('key');
+  ['very likely (p > 0.32)', 'plausible (1/1,000 to 0.32)', 'rare (1/10,000 to 1/1,000)'].forEach(function (t, i) {
+    var li = document.createElement('li'), ramp = document.createElement('span'); ramp.className = 'ramp';
+    ['base', 'temp', 'vec'].forEach(function (c) { var s = document.createElement('i'); s.style.background = fillFor(c, i); ramp.appendChild(s); });
+    li.appendChild(ramp); li.appendChild(document.createTextNode(t)); key.appendChild(li);
+  });
+  (function () {
+    var li = document.createElement('li'), s = document.createElement('i');
+    s.style.cssText = 'width:10px;height:10px;border-radius:1px;display:inline-block;background:var(--c-junk)';
+    li.appendChild(s); li.appendChild(document.createTextNode('junk (below 1/10,000)')); key.appendChild(li);
+  })();
+
+  // ---- multiplier chart ----
+  function multChart(host, series, opts) {
+    host.textContent = '';
+    var w = 720, h = opts.h || 360, ml = 58, mr = 92, mt = 30, mb = 46;
+    var pw = w - ml - mr, ph = h - mt - mb;
+    var X0 = 0, X1 = -11.5, Y0 = Math.log10(0.25), Y1 = Math.log10(1000);
+    var X = function (x) { return ml + (x - X0) / (X1 - X0) * pw; };
+    var Y = function (m) { return mt + (1 - (Math.log10(m) - Y0) / (Y1 - Y0)) * ph; };
+    var svg = el('svg', { viewBox: '0 0 ' + w + ' ' + h, role: 'img', 'aria-label': opts.label }, host);
+    // likelihood zones
+    el('rect', { 'class': 'zone zone-pl', x: X(-0.5), y: mt, width: X(-3) - X(-0.5), height: ph }, svg);
+    el('rect', { 'class': 'zone zone-junk', x: X(-4), y: mt, width: X(X1) - X(-4), height: ph }, svg);
+    [['very likely', 0, -0.5, ''], ['plausible', -0.5, -3, ''], ['rare', -3, -4, ''], ['junk', -4, X1, ' junk']].forEach(function (z) {
+      var t = el('text', { 'class': 'zlabel' + z[3], x: (X(z[1]) + X(z[2])) / 2, y: mt - 10, 'text-anchor': 'middle' }, svg);
+      t.textContent = z[0];
+    });
+    // grid + y ticks
+    [0.25, 0.5, 1, 2, 5, 10, 100, 1000].forEach(function (m) {
+      el('line', { 'class': 'grid', x1: ml, x2: ml + pw, y1: Y(m), y2: Y(m) }, svg);
+      var t = el('text', { 'class': 'tick', x: ml - 8, y: Y(m) + 4, 'text-anchor': 'end' }, svg);
+      t.textContent = '×' + (m >= 1000 ? '1,000' : m);
+    });
+    // x ticks: likelihood as "1 in N"
+    var XT = [[0, '1'], [-1, '1/10'], [-2, '1/100'], [-3, '1/1k'], [-4, '1/10k'], [-6, '1/1M'], [-8, '1/100M'], [-10, '1/10B']];
+    XT.forEach(function (t) {
+      el('line', { 'class': 'axis', x1: X(t[0]), x2: X(t[0]), y1: mt + ph, y2: mt + ph + 5 }, svg);
+      var tx = el('text', { 'class': 'tick', x: X(t[0]), y: mt + ph + 18, 'text-anchor': 'middle' }, svg);
+      tx.textContent = t[1];
+    });
+    el('line', { 'class': 'axis', x1: ml, x2: ml + pw, y1: mt + ph, y2: mt + ph }, svg);
+    var xl = el('text', { 'class': 'axlabel', x: ml + pw / 2, y: h - 6, 'text-anchor': 'middle' }, svg);
+    xl.textContent = 'How likely the unsteered model thought the token was';
+    var yl = el('text', { 'class': 'axlabel', transform: 'translate(14 ' + (mt + ph / 2) + ') rotate(-90)', 'text-anchor': 'middle' }, svg);
+    yl.textContent = 'Picked how many times as often';
+    // no-change line (its label joins the series labels so they cannot collide)
+    el('line', { 'class': 'one', x1: ml, x2: ml + pw, y1: Y(1), y2: Y(1) }, svg);
+    var ends = [{ cls: 'base', name: 'no change', y: Y(1) }];
+    series.forEach(function (s) {
+      var pts = s.mult.map(function (m, i) { return [CENTERS[i], m]; });
+      var segs = [], curSeg = [];
+      pts.forEach(function (p) {
+        if (p[1] <= 1000 && p[1] >= 0.25) { curSeg.push(p); }
+        else { // off the chart: arrow on the edge it left through
+          if (curSeg.length) segs.push(curSeg); curSeg = [];
+          var up = p[1] > 1000, px = X(p[0]), py = Y(up ? 1000 : 0.25), d = up ? 1 : -1;
+          el('path', { 'class': 'dt-' + s.cls, d: 'M' + (px - 5) + ' ' + (py + 8 * d) + ' L' + (px + 5) + ' ' + (py + 8 * d) + ' L' + px + ' ' + (py - d) + ' Z' }, svg);
+        }
+      });
+      if (curSeg.length) segs.push(curSeg);
+      segs.forEach(function (sg) {
+        el('polyline', { 'class': 'ln ln-' + s.cls, points: sg.map(function (p) { return X(p[0]) + ',' + Y(Math.max(p[1], 0.25)); }).join(' ') }, svg);
+        sg.forEach(function (p) {
+          var c = el('circle', { 'class': 'dt-' + s.cls, cx: X(p[0]), cy: Y(Math.max(p[1], 0.25)), r: 3.6 }, svg);
+          var tt = el('title', {}, c); tt.textContent = s.name + ': ×' + (p[1] < 10 ? p[1].toFixed(2) : Math.round(p[1]));
+        });
+      });
+      var last = pts[pts.length - 1];
+      ends.push({ cls: s.cls, name: s.name, y: Y(Math.min(Math.max(last[1], 0.25), 1000)) });
+    });
+    // direct labels at the right edge, nudged apart
+    ends.sort(function (a, b) { return a.y - b.y; });
+    for (var i = 1; i < ends.length; i++) if (ends[i].y - ends[i - 1].y < 16) ends[i].y = ends[i - 1].y + 16;
+    ends.forEach(function (e) {
+      var t = el('text', { 'class': 'lbl lbl-' + e.cls, x: ml + pw + 6, y: e.y + 4 }, svg); t.textContent = e.name;
+    });
+  }
+
+  function fmtPct(x) { return (x * 100).toFixed(1) + '%'; }
+  function render() {
+    var v = D.vec[cur];
+    Array.prototype.forEach.call(seg.children, function (b, i) { b.setAttribute('aria-pressed', i === cur ? 'true' : 'false'); });
+    var st = STATES[cur];
+    var chipColor = cur <= 1 ? 'var(--c-vec)' : 'var(--c-junk)';
+    document.getElementById('state').innerHTML =
+      '<span class="chip" style="--chip:' + chipColor + '">' + st.chip + '</span>' + st.text +
+      '<span class="stats"><span>vector size ' + v.frac + '× residual norm</span><span>matched temperature T = ' + v.T.toFixed(2) +
+      '</span><span>top token unchanged at ' + fmtPct(v.agree) + ' of positions</span></span>';
+    var masses = { base: D.base, temp: v.tmass, vec: v.mass };
+    strips.forEach(function (s) {
+      var n = counts1000(masses[s.def.key]);
+      var label = s.def.key === 'temp' ? s.def.name + ' <small>T = ' + v.T.toFixed(2) + '</small>' :
+                  s.def.key === 'vec' ? s.def.name + ' <small>×' + v.k + '</small>' : s.def.name;
+      s.name.innerHTML = label;
+      s.cnt.innerHTML = n[0] + ' very likely · ' + n[1] + ' plausible · ' + n[2] + ' rare · <span class="junkn">' + n[3] + ' junk</span>';
+      s.svg.setAttribute('aria-label', s.def.name + ': ' + n[0] + ' very likely, ' + n[1] + ' plausible, ' + n[2] + ' rare, ' + n[3] + ' junk tokens per 1,000');
+      var idx = 0;
+      for (var r = 0; r < 4; r++) for (var j = 0; j < n[r]; j++) s.cells[idx++].style.fill = fillFor(s.def.cls, r);
+    });
+    multChart(document.getElementById('mult'), [
+      { name: 'Temperature', cls: 'temp', mult: v.tmass.map(function (m, i) { return m / D.base[i]; }) },
+      { name: 'Vector ×' + v.k, cls: 'vec', mult: v.mass.map(function (m, i) { return m / D.base[i]; }) }
+    ], { label: 'Boost by likelihood for the vector at ' + v.k + ' times and matched temperature' });
+  }
+
+  multChart(document.getElementById('check'), [
+    { name: 'Exact T 1.23', cls: 'temp', mult: D.tvec[0].tmass.map(function (m, i) { return m / D.base[i]; }) },
+    { name: 'Temp. vector', cls: 'vec', mult: D.tvec[0].mass.map(function (m, i) { return m / D.base[i]; }) }
+  ], { h: 300, label: 'Temperature vector against exact temperature' });
+  render();
+})();
+</script>

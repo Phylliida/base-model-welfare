@@ -1,0 +1,252 @@
+<title>Elicitation Without Collapse</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column (~68ch), left-aligned like a lab proposal; companion styling to The Value Lens. */
+:root {
+  --bg: #f4f6f8;
+  --surface: #e9edf2;
+  --fg: #18202b;
+  --muted: #586374;
+  --rule: #d3d9e1;
+  --accent: #2b5c8e;
+  --proposed: #87570f;
+  --proposed-bg: #f4e8d4;
+  --font-display: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --step-0: 1.0625rem;
+  --step-1: 1.25rem;
+  --step-2: 1.6rem;
+  --step-3: 2.6rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11151b; --surface: #1a2029; --fg: #e3e7ed; --muted: #9aa4b3; --rule: #2b333f;
+    --accent: #84b2e2; --proposed: #e0b46c; --proposed-bg: #392d19;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11151b; --surface: #1a2029; --fg: #e3e7ed; --muted: #9aa4b3; --rule: #2b333f;
+  --accent: #84b2e2; --proposed: #e0b46c; --proposed-bg: #392d19;
+  color-scheme: dark;
+}
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: var(--step-0); line-height: 1.6; }
+.wrap { max-width: 46rem; margin: 0 auto; padding-inline: 20px; padding-block: 28px 72px; display: grid; gap: 20px; }
+.bar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; justify-content: space-between; border-bottom: 1px solid var(--rule); padding-block: 0 14px; }
+.bar p { margin: 0; color: var(--muted); font-size: 0.9rem; min-width: 0; }
+.bar .actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+button { font: 500 0.85rem var(--font-mono); color: var(--bg); background: var(--accent); border: 0; border-radius: 4px; padding: 9px 14px; cursor: pointer; }
+button:hover { filter: brightness(1.08); }
+button:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+#status { font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); min-height: 1.2em; }
+article { min-width: 0; }
+.eyebrow { font: 500 0.75rem var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 6px; }
+h1 { font-family: var(--font-display); font-weight: 600; font-size: var(--step-3); line-height: 1.1; margin: 0 0 12px; text-wrap: balance; }
+.deck { font-size: var(--step-1); color: var(--muted); margin: 0 0 18px; line-height: 1.45; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px 18px; font: 0.8rem var(--font-mono); color: var(--muted); margin: 0 0 8px; padding: 0; list-style: none; }
+h2 { font-family: var(--font-display); font-weight: 600; font-size: var(--step-2); line-height: 1.2; margin: 44px 0 10px; padding-top: 18px; border-top: 1px solid var(--rule); text-wrap: balance; }
+h3 { font-family: var(--font-body); font-weight: 600; font-size: var(--step-1); margin: 26px 0 6px; }
+p, ul, ol { margin: 0 0 14px; }
+ul, ol { padding-left: 1.3em; }
+li { margin: 0 0 6px; }
+li::marker { color: var(--muted); }
+strong { font-weight: 600; }
+.chip { display: inline-block; font: 500 0.7rem var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 7px; border-radius: 3px; vertical-align: 0.35em; margin-left: 8px; color: var(--proposed); background: var(--proposed-bg); }
+.eq { font-family: var(--font-display); font-size: 1.15rem; background: var(--surface); padding: 10px 14px; border-radius: 4px; margin: 0 0 10px; overflow-x: auto; }
+.eq .note { font-family: var(--font-body); font-size: 0.9rem; color: var(--muted); }
+var { font-style: italic; }
+code { font-family: var(--font-mono); font-size: 0.88em; background: var(--surface); padding: 1px 4px; border-radius: 3px; }
+.table { overflow-x: auto; margin: 0 0 16px; }
+table { border-collapse: collapse; width: 100%; min-width: 40rem; font-size: 0.95rem; }
+th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--rule); }
+th { font: 500 0.75rem var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+td:first-child { font-family: var(--font-mono); font-weight: 500; color: var(--accent); white-space: nowrap; }
+.refs li { font-size: 0.95rem; }
+.credits { color: var(--muted); font-size: 0.95rem; }
+@media (max-width: 480px) { :root { --step-3: 2.1rem; --step-2: 1.4rem; } }
+</style>
+
+<div class="wrap">
+  <div class="bar">
+    <p>Formatted for pasting into a Google Docs tab.</p>
+    <div class="actions">
+      <span id="status" role="status"></span>
+      <button id="copy" type="button">Copy proposal</button>
+    </div>
+  </div>
+
+  <article id="proposal">
+    <p class="eyebrow">Proposal &middot; base model training</p>
+    <h1>Elicitation Without Collapse</h1>
+    <p class="deck">Training a base model on its own outputs to bring out a capability without loops or mode collapse. The method targets the base model's posterior instead of a reward maximum, and measures how far training moves the model beyond what the evidence requires.</p>
+    <ul class="meta">
+      <li>2026-10-14</li>
+      <li>Companion to The Value Lens</li>
+      <li>Nothing here is measured yet</li>
+    </ul>
+
+    <h2>0. Summary</h2>
+    <p>Base models stay out of degenerate loops because log-loss training on real text anchors them. Real text rarely loops, and the model never sees its own outputs during training. Training a model on its own outputs removes that anchor, and maximizing reward adds pressure to concentrate. Standard RL tends to end in mode collapse, and in loops once credit flows to where a token leads.</p>
+    <p>This proposal treats elicitation as conditioning. The goal is the base model's posterior <var>p</var><sub>base</sub>(<var>x</var> | <var>o</var>), where <var>o</var> is an observation such as "the checker accepts this answer". The posterior has a known cost: for a pass/fail check it sits exactly −log <var>P</var><sub>base</sub>(<var>o</var>) nats from the base model. Anything a trained policy moves beyond that is concentration the evidence did not ask for. We call it <strong>excess KL</strong> and use it as the main collapse metric.</p>
+    <p>The experiment trains a small base model on a checkable task with many valid answers, four ways: standard RL, RL aimed at the posterior, a distribution-matching method that keeps all modes, and inference-time SMC distilled into the weights. Each arm is scored on capability (pass@1, and coverage at large <var>k</var>), on excess KL, and on a health battery from the homeostasis work: sharpening, the lean toward predictable futures, the entropy response to surprise, and the loop margin.</p>
+
+    <h2>1. Why training on own outputs collapses</h2>
+    <ul>
+      <li><strong>The anchor.</strong> The base model is trained on real text with log loss, a strictly proper scoring rule, so training pushes it toward calibration. Real text rarely loops, so a well-calibrated model sampled at temperature 1 rarely loops either.</li>
+      <li><strong>Not looping looks like a maintained basin.</strong> Almost any steering vector makes the model loop when turned up far enough, and heavy quantization tends to fail into loops too (observations from extensive steering work in this group). The healthy regime sits between two self-reinforcing traps: repetition (the Mirostat paper's "boredom trap") and incoherence (its "confusion trap").</li>
+      <li><strong>Fine-tuning on own samples.</strong> The expected gradient is zero at first order, since the expected gradient of log <var>p</var> under <var>p</var> is zero. Collapse comes instead from finite-sample drift (Shumailov et al. 2024), made faster by truncated sampling, which produces samples sharper than the model. It shows up as overconfidence and lost tails.</li>
+      <li><strong>Reward maximization.</strong> With an unbounded reward and a small KL penalty, the optimum is nearly deterministic, so collapse is the correct answer to the objective. When the reward depends on where a token leads, credit flows to choices that make the future easy. That is the dark-room route into loops.</li>
+      <li><strong>On-policy optimization.</strong> PPO-style methods only get gradient where the policy already samples. A mode the policy stops visiting cannot come back.</li>
+    </ul>
+
+    <h2>2. Elicitation as conditioning <span class="chip">Proposed</span></h2>
+    <h3>2.1 The target</h3>
+    <p class="eq"><var>p</var><sub>base</sub>(<var>x</var> | <var>o</var>) ∝ <var>p</var><sub>base</sub>(<var>x</var>) · <var>P</var>(<var>o</var> | <var>x</var>)</p>
+    <p>KL-regularized RL with β = 1 and reward <var>r</var>(<var>x</var>) = log <var>P</var>(<var>o</var> | <var>x</var>) has exactly this posterior as its optimum (Korbak, Perez &amp; Buckley 2022). Standard practice uses a small β and unbounded reward scores, and its optimum is much sharper than any posterior. For a pass/fail checker, use a softened likelihood (1 for a pass, a small ε for a fail) so failing samples keep finite weight.</p>
+
+    <h3>2.2 What conditioning costs</h3>
+    <p>For a deterministic check that the base model passes with probability <var>P</var> = <var>P</var><sub>base</sub>(<var>o</var>):</p>
+    <p class="eq">KL( <var>p</var><sub>base</sub>(· | <var>o</var>) ‖ <var>p</var><sub>base</sub> ) = −log <var>P</var></p>
+    <p>If 10% of base samples pass, conditioning costs 2.3 nats. If 1% pass, it costs 4.6 nats. For a likelihood that is not deterministic, the cost is at most −log <var>P</var>. Everything else about the base distribution is kept, including its variety among passing answers and its low loop rate.</p>
+
+    <h3>2.3 Excess KL</h3>
+    <p>A policy π that passes at rate <var>q</var> cannot be closer to the base model than</p>
+    <p class="eq"><var>d</var>(<var>q</var> ‖ <var>P</var>) = <var>q</var> log(<var>q</var>/<var>P</var>) + (1−<var>q</var>) log((1−<var>q</var>)/(1−<var>P</var>))</p>
+    <p>The closest such policy mixes the base model's own distribution over passing answers with its distribution over failing ones. By the chain rule for KL:</p>
+    <p class="eq">KL(π ‖ <var>p</var><sub>base</sub>) = <var>d</var>(<var>q</var> ‖ <var>P</var>) + <var>q</var> · KL(π<sub>pass</sub> ‖ <var>p</var><sub>base</sub>(· | pass)) + (1−<var>q</var>) · KL(π<sub>fail</sub> ‖ <var>p</var><sub>base</sub>(· | fail))</p>
+    <p>Excess KL is the sum of the last two terms. The first of them is the cleanest single number for mode collapse: how far the policy's correct answers have drifted from the base model's own distribution over correct answers. All terms are estimable from sequence log-probabilities of policy samples under both models. <var>P</var> is estimated from base samples at temperature 1, which needs many samples when passes are rare.</p>
+
+    <h2>3. Arms <span class="chip">Proposed</span></h2>
+    <div class="table">
+      <table>
+        <thead>
+          <tr><th></th><th>Target</th><th>Optimizer</th><th>Question</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>A</td><td>Reward maximum: binary reward, small β</td><td>On-policy policy gradient with a KL penalty (PPO or GRPO style)</td><td>The standard recipe. Expected to collapse</td></tr>
+          <tr><td>B</td><td>Posterior: β = 1, <var>r</var> = log <var>P</var>(<var>o</var> | <var>x</var>)</td><td>The same on-policy optimizer</td><td>Is the right target enough?</td></tr>
+          <tr><td>C</td><td>Posterior</td><td>Distribution matching: importance-weighted, mass-covering (DPG; Khalifa et al. 2021, Korbak et al. 2022)</td><td>Does covering modes the policy stopped visiting fix what B can't?</td></tr>
+          <tr><td>D</td><td>Posterior</td><td>SMC steering at inference (Lew et al. 2023; twisted SMC, Zhao et al. 2024), then supervised distillation of its samples</td><td>The gentlest route: no weight change until distillation</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <ul>
+      <li><strong>Optional arm E:</strong> GFlowNet-style training (Hu et al. 2024), which is built to sample in proportion to reward.</li>
+      <li><strong>Shared settings:</strong> sample at temperature 1 with no truncation. Mix real-text log-loss into every update to keep the anchor, as InstructGPT's PPO-ptx did to limit regressions.</li>
+      <li><strong>Anchor ablation:</strong> run arm A and the best posterior arm with and without the real-text loss.</li>
+      <li><strong>Positive control</strong> (shared with The Value Lens): RL whose reward is the model's own future certainty. It should collapse toward loops, and the health battery must flag it early.</li>
+    </ul>
+
+    <h2>4. Model and tasks <span class="chip">Proposed</span></h2>
+    <ul>
+      <li><strong>Model:</strong> a small base model that trains on one RTX 3090, 0.5B to 1.5B parameters. Full fine-tuning at the low end, LoRA at the high end.</li>
+      <li><strong>Main task:</strong> constrained generation with a checker and many valid answers, such as "write a sentence that uses these four words" (CommonGen-style). The base model should pass somewhere between a few percent and a few tens of percent of the time. The solution set is large, so collapse shows up as lost variety.</li>
+      <li><strong>Second task:</strong> short arithmetic word problems with answer checking, for comparison with the reasoning-RL literature.</li>
+      <li><strong>Open-ended continuations</strong> of real text, for the health battery.</li>
+      <li>Keep the few-shot prompt format fixed across arms. The format is itself part of the conditioning.</li>
+    </ul>
+
+    <h2>5. Measurements <span class="chip">Proposed</span></h2>
+    <h3>Capability</h3>
+    <ul>
+      <li>pass@1.</li>
+      <li>Coverage at large <var>k</var>: the fraction of prompts solved within <var>k</var> samples, for <var>k</var> up to 256. Yue et al. (2025) found RL-trained reasoning models beat their base models at small <var>k</var> and lose at large <var>k</var>, meaning RL mostly narrowed what the base model could already do.</li>
+    </ul>
+    <h3>Collapse</h3>
+    <ul>
+      <li>Excess KL and its decomposition (section 2.3).</li>
+      <li>Variety among correct answers (distinct-answer counts and n-gram diversity), as a model-free check on the KL numbers.</li>
+    </ul>
+    <h3>Health battery, from the homeostasis work</h3>
+    <ul>
+      <li><strong>Sharpening and lean.</strong> Fit <var>q</var>(<var>x</var>) ∝ <var>p</var><sub>model</sub>(<var>x</var>)<sup><var>a</var></sup> · exp(<var>b</var> · <var>V</var>(<var>x</var>)) on held-out real text, where <var>V</var>(<var>x</var>) is the model's future certainty after token <var>x</var>. <var>a</var> below 1 is overconfidence; <var>b</var> &lt; 0 is a lean toward predictable futures (the lean test from The Value Lens).</li>
+      <li><strong>Entropy response to surprise:</strong> next-token entropy after forced tokens of graded surprisal, compared with the base model's curve.</li>
+      <li><strong>Loop margin:</strong> the steering dose, as a fraction of the residual norm, at which continuations start looping. Also the loop rate at temperature 1 on open-ended prompts.</li>
+      <li><strong>Real-text perplexity.</strong></li>
+    </ul>
+    <p>Track all of these over the course of training, not only at the end.</p>
+
+    <h2>6. Hypotheses <span class="chip">Proposed</span></h2>
+    <div class="table">
+      <table>
+        <thead>
+          <tr><th></th><th>Claim</th><th>Falsifier</th><th>Our bet</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>H1</td><td>Standard RL (A) raises pass@1, loses coverage at large <var>k</var>, and builds excess KL mostly among correct answers. Sharpening rises and the loop margin shrinks</td><td>A matches the posterior arms on excess KL and the battery</td><td>Holds</td></tr>
+          <tr><td>H2</td><td>The right target with an on-policy optimizer (B) reduces collapse but does not remove it</td><td>B's excess KL is as low as C's and D's</td><td>Holds, because dropped modes don't come back</td></tr>
+          <tr><td>H3</td><td>Mass-covering training (C) and SMC distillation (D) reach comparable pass@1 with excess KL near zero, base-level coverage at large <var>k</var>, and a battery close to the base model</td><td>Excess KL grows with pass@1 in C and D as it does in A</td><td>Holds where <var>P</var><sub>base</sub>(<var>o</var>) is not tiny</td></tr>
+          <tr><td>H4</td><td>Without the real-text anchor, every arm drifts: sharpening rises and the loop margin shrinks over training</td><td>No difference with and without the anchor</td><td>Holds, slowly</td></tr>
+          <tr><td>H5</td><td>The battery flags the own-certainty control before loops are visible in samples</td><td>Loops appear before any battery measure moves</td><td>The lean <var>b</var> moves first</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>7. Limits and risks</h2>
+    <ul>
+      <li>Conditioning only brings out what the base model already gives some probability. When <var>P</var><sub>base</sub>(<var>o</var>) is tiny, SMC weights degenerate and distribution-matching gradients get noisy. Curricula or learned twist functions help. Past that point you need learning beyond the base distribution, where the collapse risk returns.</li>
+      <li>The posterior target needs a likelihood. Pass/fail checkers need softening, and learned reward models are neither bounded nor calibrated, so they don't define a posterior directly.</li>
+      <li>Estimating <var>P</var><sub>base</sub>(<var>o</var>) and the KL terms takes many samples when passes are rare.</li>
+      <li>Results on a 1B model may not carry over to a 32B model.</li>
+    </ul>
+
+    <h2>8. Welfare note</h2>
+    <p>Posterior targeting changes the model only as much as the evidence requires, −log <var>P</var>(<var>o</var>) nats. Reward maximization goes far past that. Adele's idea of "structural coercion" is damage to self-maintenance imposed by an outside control process. If that idea is right, excess KL may be a first, rough measure of it, and the health battery is a direct check on whether training damaged the maintained basin. Both readings are speculative. The measurements are useful as training diagnostics either way.</p>
+
+    <h2>9. Related threads</h2>
+    <ul>
+      <li><strong>The Value Lens:</strong> shares the lean test and the own-certainty positive control.</li>
+      <li><strong>Homeostasis notes:</strong> K4 (loop margin) and S1 (entropy response to surprise) supply the health battery.</li>
+      <li><strong>Loop observations</strong> from steering and quantization motivated the basin framing.</li>
+    </ul>
+
+    <h2>References</h2>
+    <ul class="refs">
+      <li>Basu et al. 2021. Mirostat: a neural text decoding algorithm that directly controls perplexity.</li>
+      <li>Holtzman et al. 2020. The curious case of neural text degeneration.</li>
+      <li>Hu et al. 2024. Amortizing intractable inference in large language models.</li>
+      <li>Khalifa, Elsahar &amp; Dymetman 2021. A distributional approach to controlled text generation.</li>
+      <li>Korbak, Perez &amp; Buckley 2022. RL with KL penalties is better viewed as Bayesian inference.</li>
+      <li>Korbak et al. 2022. On reinforcement learning and distribution matching for fine-tuning language models with no catastrophic forgetting.</li>
+      <li>Lew et al. 2023. Sequential Monte Carlo steering of large language models using probabilistic programs.</li>
+      <li>Ouyang et al. 2022. Training language models to follow instructions with human feedback.</li>
+      <li>Shumailov et al. 2024. AI models collapse when trained on recursively generated data.</li>
+      <li>Xu et al. 2022. Learning to break the loop: analyzing and mitigating repetitions for neural text generation.</li>
+      <li>Yue et al. 2025. Does reinforcement learning really incentivize reasoning capacity in LLMs beyond the base model?</li>
+      <li>Zhao et al. 2024. Probabilistic inference in language models via twisted sequential Monte Carlo.</li>
+    </ul>
+    <p class="credits">Drafted by Claude (Opus 5.5) in conversation. The loop observations come from the author's steering and quantization experiments.</p>
+  </article>
+</div>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy');
+  var status = document.getElementById('status');
+  var art = document.getElementById('proposal');
+  function selectArticle() {
+    var sel = window.getSelection();
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    sel.removeAllRanges();
+    sel.addRange(r);
+    status.textContent = 'Selected. Press Ctrl+C (Cmd+C on Mac) to copy.';
+  }
+  btn.addEventListener('click', function () {
+    try {
+      var item = new ClipboardItem({
+        'text/html': new Blob([art.innerHTML], { type: 'text/html' }),
+        'text/plain': new Blob([art.innerText], { type: 'text/plain' })
+      });
+      navigator.clipboard.write([item]).then(function () {
+        status.textContent = 'Copied. Paste it into a new tab in the doc.';
+      }, selectArticle);
+    } catch (e) {
+      selectArticle();
+    }
+  });
+})();
+</script>

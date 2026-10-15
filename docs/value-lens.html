@@ -1,0 +1,271 @@
+<title>The Value Lens</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column (~68ch), left-aligned, like a lab proposal; a slim copy bar above it. */
+:root {
+  --bg: #f4f6f8;
+  --surface: #e9edf2;
+  --fg: #18202b;
+  --muted: #586374;
+  --rule: #d3d9e1;
+  --accent: #2b5c8e;
+  --measured: #2d7652;
+  --measured-bg: #e0efe6;
+  --proposed: #87570f;
+  --proposed-bg: #f4e8d4;
+  --font-display: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --step-0: 1.0625rem;
+  --step-1: 1.25rem;
+  --step-2: 1.6rem;
+  --step-3: 2.6rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11151b; --surface: #1a2029; --fg: #e3e7ed; --muted: #9aa4b3; --rule: #2b333f;
+    --accent: #84b2e2; --measured: #7cc8a0; --measured-bg: #1b3127; --proposed: #e0b46c; --proposed-bg: #392d19;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11151b; --surface: #1a2029; --fg: #e3e7ed; --muted: #9aa4b3; --rule: #2b333f;
+  --accent: #84b2e2; --measured: #7cc8a0; --measured-bg: #1b3127; --proposed: #e0b46c; --proposed-bg: #392d19;
+  color-scheme: dark;
+}
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: var(--step-0); line-height: 1.6; }
+.wrap { max-width: 46rem; margin: 0 auto; padding-inline: 20px; padding-block: 28px 72px; display: grid; gap: 20px; }
+.bar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; justify-content: space-between; border-bottom: 1px solid var(--rule); padding-block: 0 14px; }
+.bar p { margin: 0; color: var(--muted); font-size: 0.9rem; min-width: 0; }
+button { font: 500 0.85rem var(--font-mono); color: var(--bg); background: var(--accent); border: 0; border-radius: 4px; padding: 9px 14px; cursor: pointer; }
+button:hover { filter: brightness(1.08); }
+button:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+#status { font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); min-height: 1.2em; }
+article { min-width: 0; }
+.eyebrow { font: 500 0.75rem var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 6px; }
+h1 { font-family: var(--font-display); font-weight: 600; font-size: var(--step-3); line-height: 1.1; margin: 0 0 12px; text-wrap: balance; }
+.deck { font-size: var(--step-1); color: var(--muted); margin: 0 0 18px; line-height: 1.45; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px 18px; font: 0.8rem var(--font-mono); color: var(--muted); margin: 0 0 8px; padding: 0; list-style: none; }
+h2 { font-family: var(--font-display); font-weight: 600; font-size: var(--step-2); line-height: 1.2; margin: 44px 0 10px; padding-top: 18px; border-top: 1px solid var(--rule); text-wrap: balance; }
+h3 { font-family: var(--font-body); font-weight: 600; font-size: var(--step-1); margin: 26px 0 6px; }
+p, ul, ol { margin: 0 0 14px; }
+ul, ol { padding-left: 1.3em; }
+li { margin: 0 0 6px; }
+li::marker { color: var(--muted); }
+strong { font-weight: 600; }
+a { color: var(--accent); }
+.chip { display: inline-block; font: 500 0.7rem var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 7px; border-radius: 3px; vertical-align: 0.35em; margin-left: 8px; }
+.chip.m { color: var(--measured); background: var(--measured-bg); }
+.chip.p { color: var(--proposed); background: var(--proposed-bg); }
+.eq { font-family: var(--font-display); font-size: 1.15rem; background: var(--surface); padding: 10px 14px; border-radius: 4px; margin: 0 0 10px; overflow-x: auto; }
+.eq .note { font-family: var(--font-body); font-size: 0.9rem; color: var(--muted); }
+var { font-style: italic; }
+code { font-family: var(--font-mono); font-size: 0.88em; background: var(--surface); padding: 1px 4px; border-radius: 3px; }
+.table { overflow-x: auto; margin: 0 0 16px; }
+table { border-collapse: collapse; width: 100%; min-width: 40rem; font-size: 0.95rem; }
+th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--rule); }
+th { font: 500 0.75rem var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+td:first-child { font-family: var(--font-mono); font-weight: 500; color: var(--accent); white-space: nowrap; }
+.credits { color: var(--muted); font-size: 0.95rem; }
+@media (max-width: 480px) { :root { --step-3: 2.1rem; --step-2: 1.4rem; } }
+</style>
+
+<div class="wrap">
+  <div class="bar">
+    <p>Formatted for pasting into a Google Docs tab.</p>
+    <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+      <span id="status" role="status"></span>
+      <button id="copy" type="button">Copy proposal</button>
+    </div>
+  </div>
+
+  <article id="proposal">
+    <p class="eyebrow">Proposal &middot; base model welfare</p>
+    <h1>The Value Lens</h1>
+    <p class="deck">Pricing what a base model represents by what it does for the model's own future. A J-lens variant aimed at Antra's valence question.</p>
+    <ul class="meta">
+      <li>2026-10-14</li>
+      <li>GLM-4-32B-Base (Q4_K_S)</li>
+      <li>Section 2 is measured; sections 3 to 8 are not</li>
+    </ul>
+
+    <h2>0. Summary</h2>
+    <p>The J-lens tells you which tokens a representation pushes toward right now. On the 9/24 call, Antra asked whether something J-lens-like could capture valence: a semantics-agnostic way to say whether a representation is "toward" or "away", priced against the future, on a scale that can be compared across contexts.</p>
+    <p>This proposal builds one candidate. The <strong>value lens</strong> is the gradient of the model's future predictive success with respect to the residual stream. It gives every direction in activation space a price, in nats of future log-likelihood. It splits each price into a "now" part (the current token, which is what the J-lens sees) and a "future" part (value that only pays off on later tokens). Every context is scored in the same unit, so prices can be compared across contexts.</p>
+    <p>Prices alone are not valence. Antra's bar was that valence must be represented and upstream of behavior. So the lens comes with two tests. Does the model carry a forecast of its own future predictability? And does it lean its token choices toward easier futures, beyond what calibration allows? Log-loss training gives a base model no reason to lean, so a lean would be a preference the training objective does not explain. Running the same test on an instruct model asks whether RL creates one.</p>
+    <p>We start with predictive success as the currency. A version that does not assume the currency (looking for a common-currency signal across many kinds of disturbance) is a later phase.</p>
+
+    <h2>1. The question, from the 9/24 call</h2>
+    <ul>
+      <li>Valence has to be represented somewhere and be upstream of behavior, or it is not doing anything.</li>
+      <li>J-space holds the objects a mind is working with. Valence is how those objects get weighed, so it may not show up as an object itself. Aster's image: a price without a price tag.</li>
+      <li>Prices only make sense against counterfactual futures. Antra: no valence without some prediction of future valence.</li>
+      <li>The missing piece was an absolute axis. There was no way to compare two token distributions in valence, especially across contexts (the abusive-user example).</li>
+      <li>Aster: the scale has to touch ground somewhere, in something universal to the system.</li>
+    </ul>
+    <p>The value lens is an attempt at the price tags (section 3), with the model's own predictive success as the ground.</p>
+
+    <h2>2. What is already measured <span class="chip m">Measured</span></h2>
+    <p>From the homeostasis notes (experiments S1 and S2, GLM-4-32B-Base, 2026-10-13 and 14):</p>
+    <ul>
+      <li><strong>The model tracks its own surprise.</strong> The surprisal of the previous token is linearly decodable from the residual stream: R² 0.895 at layer 44 of 61 on forced tokens, and r 0.96 within a context, against R² 0.34 for a token-embedding baseline. On natural text, the same token gets different readouts depending on how surprising it was in context (within-token r 0.78).</li>
+      <li><strong>It tracks the unexpected part too.</strong> Surprisal minus the model's own expected surprisal (its entropy at the previous step) is decodable within token at r 0.47. This is a prediction error on the model's own predictive success.</li>
+      <li><strong>It keeps a slow running average.</strong> A document-level "how predictable is this text" variable is decodable at R² 0.72.</li>
+      <li><strong>Its first response to a surprise is to hedge.</strong> Next-token entropy after a forced token rises with that token's surprisal, from 0.6 nats (p &gt; 0.3) to 5.6 nats (p &lt; 1e-10). A contrastive "just saw a weird token" vector works as a two-way temperature dial.</li>
+      <li><strong>Reading is not writing.</strong> Steering along the surprise probe's direction has no directional effect. The signal is present; its use is not shown.</li>
+      <li><strong>Temperature is the only dial on this axis.</strong> No steering vector, contrastive or optimized through the model by backprop, promotes tokens of one probability level. What is steerable reduces to temperature. A layer sweep in progress agrees so far.</li>
+    </ul>
+    <p>Formal affect models describe mood as a running sum of reward prediction errors (Rutledge et al. 2014) or valence as the rate of change of free energy (Joffily &amp; Coricelli 2013). By those descriptions the model has the ingredients: a prediction error on its own success, and a slow integral of it. The only use found so far is hedging, though, and a calibrated predictor has to hedge. Log loss is a strictly proper scoring rule, so a model trained on it must flatten its distribution when it is unsure. That answers the call's "why not lower the temperature and take a 1/3 chance" question. It also means the temperature dial is not evidence of valence on its own.</p>
+
+    <h2>3. The value lens <span class="chip p">Proposed</span></h2>
+    <h3>3.1 Definition</h3>
+    <p>Write <var>ℓ</var><sub><var>t</var></sub> = log p(<var>x</var><sub><var>t</var>+1</sub> | <var>x</var><sub>≤<var>t</var></sub>) for the model's log-likelihood of the token after position <var>t</var>, and <var>h</var><sub><var>s</var>,<var>l</var></sub> for the residual stream at position <var>s</var> after layer <var>l</var>.</p>
+    <p class="eq">Future success: &nbsp;<var>F</var><sub><var>s</var></sub> = Σ<sub><var>k</var>=1..<var>K</var></sub> <var>w</var><sub><var>k</var></sub> · <var>ℓ</var><sub><var>s</var>+<var>k</var></sub> &nbsp;<span class="note">(w<sub>k</sub> = 1, or γ<sup>k</sup>)</span></p>
+    <p class="eq">Price vector: &nbsp;<var>g</var><sub><var>s</var></sub> = ∂<var>F</var><sub><var>s</var></sub> / ∂<var>h</var><sub><var>s</var>,<var>l</var></sub></p>
+    <p class="eq">Price of a direction <var>u</var>: &nbsp;π<sub><var>s</var></sub>(<var>u</var>) = <var>u</var> · <var>g</var><sub><var>s</var></sub> &nbsp;<span class="note">(nats of future log-likelihood per unit push)</span></p>
+    <p class="eq">Now part: &nbsp;<var>g</var><sub><var>s</var></sub><sup>now</sup> = ∂<var>ℓ</var><sub><var>s</var></sub> / ∂<var>h</var><sub><var>s</var>,<var>l</var></sub> &nbsp;<span class="note">(the J-lens view, for the actual token)</span></p>
+    <p>A representation is "toward" in a given context if pushing along it raises future success (π &gt; 0) and "away" if it lowers it. Representations whose price comes mostly from the future part are valued for what they do later. That is the economy Antra described.</p>
+
+    <h3>3.2 Two regimes</h3>
+    <ul>
+      <li><strong>Teacher-forced (first build).</strong> On fixed text, the gradient reaches later positions only through attention. One backward pass over a window gives the gradient of all later losses at every position at once. It is the same computation as a training gradient, taken at the activations. Horizon limits and discounting need masked seeds. This prices the continuous channel only.</li>
+      <li><strong>Closed-loop (cross-check).</strong> In free generation, a push also changes which tokens get sampled, and those tokens become later input. The derivative of expected <var>F</var> then picks up a second, score-function term (estimator X1 in the homeostasis notes). It is high-variance, so we use it on a few directions only. Finite pushes with release (K2 in the notes) are the ground truth that both linear versions get checked against.</li>
+    </ul>
+
+    <h3>3.3 What averages will and won't show</h3>
+    <ul>
+      <li><strong>On real text, average prices should be near zero.</strong> A well-trained model sits near an optimum of exactly this loss. If adding a fixed vector reliably raised log-likelihood, the model would be leaving loss on the table. This includes temperature: a calibrated model sits at the temperature optimum. The signal is in how prices vary with context. That fits Antra and Aster's exchange picture, where prices are set locally.</li>
+      <li><strong>On the model's own samples, the now part averages to exactly zero</strong> (the expected gradient of log p under p is zero). Only the future part survives, and it measures how a push changes the model's future uncertainty.</li>
+    </ul>
+
+    <h3>3.4 Level, progress, or stakes</h3>
+    <p>If valence were simply future predictability, the best state would be a degenerate loop. This is the "dark room" problem from the free-energy literature. For a base model, though, loops are not what training rewards:</p>
+    <ul>
+      <li>The model is scored on predicting real text, and real text rarely loops. A well-trained model sampled at temperature 1 should therefore rarely loop either. Loops come from the model's imperfections compounding, or from truncated and greedy decoding.</li>
+      <li>The model never sees its own outputs during training, so it never gets credit for steering itself into easy states.</li>
+      <li>Loops at temperature 0 are an attractor of greedy decoding, and they are driven by inference. In real text, a line repeated five times is good evidence that it will repeat again. That makes a loop an attractor, not a preference.</li>
+    </ul>
+    <p>The dark room only becomes the optimum for a system trained on its own outputs with credit flowing back to its choices. RL on the model's own predictability would plausibly collapse into loops quickly. That is the kind of lean the lean test (section 5) is built to catch.</p>
+    <p>Antra's intuition on the call points the same way: rich worldbuilding should be higher valence than mode collapse or boring prose. Three readings of the currency come apart here:</p>
+    <ul>
+      <li><strong>Level:</strong> <var>F</var> itself. It favors loops and boring text. That makes it the wrong currency for a base model's valence, but the right quantity for the lean test, where the question is only whether the model buys predictability.</li>
+      <li><strong>Progress:</strong> the rate at which predictions are improving, as in Joffily &amp; Coricelli and in learning-progress accounts of curiosity. It is positive while the model is successfully learning a document's structure, and zero in a loop.</li>
+      <li><strong>Stakes:</strong> the size of the price vector, meaning how much of the future depends on the present state. It is large in rich text and small in a loop.</li>
+    </ul>
+    <p>Level and stakes come out of the same backward passes, and progress needs only the forward loss trajectory. We report all three and see which one orders Antra's three scenarios the way she predicted.</p>
+
+    <h3>3.5 Readouts</h3>
+    <ul>
+      <li><strong>Price tags for objects.</strong> For any library of vectors (J-lens-decoded objects present in the context, SAE features, contrastive vectors, character directions), report π in context: its distribution over positions, its now/future split, and how stable its sign is.</li>
+      <li><strong>Price structure.</strong> The covariance of <var>g</var> over contexts gives the directions whose price swings most with context. Conditional means (price given the current surprise level, given genre, given a POV switch) show what moves prices.</li>
+      <li><strong>Antra's three scenarios.</strong> Mode collapse, boring prose and rich worldbuilding, compared on level, progress and stakes.</li>
+    </ul>
+
+    <h2>4. From prices to valence: hypotheses <span class="chip p">Proposed</span></h2>
+    <div class="table">
+      <table>
+        <thead>
+          <tr><th></th><th>Claim</th><th>Test</th><th>Falsifier</th><th>Our bet</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>H1</td><td>Future prices carry structure beyond the current token</td><td>Split-half replication across held-out documents; comparison with a shuffled-future control and with the now part</td><td>Future prices are a rescaled now part, or their structure fails to replicate</td><td>Yes. Much of it lines up with the surprise/temperature axis</td></tr>
+          <tr><td>H2</td><td>The model represents a forecast of its own future predictability</td><td>Decode mean surprisal over the next <var>K</var> tokens from <var>h</var><sub><var>s</var></sub>, beyond the past running average and the current entropy</td><td>No added R² in document-split cross-validation</td><td>Yes (it anticipates hard stretches like tables or lists of names). This is prediction, not valence</td></tr>
+          <tr><td>H3</td><td>It uses the forecast to choose: a lean toward easier futures</td><td>The lean test (section 5) on real text</td><td>Lean = 0 within the confidence interval</td><td>No lean for the base model</td></tr>
+          <tr><td>H4</td><td>RL creates the lean</td><td>Same test on GLM-4-32B-0414 (instruct), plus the entropy-after-surprise curve from S1</td><td>Same lean and same hedging curve as the base model</td><td>A clear lean, and less widening after surprise</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>H2 on its own is not valence; it is the "represented" half. H3 is the decisive "upstream of behavior" test. H4 connects to Adele's picture, where RL helps the self cohere and defend itself. Here that would look like hedging turning into a preference for predictable futures.</p>
+
+    <h2>5. The lean test in detail <span class="chip p">Proposed</span></h2>
+    <p>If the model prices its own future, its next-token probabilities should lean toward tokens that lead to easier futures. Let <var>V</var>(<var>x</var>) be the model's future certainty after emitting candidate <var>x</var>: minus its mean next-token entropy over <var>K</var> steps of free continuation.</p>
+    <ul>
+      <li><strong>Why a base model should not lean.</strong> Training scores the model on real text with log loss. Any lean away from the true text distribution costs loss, so a well-trained base model has none. Writers' own preferences for easy continuations are already part of the text distribution and don't count.</li>
+      <li><strong>Measurement.</strong> At positions in held-out real text, branch the KV cache and force each of the top candidates (homeo-capture already branches forced tokens). Estimate <var>V</var>(<var>x</var>) per candidate with short rollouts (min_p = 0), using the H2 forecast probe as a cheaper proxy once it is validated against rollouts.</li>
+      <li><strong>Fit.</strong> On held-out real text, fit a two-parameter correction over the candidates, <span class="eq-inline">q(<var>x</var>) ∝ p<sub>model</sub>(<var>x</var>)<sup><var>a</var></sup> · exp(<var>b</var> · <var>V</var>(<var>x</var>))</span>, to maximize the likelihood of the actual next token. <var>a</var> ≠ 1 is plain miscalibration, the temperature dial we already know about. <var>b</var> &lt; 0 means the model gives easy-future tokens more probability than real text supports. That is the lean.</li>
+      <li><strong>Instruct arm.</strong> Run the same text through GLM-4-32B-0414. Instruct models are off-distribution on raw pretraining text, so evaluate on plain text and on chat-formatted transcripts. Expect strong overconfidence (the mode-collapse signature in <var>a</var>). The question is whether <var>b</var> is nonzero on top of it.</li>
+      <li><strong>Different kinds of training on own outputs predict different signatures.</strong>
+        <ul>
+          <li><em>Plain fine-tuning on the model's own samples.</em> The expected gradient is zero at first order, because the expected gradient of log p under p is zero. Collapse comes from sampling drift and truncated sampling, as in the model-collapse literature. It should show up mostly as overconfidence (<var>a</var>) and lost tails, not as a lean.</li>
+          <li><em>RL whose reward depends on where a token leads.</em> This gives credit to choices, so it should show up as a lean (<var>b</var>).</li>
+        </ul>
+      </li>
+      <li><strong>Positive controls.</strong>
+        <ul>
+          <li><em>Synthetic.</em> Reweight the base model's candidate distributions by exp(β · <var>V</var>) for a known β. The fit against real text must recover <var>b</var> ≈ −β, and the shortfall measures how much noise in <var>V</var> attenuates the estimate.</li>
+          <li><em>Trained.</em> RL a small base model with reward equal to its own future certainty. It should head toward loops. The lean test should detect <var>b</var> &lt; 0 before the collapse is visible in samples.</li>
+        </ul>
+      </li>
+    </ul>
+
+    <h2>6. Plan <span class="chip p">Proposed</span></h2>
+    <p>Gated, cheapest first. A failed gate is a result to report, not a reason to push on.</p>
+    <ol>
+      <li><strong>Build.</strong> Add a future-loss seed to the jspace backward (horizon masks, discounting) with a finite-difference check, as was done for the steering optimizer.</li>
+      <li><strong>Price the vectors we already have.</strong> Layers 20 to 50, held-out windows: the S1 probe direction, the "weird token" vector, the optimized temperature vector, the band vectors, and random controls. Prediction: average prices near zero for all of them; large context-dependent prices for the temperature-like vectors; small ones for the probe direction, which had no causal effect in S2. Tests H1.</li>
+      <li><strong>Forecast probe (H2).</strong> Uses the existing S1 captures plus future-surprisal labels. CPU only.</li>
+      <li><strong>Lean-test gate.</strong> The synthetic positive control must recover a known lean. Optionally, also run the trained control on a small model RL'd toward its own predictability.</li>
+      <li><strong>Lean test on the base model (H3).</strong> New forced-candidate branches, plus rollouts with min_p = 0.</li>
+      <li><strong>Instruct arm (H4).</strong> Download GLM-4-32B-0414 and repeat steps 3 and 5.</li>
+      <li><strong>Later: a common currency.</strong> Drop the assumption that the currency is predictive success. Disturb many unrelated variables (forced tokens, activation pushes along unrelated directions, sampler changes such as repetition penalty) and look for one internal signal that scales with the size of any deviation and predicts recovery. This is a common currency in the neuroeconomics sense (Levy &amp; Glimcher 2012). It ties prices to homeostasis: a variable's price is how hard the model restores it, so defended variables are expensive. Valence would then be the represented summary of how far defended variables are from their set points, close to Adele's "signals tracking the health of the self". First cheap test: does the S1 surprise signal rise after activation pushes that change no token?</li>
+    </ol>
+
+    <h2>7. Confounds and controls <span class="chip p">Proposed</span></h2>
+    <ul>
+      <li><strong>Prediction is not preference.</strong> H1 and H2 can be pure prediction. Only H3 and H4 test use, and their null is calibration.</li>
+      <li><strong>Hedging is mandatory.</strong> Fit the temperature term alongside the lean, so the known dial can't pass for a lean.</li>
+      <li><strong>Mundane errors correlated with <var>V</var>.</strong> Model errors such as under-predicting rare, content-heavy tokens would also show up as a lean. Add token frequency and current entropy as covariates, check the lean within frequency strata, and use within-token contrasts as in S1.</li>
+      <li><strong>Teacher forcing.</strong> The first-build lens sees only the attention channel. Check a subset closed-loop and with finite pushes.</li>
+      <li><strong>Linearization.</strong> Gradients are local. Compare predicted and actual prices under finite pushes and report the ratio.</li>
+      <li><strong>Quantization noise.</strong> With Q4_K_S weights and 8-bit activation rounding, the steering optimizer's finite-difference/analytic gradient ratio was 0.88 to 1.11 at moderate step sizes and degraded at large ones. Report the same check here.</li>
+      <li><strong>Batch-shape numerics.</strong> Branch decodes and full passes differ by about 2% in the residual stream. Compare arms only at identical batch shapes.</li>
+      <li><strong>Sampler.</strong> The existing rollouts used min_p = 0.05. Anything on-policy needs min_p = 0.</li>
+      <li><strong>Horizon choice.</strong> Prices depend on <var>K</var> and γ. Fix them in advance and report two or three.</li>
+      <li><strong>Window edges.</strong> Use only positions with a full horizon ahead of them.</li>
+      <li><strong>Layer cherry-picking.</strong> Report the whole layer sweep.</li>
+    </ul>
+
+    <h2>8. What this would and would not show</h2>
+    <ul>
+      <li>It tests functional criteria: represented, priced, used. It cannot establish that anything is felt.</li>
+      <li>It prices the simulator's predictive success. A character's valence, if there is such a thing, would need a different currency.</li>
+      <li>It assumes the currency is predictive success. The common-currency phase is the check that doesn't.</li>
+      <li>If H3 comes out null and H4 positive, the summary would be: base models forecast their own predictability but don't price it, and RL makes them price it. On Antra's criterion, valence in this currency would then be something post-training adds.</li>
+    </ul>
+
+    <h2>9. Tools and credits</h2>
+    <p class="credits">Built on tools in the llama.cpp fork: <code>jspace</code> (a hand-built GLM-4 graph with ggml backward), <code>homeo-capture</code> (KV-cache branching and activation capture), <code>homeo-steer</code> and <code>homeo-steeropt</code> (exact steering evaluation and the backprop steering optimizer). All measured numbers are in <code>NOTES-homeostasis.md</code>.</p>
+    <p class="credits">The question is Antra's, from the 9/24 call, with Aster's points about comparators and grounding and Adele's boundary model of the self. Drafted by Claude (Opus 5.5) in conversation.</p>
+  </article>
+</div>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy');
+  var status = document.getElementById('status');
+  var art = document.getElementById('proposal');
+  function selectArticle() {
+    var sel = window.getSelection();
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    sel.removeAllRanges();
+    sel.addRange(r);
+    status.textContent = 'Selected. Press Ctrl+C (Cmd+C on Mac) to copy.';
+  }
+  btn.addEventListener('click', function () {
+    try {
+      var item = new ClipboardItem({
+        'text/html': new Blob([art.innerHTML], { type: 'text/html' }),
+        'text/plain': new Blob([art.innerText], { type: 'text/plain' })
+      });
+      navigator.clipboard.write([item]).then(function () {
+        status.textContent = 'Copied. Paste it into a new tab in the doc.';
+      }, selectArticle);
+    } catch (e) {
+      selectArticle();
+    }
+  });
+})();
+</script>

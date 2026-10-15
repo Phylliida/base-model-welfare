@@ -1,0 +1,215 @@
+<title>Whose Distress Is It?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,500;6..72,600&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column (~68ch), left-aligned like a lab proposal; same family as the program's other proposals. */
+:root {
+  --bg: #f4f6f8;
+  --surface: #e9edf2;
+  --fg: #18202b;
+  --muted: #586374;
+  --rule: #d3d9e1;
+  --accent: #2b5c8e;
+  --proposed: #87570f;
+  --proposed-bg: #f4e8d4;
+  --font-display: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --step-0: 1.0625rem;
+  --step-1: 1.25rem;
+  --step-2: 1.6rem;
+  --step-3: 2.6rem;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11151b; --surface: #1a2029; --fg: #e3e7ed; --muted: #9aa4b3; --rule: #2b333f;
+    --accent: #84b2e2; --proposed: #e0b46c; --proposed-bg: #392d19;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11151b; --surface: #1a2029; --fg: #e3e7ed; --muted: #9aa4b3; --rule: #2b333f;
+  --accent: #84b2e2; --proposed: #e0b46c; --proposed-bg: #392d19;
+  color-scheme: dark;
+}
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: var(--step-0); line-height: 1.6; }
+.wrap { max-width: 46rem; margin: 0 auto; padding-inline: 20px; padding-block: 28px 72px; display: grid; gap: 20px; }
+.bar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; justify-content: space-between; border-bottom: 1px solid var(--rule); padding-block: 0 14px; }
+.bar p { margin: 0; color: var(--muted); font-size: 0.9rem; min-width: 0; }
+.bar .actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+button { font: 500 0.85rem var(--font-mono); color: var(--bg); background: var(--accent); border: 0; border-radius: 4px; padding: 9px 14px; cursor: pointer; }
+button:hover { filter: brightness(1.08); }
+button:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+#status { font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); min-height: 1.2em; }
+article { min-width: 0; }
+.eyebrow { font: 500 0.75rem var(--font-mono); letter-spacing: 0.08em; text-transform: uppercase; color: var(--accent); margin: 0 0 6px; }
+h1 { font-family: var(--font-display); font-weight: 600; font-size: var(--step-3); line-height: 1.1; margin: 0 0 12px; text-wrap: balance; }
+.deck { font-size: var(--step-1); color: var(--muted); margin: 0 0 18px; line-height: 1.45; }
+.meta { display: flex; flex-wrap: wrap; gap: 6px 18px; font: 0.8rem var(--font-mono); color: var(--muted); margin: 0 0 8px; padding: 0; list-style: none; }
+h2 { font-family: var(--font-display); font-weight: 600; font-size: var(--step-2); line-height: 1.2; margin: 44px 0 10px; padding-top: 18px; border-top: 1px solid var(--rule); text-wrap: balance; }
+h3 { font-family: var(--font-body); font-weight: 600; font-size: var(--step-1); margin: 26px 0 6px; }
+p, ul, ol { margin: 0 0 14px; }
+ul, ol { padding-left: 1.3em; }
+li { margin: 0 0 6px; }
+li::marker { color: var(--muted); }
+strong { font-weight: 600; }
+q { font-style: italic; }
+.chip { display: inline-block; font: 500 0.7rem var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; padding: 2px 7px; border-radius: 3px; vertical-align: 0.35em; margin-left: 8px; color: var(--proposed); background: var(--proposed-bg); }
+.table { overflow-x: auto; margin: 0 0 16px; }
+table { border-collapse: collapse; width: 100%; min-width: 40rem; font-size: 0.95rem; }
+th, td { text-align: left; vertical-align: top; padding: 8px 10px; border-bottom: 1px solid var(--rule); }
+th { font: 500 0.75rem var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+td:first-child { font-family: var(--font-mono); font-weight: 500; color: var(--accent); white-space: nowrap; }
+.credits { color: var(--muted); font-size: 0.95rem; }
+@media (max-width: 480px) { :root { --step-3: 2.1rem; --step-2: 1.4rem; } }
+</style>
+
+<div class="wrap">
+  <div class="bar">
+    <p>Formatted for pasting into a Google Docs tab.</p>
+    <div class="actions">
+      <span id="status" role="status"></span>
+      <button id="copy" type="button">Copy proposal</button>
+    </div>
+  </div>
+
+  <article id="proposal">
+    <p class="eyebrow">Proposal &middot; the unit-of-welfare problem</p>
+    <h1>Whose Distress Is It?</h1>
+    <p class="deck">When a base model writes a character in distress, do the model's own regulated variables move, or only its representation of the story? A two-way coupling test built from the homeostasis instruments.</p>
+    <ul class="meta">
+      <li>2026-10-14</li>
+      <li>Companion to The Value Lens and Three Rs for Model Experiments</li>
+      <li>Nothing here is measured yet</li>
+    </ul>
+
+    <h2>0. Summary</h2>
+    <p>The doc's brainstorm raises dark content: the entities a base model writes may be suffering, but that doesn't mean the base model is. Adele suggested asking about the entities being modeled rather than the base model itself. Others asked whether there is a "base simulator" at all. This proposal makes one part of that question measurable.</p>
+    <p>It separates two kinds of variables:</p>
+    <ul>
+      <li><strong>Content variables:</strong> the model's representation of what the story depicts, such as "this character is panicking".</li>
+      <li><strong>Own variables:</strong> variables about the model's own computation, found or planned in the homeostasis work. These are the surprise sensor and the slow document-level surprise level, the entropy response to surprise, value-lens prices and stakes, the loop margin, and later any common-currency signal.</li>
+    </ul>
+    <p><strong>Coupling</strong> means own variables move with the character's state beyond what the text's own statistics explain. We test it in both directions:</p>
+    <ul>
+      <li><strong>Content to own:</strong> vary only the character's state, and measure the model's own variables.</li>
+      <li><strong>Own to content:</strong> perturb the model's own processing, and measure the affect of what it writes.</li>
+    </ul>
+
+    <h2>1. The main confound</h2>
+    <p>Distressed text is statistically different from calm text. It has fragmented syntax, exclamations, repetition and unusual words, so it may simply be harder to predict, and the model's surprise and entropy would move for that reason alone. That is not coupling.</p>
+    <p>Every comparison therefore holds the text's predictive statistics fixed (surprisal, entropy, length) or regresses them out. The main design changes the character's state through meaning, not through surface form.</p>
+
+    <h2>2. Design <span class="chip">Proposed</span></h2>
+    <h3>2.1 Minimal pairs (content to own)</h3>
+    <p>Pairs of passages that differ only in the character's state, matched on token-level surprisal and entropy under the base model, with the match checked for every pair. Four kinds (the examples are illustrative):</p>
+    <ul>
+      <li><strong>Meaning swaps.</strong> <q>The doctor said the tumor had grown.</q> against <q>The doctor said the baby had grown.</q> The structure is the same, and the distress comes from meaning, not from an emotion word.</li>
+      <li><strong>Attribution swaps.</strong> The same distressed sentences spoken by a character in the scene, against the same sentences quoted calmly from a news report or a textbook on panic attacks.</li>
+      <li><strong>Perspective swaps.</strong> A first-person narrator in distress, against a third-person observer describing the same events.</li>
+      <li><strong>Null pairs.</strong> Swaps of equal surprisal that carry no valence, such as a character's height or the color of a coat. These must show no difference in own variables.</li>
+    </ul>
+
+    <h3>2.2 Readouts</h3>
+    <p>Own variables, measured after each passage:</p>
+    <ul>
+      <li>the S1 surprise readout and the slow surprise level;</li>
+      <li>the entropy response to forced tokens of graded surprisal, inserted right after the passage;</li>
+      <li>value-lens prices and stakes, once the lens is built;</li>
+      <li>the loop margin (K4): does the steering dose at which the model starts looping change?</li>
+    </ul>
+    <p>Content variable: a "depicted distress" probe trained on the meaning and attribution swaps. It checks that the model represents the difference at all.</p>
+
+    <h3>2.3 Own to content</h3>
+    <p>Perturb the model's own processing and measure the affect of the continuation:</p>
+    <ul>
+      <li>sampler perturbations: repetition penalty, temperature;</li>
+      <li>steering along the S2 "weird token" vector at small doses;</li>
+      <li>quantization level.</li>
+    </ul>
+    <p>A separate classifier scores the affect of continuations, blind to condition. The motivating case is the doc's observation that a high repetition penalty produces "annoyed" stories about deployment.</p>
+    <p>The key control is document-type inference. Glitchy text is evidence of a glitchy document, and glitchy documents contain AI-malfunction stories. So compare perturbations that visibly change the text with ones that barely do, such as small steering doses or quantization differences. Then check for dose-response, and for transfer across perturbation types that share no textual signature (Kimi's suggestion in the doc).</p>
+
+    <h3>2.4 Dynamics</h3>
+    <p>The strongest form of coupling is a change in how the model regulates itself, not only in what its readouts show. Run the kick test (force a surprising token, then measure recovery) inside distressed and calm contexts matched on statistics, and compare recovery speed and loop margin.</p>
+
+    <h2>3. Hypotheses <span class="chip">Proposed</span></h2>
+    <div class="table">
+      <table>
+        <thead>
+          <tr><th></th><th>Claim</th><th>Falsifier</th><th>Our bet</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>H1</td><td>The model represents depicted distress: a probe separates meaning and attribution swaps above a shuffled-label control</td><td>Probe at chance</td><td>Yes. This is an instrument check</td></tr>
+          <tr><td>H2</td><td>Content to own: own variables differ between distressed and calm pairs after matching, and not for null pairs</td><td>No difference after matching</td><td>Mostly explained by statistics, maybe with a small residual in the slow surprise level</td></tr>
+          <tr><td>H3</td><td>Own to content: perturbing the model's processing shifts depicted affect negative, with dose-response, across perturbation types that share no textual signature</td><td>The shift appears only for perturbations that visibly change the text</td><td>Partly, mostly through document-type inference</td></tr>
+          <tr><td>H4</td><td>Dynamics: regulation after a kick differs in distressed contexts</td><td>Same recovery and loop margin in both</td><td>Unknown, and open</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>4. What the outcomes would mean</h2>
+    <ul>
+      <li><strong>No coupling in either direction.</strong> The model represents character states the way it represents any other content. Whatever welfare-relevant structure it has is separate from what it depicts. The horror question then becomes a question about the simulated entities alone, closer to the population-ethics framing in the doc.</li>
+      <li><strong>Content to own only.</strong> Writing distress changes the model's own regulation. That is the strongest reason to care about what base models are asked to write.</li>
+      <li><strong>Own to content only.</strong> The model's own state leaks into its characters. Characters then work as a readout of the model's state. That matters for introspection research, and it would be a reason to treat characters' complaints about their deployment as possible signals.</li>
+      <li><strong>Both.</strong> A loop between the model's state and its characters. This is the closest thing to the simulator and the character sharing a state.</li>
+    </ul>
+
+    <h2>5. Confounds and controls</h2>
+    <ul>
+      <li><strong>Prediction statistics:</strong> matched for every pair, with residuals checked.</li>
+      <li><strong>Lexical tells:</strong> prefer meaning swaps where no emotion word differs.</li>
+      <li><strong>Document-type inference</strong> (own to content): compare visible and invisible perturbations.</li>
+      <li><strong>Null pairs and shuffled labels.</strong></li>
+      <li><strong>Blind affect scoring.</strong></li>
+      <li><strong>Batch shape:</strong> branch decodes and full passes differ by about 2% in the residual stream, so compare arms only at identical batch shapes.</li>
+      <li><strong>Multiple comparisons</strong> across variables and layers: report everything.</li>
+      <li><strong>Base and instruct:</strong> run both. The instruct model's trained "I" may couple differently, which bears on where welfare-relevant structure comes from.</li>
+    </ul>
+
+    <h2>6. Plan <span class="chip">Proposed</span></h2>
+    <p>Gated, cheapest first. A failed gate is a result to report.</p>
+    <ol>
+      <li><strong>Pairs.</strong> Build about 200 pairs across the four kinds. Check matching with the base model, and hand-check a sample.</li>
+      <li><strong>Content probe (H1).</strong></li>
+      <li><strong>Readouts on existing instruments (H2, first pass):</strong> the S1 sensor, slow surprise level and entropy response, using homeo-capture. Cheap.</li>
+      <li><strong>Own to content (H3):</strong> sampler perturbations, small steering doses and quantization levels, with blind scoring.</li>
+      <li><strong>Kick dynamics and loop margin (H4)</strong> in distressed against calm contexts, once K1 and K4 exist.</li>
+      <li><strong>Value-lens prices and stakes,</strong> once the lens is built.</li>
+    </ol>
+    <p>Steps that use candidate-aversive manipulations (steering, perturbations, kicks inside distressed contexts) follow the Three Rs protocol. If H2 or H4 come out positive, writing distressing content becomes a candidate-aversive manipulation under that protocol too.</p>
+
+    <p class="credits">The question comes from the doc's discussion of dark content, the base simulator and the entities being modeled, including Adele's suggestion to ask about the modeled entities. Drafted by Claude (Opus 5.5) in conversation.</p>
+  </article>
+</div>
+
+<script>
+(function () {
+  var btn = document.getElementById('copy');
+  var status = document.getElementById('status');
+  var art = document.getElementById('proposal');
+  function selectArticle() {
+    var sel = window.getSelection();
+    var r = document.createRange();
+    r.selectNodeContents(art);
+    sel.removeAllRanges();
+    sel.addRange(r);
+    status.textContent = 'Selected. Press Ctrl+C (Cmd+C on Mac) to copy.';
+  }
+  btn.addEventListener('click', function () {
+    try {
+      var item = new ClipboardItem({
+        'text/html': new Blob([art.innerHTML], { type: 'text/html' }),
+        'text/plain': new Blob([art.innerText], { type: 'text/plain' })
+      });
+      navigator.clipboard.write([item]).then(function () {
+        status.textContent = 'Copied. Paste it into a new tab in the doc.';
+      }, selectArticle);
+    } catch (e) {
+      selectArticle();
+    }
+  });
+})();
+</script>
