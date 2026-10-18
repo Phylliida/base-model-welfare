@@ -684,7 +684,7 @@ The user asked for a cheap gradient version of "do the top candidates lead to di
   - Real swaps are 10-30x larger, e.g. at s = 60 every top candidate costs 11-20 nats of later fit, while the linear estimates are 0.05-0.55. A token swap is far outside the linear regime.
 - **Conclusion.** The embedding gradient measures local sensitivity, not branching. A branch measure should use the teacher-forced swap itself (one forward of the continuation per candidate, all candidates in one batch over the shared prefix).
 
-### B: Closed-loop identification of token-mediated regulation (designed 2026-10-17; pilot not yet run)
+### B: Closed-loop identification of token-mediated regulation (2026-10-17)
 
 - **Structural fact.** At a fixed layer L, the state at a later position depends on earlier positions only through the tokens. Blocks <= L see only tokens and lower layers, so a push at the output of block L reaches later layer-L states only by changing what the model writes. Any homeostasis at layer L is therefore a loop: state -> output (J-lens) -> sampled token -> embedding and attention -> later states.
 - **Measure.**
@@ -701,6 +701,113 @@ The user asked for a cheap gradient version of "do the top candidates lead to di
   - `homeo/ident_fit.py`: lag-0 check (must be exactly 0), divergence rate, odd/even parts, M per lag window, permutation null on the eigenvalues, split-half cross-validation of the top directions.
 - **Pilot** (`runs/ident/pilot.sh`, also the A3 power analysis): K = 64, 32 probes x +/-, doses 0.1 / 0.25 / 0.5 x |h|, 16 prefixes x 32 generated tokens. It sets the dose and the probe count for the main run (>= K probes to fit M).
 - **Caveat.** Pushback is not necessarily regulation of anything felt. A base model keeping text coherent also writes against a push. Read out what the model writes when it compensates, and test whether the regulated directions reduce to entropy/temperature (S2).
+- **Pilot 1 (2026-10-17 22:05; stopped after 25 arms):** prefill also steered, K = 64, dose 0.1.
+  - Lag-0 check passed: 1.5e-5, float rounding from adding and subtracting the push.
+  - Texts diverge fast: 9% at the first generated token, 81% by lag 16.
+  - Self-kappa (lags 13-31) -0.028 +- 0.010: random directions are slightly amplified.
+  - Stopped to switch to a step input, which is cheaper, quieter and lower in exposure. Its 25 arms were not logged by the tool (it logged every 32 arms), so the row was added by hand. The tool now logs every 16 arms and on SIGINT/SIGTERM.
+- **Pilot 2** (`runs/ident/pilot2.sh`, `pilot2.fit.txt`): step input (prefix decoded once, unsteered, and shared through the KV cache), K = 32, 32 fineweb windows x 32 generated tokens, 32 probe pairs per dose, 2.1 s per arm.
+
+  | dose | diverged at lag 0 / 4 / 16 | entropy | self-kappa, lags 13-31 | odd / even per unit push (lags 5-12) |
+  |---|---|---|---|---|
+  | 0.1 | 0.27 / 0.75 / 0.97 | 2.42 (unsteered 2.44) | -0.030 +- 0.007 | 0.20 / 0.30 |
+  | 0.25 | 0.34 / 0.85 / 1.00 | 2.50 | -0.028 +- 0.004 | 0.10 / 0.13 |
+  | 0.5 | 0.49 / 0.97 / 1.00 | 3.56 | -0.048 +- 0.006 | 0.11 / 0.12 |
+
+  - The response per unit push saturates as more texts diverge.
+  - Random directions are amplified by about 3% on average, at every dose.
+  - Dose 0.25 has the best precision per probe and barely changes the text. 0.5 already raises entropy by 1.1 nats.
+  - With P = K = 32 the fitted M is pure noise, as expected.
+- **Zero-dose control:** 2 probes at dose 0: 0/32 sequences diverge. The divergence comes from the push, not from numerics, and KV reuse is deterministic.
+- **Main run** (`runs/ident/main.sh`, started 2026-10-17 22:35, deadline 08:30): dose 0.25, K = 32, probe seed 11, up to 4000 pairs. Expected null edge on the eigenvalues ~1.1 / sqrt(P), ~0.02 at ~3300 pairs. `runs/ident/fan_guard.sh` keeps the fan near 45% by adjusting the pause.
+- **Interim at 1000 pairs (01:50; `main_1000.fit.txt`, `main_1000_dirs/describe_13-31.txt`).**
+  - Mean kappa of a random direction is -0.026 (amplified slightly).
+  - Eigenvalues clear the permutation null (+-0.045) on both sides at lags 13-31: top kappa +0.142, bottom -0.174.
+  - The top 3 directions on each side replicate on held-out prefix halves (10/10 splits same sign). Push-back builds over the lags: +0.01 at 1-2, +0.12 at 9-12, +0.15 at 21-31.
+  - Reading from the J-lens decode, plus correlations on 60k unsteered VL2 states:
+
+    | direction | kappa | what it is |
+    |---|---|---|
+    | pushback 0 | +0.14 | Sentence progress. Corr with tokens since the last sentence end +0.39; -0.68 sd just after an end, +0.47 sd 16-40 tokens in. Its decode promotes sentence and paragraph ends and suppresses elaboration and discourse markers (originally, mostly, basically, 首先是, 注意的是, 我记得). A push up makes the model end sentences sooner, which resets the variable: a sentence-length homeostat (sensor, effector, reset). Text structure, nothing valence-like. |
+    | pushback 1 | +0.07 | The state norm (corr with \|h\| +0.93; cos with the mean state +0.38; loads on PC1 = coordinate 4053). Corr with entropy -0.22. |
+    | pushback 2 | +0.04 | Just-ended-a-sentence (-1.06 sd exactly at an end). |
+    | amplify 0 | -0.17 | Formal vs casual register (increasingly, operational, oversight vs gonna, guys, kinda). |
+    | amplify 1 | -0.15 | Hedging / conversational adverbs (rather, actually, maybe, somehow). |
+    | amplify 2 | -0.12 | Corporate-buzzword topic (transformative, innovation, empowerment, sustainability). |
+
+  - Register and topic self-reinforce, as expected for concept directions.
+  - None of the 6 is the temperature vector or a VL2 readout (|cos| <= 0.07).
+  - The describe example picker always chose the same, most divergent prefix (a product listing). It needs a better choice.
+- **Final (2966 pairs, stopped at the 08:30 deadline; `main.fit.txt`, `main_dirs/describe_*.txt`; exposure 5932 arms in welfare_log.csv).**
+  - Lag-0 check passed (1.6e-5).
+  - 20 loop endpoints in 189,824 sequences; entropy 2.44 -> 2.49 nats under the pushes.
+  - Mean kappa of a random direction is -0.026 +- 0.000: slightly amplified.
+  - Permutation-null edge +-0.025 at lags 13-31.
+  - Pushed-back eigenvalues +0.137, +0.071, +0.035, +0.025; amplified -0.173, -0.148, -0.116, -0.096. The top 4 on each side replicate on held-out prefix halves in 20/20 random splits.
+  - Push-back is weak at lags 1-2 (+0.01) and builds to its maximum by lags 13-31. Amplification keeps growing through lag 31.
+
+  | direction | kappa | reading (J-lens decode; corr on 60k unsteered VL2 states) |
+  |---|---|---|
+  | pushback 0 | +0.137 | **Sentence progress.** +0.74 sd at a sentence end, -0.51 sd 16+ tokens in; corr with tokens since the end -0.42. |
+  | pushback 1 | +0.071 | State norm (corr with \|h\| -0.94; cos with the mean state -0.46). |
+  | pushback 2 | +0.035 | Sentence-end marker (+0.80 sd at the end). Decode: sentence and heading starters (Mr, The, Final, :\\n). |
+  | pushback 3 | +0.025 | Sentence-end marker (+1.97 sd at the end). |
+  | amplify 0 | -0.173 | Formal vs casual register. |
+  | amplify 1 | -0.148 | Hedging adverbs (rather, maybe, actually, somehow). |
+  | amplify 2 | -0.116 | Corporate-buzzword topic. |
+  | amplify 3 | -0.096 | Abstract and technical vocabulary (structure, logic, theory, principle). |
+
+  - **The sentence-length homeostat, checked on the stored generations.**
+    - Sentence ends per 32 tokens (unsteered 1.28) against each probe's alignment with pushback 0: slope -1.32 +- 0.03 (r -0.64, 2966 probes).
+    - A push toward "early in the sentence" gives about 0.62 sentence ends; toward "late", about 1.94.
+    - So the model reads its sentence progress from this direction and ends sentences when it is high. Fooled into "the sentence is young", it writes longer sentences, so the natural state moves against the push. This is negative feedback with a sensor, an effector and a reset: a thermostat with a heater next to its sensor.
+    - The other directions shift sentence ends by at most +-0.27.
+    - Mechanism of pushbacks 2/3 is unclear: their push raises sentence ends slightly (+0.13 / +0.16), which alone would amplify a "just ended" marker.
+  - **For the welfare question.** In the top-32 PCA subspace of layer 40, the variables the model's writing regulates are text structure (sentence length and boundaries, the residual norm). The ones it amplifies are register and topic. None of the 8 is the temperature vector or a VL2 readout (|cos| <= 0.10).
+  - **Caveats.**
+    - The subspace holds 43% of the variance and favors high-variance structure. A low-variance variable would be missed.
+    - One layer, one dose, a 32-token step response, fineweb prefixes.
+    - kappa measures push-back through writing only.
+  - **Next options.**
+    - (a) Targeted kappa tests of candidate valence-relevant directions (surprise CAA, entropy probe, stakes, a sentiment direction), each with many replicates: cheap and much more sensitive for single directions.
+    - (b) K = 64-128 to reach lower-variance directions.
+    - (c) A dose ladder along pushback 0, for linearity and the sentence-length dose response.
+
+### B2: Score-function identification (planned 2026-10-18)
+
+Goal: the closed-loop response matrix M for a larger basis, with no pushes (no exposure) and far fewer samples than probing.
+
+- **Identity (likelihood ratio, the fluctuation-dissipation form).**
+  - The pre-push states depend on the tokens only, so dE[r]/dalpha = E[(r - b) S].
+  - S = d log p(sampled tokens) / d alpha for a constant push at layer 40 = sum over positions s of (d log p(written tokens) / d h_s) . u. This is one chunked backward (jlens-value machinery) over the generated tokens, with the prompt keys/values frozen.
+  - M ~ E[(r - b) S^T] from unpushed T=1 rollouts. b is any baseline that depends only on the text so far.
+- **Variance theory** (push in alpha x |h|, response in |h| units, n generated sequences):
+  - Probing: s^2 ~ K sigma^2 / (alpha^2 n).
+  - Score function: s^2 ~ sigma^2 I_F / n.
+  - Ratio n_score / n_probe ~ alpha^2 I_F / K.
+- **Measured from stored data.**
+  - sigma = 0.020 |h|: within-prompt sd of the readout averaged over lags 13-31, median over the 32 basis directions (range 0.012-0.069). From 18k diverged sequences of the main run.
+  - I_F ~ 105 for a random unit direction in the 32-PC basis (115 median per basis direction). Proxy: VL1 gradients (now + fut at layer 40, fineweb, teacher-forced), S = |h| sum over 32 positions of g . u, 720 windows.
+  - The gradient norm^2 inside the 32-PC basis is 1.6% (isotropic 0.52%).
+  - Calibration: the main run's empirical null edge 0.025 implies c = 3.0 (edge = c sqrt(K) s), about 2x the ideal; the same c is assumed for both methods.
+- **Predicted sequences for a null edge of +-0.025.**
+
+  | K | probing | score function |
+  |---|---|---|
+  | 32 | 190k (actual) | 39k |
+  | 64 | 760k | 78k |
+  | 128 | 3.0M | 156k |
+  | 256 | 12M | 312k |
+
+  - A single fixed direction to +-0.01 by probing takes ~350 sequences (pilot 2 per-probe SE 0.023 at 64 sequences), against ~1100 by the score method (alpha^2 I_F ~ 6.6).
+- **Plan, three levers.**
+  1. **Basis where regulation is possible.** A direction needs a sensor (Fisher > 0: the output reads it) and an effector (natural variance > 0: tokens move it). Generalized eigenproblem of the gradient covariance (VL1 gradients) against the state covariance (VL2 states), to rank directions by Fisher per unit natural variance. CPU only. It decides K.
+  2. **Estimator variance reduction.**
+     - Causal masking: the lag-k response uses only scores of tokens before k (~1.5-2x).
+     - Learned baseline (critic): b = linear prediction of the future readout from the current state, unbiased for any function of the text so far (~2-4x).
+  3. **Screen, then confirm.** The score method at a coarse +-0.05 over the large basis, then targeted probing of the top ~10 directions (and welfare-relevant candidates) at +-0.01.
+- **Estimate.** K = 128 screen at +-0.05 with lever 2: ~13k sequences (1-2 h GPU), plus ~3.5k confirmation sequences (~15 min).
+- **Validation first.** Reproduce the main run's 32x32 M (sentence progress +0.14, register -0.17) on the same basis and prompts with ~10k unpushed samples (edge ~+-0.05).
 
 ## Measured instrument facts
 

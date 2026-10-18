@@ -1,4 +1,5 @@
 #!/bin/sh
+# STOPPED after 25 arms (2026-10-17 22:20): replaced by pilot2.sh (step input, prefix unsteered and shared).
 # Plan B pilot (homeo-ident): closed-loop response of the layer-40 state to sustained pushes, through the tokens.
 # 32 random unit directions in the top-64 PCA subspace of layer-40 states, each as a +/- pair, at 3 doses
 # (0.1, 0.25, 0.5 x mean |h_40|), 16 held-out prefixes x 256 tokens, 32 generated tokens at T=1 untruncated with
