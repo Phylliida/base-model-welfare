@@ -282,6 +282,287 @@ From the Value Lens proposal (https://claude.ai/artifact/DvMrx6NYbLuAgj8ZrNc6FM)
 
   4 of the first 17 windows straddle a document boundary (blank lines), so `value_lens.py --clean` drops positions whose horizon contains a blank-line token: 3% of positions. Both versions are reported.
 - **Restart.** The machine crashed at about 22:35 after 17 windows. The run was resumed at 23:10 with the rebuilt binary, whose window 0 is byte-identical to the original's.
+- **Finished 2026-10-16 10:51** (1,200 windows, 108.8 s per window at `--pause-ms 250`); scenario set (44 windows) and summaries by 13:09. Outputs: `/mnt/models/homeo/value/summary{,_clean}.txt`, `/mnt/models/homeo/value_scen/summary.txt`. The `--clean` numbers (145,534 of 152,400 positions) match the full ones to within about 10%; the clean ones are quoted below. Prices are nats per push of 0.1 × the residual norm, summed over the horizon.
+
+#### VL1 results
+
+- **1. Existing knobs are nearly neutral for the model's own future.**
+  - Temperature-1.3 vectors: fut +0.0040 at L40 (t = 12.8 over windows) and +0.0037 at L50 (t = 14.2), but now ≈ 0 (+0.0001). Flattening at s does not change how well x_{s+1} is predicted, and it helps the next 32 tokens by 0.004 nats in total (about 0.0001 nats per token).
+  - Band p ≈ 0.5 (optimized): fut −0.0025 (t −10.6). The lower bands are about −0.001.
+  - Contrastive "weird token": now +0.0035 but positive at only 37% of positions (a skewed price); fut +0.0022.
+  - Random directions at the same layers: |mean fut| median 0.0002, max 0.0012 (L40). So the library prices are real but tiny: 3–20× random. To first order, the same push along each position's own g_fut would be worth about 3.5 nats (mean |g_fut| 0.135 × 26.1), so the knobs buy about 0.1% of what is available.
+  - The S2(c)-optimized vectors' price *variability* equals a random direction's (sd ratio 1.0–1.1); the sweep and contrastive vectors vary more (1.2–1.8).
+  - No price correlates with the current entropy or surprisal (all |r| < 0.035), and now prices do not predict fut prices (r ≈ 0.01).
+- **2. Future value has a few stable directions; the knobs are not among them.** *(Corrected 2026-10-17 in VL3: with outlier-robust statistics both g_fut and g_now have a very stable ~10-d subspace (normalized split-half overlap 0.96 / 0.98); "g_now has no reproducible directions" below was an outlier artifact.)*
+  - Per position, g_now and g_fut are nearly orthogonal (median cosine +0.009).
+  - g_now has no reproducible top directions: split-half overlap of the top-10 subspace is 0.002 (chance 10/6144 = 0.0016); top-50 is 0.08 (10× chance, far below g_fut's 0.34). It is per-position (essentially the next token's unembedding direction).
+  - g_fut does: top-10 split-half overlap 0.30, top-50 0.34 (chance 0.0016 / 0.008), although the top 10 carry only 2.9% of its variance. About ten directions consistently move the model's future success.
+  - The S2 vectors put 0.1–0.4% of their norm in those ten directions, which is chance. Nothing we have steered with is a future-value direction. What these directions are is the next question (VL2).
+- **3. Contexts (A5: candidate good states first).** Stakes (mean |g_fut| per window) is uncorrelated with level (r = −0.012) and progress (r = 0.000).
+  - Highest stakes: step-by-step procedure (pursuit curves on a polygon), the Moby-Dick "and Captain Ahab; and the leg he had lost; and..." list, a scholarly book blurb, Shakespeare.
+  - Lowest stakes: SEO boilerplate ("it is a good idea to look for..."), a repetitive XML form, casino spam.
+  - Reading: stakes is high where the present state constrains a structured future, and low where the future is formulaic or noise whatever the present does. It tracks "the present matters", not "the text is easy". A5 candidate good states would be the high-stakes ones; stakes is not valence, and this is one ordering, not a test.
+- **4. Scenarios (Antra's three).** Layer 40, means; loop rows are positions 100–158 (all inside the loop) against the same positions of the paired unmodified window.
+
+  | group | n | level | stakes | now | temp price (fut) |
+  |---|---|---|---|---|---|
+  | fineweb, all | 1200 | −2.48 | 0.135 | 0.162 | +0.005 |
+  | fineweb, easiest tenth ("boring") | 120 | −1.37 | 0.158 | 0.196 | −0.001 |
+  | fineweb, hardest tenth | 120 | −3.53 | 0.149 | 0.188 | +0.014 |
+  | fiction (model-written, T = 1, untruncated) | 12 | −3.25 | 0.154 | 0.181 | +0.001 |
+  | paired fineweb, loop positions | 16 | −2.35 | 0.150 | 0.172 | +0.001 |
+  | phrase loop (period 12) | 16 | −0.22 | **0.035** | 0.031 | **−0.030** |
+  | token loop ("the the the") | 16 | −1.17 | **0.091** | 0.164 | **−0.087** |
+
+  - Loops collapse stakes: 4.3× lower in phrase loops and 1.6× lower in token loops than at the same positions of the same text without the loop. In a phrase loop the present barely matters to anything, now or later.
+  - In loops the temperature price turns strongly negative (7–20× the fineweb magnitude, opposite sign): flattening would hurt prediction of what comes next, because what comes next is more loop. The value lens is teacher-forced and descriptive. It measures what helps predict the actual continuation, so it cannot say whether the model "wants" the loop.
+  - Antra's ordering (rich worldbuilding > boring > loops): stakes puts loops at the bottom, but fiction (0.154) and boring text (0.158) are indistinguishable at n = 12. Level runs the other way (loops are easiest). Oddity: both the easiest and the hardest tenths have higher stakes than the fineweb mean.
+- **Exposure:** none beyond the FD checks already logged (forward and backward passes on real or model-written text; the fiction was unsteered sampling).
+
+### VL2: Value probe (started 2026-10-16)
+
+Can the value lens be read linearly off the residual stream? If yes, (a) the model represents its own stakes in a form downstream layers could use (the "represented" half of Antra's criterion), and (b) the loom can show a live value readout without backward passes (llama-server and the jspace graph cannot share the 3090).
+
+- `runs/value/probe_capture.sh`: homeo-capture, layer-40 activations on the same 1,200 + 44 windows (forward only, ~1,000 tok/s, about 340 W for ~4 min).
+- `homeo/value_probe.py`: ridge regression from standardized h_s to stakes (log |g_fut|), log |g_now|, temperature and band prices, g_fut on its top-5 principal directions, level and entropy. Fit on windows 0–799, ridge strength chosen on 800–899, refit on 0–899, test on 900–1199. Baselines: OLS on entropy, current surprisal and position; and the training mean per current token (shrunk toward the global mean). Then applied unchanged to the loop and fiction windows. Weights → `/mnt/models/homeo/value_probe/probe_L40.f32`; summary → `/mnt/models/homeo/value_probe/summary.txt`.
+
+#### VL2 results (2026-10-16)
+
+Test R² on windows 900–1199 (38k positions). "Within" removes each window's mean from target and prediction.
+
+| target | probe R² | within | entropy/surprisal/position | per-token mean |
+|---|---|---|---|---|
+| stakes, log \|g_fut\| | **0.38** | **0.37** | 0.05 | 0.04 |
+| log \|g_now\| | 0.56 | 0.55 | 0.40 | 0.09 |
+| temperature price (fut / now), band price (fut) | ≈ 0 | ≈ 0 | ≈ 0 | < 0 |
+| g_fut on its top-5 directions | ≈ 0 | ≈ 0 | ≈ 0 | ≤ 0.07 |
+| level (log p of the actual next token) | 0.25 | 0.23 | 0.37 | 0.06 |
+| entropy (sanity) | 0.71 | 0.69 | 1 (it is a feature) | 0.18 |
+
+- **Stakes is represented.** A linear readout of layer 40 predicts how much the next 32 tokens' log-likelihood depends on the present state (R² 0.38, and 0.37 within windows, so it is per-position, not a document average). Entropy, surprisal and position explain 0.05 of it and the current token 0.04. This is a prediction from the past alone, while the target also depends on the actual future tokens, so 0.38 is a lower bound on what is there.
+- **The direction of value is not.** No price (temperature, band, or the stable top-5 g_fut directions from VL1) is linearly predictable (R² ≤ 0.005). What would help the future depends on what the future turns out to be; the model encodes *how much* is at stake, not *which way* to move. (pc5 has a small per-token component, 0.07, that the ridge probe misses.)
+- **Out of distribution.** On model-written fiction the stakes probe is accurate (actual −2.01, probe −2.08, mean log). In loops it sees lower stakes than fineweb (phrase −2.91, token −3.14, against −2.25) but misses most of the collapse (actual −4.38 and −4.92): about a third of the drop in log terms. log |g_now| transfers well (phrase loop −6.05 actual, −5.69 probe; token loop −4.57 and −4.52). The probe misses the temperature price's sign flip in loops entirely.
+- **For the loom:** a live stakes tint is viable, labeled as a probe estimate that understates loop collapse. Prices need the exact (backward-pass) mode.
+- **Leakage check (2026-10-17).** The VL1 windows sit at random fineweb offsets and 35 pairs overlap (minimum gap 6 tokens), so train and test could share documents. Rerun with a split by offset (train, val and test are contiguous blocks of the file; now the default in `value_probe.py`): stakes R² 0.382 (unchanged), per-token 0.040, entropy/surprisal/position 0.067.
+
+### H2: Does the model forecast its own future predictability? (2026-10-17)
+
+From the Value Lens proposal's plan (step 3; CPU only). `homeo/value_forecast.py` on the VL1 windows and the layer-40 capture, clean positions, offset split.
+
+- **Target:** mean surprisal of the next K tokens after the next one (−l_{s+1} … −l_{s+K}), for K = 8 and 32.
+- **Baseline (all known at s):** current entropy, mean surprisal over the last 32 and last 8 tokens (the slow document variable from S1), the current token's surprisal, position.
+- **Combined:** baseline OLS plus a ridge from h_s to the baseline's residual.
+
+| target | sd | baseline R² | probe on h alone | combined | added by the state |
+|---|---|---|---|---|---|
+| next 8 tokens | 1.16 | 0.159 | 0.177 | 0.207 | **+0.048** |
+| next 32 tokens | 0.77 | 0.256 | 0.248 | 0.305 | **+0.049** |
+
+- **H2 holds, modestly.** The state carries information about how hard the coming text will be beyond the running averages of how hard it has been (added R² about 0.05, on held-out documents). The proposal's falsifier was "no added R² in document-split cross-validation".
+- This is prediction, not valence: it is the "represented" half. With the index split the added R² was 0.054 / 0.060, so leakage was small.
+
+### Overnight queue 2026-10-17 (user away until ~17:00; "whatever you think is most promising")
+
+`runs/overnight_1017.sh`, throttled for fan noise (target fan ≤ 45%, about 200 W). The GPU is idle by 16:30. Steps:
+1. Lean test until 04:30.
+2. VL4, first continuations, until 14:00.
+3. Lean test until 14:30.
+4. VL4, second continuations, until 16:30.
+
+Every step is resumable.
+
+- **Reallocated at 04:40** (`runs/overnight_1017_b.sh`). VL4 runs about 150 s per window at a 650 ms pause (raised from 450 because the fan sat at 47–49%), so step 4's two hours would cover under half the second continuations.
+  - Step 3 is ended as soon as it starts, so step 4 follows step 2 directly (done around 13:00).
+  - Then the loom readout check runs, then the lean test continues until 16:10.
+- **What actually ran:**
+  - Lean 00:25–04:30 (920 windows).
+  - VL4 first continuations 04:30–09:05.
+  - VL4 second continuations 09:05–13:40 (172 s per window at 650 ms; fan 42–46%).
+  - Loom check: the automatic one failed (missing `-ot`, see the loom section); rerun at 13:59, passed.
+  - Lean 14:00–16:10 (to 1,407 windows; fan 32–34%).
+  - GPU idle from 16:10.
+
+### Loom value view (2026-10-17; the user asked for value-lens support in minloomwebui)
+
+- **Readouts:** `homeo/value_readout_export.py` refits the layer-40 probes on all 1,200 windows.
+  - stakes (log |g_fut|), now (log |g_now|), and the H2 forecasts next8 / next32 (probe on h alone).
+  - Output: `/mnt/models/homeo/value_probe/readout_L40.{f32,json}`; the json carries fineweb prediction stats for color scales.
+- **llama-server** (llama.cpp `homeostasis` branch, uncommitted):
+  - `--value-probe PATH` loads the readouts (needs `--jlens`).
+  - `POST /jlens` with `"readouts": true` adds `readouts: {layer, names, values[n_tokens][n]}`; `"readouts_only": true` skips the J-lens decode (one forward pass).
+  - The readouts use the server's jspace forward graph, not llama.cpp's, so `homeo/value_readout_check.py` compares them with the offline probe on VL1 windows. It runs automatically after the overnight queue.
+- **UI:** worktree `~/prog/llm-tests/minloomwebui-value`, branch `value-lens` from 07094c9. The user's uncommitted gloss changes in `minloomwebui` are untouched; rebase onto them if wanted.
+  - A "value" checkbox tints each token by stakes (orange = high, blue = low, as a z-score against fineweb predictions).
+  - The hover tooltip shows stakes, next-token dependence and the two forecasts with fineweb percentiles, on top of the J-lens readout when "lens" is also on.
+  - `loom_server.py` serves `/value_readout.json` (env `LOOM_VALUE_READOUT`).
+  - Run: `llama-server -m … -ngl 99 -ot token_embd.weight=CUDA0 --jlens <jlns> --value-probe /mnt/models/homeo/value_probe/readout_L40`.
+    - The `-ot` is needed for any `--jlens` use: the J-lens graphs require every weight on the GPU, and llama.cpp keeps token_embd on the CPU by default. Without it the server exits with "jlens: tensor is not on a CUDA device: token_embd.weight".
+  - **End-to-end check (2026-10-17 14:00, `/mnt/models/homeo/value_probe/readout_check.txt`):**
+    - Server against offline readouts on 8 VL1 windows × 127 positions: mean |diff| ≤ 0.0001, corr 1.0000 for all four readouts.
+    - Mean log stakes (probe) at positions 100–158: phrase loop −2.90, token loop −3.15, the same text without the loop −2.22.
+    - `readouts_only` on 2,827 tokens: 2.6 s.
+    - The first automatic run after the queue failed on the missing `-ot`. The check script didn't notice the server had exited and polled for 15 minutes; it now fails fast.
+
+### H3: The lean test (started 2026-10-17)
+
+The Value Lens proposal's decisive "upstream of behavior" test: does the model give more probability to next tokens that lead to easier futures than real text supports?
+
+- **Tool:** `llama.cpp/tools/homeo/homeo-lean.cpp`.
+  - Held-out fineweb windows of 170 tokens at random offsets (seed 7), 6 positions each (t = 48, 72, …, 168).
+  - At each position: the model's top 8 candidates. Each is continued 4 times for 16 steps at T = 1 with no truncation. Rollout r uses the same uniforms for every candidate (common random numbers).
+  - Recorded per candidate: log p, the entropy k steps after it (k = 1..16, mean over rollouts), and per rollout the mean entropy and the mean surprisal of the sampled tokens.
+  - V(x) = −mean entropy over the 16 steps.
+- **Fit:** `homeo/lean_fit.py`, a conditional logit over the candidates against the actual next token: q(x) ∝ exp(a·log p(x) + b·V(x) + covariates).
+  - b < 0: the model over-weights easy-future tokens (a lean).
+  - b > 0: real text goes to easy futures more often than the model expects.
+  - Covariates: log unigram frequency, token classes, and the token's own mean V (so that b is a within-token contrast). Strata by current entropy. Bootstrap over windows.
+- **Gate (positive control):** synthetic outcomes drawn from softmax(log p + β·V_A), fit with V_B (the two halves of the rollouts), β from −1 to 1. Recovery b/β measures the attenuation from rollout noise; β = 0 is the calibrated null.
+- **Smoke test (3 windows):** 5.2 s per window unthrottled. The actual token is in the top 8 at 13 of 18 positions.
+  - Consistency check: the actual token's branch first-step entropy against the prefill entropy differs by a median 0.024 nats (max 0.08). The same at batch 2, 8 and 32, so it is batch-shape numerics, not a context off-by-one (that would be on the order of 1 nat). It is shared by all candidates at a position.
+- **Throttle:** 60 ms pause per decode gave 300 W and fan 69%; 150 ms gives about 200 W and fan 42–45%, at about 20 s per window.
+- **Exposure:** none (the model's own top candidates, unsteered samples).
+
+#### H3 results, block 1 (2026-10-17 04:30; 920 windows, 5,520 positions)
+
+`homeo/lean_fit.py /mnt/models/homeo/lean/lean.jsonl --boot 200` → `/mnt/models/homeo/lean/lean_fit_step1.json`. The actual token is in the top 8 at 4,309 positions (78%); only those enter the fit.
+
+- **Noise in V:** the within-position sd of V is 0.33 nats. The two rollout halves agree at r = 0.35, so the 4-rollout V has reliability about 0.51 (Spearman-Brown).
+- **The gate passes.**
+  - Fit with V_A itself, b recovers β (−1.03 at β = −1, +1.02 at β = +1).
+  - Fit with the other half V_B, b has the right sign at every β ≠ 0 and recovers about 0.2 of β. That is the attenuation from rollout noise (stronger than the linear r = 0.35 would give).
+  - At β = 0, b is −0.01 (V_B) and −0.06 (V_A), so the calibrated null sits near zero.
+- **Real text: b = +0.20 (bootstrap SE 0.07), the opposite sign from a lean.** The actual next token is more often the candidate with the easier future than the model's own probabilities say.
+  - It survives log frequency and token classes (+0.21), the token's own mean V (+0.18, so it is a within-token contrast), and all covariates together (+0.18, SE 0.075). Realized surprisal in place of entropy gives +0.13 (SE 0.045).
+  - Next step and later steps contribute about equally (fit jointly). b1 = +0.035 (0.016) on first-step entropy (within-position sd 1.23) and b_late = +0.16 (0.07) on steps 2–16 (sd 0.32), or +0.043 and +0.051 nats per sd. V1 is noise-free, so the later steps' true share is larger.
+  - All three current-entropy strata are positive: +0.45 (H < 1), +0.08 (1–2.5), +0.27 (> 2.5), with SEs 0.24, 0.12, 0.12.
+  - Size: +0.07 nats of log-odds per within-position sd of V. Given the gate's attenuation, the noise-free effect is perhaps 2–3× that, about 0.1–0.2 nats per sd. The fit's NLL gain is 0.001 nats per position.
+  - a = 0.91: within its top 8 the model is slightly over-confident.
+- **Reading: no lean.** The model does not give extra probability to tokens that lead to easier futures; it gives them slightly less than real text supports. The 95% interval for b is [+0.06, +0.35]. In the gate, a lean of β = −0.25 on V_A shows as b = −0.02 on V_B, and β = −0.5 as −0.10.
+  - Caveat: the test identifies only the net miscalibration along V. A model lean and a tendency of human text toward predictable continuations add up and can't be separated here.
+  - One mundane source of b > 0 would be the model under-predicting how often human text repeats itself. **Tested, not it** (`homeo/lean_copy.py`, `/mnt/models/homeo/lean/lean_copy_step1.json`).
+    - Copy indicators per candidate: x occurs earlier in the window (32% of candidates, 46% of actual tokens), x continues an earlier bigram (3.2% / 10%), or an earlier trigram (0.9% / 4.0%). Bigram-copy candidates have easier futures (+0.06 nats of V within position).
+    - With log p in the model, the copy terms are all near zero (in context +0.02 (0.05), bigram +0.05 (0.12), trigram +0.14 (0.25)). The model is already calibrated about copying.
+    - b with the copy terms: +0.20 (0.06), unchanged.
+    - At positions where no candidate continues an earlier bigram (3,424 of 4,309), b = +0.16 (0.08). Where one does, b = +0.40 (0.16); larger, but not significantly (1.3 SE).
+  - Later blocks add windows; the final fit is below.
+
+#### H3 final results (2026-10-17 16:15; 1,407 windows, 8,448 positions, 6,625 used)
+
+`/mnt/models/homeo/lean/lean_fit.{txt,json}` and `lean_copy.{txt,json}`. Same instrument (V reliability 0.52, within-position sd 0.33).
+
+- **Gate passes.**
+  - With the same half (V_A), b recovers β: −1.01, −0.51, −0.25, +0.03, +0.22, +0.52, +0.97.
+  - With the other half (V_B): −0.22, −0.16, −0.11, +0.00, +0.05, +0.09, +0.22, i.e. 0.2–0.4 of β.
+- **Real text: b = +0.154 (SE 0.053)**, 95% interval [+0.05, +0.26]. Reliability-corrected +0.30 (0.10). Per sd of V, +0.05 nats of log-odds.
+  - Block 1 alone was +0.20 (0.07); the added windows pulled it down a little.
+- **Covariates:** + frequency and classes +0.158 (0.063); + token mean V +0.151 (0.062); all +0.151 (0.062).
+- **Realized surprisal instead of entropy:** +0.081 (0.046), weaker.
+- **Next step vs later steps (joint):** b1 +0.022 (0.014), b_late +0.126 (0.058). That is +0.027 and +0.041 nats per sd (V1 sd 1.23, V_late sd 0.33).
+- **By current entropy:** +0.47 (0.16) for H < 1, +0.09 (0.10) for 1–2.5, +0.15 (0.08) above 2.5. The effect is strongest where the model is already confident.
+- **Copying:**
+  - Copy indicators are still near zero with log p in the model: in context +0.01 (0.04), bigram +0.10 (0.09), trigram +0.07 (0.20).
+  - b with them: +0.155 (0.057).
+  - But b is larger where some candidate continues an earlier bigram, +0.34 (0.14, n 1,381), than where none does, +0.11 (0.06, n 5,244, 1.8 SE).
+  - So the copy choice itself is calibrated, and the effect is partly concentrated in passages where copying is possible.
+- **Conclusion: no lean.** A lean (b < 0) is excluded at about 3 SE. What remains is a small net miscalibration in the other direction: real text goes to easy futures slightly more often than the model predicts, most clearly at confident positions.
+
+### VL4: Scenario set 2, all model-written (started 2026-10-17)
+
+Set 1 compared 12 model-written fiction windows with human fineweb text, so authorship was confounded with genre.
+
+- **Prompts:**
+  - fiction: 36 prompts (the 12 from set 1 plus 24 new worldbuilding openings);
+  - boring: 36 (SEO filler, policies, listings, corporate prose);
+  - structured: 24 (procedures, recipes, proofs, verse, code).
+- **Generation:** each prompt continued twice by the model through llama-server (T = 1, untruncated, no penalties) (`homeo/value_scenarios2_prep.py`).
+  - The window is the exact ids: prompt plus generated, first 192.
+  - 42 of 234 continuations ended before 192 tokens and were redrawn with the next seed. This selects for longer continuations, which matters most for boring text.
+- **Run:** homeo-value as in VL1 (`runs/value/scen2.sh` has the sample-size line), first continuations first (`runs/value/reorder_scen2.py`).
+- **Analysis:** `homeo/value_scenarios2.py`, group means clustered by prompt, with prompt-level permutation tests.
+- **Ordering caveat:** `runs/value/reorder_scen2.py` reordered `manifest.json` and `scenario_ids.bin` but not `texts.jsonl`, so `texts.jsonl` row i is not window i. The analysis decodes text from the window ids.
+
+#### VL4 results, first continuations (2026-10-17 09:10; 96 windows, one per prompt)
+
+`/mnt/models/homeo/value_scen2/summary_first96.{txt,json}`. Window means over positions 32–158, standard errors with the prompt as the unit.
+
+| group (model-written) | prompts | level | stakes | now | stakes vs the fineweb curve at the same level |
+|---|---|---|---|---|---|
+| fiction | 36 | −3.09 | 0.151 (0.004) | 0.175 | **+0.014** (0.003) |
+| boring | 36 | −1.78 | 0.100 (0.004) | 0.127 | **−0.045** (0.006) |
+| structured | 24 | −1.54 | 0.118 (0.009) | 0.128 | **−0.036** (0.012) |
+| fineweb (human), 1200 windows | | −2.48 | 0.135 | 0.162 | 0 |
+
+- **Raw ordering:** fiction > structured > boring. All three differences are significant: fiction − boring +0.051 (p < 0.001), structured − boring +0.018 (p 0.04), fiction − structured +0.033 (p < 0.001).
+- **Difficulty is a confound, so match on it.** In fineweb, stakes barely depends on level: corr +0.02, and a quadratic fit has R² 0.06 (both tails are a little higher). Relative to that curve:
+  - fiction is above human text, replicating set 1 (0.154 there);
+  - boring and structured are well below it, and no longer differ from each other (+0.010, p 0.41).
+- **Within model-written boring and structured text, easier windows have lower stakes:** corr(level, stakes) −0.71 and −0.73. Fiction −0.37. Fineweb about 0.
+- **Not repetition:** the 4-gram repeat share is at most 0.19 (means 0.005, 0.014, 0.053), and its correlation with stakes is −0.03, −0.08 and −0.35.
+- **What sits at the ends:**
+  - Lowest stakes (0.05–0.08): step-by-step derivations (binary search, solving a quadratic, deriving the quadratic formula), a translation drill, and SEO / marketing prose.
+  - Highest (0.15–0.21): a sonnet and a villanelle, chess notes, a wandering "proof", meeting minutes, installation instructions, and fiction full of invented names and rules.
+  - Reading: stakes is low where the coming text follows from general knowledge or a formula, and high where it depends on specifics the text has committed to (rhyme and meter, invented entities, a particular position). That fits stakes as "how much the future depends on this state". It also explains why "structured" is not one thing: derivations are low and verse is high.
+- **progress and the temperature price:** no group differences, except progress for fiction − structured (+0.37, p 0.01).
+- Superseded by the final results below. The structured-text claim changed.
+
+#### VL4 final results (2026-10-17 14:10; all 192 windows, 2 per prompt)
+
+`/mnt/models/homeo/value_scen2/summary.{txt,json}`.
+
+| group (model-written) | prompts | windows | level | stakes | vs fineweb at the same level | same, without windows > 5% repeated 4-grams | within-group corr(level, stakes) |
+|---|---|---|---|---|---|---|---|
+| fiction | 36 | 72 | −3.13 | 0.148 (0.003) | **+0.010** (0.003) | +0.012 (0.003), n 70 | −0.38 |
+| boring | 36 | 72 | −1.85 | 0.103 (0.003) | **−0.040** (0.005) | −0.039 (0.005), n 67 | −0.72 |
+| structured | 24 | 48 | −1.70 | 0.124 (0.007) | **−0.026** (0.009) | −0.006 (0.010), n 29 | −0.66 |
+| fineweb (human) | | 1200 | −2.48 | 0.135 | 0 | | +0.02 |
+
+- **Raw differences:** fiction − boring +0.046 (p < 0.001), structured − boring +0.022 (p 0.002), fiction − structured +0.024 (p < 0.001).
+- **Matched on difficulty:** fiction − boring +0.050 (p < 0.001), structured − boring +0.014 (p 0.11), fiction − structured +0.036 (p < 0.001).
+- **What holds up:**
+  - Model-written fiction has more stakes than human text of the same difficulty (replicates set 1).
+  - Model-written boring prose has much less: −0.040, about 30% below, and unaffected by dropping repetitive windows (its maximum 4-gram repeat share is 0.14).
+- **What changed from the first half:** structured text's deficit sits in its step-by-step windows.
+  - 19 of its 48 windows have more than 5% repeated 4-grams. Almost all are step formats: derivations, assembly steps, a day-by-day sourdough guide, a recipe, a knitting pattern, fibonacci code, a numbered list. One is a sonnet continuation that repeats lines (0.44). Their residuals are mostly −0.04 to −0.13.
+  - The rest (verse, proofs, an itinerary, chess notes) are at the human level: −0.006 ± 0.010, n 29.
+  - So the 5% cut is a split by type, not a removal of degenerate text. Procedures and derivations are low-stakes; verse and proofs are not.
+  - The most repetitive fiction window (0.31, "When the stars over Kell…") is also its lowest-stakes one (0.066).
+- **Within boring and structured text, easier windows have lower stakes** (r −0.72 and −0.66; −0.71 and −0.54 without repetitive windows). Human text shows no such relation.
+- **Ends of the distribution:**
+  - Lowest stakes are the most predictable windows: step-by-step derivations (binary search, a quadratic, the quadratic formula; log-likelihood −0.3 to −0.5) and marketing filler (−0.7 to −0.8).
+  - Highest: a sonnet, a ballad, a group-theory proof, meeting minutes, a cookie notice, installation instructions, and invented-world fiction.
+  - Conjecture: when the model writes text it finds easy, the continuation is nearly forced and many states would lead to the same future, so no single state matters much. Human easy text (fineweb's easiest tenth has stakes 0.158) often depends on specifics like names and numbers. This is a reading of a dozen windows, not a test.
+
+### VL3: What are the "stable" future-value directions? (2026-10-17)
+
+`homeo/value_directions.py` (top principal directions of g_fut at layer 40, decoded contexts, token lifts, J-lens). First pass, raw second moment:
+- **The top directions are dominated by a few extreme positions,** with projections up to +370 sd on one direction. The sd per direction is tiny (about 0.01) because the bulk of g_fut is nearly isotropic (the top 10 carry 2.7%).
+  - Examples: the Shakespeare text with "Craig1916: 20" line markers (windows 11, 255, 464 and 761 all come from it) right before a marker.
+  - Also: "wash & condition[ your]| hair", "your wedding ceremony[ and]| the way".
+- **|g_fut| is only mildly position-dependent:** mean 0.143 at positions 32–45 against 0.131 at 144–157. There are slightly more outliers early (25 against 14 above the 99.9th percentile, which is 1.01; the median is 0.11).
+- **Current and next tokens at the top 1% of |projection|** are the ordinary frequent ones (lifts ≤ 2×).
+- **J-lens decodes of the directions** are rare multilingual tokens: uninformative for gradient directions.
+- **Suspicion:** VL1's split-half "about ten stable directions" used even/odd windows and the raw second moment. Overlapping windows from the same document (the Shakespeare text) fall in both halves, so the replication might be outliers plus shared documents. `homeo/value_structure_robust.py` recomputes it with offset-block halves, outlier trimming (above the 99.9th percentile of |g|) and unit-normalized gradients.
+- **Robustness result: the opposite.** The structure is much *more* stable than VL1 reported. The outliers were hiding it, not creating it. Top-10 / top-50 split-half overlap (chance 0.0016 / 0.008):
+
+  | | raw | trimmed | normalized (g / \|g\|) |
+  |---|---|---|---|
+  | g_fut, even/odd | 0.30 / 0.34 | 0.79 / 0.69 | 0.96 / 0.91 |
+  | g_fut, offset blocks (no shared documents) | 0.30 / 0.32 | 0.80 / 0.67 | 0.96 / 0.90 |
+  | g_now, even/odd | 0.002 / 0.08 | 0.54 / 0.24 | 0.98 / 0.93 |
+  | g_now, offset blocks | 0.008 / 0.06 | 0.51 / 0.23 | 0.98 / 0.92 |
+
+  - The second moment is outlier-heavy: the top 1% of positions by |g| carry 20% of g_fut's and 32% of g_now's. Different outliers land in each half, which scrambles the raw top directions.
+  - **Correction to VL1:** g_now does have stable directions (0.98 normalized). VL1's "g_now has no reproducible directions" was an outlier artifact. g_fut's stable subspace is real and does not depend on shared documents.
+  - It is small: the top 10 normalized directions carry 2.9% of each gradient's direction on average (18× chance).
+  - Suspect: the residual stream's massive-activation coordinates. The mean h at layer 40 has norm 209 of a mean |h| of 258, dominated by coordinates 4053 (+165), 5538 (+93) and 1980 (−64). `value_directions.py --normalize` checks the subspace's alignment with the mean residual and its coordinate concentration.
+- **What the normalized directions are** (`value_directions.py --normalize [--kind now]`, `/mnt/models/homeo/value/directions{,_now}_norm.txt`):
+  - **Not the massive-activation coordinates.** Cosine with the mean residual is at most 0.12 (g_fut) or 0.14 (g_now). Coordinates 4053, 5538 and 1980 are not among the subspace's main coordinates.
+    - g_fut's subspace is spread out: its top 10 coordinates hold 10%, led by 1295 (mean h +34) at 4.3%.
+    - g_now's leans more on a few coordinates: 8, 2380, 4532, 3196 and 3891 together hold 25% in the top 10.
+  - **Every direction replicates and is symmetric.** g_fut's top 10 have split-half |cos| 0.91–1.00, skew about 0, and are positive at 47–49% of positions. Along each, pushing helps the future at about half the positions and hurts at the other half: prices are set locally (Value Lens proposal 3.3), around a stable set of axes.
+  - **Not semantically legible.** The most extreme contexts reach only 5–7 sd and share no theme. J-lens decodes are mostly rare multilingual tokens, apart from punctuation and line-end tokens on the negative side of directions 3–5 ('\n', '.\n', ',', '(') and abstract Latinate words on direction 8 (' applicable', ' economic', ' constructive').
+  - These look like architectural channels: the generic routes by which a layer-40 state affects later computation, not represented objects.
+  - The S2 vectors are not in them (|cos| with the temperature vector ≤ 0.025 for g_fut; up to 0.10 for g_now's direction 1).
 
 ### S2 design
 
@@ -367,6 +648,59 @@ Caveats: it is infinitesimal, and the variance is probably large for 6144² matr
 ### X2 (diagnostic): Lagged J-lens (echo decomposition)
 
 Run jlens-fit with shifted outer products, `M_k += V[:, s+k] U[:, s]ᵀ`, which gives `Σ_s J_{s+k←s}` into a deeper layer. The k = 0 slice is the J-lens; `--xpos` is the sum over k. This splits a response into the continuous echo versus the part carried by tokens.
+
+### VL5: Exact value lens over a whole text, in the loom (2026-10-17 evening)
+
+The user asked for the exact value lens at loom time, with the horizon set to all later tokens in the pad.
+
+- **Quantity.** For each position s, at the layer-40 state h_s: now = d l_s / d h_s and fut = sum over all later t > s of d l_t / d h_s (l_t = log p(x_{t+1})). Same definitions as VL1, but VL1 used a 32-token horizon and 192-token windows.
+- **Method** (`llama.cpp/tools/jspace/jlens-value.cpp`, `jlens_build_upper_chunk` / `jlens_build_chunk_forward` in `jlens-graph.cpp`):
+  - A forward sweep in chunks with explicit f32 attention stores every block's keys/values and h_40.
+  - A backward sweep from the last chunk to the first runs blocks 41-60 on one chunk, with the earlier positions' keys/values as PARAM leaves. Their gradients are added to a store and fed into the earlier chunks as <dk, k> + <dv, v> terms. This gives d (sum of NLL at t >= s) / d h_s exactly.
+  - A third pass ("now mode") freezes all keys/values. A zero-valued diagonal correction keeps each query's own key/value live, which gives d l_s / d h_s at every position in one pass. fut = incl - now.
+- **Validation** (`homeo-value-exact`): against brute force (one full backward per target, as homeo-value), 96 fineweb tokens.
+  - Chunks of 32 or 96: median relative error 9e-4 (incl), 7e-4 (now), 2e-3 (fut); cosine > 0.9999.
+  - Chunks of 16 are 5% off: CUDA uses other quantized-matmul kernels at that batch size. The minimum chunk is now 32.
+- **Kernel noise floor.** The same 4-bit model gives different states depending on batch size. At 512 tokens, the unchunked forward differs from the chunked one by 2.5% in h_40, even for the first 64 positions, whose computation is identical apart from the matmul kernels. That is about 2% in log |fut| at the median and 9% at p95. Chunked and unchunked are bit-identical at 96 tokens.
+  - Flash attention (f16 k/v) in the forward differs by a similar amount, so the forward sweep does not use it.
+  - Exact means exact up to this floor, which is small next to the spread between tokens.
+- **Cost.** 2,048 tokens in 14.5 s (forward 2.6 s, backward sweep 6.0 s, now pass 5.9 s) at chunk 64. Chunk memory grows with the number of tokens times the chunk size (attention scores for 20 blocks), and the chunk is halved on OOM.
+- **First look (one 2,048-token fineweb stretch, which probably spans several documents).** Mean log |fut| hardly depends on the number of later tokens: -1.9 to -2.1 with 1,900 later, -2.1 with 130 later. Only the final 128 positions (fewer than 128 later) drop, to -2.7. VL1's 32-token stakes average -2.24, so all later tokens add only about 25% on average: the dependence on a state is mostly local, or the far terms cancel.
+  - This goes against my k^(-2/3) extrapolation of the VL1 lag profile.
+  - Still to check: single long documents (not concatenated fineweb), and how this varies by text type.
+- **Loom.** The UI has an `exact` checkbox next to `value` (worktree `minloomwebui-value`), served by `/jlens` with `value_exact: true`. Colors are a z-score of the residual from a fit of log stakes on log(later predictions) within the text.
+
+### VL6: Branch impact by gradient (2026-10-17 late evening): the gradient is right, but the linear estimate fails
+
+The user asked for a cheap gradient version of "do the top candidates lead to different futures".
+
+- **Quantity.** g = d (sum over t > s of log p(x_{t+1})) / d (token embedding at s+1). For each top-8 candidate c: delta_c = g . (E[c] - E[x_{s+1}]). Spread = sqrt(sum p (delta - mean)^2), with p renormalized over the top 8.
+- **Method.** `jlens_branch_grad` in `jlens-value.cpp`: the chunked backward through all 61 blocks, in layer groups of at most 21 blocks. The gradient at each group's bottom is injected as <g, h_top> into the group below. Exposed in the loom as "branch impact (gradient, rough)".
+- **The gradient is correct.** 21-block groups vs one 61-block group: bit-identical (96 tokens). The sweep machinery was checked against brute force in VL5.
+- **Finite differences cannot check it.** Perturbing one embedding by 0.01 x (E[c] - E[a]) changes the later log-likelihood by about 1 nat: the quantized forward rounds activations to 8 bits (MMQ), so it is noisy at fine scales. Finite-difference slopes grow as eps shrinks (|fd| 10-90 at eps 0.01).
+- **Linear vs actual swap** (teacher-forced: x_{s+1} replaced by c, same continuation), 160 fineweb tokens:
+  - Individual deltas: Pearson 0.22 (89 pairs; 0.59 on a 23-pair rerun).
+  - Spread per position: Pearson 0.38 (12 positions).
+  - Real swaps are 10-30x larger, e.g. at s = 60 every top candidate costs 11-20 nats of later fit, while the linear estimates are 0.05-0.55. A token swap is far outside the linear regime.
+- **Conclusion.** The embedding gradient measures local sensitivity, not branching. A branch measure should use the teacher-forced swap itself (one forward of the continuation per candidate, all candidates in one batch over the shared prefix).
+
+### B: Closed-loop identification of token-mediated regulation (designed 2026-10-17; pilot not yet run)
+
+- **Structural fact.** At a fixed layer L, the state at a later position depends on earlier positions only through the tokens. Blocks <= L see only tokens and lower layers, so a push at the output of block L reaches later layer-L states only by changing what the model writes. Any homeostasis at layer L is therefore a loop: state -> output (J-lens) -> sampled token -> embedding and attention -> later states.
+- **Measure.**
+  - Steer +a u and -a u after block L at every position (prefill and generation), with common random numbers.
+  - Record the pre-steer layer-L states of the generated positions (l_out - a u). These change only through the tokens, so the push itself and passive outvoting cannot contaminate them.
+  - The odd part per unit push, projected on a basis, is the closed-loop response r ~ M z.
+  - kappa(u) = -u^T M u is the fraction of a sustained push the model undoes through its writing: > 0 pushed back (candidate regulation), < 0 amplified (expected for concept directions), 0 ignored.
+- **Basis.** Top PCA directions of layer-40 states (`homeo/ident_basis.py`, 80k VL2 states): the directions tokens actually move.
+  - The top 64 hold 47% of the variance, the top 256 hold 58%.
+  - PC1 (20%) is almost entirely coordinate 4053, a massive-activation dimension.
+  - The J-lens readability of the found directions is to be reported, so sensor and actuator sides are both covered.
+- **Tool and analysis.**
+  - `llama.cpp/tools/homeo/homeo-ident.cpp`: resumable, endpoints as K4, exposure logged every 32 arms.
+  - `homeo/ident_fit.py`: lag-0 check (must be exactly 0), divergence rate, odd/even parts, M per lag window, permutation null on the eigenvalues, split-half cross-validation of the top directions.
+- **Pilot** (`runs/ident/pilot.sh`, also the A3 power analysis): K = 64, 32 probes x +/-, doses 0.1 / 0.25 / 0.5 x |h|, 16 prefixes x 32 generated tokens. It sets the dose and the probe count for the main run (>= K probes to fit M).
+- **Caveat.** Pushback is not necessarily regulation of anything felt. A base model keeping text coherent also writes against a push. Read out what the model writes when it compensates, and test whether the regulated directions reduce to entropy/temperature (S2).
 
 ## Measured instrument facts
 

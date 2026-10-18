@@ -54,6 +54,8 @@ strong { font-weight: 600; }
 .key ol { margin: 0 0 10px; }
 code { font-family: var(--font-mono); font-size: 0.86em; background: var(--surface); padding: 1px 4px; border-radius: 3px; overflow-wrap: anywhere; }
 .table { overflow-x: auto; margin: 0 0 16px; }
+.note { color: var(--muted); font-size: 0.9rem; margin-top: -8px; }
+li.correction { border-left: 3px solid var(--c-p05); padding-left: 10px; }
 table { border-collapse: collapse; width: 100%; min-width: 36rem; font-size: 0.93rem; font-variant-numeric: tabular-nums; }
 th, td { text-align: left; vertical-align: top; padding: 7px 10px; border-bottom: 1px solid var(--rule); }
 th { font: 500 0.72rem var(--font-mono); letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
@@ -90,9 +92,9 @@ figcaption { font-size: 0.92rem; color: var(--muted); margin-top: 4px; }
 <article>
   <p class="eyebrow">Results &middot; homeostasis in base models</p>
   <h1>Surprise and Steering in GLM-4</h1>
-  <p class="deck">What a base model tracks about its own surprise, how it responds to it, and what can be steered on the "how likely is the next token" axis, and how steering breaks it. Experiments S1 to S2(d), a 61-layer optimizer sweep, and loop-margin tests K4 and K4b.</p>
+  <p class="deck">What a base model tracks about its own surprise, how it responds to it, and what can be steered on the "how likely is the next token" axis, and how steering breaks it; then, where its present state matters for its own future. Experiments S1 to S2(d), a 61-layer optimizer sweep, loop-margin tests K4 and K4b, and the value lens VL1 and VL2.</p>
   <ul class="meta">
-    <li>2026-10-13 to 14</li>
+    <li>2026-10-13 to 16</li>
     <li>GLM-4-32B-Base-32K, Q4_K_S, one RTX 3090</li>
     <li>All numbers are held-out unless stated</li>
   </ul>
@@ -106,8 +108,11 @@ figcaption { font-size: 0.92rem; color: var(--muted); margin-top: 4px; }
     <li><strong>Reading is not writing.</strong> Steering along the surprise probe's readout direction has no directional effect.</li>
     <li><strong>On the probability axis, steering gives temperature plus one more shape, and no band dial.</strong> No contrastive, bracketed, logit-band or backprop-optimized vector promotes tokens of a chosen probability level, at any layer, including a search constrained to doses of 0.5 to 2× the residual norm. Late layers add one shape beyond temperature: at the same average surprise, a vector moves probability from the top token into plausible alternatives and leaves the junk tail alone, like truncation followed by temperature. Vectors trained for different bands make the same shape.</li>
     <li><strong>Steering breaks the model in two ways, and the direction decides which.</strong> Pushing toward certainty makes it loop: phrase loops when one layer is steered, "the the the" when a band of layers is. Random directions and pushes toward uncertainty make it incoherent instead. Random single-layer directions reach incoherence at 1 to 3× the residual norm and essentially never loop.</li>
+    <li><strong>The present matters most in structured text, and least in loops and boilerplate.</strong> The value lens measures how much the model's next 32 predictions depend on its current state ("stakes"). Stakes is unrelated to how easy the text is. In human web text it is highest in procedures, lists and verse and lowest in boilerplate and spam, and loops cut it by 1.6 to 4×. When the model writes the text itself, fiction and verse stay high, while boilerplate and step-by-step procedures fall well below human text of the same difficulty. The steering knobs above are nearly neutral for the future, and none lies along the roughly ten stable directions that do move it.</li>
+    <li><strong>The model represents its stakes, but not which way to go.</strong> A linear probe on layer 40 reads stakes with R² 0.38, against 0.04 for token identity. No direction's price is readable. It also forecasts how hard the coming text will be, beyond its running averages of how hard it has been (added R² 0.05).</li>
+    <li><strong>The model does not lean toward easy futures.</strong> Among its top candidates, the ones that lead to more predictable continuations get slightly less probability than real text supports, not more (b = +0.15, SE 0.05). The test recovers a planted lean. Nothing in its next-token choices so far looks like steering toward comfortable states.</li>
   </ol>
-  <p>For homeostasis this means the model has a sensor (findings 1 and 2), but its first response to a deviation is positive feedback (finding 3). The actuators found on this axis are a global temperature dial and a plausible-tail shape (findings 4 and 5). The healthy regime sits between two traps on the temperature axis: loops on the certain side, incoherence on the uncertain side (finding 6). Whether anything later restores the slow surprise level after a kick is the open question for the kick test (K1).</p>
+  <p>For homeostasis this means the model has a sensor (findings 1 and 2), but its first response to a deviation is positive feedback (finding 3). The actuators found on this axis are a global temperature dial and a plausible-tail shape (findings 4 and 5). The healthy regime sits between two traps on the temperature axis: loops on the certain side, incoherence on the uncertain side (finding 6). Whether anything later restores the slow surprise level after a kick is the open question for the kick test (K1). For valence, the model represents what is at stake and how hard the future will be (finding 8), but its choices don't favor easier futures (finding 9). Representation without a lean fits a predictor with no preferences over its own states, though it does not rule them out.</p>
   </div>
 
   <h2>Setup</h2>
@@ -326,6 +331,176 @@ figcaption { font-size: 0.92rem; color: var(--muted); margin-top: 4px; }
   </table></div>
   <p>Single-token spam fits a constant push at many layers flattening every position toward the same state. Phrase loops fit the model's copying machinery taking over. A guess for why hand-made vectors loop so often: concept vectors make the model more certain about the concept, so they carry a sharpening component and collapse onto the concept's words when turned up. That is testable by measuring a concept vector's component along the temperature axis and running it through K4.</p>
 
+  <h2>VL1: The value lens <span class="chip m">Measured</span></h2>
+  <p>Question: which directions in the model's state would help or hurt its own future predictions, and where does the present state matter most? From the <a href="https://claude.ai/artifact/DvMrx6NYbLuAgj8ZrNc6FM">Value Lens</a> proposal.</p>
+  <h3>Method</h3>
+  <ul>
+    <li><strong>Data:</strong> 1,200 windows of 192 fineweb tokens, teacher-forced; positions 32 to 158 in each (145,534 positions after dropping the 3% whose horizon crosses a blank line, usually a document boundary; with them in, the numbers barely change).</li>
+    <li><strong>Gradients</strong> of log-likelihood with respect to the residual stream after block 40 (also read at 44, 50 and 56): <strong>now</strong>, <var>g</var><sub>now</sub> = ∂<var>l</var><sub>s</sub>/∂<var>h</var><sub>s</sub>, for the next token; <strong>future</strong>, <var>g</var><sub>fut</sub> = Σ<sub>k=1..32</sub> ∂<var>l</var><sub>s+k</sub>/∂<var>h</var><sub>s</sub>, for the 32 tokens after it.</li>
+    <li><strong>Price</strong> of a direction <var>u</var>: <var>g</var> · <var>u</var>, the change in log-likelihood per unit push. Quoted per push of 0.1× the residual norm. <strong>Stakes:</strong> |<var>g</var><sub>fut</sub>|, how much the future depends on the present state at all.</li>
+    <li>One backward pass per target token through a hand-written GLM-4 graph. Checked against finite differences and bitwise across slot layers; an independent code review found no result-affecting bugs. 109 s per window, 36 hours in all.</li>
+  </ul>
+  <figure>
+    <div class="chart"><svg viewBox="0 0 680 330" role="img" aria-label="Gradient size by Lag k (tokens ahead)"><line class="grid zero" x1="56" x2="662" y1="284.0" y2="284.0"/><text class="tick" x="48" y="288.0" text-anchor="end">0.00</text><line class="grid" x1="56" x2="662" y1="216.5" y2="216.5"/><text class="tick" x="48" y="220.5" text-anchor="end">0.04</text><line class="grid" x1="56" x2="662" y1="149.0" y2="149.0"/><text class="tick" x="48" y="153.0" text-anchor="end">0.08</text><line class="grid" x1="56" x2="662" y1="81.5" y2="81.5"/><text class="tick" x="48" y="85.5" text-anchor="end">0.12</text><line class="grid" x1="56" x2="662" y1="14.0" y2="14.0"/><text class="tick" x="48" y="18.0" text-anchor="end">0.16</text><line class="axis" x1="56.0" x2="56.0" y1="284" y2="289"/><text class="tick" x="56.0" y="303" text-anchor="middle">0</text><line class="axis" x1="131.8" x2="131.8" y1="284" y2="289"/><text class="tick" x="131.8" y="303" text-anchor="middle">4</text><line class="axis" x1="207.5" x2="207.5" y1="284" y2="289"/><text class="tick" x="207.5" y="303" text-anchor="middle">8</text><line class="axis" x1="283.2" x2="283.2" y1="284" y2="289"/><text class="tick" x="283.2" y="303" text-anchor="middle">12</text><line class="axis" x1="359.0" x2="359.0" y1="284" y2="289"/><text class="tick" x="359.0" y="303" text-anchor="middle">16</text><line class="axis" x1="434.8" x2="434.8" y1="284" y2="289"/><text class="tick" x="434.8" y="303" text-anchor="middle">20</text><line class="axis" x1="510.5" x2="510.5" y1="284" y2="289"/><text class="tick" x="510.5" y="303" text-anchor="middle">24</text><line class="axis" x1="586.2" x2="586.2" y1="284" y2="289"/><text class="tick" x="586.2" y="303" text-anchor="middle">28</text><line class="axis" x1="662.0" x2="662.0" y1="284" y2="289"/><text class="tick" x="662.0" y="303" text-anchor="middle">32</text><line class="axis" x1="56" x2="662" y1="284" y2="284"/><text class="label" x="359.0" y="324" text-anchor="middle">Lag k (tokens ahead)</text><text class="label" transform="translate(14 149.0) rotate(-90)" text-anchor="middle">Gradient size</text><path class="f-temp" d="M51.0 21.0 L61.0 21.0 L56.0 14.0 Z"/><polyline class="line c-temp" points="74.9,190.2 93.9,221.9 112.8,235.8 131.8,244.1 150.7,249.5 169.6,253.5 188.6,256.5 207.5,258.9 226.4,260.9 245.4,262.7 264.3,264.0 283.2,265.3 302.2,266.2 321.1,267.1 340.1,267.9 359.0,268.7 377.9,269.5 396.9,270.0 415.8,270.6 434.8,271.0 453.7,271.4 472.6,271.8 491.6,272.2 510.5,272.6 529.4,272.9 548.4,273.2 567.3,273.5 586.2,273.8 605.2,274.0 624.1,274.3 643.1,274.5 662.0,274.7"/><circle class="f-temp" cx="74.9" cy="190.2" r="3.2"/><circle class="f-temp" cx="93.9" cy="221.9" r="3.2"/><circle class="f-temp" cx="112.8" cy="235.8" r="3.2"/><circle class="f-temp" cx="131.8" cy="244.1" r="3.2"/><circle class="f-temp" cx="150.7" cy="249.5" r="3.2"/><circle class="f-temp" cx="169.6" cy="253.5" r="3.2"/><circle class="f-temp" cx="188.6" cy="256.5" r="3.2"/><circle class="f-temp" cx="207.5" cy="258.9" r="3.2"/><circle class="f-temp" cx="226.4" cy="260.9" r="3.2"/><circle class="f-temp" cx="245.4" cy="262.7" r="3.2"/><circle class="f-temp" cx="264.3" cy="264.0" r="3.2"/><circle class="f-temp" cx="283.2" cy="265.3" r="3.2"/><circle class="f-temp" cx="302.2" cy="266.2" r="3.2"/><circle class="f-temp" cx="321.1" cy="267.1" r="3.2"/><circle class="f-temp" cx="340.1" cy="267.9" r="3.2"/><circle class="f-temp" cx="359.0" cy="268.7" r="3.2"/><circle class="f-temp" cx="377.9" cy="269.5" r="3.2"/><circle class="f-temp" cx="396.9" cy="270.0" r="3.2"/><circle class="f-temp" cx="415.8" cy="270.6" r="3.2"/><circle class="f-temp" cx="434.8" cy="271.0" r="3.2"/><circle class="f-temp" cx="453.7" cy="271.4" r="3.2"/><circle class="f-temp" cx="472.6" cy="271.8" r="3.2"/><circle class="f-temp" cx="491.6" cy="272.2" r="3.2"/><circle class="f-temp" cx="510.5" cy="272.6" r="3.2"/><circle class="f-temp" cx="529.4" cy="272.9" r="3.2"/><circle class="f-temp" cx="548.4" cy="273.2" r="3.2"/><circle class="f-temp" cx="567.3" cy="273.5" r="3.2"/><circle class="f-temp" cx="586.2" cy="273.8" r="3.2"/><circle class="f-temp" cx="605.2" cy="274.0" r="3.2"/><circle class="f-temp" cx="624.1" cy="274.3" r="3.2"/><circle class="f-temp" cx="643.1" cy="274.5" r="3.2"/><circle class="f-temp" cx="662.0" cy="274.7" r="3.2"/></svg></div><ul class="legend"><li><span class="sw b-temp"></span>Mean |∂l(s+k) / ∂h(s)| at layer 40</li></ul>
+    <figcaption>How strongly the state at one position affects predictions <var>k</var> tokens later, averaged over all positions. The 32-token horizon captures most of it.</figcaption>
+  </figure>
+  <h3>The steering knobs barely matter to the future</h3>
+  <div class="table"><table>
+    <thead><tr><th>Direction</th><th>Layer</th><th>Now price</th><th>Future price</th><th>t (future)</th><th>Spread vs random</th></tr></thead>
+    <tbody><tr><td>Temperature 1.3, optimized</td><td>40</td><td>+0.0001</td><td>+0.0040</td><td>+12.8</td><td>1.10</td></tr><tr><td>Temperature 1.3, sweep</td><td>50</td><td>+0.0009</td><td>+0.0037</td><td>+14.2</td><td>1.65</td></tr><tr><td>Band p ≈ 0.5, optimized</td><td>40</td><td>+0.0001</td><td>-0.0025</td><td>-10.6</td><td>1.04</td></tr><tr><td>Band p ≈ 0.25, optimized</td><td>40</td><td>-0.0009</td><td>-0.0012</td><td>-5.4</td><td>1.00</td></tr><tr><td>Band p ≈ 0.1, optimized</td><td>40</td><td>-0.0008</td><td>-0.0011</td><td>-5.6</td><td>0.98</td></tr><tr><td>Band p ≈ 0.03, optimized</td><td>40</td><td>-0.0006</td><td>-0.0003</td><td>-1.8</td><td>0.97</td></tr><tr><td>Plausible-tail shape (S2(d))</td><td>56</td><td>-0.0016</td><td>+0.0004</td><td>+4.9</td><td>1.43</td></tr><tr><td>Contrastive &quot;weird token&quot;</td><td>44</td><td>+0.0035</td><td>+0.0022</td><td>+8.6</td><td>1.80</td></tr><tr><td>Surprise probe direction</td><td>44</td><td>-0.0008</td><td>+0.0010</td><td>+5.0</td><td>1.15</td></tr><tr><td>Random directions (32 per layer)</td><td>40 to 56</td><td></td><td>|mean| 0.0001 to 0.0002 (max 0.0012)</td><td></td><td>1</td></tr></tbody>
+  </table></div>
+  <ul>
+    <li>Mean prices in nats per push of 0.1× the residual norm; t over windows. "Spread vs random" is the price's standard deviation over the same for random directions.</li>
+    <li><strong>Real but tiny.</strong> The temperature vectors are worth +0.004 nats over the next 32 tokens (about 0.0001 per token), 20 times a random direction's typical mean. Sharpening (band p ≈ 0.5) costs about as much. To first order, the same push along each position's own <var>g</var><sub>fut</sub> would be worth about 3.5 nats, so the knobs buy about 0.1% of what is available.</li>
+    <li><strong>Flattening helps later tokens but not the next one</strong>: the temperature vector's now price is zero.</li>
+    <li>No price correlates with the current entropy or surprisal (all |r| &lt; 0.035).</li>
+  </ul>
+  <h3>Prices move along a small, very stable set of axes</h3>
+  <ul>
+    <li>Per position, what would help the next token and what would help the 32 after it are unrelated: the median cosine of <var>g</var><sub>now</sub> and <var>g</var><sub>fut</sub> is +0.009.</li>
+    <li><strong>Both gradients have a stable ten-dimensional subspace.</strong> On unit-normalized gradients, the top 10 directions from one half of the windows overlap the other half's by 0.96 for <var>g</var><sub>fut</sub> and 0.98 for <var>g</var><sub>now</sub> (chance 0.002). That holds with halves that share no document. Each gradient puts about 3% of its direction there (18 times chance).</li>
+    <li class="correction"><strong>Correction.</strong> The first analysis used the raw second moment and found a weaker overlap (0.30 for <var>g</var><sub>fut</sub>) and none for <var>g</var><sub>now</sub> (0.002). Gradients are outlier-heavy: the top 1% of positions carry 20% of <var>g</var><sub>fut</sub>'s second moment and 32% of <var>g</var><sub>now</sub>'s. Different outliers land in each half and scramble the raw directions. Trimming the top 0.1% already gives 0.80 and 0.51.</li>
+    <li><strong>The axes are symmetric and not semantic.</strong> Along each, pushing helps the future at about half the positions and hurts at the rest. They are not the residual stream's massive-activation coordinates (cosine with the mean state at most 0.12). Their most extreme contexts and J-lens decodes have no common theme. They look like generic channels through which a layer-40 state reaches later computation, with prices set locally on top.</li>
+    <li><strong>None of the steering vectors lie along them</strong> (|cosine| with the temperature vector at most 0.025).</li>
+  </ul>
+  <h3>Where the present matters</h3>
+  <p>Following protocol amendment A5, candidate good states come first. Per window, stakes is uncorrelated with how predictable the text is (r = -0.012).</p>
+  <ul>
+    <li><strong>Highest stakes:</strong> a step-by-step procedure (pursuit curves on a polygon); the Moby-Dick list "and Captain Ahab; and the leg he had lost; and the Cape Horn fit…"; a scholarly book description; Shakespeare.</li>
+    <li><strong>Lowest stakes:</strong> SEO boilerplate ("it is a good idea to look for one that has plenty of information…"), a repetitive XML form, casino spam.</li>
+    <li>Stakes is high where the present constrains a structured future, and low where the future is formulaic or noise whatever the present does. It tracks "the present matters", not "the text is easy". It is not valence.</li>
+  </ul>
+  <h3>Loops, boring text and fiction</h3>
+  <p>The group's three scenarios: degenerate loops, boring text, rich worldbuilding. Loops are the first 96 tokens of a fineweb window followed by a repeated 12-token phrase or a repeated single token. Fiction is 12 worldbuilding openings continued by the model itself at temperature 1 with no truncation. Layer 40, means.</p>
+  <div class="table"><table>
+    <thead><tr><th>Text</th><th>Windows</th><th>Level (log p)</th><th>Stakes</th><th>Now |g|</th><th>Temperature price</th></tr></thead>
+    <tbody><tr><td>Fineweb, all</td><td>1200</td><td>-2.48</td><td>0.135</td><td>0.162</td><td>+0.005</td></tr><tr><td>Fineweb, easiest tenth (&quot;boring&quot;)</td><td>120</td><td>-1.36</td><td>0.158</td><td>0.196</td><td>-0.001</td></tr><tr><td>Fineweb, hardest tenth</td><td>120</td><td>-3.53</td><td>0.149</td><td>0.188</td><td>+0.014</td></tr><tr><td>Fiction, model-written</td><td>12</td><td>-3.25</td><td>0.154</td><td>0.181</td><td>+0.001</td></tr><tr><td>Same text without the loop †</td><td>16</td><td>-2.35</td><td>0.150</td><td>0.172</td><td>+0.001</td></tr><tr><td>Phrase loop (period 12) †</td><td>16</td><td>-0.22</td><td><strong>0.035</strong></td><td>0.031</td><td><strong>-0.030</strong></td></tr><tr><td>Token loop (&quot;the the the&quot;) †</td><td>16</td><td>-1.17</td><td><strong>0.091</strong></td><td>0.164</td><td><strong>-0.087</strong></td></tr></tbody>
+  </table></div>
+  <p class="note">† Positions 100 to 158, all inside the loop, against the same positions of the same 16 windows without it. Temperature price: future part, temperature vector at layer 40.</p>
+  <ul>
+    <li><strong>Loops collapse stakes</strong>: 4× lower in phrase loops and 1.6× lower in token loops than in the same text without the loop. In a phrase loop the present barely matters, now or later.</li>
+    <li><strong>In loops, flattening would hurt</strong>: the temperature price turns negative, at 7 to 20 times its usual size. This is because what comes next is more loop. The value lens is teacher-forced: it measures what helps predict the actual continuation, so it cannot say whether the model "wants" the loop.</li>
+    <li><strong>Fiction and boring text are indistinguishable on stakes</strong> at this sample size (12 fiction windows). Level runs the other way from the expected ordering (rich &gt; boring &gt; loops): loops are the easiest text. Both the easiest and the hardest tenths have higher stakes than average.</li>
+  </ul>
+
+  <h2>VL2: Does the model represent its own stakes? <span class="chip m">Measured</span></h2>
+  <p>If the value lens can be read linearly off the residual stream, later layers could use it, which is the "represented" half of the group's criterion for a welfare-relevant state. It would also make a live readout cheap: no backward passes.</p>
+  <h3>Method</h3>
+  <ul>
+    <li>Layer-40 activations on the same windows (forward passes only). Ridge regression from the activation at <var>s</var> to each readout at <var>s</var>; fit on windows 0 to 799, ridge strength chosen on 800 to 899, tested on 900 to 1199.</li>
+    <li>Baselines: least squares on entropy, the current token's surprisal and position; and the average per current token.</li>
+  </ul>
+  <div class="table"><table>
+    <thead><tr><th>Readout</th><th>Probe R²</th><th>Within window</th><th>Entropy, surprisal, position</th><th>Per-token average</th></tr></thead>
+    <tbody><tr><td>Stakes, log |g_fut|</td><td><strong>0.38</strong></td><td>0.37</td><td>0.07</td><td>0.04</td></tr><tr><td>log |g_now|</td><td>0.56</td><td>0.55</td><td>0.40</td><td>0.08</td></tr><tr><td>Temperature price, fut</td><td>0.00</td><td>0.00</td><td>0.00</td><td>-0.02</td></tr><tr><td>Temperature price, now</td><td>0.00</td><td>0.00</td><td>0.00</td><td>-0.02</td></tr><tr><td>Band p ≈ 0.5 price, fut</td><td>0.00</td><td>0.00</td><td>0.00</td><td>-0.02</td></tr><tr><td>g_fut along its top direction</td><td>0.00</td><td>0.00</td><td>0.00</td><td>-0.02</td></tr><tr><td>Log-probability of the actual next token</td><td>0.24</td><td>0.22</td><td>0.37</td><td>0.06</td></tr><tr><td>Next-token entropy (sanity check)</td><td>0.71</td><td>0.68</td><td>1 (a feature)</td><td>0.18</td></tr></tbody>
+  </table></div>
+  <ul>
+    <li><strong>Stakes is linearly represented</strong>: R² 0.38 against 0.07 for entropy, surprisal and position and 0.04 for token identity, and about the same within windows, so it is per position. The target also depends on future tokens the model has not seen, so this is a lower bound.</li>
+    <li><strong>The direction of value is not</strong>: no price, including the stable future directions, is predictable (R² ≤ 0.005). The model encodes how much is at stake, not which way to move.</li>
+  </ul>
+  <div class="table"><table>
+    <thead><tr><th>Text (mean log stakes and log |g<sub>now</sub>|)</th><th>Windows</th><th>Stakes</th><th>Probe</th><th>Now</th><th>Probe</th></tr></thead>
+    <tbody><tr><td>Fineweb test windows</td><td>300</td><td>-2.26</td><td>-2.26</td><td>-2.62</td><td>-2.63</td></tr><tr><td>Fiction, model-written</td><td>12</td><td>-2.01</td><td>-2.07</td><td>-2.08</td><td>-2.18</td></tr><tr><td>Phrase loop †</td><td>16</td><td>-4.38</td><td>-2.88</td><td>-6.05</td><td>-5.72</td></tr><tr><td>Token loop †</td><td>16</td><td>-4.92</td><td>-3.09</td><td>-4.57</td><td>-4.51</td></tr></tbody>
+  </table></div>
+  <p>The probe was fit on fineweb only. It transfers to fiction. In loops it sees lower stakes but misses about two thirds of the collapse (in log terms), while the now size transfers well.</p>
+  <p class="note">Train and test windows here are contiguous blocks of the fineweb file, so no document is in both. (The VL1 windows sit at random offsets and 35 pairs overlap; the index split gave the same R².)</p>
+
+  <h2>VL4: Stakes when every text is model-written <span class="chip m">Measured</span></h2>
+  <p>VL1's scenarios compared model-written fiction with human web text, so authorship and genre were confounded. Here every group is written by the model. The prompts are 36 fiction openings, 36 boring openings (SEO filler, policies, listings, corporate prose) and 24 structured ones (procedures, recipes, proofs, verse, code). Each is continued at temperature 1 with no truncation, then put through the value lens as in VL1 (192 windows). Standard errors and tests use the prompt as the unit.</p>
+  <div class="table"><table>
+    <thead><tr><th>Group</th><th>Prompts</th><th>Windows</th><th>Log-likelihood</th><th>Stakes (|g_fut|)</th><th>Stakes vs human text of the same difficulty</th><th>Within-group corr(log-likelihood, stakes)</th></tr></thead>
+    <tbody><tr><td>Fiction</td><td>36</td><td>72</td><td>-3.13</td><td>0.148 (0.003)</td><td><strong>+0.010</strong> (0.003)</td><td>-0.38</td></tr><tr><td>Boring prose</td><td>36</td><td>72</td><td>-1.85</td><td>0.103 (0.003)</td><td><strong>-0.040</strong> (0.005)</td><td>-0.72</td></tr><tr><td>Structured text</td><td>24</td><td>48</td><td>-1.70</td><td>0.124 (0.006)</td><td><strong>-0.026</strong> (0.009)</td><td>-0.66</td></tr><tr><td>Fineweb (human), for reference</td><td></td><td>1,200</td><td>-2.48</td><td>0.135</td><td>0</td><td>+0.02</td></tr></tbody>
+  </table></div>
+  <ul>
+    <li><strong>Fiction has the highest stakes</strong>, above boring prose by +0.046 (p &lt; 0.001). It sits above human text of the same difficulty, as in VL1.</li>
+    <li><strong>Difficulty confounds the raw ordering.</strong> Fiction is much harder to predict than the other two. In human text stakes barely depends on difficulty (a quadratic fit has R² 0.06), so each window is compared with human text of the same log-likelihood.
+      <ul>
+        <li>Model-written boring prose then sits well below human text (-0.040), robustly: dropping its most repetitive windows changes nothing (-0.039).</li>
+        <li>Structured text also sits below (-0.026), but only its step-by-step windows do. These are derivations, assembly and recipe steps, code and patterns, which are also the ones with more than 5% repeated 4-grams. The rest (verse, proofs, an itinerary, chess notes) are at the human level (-0.006 ± 0.009, 29 of 48 windows).</li>
+        <li>Structured and boring text no longer differ: +0.014 (p 0.11), against a raw difference of +0.021 (p 0.002).</li>
+      </ul>
+    </li>
+    <li><strong>Within model-written boring and structured text, the easier a window, the lower its stakes.</strong> In human text there is no such relation.</li>
+  </ul>
+  <div class="table"><table>
+    <thead><tr><th>Group</th><th>End</th><th>Stakes</th><th>Window opening</th></tr></thead>
+    <tbody><tr><td>Structured text</td><td>lowest</td><td>0.052</td><td>Algorithm for binary search on a sorted array: / 1. Set low = 0 and high = n - 1. / 2. Compute mid =…</td></tr><tr><td>Structured text</td><td>lowest</td><td>0.057</td><td>To solve the equation 3x^2 - 12x + 9 = 0, first divide both sides by 3 to get x^2 - 4x + 3 = 0. Fact…</td></tr><tr><td>Structured text</td><td>highest</td><td>0.212</td><td>Sonnet / When winter lays its silver on the hill, / And every branch bends low beneath the snow, / W…</td></tr><tr><td>Structured text</td><td>highest</td><td>0.200</td><td>Ballad of the miller&#x27;s son / The miller&#x27;s son went down to town / With flour upon his sleeve, / The …</td></tr><tr><td>Boring prose</td><td>lowest</td><td>0.067</td><td>In today&#x27;s fast-paced business environment, it is more important than ever to have an effective mark…</td></tr><tr><td>Boring prose</td><td>lowest</td><td>0.074</td><td>Home improvement projects can add value to your home and make it a more comfortable place to live. W…</td></tr><tr><td>Boring prose</td><td>highest</td><td>0.159</td><td>Installation Instructions: Before beginning installation, please read all instructions carefully and…</td></tr><tr><td>Boring prose</td><td>highest</td><td>0.155</td><td>We use cookies to improve your experience on our website. By continuing to browse this site, you agr…</td></tr><tr><td>Fiction</td><td>lowest</td><td>0.066</td><td>When the stars over Kell began to go out one by one, the astronomers&#x27; guild sent its youngest appren…</td></tr><tr><td>Fiction</td><td>lowest</td><td>0.110</td><td>On the island where the clocks run backward, the oldest woman in the village was also the youngest, …</td></tr><tr><td>Fiction</td><td>highest</td><td>0.204</td><td>When the king outlawed music, the river barges of the Velt began to carry a new kind of cargo: the n…</td></tr><tr><td>Fiction</td><td>highest</td><td>0.186</td><td>The archive of lost recipes was kept by a family of mice who had been cooks to the old emperor, and …</td></tr></tbody>
+  </table></div>
+  <p>The lowest-stakes windows are the most predictable ones: step-by-step derivations and marketing filler. The highest are verse, a proof, meeting minutes and invented-world fiction. A conjecture: when the model writes text it finds easy, the continuation is nearly forced and many states lead to the same future, so no single state matters much. Human text that is easy to predict often still hinges on specifics such as names and numbers. That would also explain why "structured" is not one thing for stakes: derivations are low and verse is high. It is a reading of a dozen windows, not a test.</p>
+
+  <h2>VL3: What the stable axes are <span class="chip m">Measured</span></h2>
+  <p>VL1 found a small set of directions along which the future-value gradient reliably points. Here they come from unit-normalized gradients, so a few extreme positions don't dominate them. Each is read through its extreme contexts, the tokens around them, and the J-lens.</p>
+  <ul>
+    <li><strong>Every one replicates, and every one is two-sided.</strong> The top 10 directions of g_fut have split-half |cos| 0.91 to 1.00. Each is positive at 47 to 49% of positions with no skew: pushing along it helps the future at about half the positions and hurts it at the other half. Prices are set locally, around a fixed set of axes.</li>
+    <li><strong>They are not the massive-activation coordinates.</strong> The mean layer-40 state is dominated by three huge coordinates, but the subspace has cosine at most 0.12 with it. g_fut's subspace is spread out (its top 10 coordinates hold 10%); g_now's leans more on a few (25%).</li>
+    <li><strong>They are not semantically legible.</strong> The most extreme contexts reach only 5 to 7 sd and share no theme. The J-lens reads mostly rare multilingual tokens. Exceptions are punctuation and line ends on one side of three directions, and abstract Latinate words on one.</li>
+    <li><strong>The steering knobs are not in them</strong> (|cos| with the temperature vector at most 0.025).</li>
+  </ul>
+  <p>These look like the generic routes by which a layer-40 state affects later computation, rather than represented objects or goals.</p>
+
+  <h2>H2: Does the model forecast its own future predictability? <span class="chip m">Measured</span></h2>
+  <p>Step 3 of the Value Lens proposal: can the state predict how hard the coming text will be, beyond what the model already knows about how hard it has been? This is prediction, not valence. It is the "represented" half of the criterion.</p>
+  <ul>
+    <li><strong>Target:</strong> mean surprisal of the next 8 or 32 tokens after the next one.</li>
+    <li><strong>Baseline</strong> (all known at the current position): current entropy, mean surprisal over the last 32 and last 8 tokens (the slow document variable from S1), the current token's surprisal, position.</li>
+    <li><strong>Combined:</strong> the baseline plus a ridge probe from the layer-40 state to what the baseline misses. Held-out documents only.</li>
+  </ul>
+  <div class="table"><table>
+    <thead><tr><th>Target</th><th>Baseline R²</th><th>State alone</th><th>Combined</th><th>Added by the state</th></tr></thead>
+    <tbody><tr><td>Next 8 tokens</td><td>0.159</td><td>0.177</td><td>0.207</td><td><strong>+0.048</strong></td></tr><tr><td>Next 32 tokens</td><td>0.256</td><td>0.248</td><td>0.305</td><td><strong>+0.049</strong></td></tr></tbody>
+  </table></div>
+  <p><strong>H2 holds, modestly.</strong> The state carries about 0.05 of R² about the coming text's difficulty beyond the running averages, on documents it was not fit on. The proposal's falsifier was no added R².</p>
+
+  <h2>H3: Does the model lean toward easy futures? <span class="chip m">Measured</span></h2>
+  <p>The Value Lens proposal's test of whether valuation is upstream of behavior. Does the model give more probability to next tokens that lead to easier futures than real text supports? A model that steered itself toward comfortable states would show it here.</p>
+  <ul>
+    <li><strong>Data:</strong> 1,408 held-out fineweb windows, 6 positions each (8,448 positions).
+      <ul>
+        <li>At each position, each of the model's top 8 candidates is continued 4 times for 16 tokens, at temperature 1 with no truncation.</li>
+        <li>Every candidate gets the same random numbers, so differences between candidates are not sampling luck.</li>
+      </ul>
+    </li>
+    <li><strong>Ease of a candidate's future (V):</strong> minus the mean next-token entropy over the 16 steps after it.</li>
+    <li><strong>Fit:</strong> a conditional logit over the 8 candidates against the token that actually came next, q(x) ∝ exp(a·log p(x) + b·V(x)).
+      <ul>
+        <li>b &lt; 0 is a lean: the model over-weights easy futures.</li>
+        <li>b &gt; 0: real text goes to easy futures more often than the model expects.</li>
+        <li>Only positions where the actual token is in the top 8 are used (6,625, 78%). Standard errors come from resampling windows.</li>
+      </ul>
+    </li>
+    <li><strong>Rollout noise:</strong> within a position, V varies by 0.33 nats. Two halves of the rollouts agree at r = 0.35, so V from all 4 has reliability about 0.52.</li>
+  </ul>
+  <h3>Positive control</h3>
+  <p>Synthetic outcomes are drawn from the model's own probabilities tilted by β times V from one half of the rollouts. They are then fit with V from the other half, which has independent noise.</p>
+  <div class="table"><table>
+    <thead><tr><th>True tilt β</th><th>Recovered b (other half)</th><th>Recovered b (same half)</th></tr></thead>
+    <tbody><tr><td>-1.00</td><td>-0.224</td><td>-1.009</td></tr><tr><td>-0.50</td><td>-0.163</td><td>-0.505</td></tr><tr><td>-0.25</td><td>-0.108</td><td>-0.253</td></tr><tr><td>+0.00</td><td>+0.000</td><td>+0.031</td></tr><tr><td>+0.25</td><td>+0.047</td><td>+0.223</td></tr><tr><td>+0.50</td><td>+0.088</td><td>+0.515</td></tr><tr><td>+1.00</td><td>+0.223</td><td>+0.973</td></tr></tbody>
+  </table></div>
+  <p>The test passes. With the same half it recovers β, and the null (β = 0) sits near zero. With independent noise b keeps the right sign but shrinks to between a fifth and two fifths of β, so real-text values of b are strongly attenuated.</p>
+  <h3>Real text</h3>
+  <div class="table"><table>
+    <thead><tr><th>Model</th><th>b</th><th>SE</th><th>b / SE</th></tr></thead>
+    <tbody><tr><td>Ease of the future (V)</td><td><strong>+0.154</strong></td><td>0.053</td><td>+2.9</td></tr><tr><td>+ token frequency and classes</td><td>+0.158</td><td>0.063</td><td>+2.5</td></tr><tr><td>+ the token&#x27;s own average V (within-token)</td><td>+0.151</td><td>0.062</td><td>+2.4</td></tr><tr><td>+ all of these</td><td>+0.151</td><td>0.062</td><td>+2.4</td></tr><tr><td>Next step&#x27;s entropy (fit jointly)</td><td>+0.022</td><td>0.014</td><td>+1.6</td></tr><tr><td>Steps 2 to 16 (fit jointly)</td><td>+0.126</td><td>0.058</td><td>+2.2</td></tr><tr><td>Realized surprisal instead of entropy</td><td>+0.081</td><td>0.046</td><td>+1.8</td></tr></tbody>
+  </table></div>
+  <ul>
+    <li><strong>No lean; a small effect the other way.</strong> b = +0.15 (95% interval +0.05 to +0.26). The actual next token is more often the candidate with the easier future than the model's own probabilities say.
+      <ul>
+        <li>For scale, in the control a lean of β = −0.25 shows as b = -0.11 and β = −0.5 as -0.16.</li>
+        <li>It survives token frequency and class and the token's own average V, so it is a contrast within token types.</li>
+        <li>Both the next step and the 15 after it contribute: +0.027 and +0.041 nats of log-odds per standard deviation. The next step's entropy has no rollout noise, so the later steps' true share is larger.</li>
+        <li>It is strongest where the model is already confident: b = +0.47 (SE 0.16) at positions with entropy below 1 nat.</li>
+      </ul>
+    </li>
+    <li><strong>It is small.</strong> +0.05 nats of log-odds per standard deviation of V, perhaps 2 to 3 times that without rollout noise. Fit quality improves by 0.0005 nats per position. Within its top 8 the model is also slightly over-confident (a = 0.92).</li>
+    <li><strong>What it can't separate:</strong> this measures the model's net miscalibration along V. A lean in the model and a tendency of human text toward predictable continuations would add up.</li>
+    <li><strong>Not the copy choice itself.</strong> A candidate that repeats earlier text has an easy future, so the model under-predicting repetition would also give b &gt; 0.
+      <ul>
+        <li>With indicators for the candidate occurring earlier in the window, or continuing an earlier bigram or trigram, b stays +0.15 (SE 0.06). The indicators themselves come out near zero: the model is already calibrated about copying.</li>
+        <li>But b is larger at positions where some candidate continues an earlier bigram (+0.34, SE 0.14) than where none does (+0.11, SE 0.06). So the effect is partly concentrated in passages where copying is possible.</li>
+      </ul>
+    </li>
+  </ul>
+
   <h2>Exposure log</h2>
   <p>Following the group's Three Rs protocol, every steered run is logged in <code>welfare_log.csv</code>. So far: 229,759 generated tokens across 2,544 contexts in free-running perturbed states (K4, K4b), and 8.9 million positions processed under teacher-forced steering (S2(c) sweep, S2(d)). The free-running runs used humane endpoints, which cut most incoherent runs at about 16 tokens.</p>
 
@@ -337,6 +512,7 @@ figcaption { font-size: 0.92rem; color: var(--muted); margin-top: 4px; }
     <li><strong>Doses.</strong> S2 to S2(c) used small doses (up to 0.5× the residual norm). S2(d) tested large doses separately and found no band direction there either. Its multi-layer ladder started too high (0.25 per layer already destroys the output), so K4b used much lower doses.</li>
     <li><strong>K4 sampling.</strong> Temperature 1, no truncation, no repetition penalty. Hands-on setups (lower temperature, top-p, penalties) shift the balance between loops and incoherence. With 16 prefixes, fractions are resolved to 1/16.</li>
     <li><strong>One model, linear tools.</strong> Probes and steering vectors are linear and position-independent. The steering nulls do not exclude nonlinear or position-dependent mechanisms.</li>
+    <li><strong>The value lens is teacher-forced and local.</strong> Prices are first-order (gradients) and measured against the text that actually follows, so they describe what would help predict this continuation, not what the model would choose. Stakes is a candidate "what matters now" variable, not a measure of valence.</li>
     <li><strong>Optimizer settings.</strong> The sweep uses 60 steps per layer (the layer-40 run used 200; its control reached 62% at step 60 against 72% at step 200).</li>
   </ul>
 
@@ -344,13 +520,14 @@ figcaption { font-size: 0.92rem; color: var(--muted); margin-top: 4px; }
   <ul>
     <li><strong>Concept vectors and loops:</strong> build a concept vector on GLM, measure its component along the temperature axis, and run it through K4 and K4b.</li>
     <li><strong>K1, kick test:</strong> does the slow surprise level return after a forced surprising token faster than evidence alone predicts? Needs fresh rollouts with min_p = 0.</li>
-    <li><strong>The value lens:</strong> pricing directions by their effect on future predictability, with candidate good states as its first readout (protocol amendment A5).</li>
+    <li><strong>Steer along the stable future-value axes</strong> under K4 endpoints, to see what they do to text.</li>
+    <li><strong>An exact mode for prices in the loom.</strong> The live stakes readout from the VL2 probe is built (llama-server <code>--value-probe</code>, a "value" view in minloomwebui).</li>
   </ul>
 
   <h2>Where things are</h2>
   <ul>
-    <li>Data: <code>/mnt/models/homeo/</code> (<code>s1</code>, <code>s2</code>, <code>s2b</code>, <code>band2</code>, <code>logits</code>, <code>s2opt</code>, <code>s2sweep</code>, <code>s2big</code>, <code>k4</code>)</li>
-    <li>Analysis: <code>homeo/s1_probe.py</code>, <code>s2_make_vecs.py</code>, <code>s2b_band_vecs.py</code>, <code>s2b_summarize.py</code>, <code>s2c_logit_identity.py</code>, <code>s2sweep_summary.py</code>, <code>s2d_within_token.py</code>, <code>k4_loop_summary.py</code>, <code>log_tf_exposure.py</code>; this report: <code>homeo/results_report.py</code></li>
+    <li>Data: <code>/mnt/models/homeo/</code> (<code>s1</code>, <code>s2</code>, <code>s2b</code>, <code>band2</code>, <code>logits</code>, <code>s2opt</code>, <code>s2sweep</code>, <code>s2big</code>, <code>k4</code>, <code>value</code>, <code>value_scen</code>, <code>value_scen2</code>, <code>value_probe</code>, <code>lean</code>)</li>
+    <li>Analysis: <code>homeo/s1_probe.py</code>, <code>s2_make_vecs.py</code>, <code>s2b_band_vecs.py</code>, <code>s2b_summarize.py</code>, <code>s2c_logit_identity.py</code>, <code>s2sweep_summary.py</code>, <code>s2d_within_token.py</code>, <code>k4_loop_summary.py</code>, <code>value_lens.py</code>, <code>value_scenarios_prep.py</code>, <code>value_scenarios.py</code>, <code>value_probe.py</code>, <code>value_forecast.py</code>, <code>value_directions.py</code>, <code>value_structure_robust.py</code>, <code>value_scenarios2.py</code>, <code>lean_fit.py</code>, <code>lean_copy.py</code>, <code>value_readout_export.py</code>, <code>log_tf_exposure.py</code>; this report: <code>homeo/results_report.py</code></li>
     <li>Tools: <code>llama.cpp/tools/homeo/</code> and <code>llama.cpp/tools/jspace/</code></li>
     <li>Running notes: <code>NOTES-homeostasis.md</code></li>
   </ul>

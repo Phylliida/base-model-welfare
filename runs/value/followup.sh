@@ -14,7 +14,7 @@ rm -rf $S/out   # a re-run of the prep must not resume stale windows against a n
 ~/.venv/bin/python homeo/value_scenarios_prep.py --out $S
 N=$(~/.venv/bin/python -c "import json; print(len(json.load(open('$S/manifest.json'))))")
 ./llama.cpp/build-avx2/bin/homeo-value -m $M --ids $S/scenario_ids.bin --stride 192 --n-windows $N --out $S/out \
-  --n-tokens 192 --skip 32 --horizon 32 --short 8 --layer 40 --read 44,50,56 > $S/run.log 2>&1
+  --n-tokens 192 --skip 32 --horizon 32 --short 8 --layer 40 --read 44,50,56 --pause-ms 250 > $S/run.log 2>&1
 tail -n 1 $S/run.log | awk '/finished/ {ok=1} END {exit !ok}'
 ~/.venv/bin/python homeo/value_lens.py $V --json $V/summary.json --examples 4 > $V/summary.txt 2>&1
 ~/.venv/bin/python homeo/value_lens.py $V --clean --json $V/summary_clean.json --examples 4 > $V/summary_clean.txt 2>&1
