@@ -901,6 +901,43 @@ Goal: the closed-loop response matrix M for a larger basis, with no pushes (no e
 
   - Same families as the PCA-basis result at twice the strength: text structure is held steady (sentence length, state norm); genre and register are reinforced. Nothing valence-like in the top directions; personal / emotional text appears only as one pole of amplified register axes.
   - The effector pieces '|', '_of', '_text', 'end', 'begin', '><' are the literal text "<|end_of_text|><|begin_of_text|>" the model writes at document boundaries, so the sentence-end variable includes document ends.
+- **Every layer** (`runs/score/layers_describe.sh` -> `sweep.describe_cap64.txt/.json`). Per layer: a 128-direction greedy capacity basis from that layer's 10,240 sweep continuations (GPU, 30 s), the response matrix in its top 64 directions, a within-prompt null and 10 split halves, and the top 3 directions per side with effector readout, J-lens decode and cosines with the layer-40 directions. Effector lists are restricted to tokens written in >= 10% of prompts (rarer ones were single-prompt topic words).
+  - Held-out top kappa by depth (pushed back / amplified):
+    - L0-18: ~0 (nulls +-0.2 to +-0.9; capacity ceilings are huge at the bottom, where the readout is mostly token identity, but nothing correlates).
+    - L19-32: +0.01 -> +0.08 / -0.03 -> -0.11.
+    - L33-47: up to +0.22 (L42) / up to -0.30 (L46).
+    - L48-55: +0.02-0.07 / about -0.22.
+    - L56-57: +0.10-0.13 / -0.24 to -0.27.
+    - L58: +0.25 / -0.39. L59: +0.52 / -0.65. L60: +1.13 / -1.18.
+  - Families (top directions, cos 0.6-0.8 with the layer-40 ones across L30-51):
+    - Pushed back: (1) the sentence / document-boundary thermostat (one pole writes . .\\n "<|end_of_text|>" pieces, the other , and the or), present L30-51, strongest at L42 (+0.25, held-out +0.22); (2) plain function words (that you we it just) vs proper nouns (National, River, Center) = the state-norm direction, L40-44.
+    - Amplified: personal / chatty (it I you ! just) vs institutional / research (research services Center students health), and prose (the that to are) vs structured / markup (| \\n : / digits), L33-57.
+  - The last layers (58-60) are a different regime. Pushed-back and amplified directions both move function words (the a is of) against markup / parentheses, with kappa > 1 at L60 (writing overshoots). Near the output these are token-level dynamics (alternation: having written "the", the next state predicts something else; mode persistence for prose vs markup), not internal state variables.
+  - No valence-like variable at any layer among the top directions; personal / emotional text is one pole of amplified register axes throughout.
+  - Limits: 64 prompts per layer resolve only the top ~2 directions per side; the sensor side (natural-text behaviour) exists only at L40 (VL2 states).
+- **Writeup:** "What a base model regulates, layer by layer", https://claude.ai/artifact/9QajpPb6b8tB8vJ8h5dDfE (depth-profile chart, regimes, families, a per-layer table tab). Built from sweep.describe_cap64.json and sweep.sweep.json.
+- **Layer-by-layer sections** (2026-10-19): the writeup's second tab, renamed "Layer by layer", now has a section per layer (`homeo/score_layer_sections.py`). Writing them out showed that the fixed layer-40 directions, measured directly, are weakly active well below where the search resolves anything: traces (< 1.5%) from layer 7, kappa +0.02 to +0.04 (sentence) and -0.02 to -0.04 (formal vs casual) at layers 14-26, each > 3 SE. The main tab's lead and regimes row were corrected to say so.
+- **Sensor side at every layer** (2026-10-19; user asked whether non-40 layers were analysed independently). Before this, each layer's directions, kappa, nulls, split halves and effectors were per-layer, but the family names came from cosine with the layer-40 directions and the natural-text reading existed only at layer 40.
+  - Neighbour check (reference-free): each layer's top direction has |cos| 0.8-0.97 with a top direction of the next layer over 27-53. The pushed-back chain stays recognisable over ~26-51 and the amplified one over ~30-56. Push-back breaks after 52.
+  - Capture: `homeo-capture --proj` (new mode: per-layer projection on that layer's top-64 capacity basis plus 14 fixed directions, and |h|; `--pause-ms`), same 1,200 FineWeb rollouts as value_probe/main, 192,000 positions x 61 layers, 3.5 GB (`runs/score/sense.sh` -> /mnt/models/homeo/score/sense). Layer 40 matches the stored acts_L40 projected offline (corr 0.9999998). Exposure: none.
+  - Analysis: `homeo/score_sensor.py` (183 directions clear the noise, layers 27-60; correlations of u.h, also with |h| divided out, against context features; profile by tokens since sentence end; top contexts). |h| itself tracks none of the features (|r| <= 0.23 mid-stack), and dividing it out strengthens the family correlations (sentence 0.33 -> 0.49, pronouns 0.25 -> 0.36, markup 0.36 -> 0.40).
+  - Loop test (`homeo/score_sense_loop.py`): sensor (natural text) x effector (sweep, numeric per feature) predicts the measured side for 264/265 direction-feature pairs (sentence ends 45/45, markup 58/58, pronouns 46/46, function words 53/54, names 62/62). This shows coherence, not which feature is primary: kappa and the effector share samples, and the features correlate.
+  - Families from each direction's own sensor (`homeo/score_sense_families.py`; strongest signal):
+
+    | family | side | where (rank) | median sensor \|r\| | peak held-out |
+    |---|---|---|---|---|
+    | sentence position (gradual) | pushed back | top 29-34, 36-49, 51; lower ranks to 58 | 0.45 | +0.22 (L42) |
+    | names (vs pronouns), strongly \|h\|-tied | pushed back | rank 1-2 at 31-46 | 0.25 | +0.14 (L42) |
+    | chatty vs institutional | amplified | top 27-40, rank 1 41-48, rank 2 49-58 | 0.33 | -0.25 (L42) |
+    | prose vs structured | amplified | rank 1 34-40, top 41-56 | 0.35 | -0.30 (L46) |
+    | break vs continue (spike at a sentence/line end at the current token) | amplified | rank 1 29-32, rank 2 36-47, top 57-60 | 0.27 | -1.18 (L60) |
+    | break (current token) | pushed back | top 57-60 | 0.28 | +1.13 (L60) |
+    | next-token entropy / predictability (tentative: its loop test is not discriminating) | amplified | rank 1 48-59 | 0.36 | -0.20 (L59) |
+    | unclear | both | mostly rank 2, and top push-back at 52-56 | 0.13 | |
+
+  - Corrections to the writeup's labels: amplified at 51-56 is prose vs structured (not "function words vs markup"); amplified rank 1 at 49-58 is the entropy family; top push-back at 52-56 is unclear (not sentence boundary); the output regime starts ~57 (break family on both sides); a break-vs-continue amplifier exists at 29-47 (rank 1-2).
+  - Representation vs regulation: the layer-40 sentence direction reads sentence position from layer 4 (r -0.56 at L4-14, -0.43 at L40), and the formal-vs-casual direction reads pronoun density from layer 8 (+0.26), yet their loop through writing is ~0 below layer 7 and only +-0.02-0.04 at 14-26. Represented early; regulated only in the upper half.
+- **Writeup updated with the sensor side** (2026-10-19). Main tab: lead and regimes corrected (output regime 57-60); "Six variables, each identified at its own layer" table replaces the four-family table; new section "Represented early, regulated late" with a two-panel chart (layer-40 sentence and formal-vs-casual directions: reading |r| flat ~0.5 / ~0.3 from layer 4; regulation < 0.01 through layer 11, peak 0.11 at L43 and 0.17 at L46); method, last-layers, welfare and limits sections updated. "Layer by layer" tab regenerated (`homeo/score_layer_sections.py`): every interpreted direction leads with its natural-text reading (|h| divided out, contexts picked on u.h/|h|), family from that reading, then effector; layers 0-26 report how strongly the layer-40 variables are read and regulated. Family "names vs pronouns" renamed "proper names" (its own reading is being inside a name). A few FineWeb spam contexts (ED drugs, profanity) were left out of the doc.
 - **Next: layer sweep.** All 61 layers, ~10k continuations on fresh prompts, window 13-31 only (~15 GB): per-layer spectra and capacity profiles. Then deep runs at the interesting layers. The user wants the same results at every layer eventually.
 
 ## Measured instrument facts

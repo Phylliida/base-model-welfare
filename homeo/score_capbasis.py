@@ -41,6 +41,7 @@ ap.add_argument('--pca-basis', default='/mnt/models/homeo/ident/basis_pca256_L40
 ap.add_argument('--steps', type=int, default=200)
 ap.add_argument('--all', action='store_true')
 ap.add_argument('--gpu', action='store_true')
+ap.add_argument('--basis-only', action='store_true', help='only build the basis on all samples and save it (no halves, no certificate)')
 a = ap.parse_args()
 dev = 'cuda' if a.gpu else 'cpu'
 torch.set_grad_enabled(False)
@@ -55,8 +56,10 @@ prompts = run.whole_prompts()
 rng = np.random.default_rng(0)
 perm = rng.permutation(prompts)
 halves = {'A': np.isin(prompt, perm[:len(perm) // 2]), 'B': np.isin(prompt, perm[len(perm) // 2:])}
-if a.all:
+if a.all or a.basis_only:
     halves['all'] = np.isin(prompt, prompts)
+if a.basis_only:
+    halves = {'all': halves['all']}
 hn = 257.1  # mean |h_40| of the plan B runs, for printing sigma in |h| units
 
 
@@ -77,8 +80,9 @@ def moments(mask):
 
 
 mats = {h: moments(m) for h, m in halves.items()}
-print(f'{a.prefix}: layer {layer}, {halves["A"].sum()} / {halves["B"].sum()} samples in halves A / B ({len(prompts)} whole prompts); '
-      f'lags {a.window}; moments {time.time() - t0:.0f} s', flush=True)
+if not a.basis_only:
+    print(f'{a.prefix}: layer {layer}, {halves["A"].sum()} / {halves["B"].sum()} samples in halves A / B ({len(prompts)} whole prompts); '
+          f'lags {a.window}; moments {time.time() - t0:.0f} s', flush=True)
 
 
 def cap(u, S, F):
@@ -137,6 +141,16 @@ def greedy(S, F, n_basis):
 ks = [int(x) for x in a.checkpoints.split(',') if int(x) <= a.n_basis]
 Qp = torch.from_numpy(np.fromfile(a.pca_basis, dtype=np.float32).reshape(-1, D).astype(np.float64)).T.to(dev)  # D x 256
 
+tag = '' if len(run.layers) == 1 else f'.L{layer}'
+if a.basis_only:
+    S, F = mats['all']
+    Ball, cap_all = greedy(S, F, a.n_basis)
+    Ball.T.contiguous().cpu().numpy().astype(np.float32).tofile(a.prefix + tag + '.capbasis.f32')
+    json.dump({'layer': layer, 'window': a.window, 'n': int(halves['all'].sum()), 'cap_all': cap_all},
+              open(a.prefix + tag + '.capbasis.json', 'w'), indent=1)
+    print(f'layer {layer}: basis of {a.n_basis} on {halves["all"].sum()} samples -> {a.prefix}{tag}.capbasis.f32; capacity '
+          + ' '.join(f'{c:.2f}' for c in cap_all[:6]) + f' ... {cap_all[-1]:.2f} ({time.time() - t0:.0f} s)', flush=True)
+    sys.exit(0)
 S_A, F_A = mats['A']
 S_B, F_B = mats['B']
 BA, capA = greedy(S_A, F_A, a.n_basis)
@@ -157,7 +171,6 @@ for k in ks:
     share = float((Qp.T @ BA[:, :k]).norm() ** 2 / k) if (k and layer == 40) else float('nan')
     print(f'  {k:4d}  {cbA:16.3f} {cbB:10.3f}   {cpA:11.3f} {cpB:10.3f}   {share:10.2f}', flush=True)
 
-tag = '' if len(run.layers) == 1 else f'.L{layer}'
 out = {'layer': layer, 'window': a.window, 'n_A': int(halves['A'].sum()), 'n_B': int(halves['B'].sum()), 'cap_A': capA, 'cap_B': capB.tolist()}
 if a.all:
     S, F = mats['all']
