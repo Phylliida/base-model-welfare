@@ -119,7 +119,7 @@ for di, dose in enumerate(doses):
             wA, VA = sym_eig(MA)
             cross = [float(-(VA[:, i] @ MB @ VA[:, i])) for i in range(3)]
             cross_amp = [float(-(VA[:, -1 - i] @ MB @ VA[:, -1 - i])) for i in range(3)]
-            say(f'   M fitted ({K}x{K}): trace/K {np.trace(M) / K:+.4f}; most pushed back kappa {-w[0]:+.3f} '
+            say(f'   M fitted ({K}x{K}): mean kappa of a random direction (-trace/K) {-np.trace(M) / K:+.4f}; most pushed back kappa {-w[0]:+.3f} '
                 f'(null 95%: {-np.percentile(nul_lo, 5):+.3f}), most amplified {-w[-1]:+.3f} (null 5%: {-np.percentile(nul_hi, 95):+.3f})')
             say(f'   split halves: top-3 pushed-back directions of half A have kappa on half B {", ".join(f"{x:+.3f}" for x in cross)}; '
                 f'top-3 amplified {", ".join(f"{x:+.3f}" for x in cross_amp)}')

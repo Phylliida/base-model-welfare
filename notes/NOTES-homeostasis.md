@@ -808,6 +808,100 @@ Goal: the closed-loop response matrix M for a larger basis, with no pushes (no e
   3. **Screen, then confirm.** The score method at a coarse +-0.05 over the large basis, then targeted probing of the top ~10 directions (and welfare-relevant candidates) at +-0.01.
 - **Estimate.** K = 128 screen at +-0.05 with lever 2: ~13k sequences (1-2 h GPU), plus ~3.5k confirmation sequences (~15 min).
 - **Validation first.** Reproduce the main run's 32x32 M (sentence progress +0.14, register -0.17) on the same basis and prompts with ~10k unpushed samples (edge ~+-0.05).
+- **Loop-capacity bound** (`homeo/ident_capacity.py`, 2026-10-18).
+  - Cauchy-Schwarz on the identity gives |kappa(u)| <= sigma_u sqrt(I_F,u): effector (how far writing moves the state along u) times sensor (how strongly the output reads u).
+  - Inputs: sigma from 180k early-diverged main-run sequences; I_F from 3600 VL1 windows (now + fut, so it counts up to 32 tokens past the window; probably an overestimate).
+  - The bound holds for all 8 found directions and 2000 random ones.
+  - kappa / bound: sentence progress +0.34, state size +0.17, sentence-end markers +0.13 / +0.09; amplified -0.24 to -0.28; random directions 0.09 (median, in size).
+  - Largest bound in the subspace 0.75, against largest |kappa| 0.17.
+  - Found directions have sigma_u ~2x the basis median.
+  - Uses: a self-check for the score method, the per-sample noise of the score estimate along u (~ the bound), and a capacity-ranked basis via the top eigenvectors of lambda Sigma + F / lambda.
+  - Correction to the plan: a critic baseline that depends on the text so far is unbiased only with per-token or per-group scores (several backward passes). With one total score, the baseline may depend on the prompt only (leave-one-out mean of other continuations).
+- **Proposal doc:** "Proposal: measuring push-back without pushing", https://claude.ai/artifact/XbCLEV6rfACZi76ZfBkSwm
+- **Step 1, the tool** (`llama.cpp/tools/homeo/homeo-score.cpp`, 2026-10-18).
+  - Generation by llama.cpp: 32 continuations in parallel, independent random streams, T=1 untruncated.
+  - G from the jspace chunk graphs over the same weights in VRAM: an adapter over llama_model's tensors as in the server, with token_embd forced onto CUDA0. The prefix keys/values are computed once per prompt. The gradient batches 4 continuations through a block-diagonal mask, and the graphs are built once and reused.
+  - Stored per continuation: full 6144-dim G and readouts R over lags 1-4, 5-12, 13-31.
+- **Checks** (no pushes, so no exposure).
+  - A recompute of the same batch is bit-identical.
+  - Per-token log p matches llama.cpp to ~0.01 nats; a mask or position error would show far larger differences.
+  - Against jlens_value_exact on the whole text: states differ by 2.5% and G by 8-15% (cos 0.992-0.997). The reference itself differs from its own unchunked forward by the same amount (2.6% states, 13% gradients), while reference chunks 32 and 64 are bit-identical.
+  - So this is the layout-dependent noise floor of the 4-bit model (see "Kernel noise floor" in VL5): on Ampere every quantized matmul above 8 tokens uses MMQ, and summation-order changes flip q8_1 activation rounding, which compounds over 40 layers.
+  - The G error is random in direction, so it adds ~1% variance.
+- **Speed.** 32 continuations take 1.8 s to generate and 2.6 s for gradients (0.14 s per sequence). Gradient batches of 8 gain little.
+- **Step 2, validation run** (`runs/score/validate.sh`, started 2026-10-18 15:20): the main run's 32 prompts x 320 continuations, with the fan guard on val.pause_ms.
+  - Early read, after 256 continuations of prompt 0 alone: kappa along the probing directions (lags 13-31) is sentence progress +0.106 +- 0.025 (probing +0.137), formal/casual -0.166 +- 0.032 (-0.173), hedging -0.165 +- 0.037 (-0.148), buzzword -0.145 +- 0.032 (-0.116).
+  - The per-sample noise along a direction is about the capacity bound, as predicted.
+- **Step 2 result** (10,240 continuations; `val.fit.txt`). The score method reproduces probing.
+  - Mean score check: chi2 30.8 on 32 dof, so E[S] = 0 holds despite sampling with llama.cpp and taking gradients with jspace.
+  - Lags 13-31 vs the probing main run (same basis): symmetric-part entries correlate 0.955; top pushed-back eigenvectors cos 0.97, top amplified 0.77 (the amplified side has near-degenerate eigenvalues).
+  - Spectrum +0.108, +0.060, +0.030 ... -0.100, -0.123, -0.146 (probing +0.137, +0.071, +0.035 ... -0.116, -0.148, -0.173).
+  - Null edge +-0.028 at 10k sequences (probing +-0.025 at 190k): ~18x fewer sequences, better than the theory's +-0.05.
+  - Split halves 20/20 on both sides.
+  - Along the probing directions: sentence progress +0.104 +- 0.004 (probing +0.137), state size +0.058 (+0.071), formal/casual -0.132 (-0.173), hedging -0.125 (-0.148), buzzword -0.097 (-0.116), abstract -0.076 (-0.096). The weakest probing direction (+0.025) is +0.002 here.
+  - Magnitudes are 15-25% smaller. Likely real dose dependence: score = zero-push derivative, probing = 0.25 x |h|; random-direction kappa is -0.023 here, -0.026 at 0.25 (main run), -0.048 at 0.5 (pilot 2). A little winner's curse also inflates probing's own top directions (its split-half value for sentence progress was +0.124). Test: targeted probing at two doses (step 5).
+  - Lags 5-12 agree similarly (entry correlation 0.84, top pushed-back cos 0.95); lags 1-4 less (0.57).
+- **Full-space capacity basis** (`homeo/score_capbasis.py`).
+  - Greedy: u_k = argmax c(u) on the complement of u_1..u_{k-1}.
+  - Certificate: max c on the complement <= min over lam of lambda_max(P(lam S + F/lam)P)/2 (AM-GM), computed with LOBPCG.
+  - Built on half the prompts, evaluated on the other half.
+  - Smoke test (4.5k samples): held-out capacity of the top directions ~0.5-0.6, but in-sample values are inflated ~3x at n/D < 1. The screen gives n/D ~ 4 per half.
+- **Multi-layer capture** (`homeo-score --layers all|list --max-group 21`).
+  - The backward runs top-down in chained groups; the gradient at every block output inside a group is kept, giving per-layer G_L and R_L (f16).
+  - Checks: bit-identical at every layer for group sizes 21 vs 13; layer 40 matches the single-layer path to f16 rounding (2e-4); layer 20 vs jlens_value_exact is at the noise floor (states 1.7%, G 10-15%, the reference vs its own unchunked run 1.6% / 10%).
+  - Cost: 2.7x the single-layer gradient time for all 61 layers.
+  - Storage: 1.5 MB per continuation for 61 layers with one readout window.
+  - |G_L| grows toward the bottom (L0 73, L24 5.9, L40 ~2, L60 0.6).
+- **Screen** (`runs/score/screen.sh`, started 16:20, paused 16:57-17:12 for the multi-layer tests, resumed): 160 fresh FineWeb windows x 320, layer 40.
+- **Independent code audit** (2026-10-18 evening, a separate agent, read-only, CPU only). No critical bugs; nothing changes the validation results or the screen; no code-level cause for the ~20% gap.
+  - Fixed, major: score_fit.py ran the probing comparison in any basis at layer 40 (spectra compared across bases); now only in the probing run's own basis and K.
+  - Fixed, major: homeo-score shared one gallocr across the backward groups, each keeping its first-batch addresses. If a lower group's plan grew the buffer, the head group would run on freed memory. Now every group graph is reserved before the first allocation, and the buffer size is checked every batch. It was benign so far (the head group is largest, and the 21 vs 13 test was bit-identical). The sweep now waits behind a gate (runs/score/sweep_gated.sh): a 21 vs 13 bit-identity test over 4 gradient batches.
+  - Fixed, minor: resume refuses a different configuration (compares meta) and trims a partial last record; inverse-CDF sampling normalized (0 affected samples in val and screen); the certificate uses eigvalsh (LOBPCG's Rayleigh quotient is <= lambda_max, so not a bound); seeded greedy; ident_fit prints -trace/K.
+  - Per-direction SE is now clustered by prompt: sentence progress +-0.009, not +-0.004.
+  - ident_capacity.py's sigma is biased low (CRN-shared diverged arms: 0.0388 vs 0.0414 direct); superseded by the score data.
+  - The gap is real, not selection. Prompt-paired probing minus score is -0.0034 +- 0.0008 for the random-direction mean, +0.033 +- 0.0095 for sentence progress, and symmetric-entry scale 1.14 (bootstrap 1.11 +- 0.03). Directions chosen on the score data are also larger in probing.
+  - It is consistent with dose convexity: pilot 2's paired 0.5 - 0.25 difference is -0.0198 +- 0.0034.
+  - Caveat: probing reuses one sampling realization per prefix (CRN), so its own uncertainty does not shrink with more probes (~+-0.015 for sentence progress).
+  - Decisive test: targeted two-dose probing.
+- **Screen finished** 2026-10-18 21:40: 51,200 records, no partial record.
+- **Sweep gate** (21:45): both gate runs completed, but the automatic comparison crashed on a reader bug. score_io.py used `m.get('layers', [m['layer']])`, whose default is evaluated eagerly, and multi-layer meta no longer has "layer". Fixed. Rerun by hand: 0.0 difference over all 61 layers (G and R), groups 21 vs 13, 16 continuations = 4 gradient batches, with the reserved allocator.
+- **Sweep started** 21:48 (runs/score/sweep.sh, fan guard attached): 6.8 s of gradients per 32 continuations for all 61 layers.
+- **Screen capacity, layer 40** (`screen.capbasis.log`, 25,600 samples per half).
+  - Greedy held-out capacity spectrum: 0.46, 0.36, 0.36, 0.30, 0.56 (directions 1-5), then 0.42 (8), 0.26 (16), 0.19 (32), 0.10 (64), 0.06 (128), 0.04 (256). Capacity is concentrated: beyond ~64 directions nothing can be regulated by more than ~0.1.
+  - The AM-GM certificate on the remainder falls to 0.054 after 256 directions on the build half but stays at 0.41 on the held-out half (whole space 1.33 vs 1.86 between halves). Not certified at n/D ~ 4: covariance noise and probably prompt-specific high-capacity directions.
+- **Layer sweep result** (`sweep.sweep.txt`; 64 fresh prompts x 160; each layer's own top-32 within-prompt PCA basis; lags 13-31; split-half and null per layer).
+
+  | layers | most pushed back (held-out) | most amplified (held-out) | random-direction mean |
+  |---|---|---|---|
+  | 0-13 | <= +0.03, mostly within the null (+-0.02-0.07) | >= -0.035 | ~0 |
+  | 14-32 | +0.04 -> +0.056 (+0.02 -> +0.05) | -0.05 -> -0.085 | -0.005 -> -0.013 |
+  | 33-47 | +0.07 -> +0.13, peak L42-44 (+0.12) | -0.10 -> -0.26, peak L46-47 (-0.25) | -0.015 -> -0.053 |
+  | 48-57 | +0.08 -> +0.035 | -0.25 -> -0.18 | -0.05 -> -0.03 |
+  | 58-60 | +0.065, +0.12, +0.23 at L60 (held-out +0.21; null +-0.076) | -0.23, -0.29, -0.36 | -0.03 |
+
+  - The layer-40 directions pushed at each layer: sentence progress is ~0 below L4, +0.03 at L18-24, +0.07 at L35, peaks at +0.11 at L43, and falls to +0.02 by L56-60. Formal/casual amplification peaks at -0.17 (L45-47) and is ~0 at L60.
+  - Layer 40 is in the active band but not the peak. Pushback peaks at L42-44 and amplification at L45-51. The last two layers are a separate regime: a push there acts directly on the next-token distribution, so pushback may be token-level alternation; to be checked.
+  - Mean-score check: chi2 mostly 20-45 on 32 dof, high at L53 (52) and L57 (57). Watch it: possibly the llama.cpp-vs-jspace sampling mismatch at late layers.
+- **Screen, layer 40, response matrix** (`screen.fit32.log`, `screen.fitcap{128,256}.log`).
+  - Probing basis (K 32): +0.117 ... -0.137, null +-0.012, split halves 20/20. Vs probing: entry correlation 0.960, top pushed-back cos 0.97. Sentence progress +0.111 +- 0.005.
+  - Capacity basis (built from S and F of all screen data; the null shuffles G, so basis choice is accounted for):
+    - K 128: +0.272, +0.197, +0.129 ... -0.200, -0.251, -0.300 (null +-0.032), split-half held-out +0.261 / -0.284 (20/20).
+    - K 256: +0.281 / -0.311 (held-out +0.267 / -0.291, null +-0.038).
+  - So the strongest regulated directions lie partly outside the variance subspace: only ~60% of them in the top-32 PCs.
+- **What they are** (`homeo/score_describe.py`, `screen.describe_cap128.txt`). Effector readout: by the score identity, d E[f]/dc = E[(f - b) u.G] for any statistic f of the written text, i.e. what the model writes more of when pushed (per token, linear, for a push of 0.25 x |h|).
+
+  | direction | kappa | effector (push +u) | natural text | reading |
+  |---|---|---|---|---|
+  | pushback 0 | +0.272 +- 0.010 | sentence ends -1.16 per 32 (mean 1.60); more and , or that; fewer . .\\n and document-boundary pieces | +0.74 sd at sentence end, -0.39 sd 16+ in; corr \|h\| +0.74 | sentence-progress thermostat (cos 0.69 with the probing direction) |
+  | pushback 1 | +0.197 +- 0.008 | more spaces ( including of; fewer it I that to you | corr \|h\| -0.90; high in conversational contexts | state norm (cos 0.53 with the probing one) |
+  | pushback 2 | +0.129 +- 0.005 | more . it He is (short sentences, log p +6 nats); fewer in at ( by | high in institutional name completions | unclear (elaboration level?) |
+  | amplify 0 | -0.300 +- 0.012 | more the to that and it they; fewer table / list / document-boundary tokens | high in personal narrative | prose vs structured text |
+  | amplify 1 | -0.251 +- 0.009 | more and , of in + nouns; fewer I it you ! | low at exclamations, high in technical words | informational vs chatty register |
+  | amplify 2 | -0.200 +- 0.007 | community students health global services industry | low in wrestling play-by-play | institutional vs casual topic |
+
+  - Same families as the PCA-basis result at twice the strength: text structure is held steady (sentence length, state norm); genre and register are reinforced. Nothing valence-like in the top directions; personal / emotional text appears only as one pole of amplified register axes.
+  - The effector pieces '|', '_of', '_text', 'end', 'begin', '><' are the literal text "<|end_of_text|><|begin_of_text|>" the model writes at document boundaries, so the sentence-end variable includes document ends.
+- **Next: layer sweep.** All 61 layers, ~10k continuations on fresh prompts, window 13-31 only (~15 GB): per-layer spectra and capacity profiles. Then deep runs at the interesting layers. The user wants the same results at every layer eventually.
 
 ## Measured instrument facts
 
