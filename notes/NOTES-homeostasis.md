@@ -944,6 +944,16 @@ Goal: the closed-loop response matrix M for a larger basis, with no pushes (no e
   - Output layers mostly separate: push-back directions from 57-60 have |kappa| <= 0.06 below layer 54, amplified from 59-60 <= 0.04; amplified from 57-58 still carry the prose amplifier (-0.18, -0.11 at layer 54). Middle-layer directions at 58-60: kappa <= +0.03 / >= -0.06.
   - Below-noise directions from layers 12-21 carry a trace peaking at 42-46 (layer-18 amplified: -0.027 at 46). Everything below layer 18: |kappa| <= 0.04.
   - Writeup: new section "Regulation belongs to a variable, not a layer" with a source x target heatmap.
+- **Direction probes in the loom** (2026-10-19; the user asked to pick a layer, then a direction that clears the noise, and see it as token colors).
+  - Export: `homeo/score_probe_export.py` -> /mnt/models/homeo/score/probe_dirs.{f32,json}. Includes the 183 directions `score_sensor.py` reads (resolved layers 27-60, held-out beyond +-0.03), each with its strength, family, reading, effectors, contexts and the natural-text distribution of u.h/|h| (from score/sense) as the color scale.
+  - Each direction is oriented so that +u is its family's pole: deeper into the sentence, inside a name, chattier, more structured, at a break, or less predictable. A family then keeps its colors across layers. 85 of the 183 are the writeup's -u (`flipped` in the json). The sign is arbitrary for kappa; the effector lists and contexts swap with it.
+  - The wording (families, reading sentence, token filters) moved to `homeo/score_words.py`, shared with `score_layer_sections.py`. Its sections.md and table.md are byte-identical after the move.
+  - llama-server `--probe-dirs PATH` (llama.cpp 35e654641): `/jlens` with `dirs: true` (optionally `dir_layers`) returns u.h and u.h/|h| per position, from the same forward pass as the value readouts.
+    - Check (`homeo/score_probe_check.py`): 8 captured rollouts, 234,240 (position, direction) pairs, max |diff| 0.00007 from the homeo-capture projections.
+    - Speed: one layer for 2,878 tokens takes 2.7 s; all 34 layers take 3.9 s.
+  - Loom (worktree minloomwebui-value, e1ad529): a "Direction probes" settings section with a layer menu (strongest held-out effects per layer) and a direction menu, grouped as pushed back ("undoes N%") or amplified ("amplifies N%").
+    - Picking one sets color = direction probe: percentile on the probit scale, orange high and blue low. An info box gives the direction's reading, effectors and contexts. Hover lists every direction at the layer.
+    - Checked in headless Firefox (WebDriver BiDi, scratch loom copy with an empty history, :8055 blocked).
 - **Next: layer sweep.** All 61 layers, ~10k continuations on fresh prompts, window 13-31 only (~15 GB): per-layer spectra and capacity profiles. Then deep runs at the interesting layers. The user wants the same results at every layer eventually.
 
 ## Measured instrument facts
