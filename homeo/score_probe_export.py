@@ -5,7 +5,8 @@ whose held-out kappa is beyond +-0.03 on their own side (the set score_sensor.py
   PATH.f32   [n][n_embd] unit directions u, each oriented so that +u is its family's pole (deeper into the sentence,
              inside a name, chattier, more structured, at a break, less predictable) at every layer, so a family keeps
              its color across layers; "flipped" marks the ones whose sign is the opposite of the writeup's
-  PATH.json  {"n_embd", "names", "layers"} for llama-server, plus for the loom: per layer the noise edge and the held-out
+  PATH.json  {"n_embd", "names", "layers", "h_norms"} for llama-server (h_norms: mean |h| at each direction's layer in
+             natural text, the unit of /steer doses, as homeo-ident's dose x mean |h|), plus for the loom: per layer the noise edge and the held-out
              kappas, per direction its strength (held-out kappa), family, reading, effectors, contexts, and the
              distribution of u.h / |h| over the natural-text capture (score/sense, 192,000 positions of FineWeb
              rollouts) as the color scale.
@@ -40,7 +41,7 @@ PCT = [1, 5, 10, 25, 50, 75, 90, 95, 99]
 # the feature whose high end is +u, per family
 POLE = {'sentence': 'since_end', 'name': 'name', 'chatty': 'pron32', 'prose/struct': 'markup16', 'break': 'at_end', 'entropy': 'entropy'}
 
-U, names, layers, dirs, lays = [], [], [], [], []
+U, names, layers, h_norms, dirs, lays = [], [], [], [], [], []
 for r in D['layers']:
     L = r['layer']
     if not layer_resolved(r):
@@ -67,7 +68,7 @@ for r in D['layers']:
         cos = hb @ (B @ u) / norm
         hi, lo = poles(sr)
         name = f'L{L}.{side}.{rank}'
-        U.append(u.astype(np.float32)); names.append(name); layers.append(L)
+        U.append(u.astype(np.float32)); names.append(name); layers.append(L); h_norms.append(float(norm.mean()))
         dirs.append({
             'name': name, 'layer': L, 'side': side, 'rank': rank, 'flipped': bool(flip),
             'heldout': ho, 'kappa': d['kappa'], 'se': d['se'], 'capacity': d['capacity'],
@@ -81,12 +82,12 @@ for r in D['layers']:
                           'pct': {str(p): float(v) for p, v in zip(PCT, np.percentile(cos, PCT))}},
         })
         n_kept += 1
-    lays.append({'layer': L, 'edge': (r['null_top95'] - r['null_bottom5']) / 2, 'heldout_pushback': hp, 'heldout_amplify': ha,
+    lays.append({'layer': L, 'h_norm': float(norm.mean()), 'edge': (r['null_top95'] - r['null_bottom5']) / 2, 'heldout_pushback': hp, 'heldout_amplify': ha,
                  'output_regime': L >= 57, 'n_dirs': n_kept})
     print(f'L{L}: {n_kept} directions', flush=True)
 
 np.stack(U).tofile(a.out + '.f32')
-json.dump({'n_embd': n_embd, 'names': names, 'layers': layers, 'per_layer': lays, 'directions': dirs,
+json.dump({'n_embd': n_embd, 'names': names, 'layers': layers, 'h_norms': h_norms, 'per_layer': lays, 'directions': dirs,
            'color': 'u.h / |h|, as a percentile of the natural-text capture (score/sense)',
            'source': {'describe': f'{O}/sweep.describe_cap64.json', 'sensor': f'{O}/sense/sensor.json'}},
           open(a.out + '.json', 'w'), ensure_ascii=False, indent=1)
