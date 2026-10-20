@@ -954,6 +954,7 @@ Goal: the closed-loop response matrix M for a larger basis, with no pushes (no e
   - Loom (worktree minloomwebui-value, e1ad529): a "Direction probes" settings section with a layer menu (strongest held-out effects per layer) and a direction menu, grouped as pushed back ("undoes N%") or amplified ("amplifies N%").
     - Picking one sets color = direction probe: percentile on the probit scale, orange high and blue low. An info box gives the direction's reading, effectors and contexts. Hover lists every direction at the layer.
     - Checked in headless Firefox (WebDriver BiDi, scratch loom copy with an empty history, :8055 blocked).
+    - A "flip sign" button negates the picked direction, remembered per direction (loom 'reading_neg' from the export).
 - **Next: layer sweep.** All 61 layers, ~10k continuations on fresh prompts, window 13-31 only (~15 GB): per-layer spectra and capacity profiles. Then deep runs at the interesting layers. The user wants the same results at every layer eventually.
 
 ## Measured instrument facts

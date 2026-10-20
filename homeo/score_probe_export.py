@@ -72,6 +72,7 @@ for r in D['layers']:
             'name': name, 'layer': L, 'side': side, 'rank': rank, 'flipped': bool(flip),
             'heldout': ho, 'kappa': d['kappa'], 'se': d['se'], 'capacity': d['capacity'],
             'family': fam, 'family_label': FNAME[fam], 'reading': reading(sr, fam), 'high': hi, 'low': lo,
+            'reading_neg': reading(dict(sr, corr_cos={f: -v for f, v in sr['corr_cos'].items()}), fam),  # for the loom's sign flip
             'corr_cos': {f: round(v, 3) for f, v in sr['corr_cos'].items() if f != 'norm'},
             'more': toks(d['more'], common), 'less': toks(d['less'], common),
             'd_sentence_ends': d['d_sentence_ends'], 'd_logp': d['d_logp'],
