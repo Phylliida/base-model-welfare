@@ -135,3 +135,54 @@ def layer_resolved(r):
 
 def clears(side, ho):
     return ho >= 0.03 if side == 'pushback' else ho <= -0.03
+
+
+PRON = {'i', 'you', 'we', 'me', 'my', 'your', 'our', 'us', "i'm", "'m", "'t", "'ve", "'ll", "n't", '!', 'yours', 'myself'}
+FUNC = {'the', 'a', 'an', 'of', 'to', 'and', 'that', 'is', 'are', 'in', 'it', 'for', 'as', 'with', 'on', 'be', 'by',
+        'this', 'was', 'or', 'which', 'from', 'at', 'have', 'has', 'not', 'but'}
+
+
+def vocab_classes():
+    """token pieces and the token classes of score_sensor.py's context features: end (sentence or line end), nl, markup
+    (newline, digit or symbol), pron (first/second person, contractions, !), func (function word), cap (capitalised word)"""
+    sys.path.insert(0, '/home/bepis/prog/llm-tests/llama.cpp/gguf-py')
+    import gguf
+    rd = gguf.GGUFReader(MODEL)
+    fld = rd.fields['tokenizer.ggml.tokens']
+    vocab = [bytes(fld.parts[i]).decode('utf-8', 'replace') for i in fld.data]
+    bs = list(range(33, 127)) + list(range(0xA1, 0xAD)) + list(range(0xAE, 0x100))
+    cs, k_ = bs[:], 0
+    for b_ in range(256):
+        if b_ not in bs:
+            bs.append(b_); cs.append(256 + k_); k_ += 1
+    dec = {chr(c): b_ for b_, c in zip(bs, cs)}
+    pieces = [bytes(dec.get(ch, 63) for ch in v).decode('utf-8', 'replace') for v in vocab]
+    cls = {k: np.zeros(len(vocab), bool) for k in ('end', 'nl', 'markup', 'pron', 'func', 'cap')}
+    for i, p in enumerate(pieces):
+        s = p.strip()
+        sl = s.lower().replace('’', "'")
+        cls['end'][i] = s.endswith(('.', '!', '?', '。', '！', '？')) or '\n' in p
+        cls['nl'][i] = '\n' in p
+        cls['markup'][i] = '\n' in p or any(ch.isdigit() for ch in s) or (s != '' and all(not ch.isalnum() for ch in s) and s not in {',', '.', "'", '"', '’'})
+        cls['pron'][i] = sl in PRON
+        cls['func'][i] = sl in FUNC and p.startswith(' ')
+        cls['cap'][i] = p.startswith(' ') and s[:1].isupper() and s[1:2].islower()
+    return pieces, cls
+
+
+def context_features(tokens, cls):
+    """per position of one token stream: tokens since the last sentence end (capped 40), I/you/! share of the last 32,
+    markup share of the last 16 (score_sensor.py's definitions)"""
+    V = len(cls['end'])
+    tc = np.clip(np.asarray(tokens), 0, V - 1)
+    e, mk, pr = cls['end'][tc].astype(float), cls['markup'][tc].astype(float), cls['pron'][tc].astype(float)
+    since = np.zeros(len(tc))
+    c = 0
+    for i in range(len(tc)):
+        c = 0 if e[i] else c + 1
+        since[i] = min(c, 40)
+    cum = lambda x: np.concatenate([[0.0], np.cumsum(x)])
+    cmk, cpr = cum(mk), cum(pr)
+    pos = np.arange(len(tc))
+    return {'since_end': since, 'pron32': (cpr[pos + 1] - cpr[np.maximum(pos - 31, 0)]) / 32,
+            'markup16': (cmk[pos + 1] - cmk[np.maximum(pos - 15, 0)]) / 16}
