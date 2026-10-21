@@ -982,6 +982,27 @@ Goal: the closed-loop response matrix M for a larger basis, with no pushes (no e
   - L42 matrix (rows: sites and behavior; columns: which direction is set from target to source value): sentence sites, P(end): sentence +0.40, chatty +0.02, struct -0.27, random -0.02 (mean |change| 0.11). Chatty sites, P(pron): sentence +0.00, chatty +0.11, struct -0.11, random +0.03 (|0.11|). Struct sites, P(markup): sentence -0.06, chatty -0.01, struct +0.22, random -0.02 (|0.08|).
   - Reading: sentence position passes. The next decision to end a sentence reads this direction directly, specifically, at every layer tested; up to the whole natural gap from one token's value. The reverse is about half as large (deep positions have other cues to end).
   - Register and structure barely set the next token at one position: the chatty direction moves P(pronoun) consistently but by 3-6% of the gap, no more in size than random directions (which have random signs). Structure grows with depth (34% at L52). Their effect on writing builds over many tokens (the step pushes of A and B change the text strongly), and the next token's register comes mostly from attention to the text itself.
+- **All-layer value probe** (2026-10-20; `runs/value/probe_capture_all.sh` -> all 61 block outputs of the 1200 VL1 windows in RAM, 135 GB, deleted after the fit; `homeo/value_probe_all.py` v2). One ridge probe on all layers concatenated (374,784 features), solved exactly in sample space (K = sum over layers of Z Z^T, 101.6k training positions = all positions of the 800 training windows); per-layer probes as a profile; strengths on val (half-decade grid, none at an edge); "added" = R2(baseline + probe) - R2(baseline) as H2.
+  - An independent audit of v1 (every other position, residual R2 as "added", best layer picked on test, coarse grid) found the pipeline sound (rows byte-identical to the old capture, no leakage, primal = dual to 1e-8, float32 Cholesky within 1e-6) but the "added" definition differed from H2 and the subsampling cost 0.005-0.02; v2 fixes all of it. v1 outputs kept as probe_all_v1.*.
+
+  | test R2 | layer 40 | all 61 layers | single-layer peak |
+  |---|---|---|---|
+  | stakes | 0.383 | 0.425 | 0.422 (L44-45) |
+  | now | 0.561 | 0.658 | 0.663 (L57-58) |
+  | difficulty, next 8 | 0.174 | 0.212 | 0.199 (L59) |
+  | difficulty, next 32 | 0.241 | 0.302 | 0.278 (L59) |
+  | added, next 8 | 0.049 | 0.058 | 0.054 (L44) |
+  | added, next 32 | 0.053 | 0.063 | 0.057 (L43) |
+
+  - Stakes lives in one band (44-45) and now near the output (57-58); all layers together add nothing over those peaks. Difficulty gains a little from combining layers. The state's own contribution beyond recent difficulty is about 6% of the variance of upcoming difficulty.
+  - Saved in /mnt/models/homeo/value_probe: probe_all_weights.f32 (f32 [6 targets][61][6144] then [6] bias, raw block outputs, target = sum_L w_L.h_L + b; targets stakes, now, next 8, next 32, added 8, added 32; added = residual of the baseline in probe_all.json), probe_layers_weights.f32 ([61][6][6144] then [61][6]), probe_all_pred.npz, probe_all.json. Self-check: predictions from the saved raw weights match the fit to <= 6e-5.
+- **Forecast-change reliability, first try** (`homeo/forecast_reliability.py`, per-layer part done for L20-56, joint part stopped). Two probes on disjoint training windows, agreement of their token-to-token forecast change: rises to 0.5-0.7 at 200 windows, falls at 400, while forecast R2 keeps rising. Confound: with more data, validation picks weaker regularization and the probes lean on low-variance directions where the token-to-token change lives. Needs fixed strengths; the n/(n+c) extrapolations in that log are invalid.
+- **Plan for the overnight run (2026-10-20, approved by the user):** a difficulty-forecast probe on the model's own rollouts.
+  - Rollouts: about 1,200 x 2,048 tokens, pure ancestral sampling (temperature 1, top-k 0, top-p 1, and min_p 0 set explicitly: gen_rollouts.py never set it, so llama-server's default 0.05 truncated all earlier rollouts; also typical_p 1, no penalties), ignore_eos, token ids recorded. Mix: 70% English seeded from FineWeb (first 3 tokens of random documents), 15% Chinese, 15% about 8 other languages, seeded the same way from FineWeb-2 samples (download budget 2-3 GB; the user OK'd FineWeb-2 or other Chinese data).
+  - Capture: all 61 layers at 64 sites per rollout, depths from about 16 to 1,900 tokens (varied context before the window), each site a pair of consecutive tokens (for the forecast change); about 150k rows, about 115 GB in /dev/shm.
+  - Target: difficulty over the 128 tokens after the next one; baseline for "added": recent difficulty (last 32 and 128), entropy, current surprisal, log context length. Split by rollout, stratified by language; report per language group.
+  - Fit: the all-layer probe with weights saved, plus forecast-change and TD-error reliability at fixed strengths (sizes in rollouts, disjoint pairs).
+  - The 8056 server may be taken down for generation and capture; the user is fine with an overnight run. Keep the GPU fan near 45% (pace the generation).
 - **Next: layer sweep.** All 61 layers, ~10k continuations on fresh prompts, window 13-31 only (~15 GB): per-layer spectra and capacity profiles. Then deep runs at the interesting layers. The user wants the same results at every layer eventually.
 
 ## Measured instrument facts
