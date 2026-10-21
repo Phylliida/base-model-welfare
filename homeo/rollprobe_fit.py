@@ -12,7 +12,8 @@ Targets at a site s (the state after token s; c_t = surprisal of token t under t
                 baseline's residual, reported as R2(baseline + probe) - R2(baseline) (H2's definition)
 Split by sequence, stratified by language group and kind: 70% train / 10% val / 20% test. Ridge on standardized
 features; strength per target on val; test used once.
-  all layers  dual ridge on all 61 layers concatenated (374,784 features; K = sum over layers of Z Z^T)
+  all layers  dual ridge on all 61 layers concatenated (374,784 features; K = sum over layers of Z Z^T, products on
+              the GPU in float32 without TF32, accumulated on the CPU; solves on the CPU)
   per layer   primal ridge on each layer alone (profile)
 Forecast-change reliability (all-layer probe, strengths FIXED at the full probe's choice and one decade either side):
 probes on disjoint quarters and halves of the training sequences predict the test pairs; agreement of their forecast
@@ -29,6 +30,7 @@ import argparse
 import glob
 import json
 import os
+import subprocess
 import time
 
 import torch
@@ -40,6 +42,7 @@ ap.add_argument('--seqs', default='/mnt/models/homeo/rollouts2')
 ap.add_argument('--out', default='/mnt/models/homeo/rollprobe')
 ap.add_argument('--threads', type=int, default=64)
 ap.add_argument('--no-layers', action='store_true', help='skip the per-layer profile')
+ap.add_argument('--device', default='cuda' if torch.cuda.is_available() else 'cpu', help='for the per-layer matrix products')
 a = ap.parse_args()
 torch.set_num_threads(a.threads)
 os.makedirs(a.out, exist_ok=True)
@@ -158,6 +161,26 @@ def load(L):
     return torch.from_numpy(X)
 
 
+dev = torch.device(a.device)
+torch.backends.cuda.matmul.allow_tf32 = False
+tr_d, va_d, te_d = (torch.from_numpy(r).to(dev) for r in (tr, va, te))
+
+
+def cool():
+    """GPU fan near 45%: wait (up to 2 min) after each layer while it is above"""
+    if dev.type != 'cuda':
+        return
+    for _ in range(24):
+        try:
+            f = int(subprocess.run(['nvidia-smi', '--query-gpu=fan.speed', '--format=csv,noheader,nounits'],
+                                   capture_output=True, text=True, timeout=20).stdout.strip())
+        except Exception:
+            return
+        if f <= 45:
+            return
+        time.sleep(5)
+
+
 LAMS = [float(10 ** (e / 2)) for e in range(-6, 7)]
 JLAMS_COARSE = [float(10 ** (e / 2)) for e in (0, 2, 4, 6)]
 n_tr = len(tr)
@@ -175,15 +198,16 @@ for L in range(NL):
     X = load(L)
     mu, sd = X[tr].mean(0), X[tr].std(0) + 1e-6
     stats[L] = (mu, sd)
-    Z = (X - mu) / sd
+    # matrix products on the GPU (float32, no TF32), small solves and the big kernel accumulators on the CPU
+    Zg = (X.to(dev) - mu.to(dev)) / sd.to(dev)
     del X
+    Ztg, Zvg, Zeg = Zg[tr_d], Zg[va_d], Zg[te_d]
+    del Zg
     if not a.no_layers:
-        Zt = Z[tr].double()
-        A = Zt.T @ Zt
+        A = (Ztg.T @ Ztg).double().cpu()
         ym = Yt_all.mean(0)
-        Bm = Zt.T @ (Yt_all - ym)
-        del Zt
-        Zv, Ze = Z[va].double(), Z[te].double()
+        Bm = (Ztg.T @ (Yt_all - ym).float().to(dev)).double().cpu()
+        Zv, Ze = Zvg.double().cpu(), Zeg.double().cpu()
         pv, pe, Ws = {}, {}, {}
         for lam in LAMS:
             M = A.clone()
@@ -198,13 +222,14 @@ for L in range(NL):
             WL[L, j], BL[L, j] = w, float(ym[j]) - float(w.astype(np.float64) @ mu.numpy().astype(np.float64))
         per_layer[L] = res
         del A, Zv, Ze, Ws, pv, pe
-    Zt = Z[tr]
     for bi, (i0, i1) in enumerate(blocks):
         for (j0, j1) in blocks[:bi + 1]:
-            Ktr[i0:i1, j0:j1].add_(Zt[i0:i1] @ Zt[j0:j1].T)
-    Kva.add_(Z[va] @ Zt.T)
-    Kte.add_(Z[te] @ Zt.T)
-    del Zt, Z
+            Ktr[i0:i1, j0:j1].add_((Ztg[i0:i1] @ Ztg[j0:j1].T).cpu())
+    for (j0, j1) in blocks:
+        Kva[:, j0:j1].add_((Zvg @ Ztg[j0:j1].T).cpu())
+        Kte[:, j0:j1].add_((Zeg @ Ztg[j0:j1].T).cpu())
+    del Ztg, Zvg, Zeg
+    cool()
     say(f'L{L:02d}: ' + (', '.join(f'{nm} {per_layer[L][nm]["test"]:.3f}' for nm in NAMES) if L in per_layer else '') +
         f'  ({time.time() - tl:.0f} s, total {time.time() - t0:.0f} s)')
 
@@ -246,6 +271,13 @@ best = {j: max(sols, key=lambda l_: r2(Y[va, j], pv[l_][:, j])) for j in range(l
 hd = lambda e: float(10 ** (e / 2))  # half-decade grid, exact keys
 for e in sorted({round(2 * np.log10(b_)) + s_ for b_ in best.values() for s_ in (-1, 1)}):
     solve(hd(e))
+for _ in range(2):  # a best strength at the edge of what was solved: one more half-decade out
+    best = {j: max(sols, key=lambda l_: r2(Y[va, j], pv[l_][:, j])) for j in range(len(NAMES))}
+    ext = {round(2 * np.log10(b_)) + (1 if b_ == max(sols) else -1) for b_ in best.values() if b_ in (min(sols), max(sols))}
+    if not ext:
+        break
+    for e in sorted(ext):
+        solve(hd(e))
 joint, lam_of = {}, {}
 PRED = np.full((N, len(NAMES)), np.nan)
 for j, nm in enumerate(NAMES):

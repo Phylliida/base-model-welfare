@@ -13,6 +13,8 @@ Token ids are recorded (no retokenization).
   gen_rollouts_ml.py jobs OUT [--n 5000]          writes OUT/jobs.jsonl (seeds tokenized by the server)
   gen_rollouts_ml.py pretrain OUT [--n-pretrain 1667]   writes OUT/pretrain.jsonl: natural windows, 25% of the data
   gen_rollouts_ml.py run OUT --from A --to B      generates jobs A..B-1 into OUT/rollouts.jsonl (resumable)
+  --append (jobs / pretrain): add that many more, with new rids and unused documents (the user later allowed a sixth
+  chunk: 1000 rollouts + 333 natural windows more)
 
 Fan: a duty cycle keeps the GPU fan near 45% (requests of --seg tokens, started only in the on-part of each minute).
 Rollout record: rid, lang, doc_idx, prompt_ids, tokens (generated ids incl. end tokens), n_end, target_len, seed.
@@ -46,7 +48,11 @@ def post(server, path, payload, timeout=3600):
 
 
 def make_jobs(a):
-    rng = random.Random(20261020)
+    old = [json.loads(l) for l in open(f'{a.out}/jobs.jsonl', encoding='utf-8')] if a.append else []
+    used = {}
+    for j in old:
+        used.setdefault(j['lang'], set()).add(j['doc_idx'])
+    rng = random.Random(20261020 + len(old))
     n_zh = round(0.15 * a.n)
     n_other = round(0.15 * a.n)
     n_en = a.n - n_zh - n_other
@@ -56,18 +62,19 @@ def make_jobs(a):
     jobs = []
     for lang, path, k in plan:
         texts = pq.read_table(path, columns=['text']).column('text').to_pylist()
-        idx = rng.sample(range(len(texts)), k)
+        pool = [i for i in range(len(texts)) if i not in used.get(lang, ())]
+        idx = rng.sample(pool, k)
         for di in idx:
             ids = post(a.server, '/tokenize', {'content': texts[di][:512]})['tokens'][:3]
             jobs.append({'lang': lang, 'doc_idx': di, 'prompt_ids': ids})
         print(f'{lang}: {k} seeds from {len(texts)} docs', flush=True)
     rng.shuffle(jobs)  # any prefix of the job list is a representative mix
-    for i, j in enumerate(jobs):
+    for i, j in enumerate(jobs, len(old)):
         j['rid'] = i
         j['target_len'] = int(round(math.exp(rng.uniform(math.log(LEN_LO), math.log(LEN_HI)))))
         j['seed'] = 1_000_003 * 7 + i
     os.makedirs(a.out, exist_ok=True)
-    with open(f'{a.out}/jobs.jsonl', 'w', encoding='utf-8') as f:
+    with open(f'{a.out}/jobs.jsonl', 'a' if a.append else 'w', encoding='utf-8') as f:
         for j in jobs:
             f.write(json.dumps(j, ensure_ascii=False) + '\n')
     tot = sum(j['target_len'] for j in jobs)
@@ -79,11 +86,14 @@ def make_pretrain(a):
     mix and length distribution as the rollouts; a window starts at a random document's beginning and runs on into
     further random documents of the same language, joined by the end-of-text token as in pretraining packing (the
     rollouts likewise run on after the model ends a document). Seed documents of the rollouts are excluded."""
-    rng = random.Random(20261021)
+    old = [json.loads(l) for l in open(f'{a.out}/pretrain.jsonl', encoding='utf-8')] if a.append else []
+    rng = random.Random(20261021 + len(old))
     seeds = {}
     for l in open(f'{a.out}/jobs.jsonl', encoding='utf-8'):
         j = json.loads(l)
         seeds.setdefault(j['lang'], set()).add(j['doc_idx'])
+    for r in old:
+        seeds.setdefault(r['lang'], set()).update(r['docs'])
     n = a.n_pretrain
     n_zh, n_other = round(0.15 * n), round(0.15 * n)
     plan = [('eng_Latn', FINEWEB, n - n_zh - n_other), ('cmn_Hani', f'{FW2}/cmn_Hani.test.parquet', n_zh)]
@@ -108,8 +118,8 @@ def make_pretrain(a):
                          'tokens': toks[3:target], 'target_len': target, 'n_end': len(docs) - 1})
         print(f'{lang}: {k} windows ({sum(len(r["docs"]) for r in recs if r["lang"] == lang)} documents)', flush=True)
     rng.shuffle(recs)
-    with open(f'{a.out}/pretrain.jsonl', 'w', encoding='utf-8') as f:
-        for i, r in enumerate(recs):
+    with open(f'{a.out}/pretrain.jsonl', 'a' if a.append else 'w', encoding='utf-8') as f:
+        for i, r in enumerate(recs, len(old)):
             r['rid'] = PRETRAIN_RID0 + i
             f.write(json.dumps(r, ensure_ascii=False) + '\n')
     tot = sum(r['target_len'] for r in recs)
@@ -120,7 +130,7 @@ class Gate:
     """duty cycle for the GPU fan: in each PERIOD seconds, segments may start during the first duty * PERIOD; the fan
     thread lowers duty when the fan runs above --fan-hi and raises it when it stays below --fan-lo. Lower concurrency
     does not cool a decoding GPU (it stays busy at any batch size), idle time does."""
-    PERIOD = 60.0
+    PERIOD = 30.0
 
     def __init__(self, duty):
         self.duty, self.t0 = duty, time.time()
@@ -166,9 +176,10 @@ def run(a):
                 continue
             hist = (hist + [f])[-12:]
             old = gate.duty
-            if len(hist) >= 4 and min(hist[-4:]) > a.fan_hi and gate.duty > 0.1:
+            # the fan swings within a cycle: act on averages (1 min to cool down, 3 min to speed up)
+            if len(hist) >= 4 and sum(hist[-4:]) / 4 > a.fan_hi and gate.duty > 0.1:
                 gate.duty = max(0.1, round(gate.duty - 0.05, 2)); hist = []
-            elif len(hist) >= 12 and max(hist) < a.fan_lo and gate.duty < 1.0:
+            elif len(hist) >= 12 and sum(hist) / 12 < a.fan_lo and gate.duty < 1.0:
                 gate.duty = min(1.0, round(gate.duty + 0.05, 2)); hist = []
             if gate.duty != old:
                 print(f'{time.strftime("%H:%M:%S")} fan {f}%: duty {old:.2f} -> {gate.duty:.2f}', flush=True)
@@ -256,12 +267,13 @@ ap.add_argument('out')
 ap.add_argument('--server', default='http://127.0.0.1:8056')
 ap.add_argument('--n', type=int, default=5000)
 ap.add_argument('--n-pretrain', type=int, default=1667)
+ap.add_argument('--append', action='store_true', help='jobs / pretrain: add --n / --n-pretrain more (new rids, unused documents)')
 ap.add_argument('--from', dest='frm', type=int, default=0)
 ap.add_argument('--to', type=int, default=None)
 ap.add_argument('--conc', type=int, default=32)
-ap.add_argument('--seg', type=int, default=128)
-ap.add_argument('--duty', type=float, default=0.6)
-ap.add_argument('--fan-hi', type=int, default=46)
+ap.add_argument('--seg', type=int, default=32)  # ~6 s per segment with 32 slots, so the off-part of a cycle is idle
+ap.add_argument('--duty', type=float, default=0.5)
+ap.add_argument('--fan-hi', type=int, default=45)
 ap.add_argument('--fan-lo', type=int, default=40)
 a = ap.parse_args()
 {'jobs': make_jobs, 'pretrain': make_pretrain, 'run': run}[a.cmd](a)

@@ -1,10 +1,11 @@
 #!/bin/sh
-# Overnight rollout probe (notes: "Plan for the overnight run"): 5 chunks, each 1000 pure ancestral rollouts
+# Overnight rollout probe (notes: "Plan for the overnight run"): 6 chunks, each 1000 pure ancestral rollouts
 # (homeo/gen_rollouts_ml.py, llama-server on :8056) + 333 natural windows, then all 61 block outputs at the probe sites
 # (homeo/rollprobe_sites.py -> homeo-capture, f16 in RAM under /dev/shm/rollprobe/cK). Chunks alternate generation and
 # capture on the one GPU, so whatever is done by the deadline is a complete, representative sample. A chunk starts
-# only if the previous chunk's duration still fits before DEADLINE (default 07:00 tomorrow). Then the fit (CPU).
-# Sample size: 5000 rollouts + 1667 natural windows (~153k rows) if all chunks finish; the probe needs ~100k training
+# only if the previous chunk's duration still fits before DEADLINE (default 10:15 tomorrow; the user starts at 13:00,
+# the fit takes ~2.5 h). Then the fit (CPU).
+# Sample size: 6000 rollouts + 2000 natural windows (~184k rows) if all chunks finish; the probe needs ~100k training
 # rows to match the VL1 all-layer fit. Exposure: none (unsteered sampling and forward passes).
 # usage: run.sh [GEN0_PID]   (GEN0_PID: an already running generator for chunk 0 to wait for)
 R=/home/bepis/prog/llm-tests
@@ -12,7 +13,7 @@ B=$R/base-model-welfare
 M=/home/bepis/prog/SimpleBot/models/GLM-4-32B-Base-32K.i1-Q4_K_S.gguf
 O=/mnt/models/homeo/rollouts2
 S=/dev/shm/rollprobe
-DEADLINE=${DEADLINE:-$(date -d 'tomorrow 07:00' +%s)}
+DEADLINE=${DEADLINE:-$(date -d 'tomorrow 10:15' +%s)}
 cd $B
 log() { echo "$(date '+%F %T') $*"; }
 server_pid() { ss -ltnp | command grep -F ':8056 ' | sed -E 's/.*pid=([0-9]+).*/\1/' | head -1; }
@@ -30,7 +31,7 @@ stop_server() {
 mkdir -p $S
 if [ -n "$1" ]; then log "waiting for chunk-0 generator $1"; while kill -0 $1 2>/dev/null; do sleep 30; done; fi
 last=0
-for k in 0 1 2 3 4; do
+for k in 0 1 2 3 4 5; do
   t0=$(date +%s)
   if [ $k -gt 0 ] && [ $((t0 + last)) -gt $DEADLINE ]; then log "chunk $k would end after the deadline (last chunk took $last s); stopping"; break; fi
   start_server
@@ -50,4 +51,5 @@ for k in 0 1 2 3 4; do
   log "chunk $k done in $last s: $(tail -1 $O/sites.log)"
 done
 log "GPU phase done"
-[ -f homeo/rollprobe_fit.py ] && python3 homeo/rollprobe_fit.py > $O/fit.log 2>&1 && log "fit done"
+if python3 homeo/rollprobe_fit.py > $O/fit.log 2>&1; then log "fit done"
+else log "GPU fit failed, refitting on the CPU"; python3 homeo/rollprobe_fit.py --device cpu > $O/fit_cpu.log 2>&1 && log "fit done (CPU)"; fi
