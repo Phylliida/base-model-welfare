@@ -18,7 +18,7 @@ import random
 ap = argparse.ArgumentParser()
 ap.add_argument('chunk', type=int)
 ap.add_argument('--out', default='/mnt/models/homeo/rollouts2')
-ap.add_argument('--n-chunks', type=int, default=6)
+ap.add_argument('--n-chunks', type=int, default=7)
 a = ap.parse_args()
 k = a.chunk
 D_LO, TAIL, PER, MAXP = 16, 133, 56, 32

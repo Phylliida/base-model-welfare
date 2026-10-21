@@ -199,7 +199,8 @@ for L in range(NL):
     mu, sd = X[tr].mean(0), X[tr].std(0) + 1e-6
     stats[L] = (mu, sd)
     # matrix products on the GPU (float32, no TF32), small solves and the big kernel accumulators on the CPU
-    Zg = (X.to(dev) - mu.to(dev)) / sd.to(dev)
+    Zg = X.to(dev)
+    Zg.sub_(mu.to(dev)).div_(sd.to(dev))  # in place: ~5 GB on the GPU at 215k rows
     del X
     Ztg, Zvg, Zeg = Zg[tr_d], Zg[va_d], Zg[te_d]
     del Zg
