@@ -12,6 +12,9 @@ and per probe a label, group, test R2, percentiles of its predictions on the tes
 for forecasts, the horizon K and percentiles of the forecast change df_t = f(t) - f(t-1) and of the TD error
 -c_t - K df_t on the test pairs (c_t = surprisal of token t; the loom derives both per token).
 
+Without the rows files (e.g. from the repo copy, probes/rollout) the color scales are taken from an existing
+DIR/lin_probes.json.
+
 usage: lin_probes_export.py [--dir /mnt/models/homeo/rollprobe]
 """
 import argparse
@@ -42,6 +45,8 @@ LABEL = {
 PCT = [1, 2.5, 5, 10, 25, 50, 75, 90, 95, 97.5, 99]
 pcts = lambda v: {str(q): float(x) for q, x in zip(PCT, np.percentile(v, PCT))}
 W, B, names, probes = [], [], [], []
+OLD = {p['key']: p for p in json.load(open(f'{a.dir}/lin_probes.json'))['probes']} if os.path.exists(f'{a.dir}/lin_probes.json') else {}
+SCALES = ('pct', 'df_pct', 'td_pct')
 for prefix, stem, group, key in SOURCES:
     wf, jf = f'{a.dir}/{stem}_weights.f32', f'{a.dir}/{stem}.json'
     if not (os.path.exists(wf) and os.path.exists(jf)):
@@ -54,26 +59,31 @@ for prefix, stem, group, key in SOURCES:
     W.append(raw[:len(nm) * NL * D].reshape(len(nm), NL, D))
     B.append(raw[len(nm) * NL * D:])
     res = meta[key]
-    rows = np.load(f'{a.dir}/{stem}_rows.npz', allow_pickle=True)
-    base = np.load(f'{a.dir}/rollprobe_rows.npz', allow_pickle=True)  # pairs and surprisal (same row order in every rows file)
-    sp, pair = base['split'], base['pair']
-    te = np.flatnonzero(sp == 2)
-    first = te[pair[te] >= 0]
-    first = first[sp[pair[first]] == 2]
-    rnames = list(rows['names'])
+    have_rows = os.path.exists(f'{a.dir}/{stem}_rows.npz') and os.path.exists(f'{a.dir}/rollprobe_rows.npz')
+    if have_rows:
+        rows = np.load(f'{a.dir}/{stem}_rows.npz', allow_pickle=True)
+        base = np.load(f'{a.dir}/rollprobe_rows.npz', allow_pickle=True)  # pairs and surprisal (same row order in every rows file)
+        sp, pair = base['split'], base['pair']
+        te = np.flatnonzero(sp == 2)
+        first = te[pair[te] >= 0]
+        first = first[sp[pair[first]] == 2]
+        rnames = list(rows['names'])
     for t in nm:
         k = f'{prefix}:{t}'
         names.append(k)
         p = {'key': k, 'target': t, 'group': group, 'label': LABEL.get(t, t), 'test_r2': res[t]['test'],
              'source': wf}
-        f = rows['pred'][:, rnames.index(t)]
-        p['pct'] = pcts(f[te])
         if t.startswith('next ') and t != 'next 1':
-            K = int(t.split()[1])  # forecasts of mean surprisal of the K tokens after the next one
-            df = f[pair[first]] - f[first]
-            p['horizon'] = K
-            p['df_pct'] = pcts(df)
-            p['td_pct'] = pcts(-base['next_1'][first] - K * df)
+            p['horizon'] = int(t.split()[1])  # forecasts of mean surprisal of the K tokens after the next one
+        if have_rows:
+            f = rows['pred'][:, rnames.index(t)]
+            p['pct'] = pcts(f[te])
+            if 'horizon' in p:
+                df = f[pair[first]] - f[first]
+                p['df_pct'] = pcts(df)
+                p['td_pct'] = pcts(-base['next_1'][first] - p['horizon'] * df)
+        else:
+            p.update({k_: OLD[k][k_] for k_ in SCALES if k in OLD and k_ in OLD[k]})
         if t.startswith('added'):
             p['note'] = 'predicts the residual of the baseline in rollprobe.json baseline_coef'
         probes.append(p)
