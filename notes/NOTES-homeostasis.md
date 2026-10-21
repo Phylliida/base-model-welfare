@@ -1012,6 +1012,31 @@ Goal: the closed-loop response matrix M for a larger basis, with no pushes (no e
   - Chunks of 1,000 rollouts + 333 natural windows alternate generation and capture (homeo-capture now takes token ids and positions, llama.cpp e8e74270d); a chunk starts only if the previous chunk's duration fits before the deadline. The user starts at 13:00, so a sixth and a seventh chunk were appended (`--append`: 1,000 more rollouts each with unused seed documents, 333 more natural windows each; up to 7,000 + 2,333 sequences) and the deadline is 10:15 (a chunk runs only if it would end by then; the driver skips chunks already captured, so it can be restarted). Generation requests are 32 tokens (with 128 the off-part of a cycle was filled by in-flight requests and the fan swung 38-79%).
   - Sites (`homeo/rollprobe_sites.py`): pairs (d, d+1), depths stratified over [16, len - 133], 1 pair per 56 tokens (1-32 per sequence); about 23 rows per sequence, ~215k rows for all 9,333 sequences (~161 GB f16 for 61 layers).
   - Fit (`homeo/rollprobe_fit.py`, tested on synthetic data in the real formats: raw-weight self-check 5e-7; per-layer products and kernel blocks on the GPU after capture, float32 without TF32, identical results on the synthetic data; the CPU-only fit would take ~4.4 h at 129k training rows): targets next 1 / next 8 / next 32 / next 128 (difficulty = mean surprisal after the next token) and added 32 / 128 (baseline: next-token entropy, current surprisal, mean surprisal of the last 8 / 32 / 128, log context length). Split by sequence, stratified by language group x kind, 70 / 10 / 20. Results by language group, kind and depth. Forecast-change and TD-error (delta = -c_{s+1} - 128 df) reliability at fixed strengths from disjoint quarters and halves of the training sequences (kernel sub-blocks, no refit of the kernel).
+- **Rollout probe results** (2026-10-21; 7 chunks done by 09:17: 7,000 rollouts + 2,333 natural windows, 9,333 sequences, 213,704 rows; train 149,114 / val 23,002 / test 41,588 rows; fit 3.9 h, outputs /mnt/models/homeo/rollprobe: rollprobe.{json,txt}, rollprobe_rows.npz, rollprobe_weights.f32, rollprobe_layers_weights.f32; self-check of the raw weights <= 1.1e-4).
+  - Generation checks: rollouts are on-policy (mean surprisal 2.608 vs entropy 2.609 nats over 60k tokens; 18% of tokens > 5 nats, against 0.15% in the min_p-clipped rollouts), in every language group (s - H within +-0.01). Natural text: surprisal exceeds entropy by 0.08 (other languages) to 0.18 (Chinese) nats. Rollouts are harder text than FineWeb (English 2.55 vs 2.38 nats).
+
+  | test R2 (within-sequence) | layer 40 | all 61 layers | best single layer |
+  |---|---|---|---|
+  | next 1 (next token's loss) | 0.298 | 0.348 (0.316) | 0.349 (L57) |
+  | next 8 | 0.337 | 0.369 (0.237) | 0.350 (L48) |
+  | next 32 | 0.465 | 0.498 (0.289) | 0.477 (L43) |
+  | next 128 | 0.490 | 0.524 (0.205) | 0.499 (L43) |
+  | added 32 | 0.044 | 0.055 (0.064) | 0.050 (L44) |
+  | added 128 | 0.057 | 0.069 (0.077) | 0.061 (L43) |
+
+  - Baseline (entropy, current surprisal, last 8 / 32 / 128, log context) test R2 0.431 / 0.440 (next 32 / 128). The state adds 0.055 / 0.069 of total variance (12% of what the baseline leaves; partial R2 0.097 / 0.122). Caution: the val R2 printed during the solves for the added targets is that partial R2, not H2's added; I misreported it to the user as "added 0.12" before the test numbers came (corrected). So the state's contribution is about the size found on the VL1 FineWeb windows (0.063 at 32), slightly larger at 128.
+  - By group (next 128, all layers): rollouts 0.50-0.57, natural English 0.31, natural Chinese 0.45, natural other 0.53; depth 16-64 0.45, 64-256 0.49, 256-1024 0.53, 1024+ 0.58. Added 128: rollouts 0.06-0.08, natural English 0.045, natural Chinese 0.030.
+  - **Forecast-change reliability at fixed strengths** (disjoint quarters / halves of 6,533 training sequences, 20,814 test pairs; agreement of df = f(s+1) - f(s); rho(n) = n / (n + c)):
+
+  | lambda | forecast R2 (half) | rel df quarter / half | full-train estimate | rel TD half |
+  |---|---|---|---|---|
+  | 1 | 0.41 | 0.06 / 0.11 | 0.21 | 0.11 |
+  | 10 (val-best) | 0.50 | 0.21 / 0.33 | 0.51 | 0.34 |
+  | 100 | 0.47 | 0.70 / 0.82 | 0.90 | 0.83 |
+
+    (next 128; next 32 is similar). Stronger ridge keeps the probe on high-variance state directions, where the token-to-token change is consistent: at lambda 100 the forecast loses 0.03 R2 and df becomes ~90% reliable. For temporal-difference work use a lambda-100 probe (not saved yet: the saved weights are the val-best lambda 10 / 31.6).
+  - Validity check of df (lambda 10 predictions, test pairs): corr(df, surprisal - entropy of the token just read) = +0.10 (rollouts 0.10, natural 0.09): a token more surprising than expected raises the forecast of upcoming difficulty. Reliability is not validity: df could be reliably tracking any high-variance state change; causal and behavioral checks are still to do.
+  - Activations copied to /data2/homeo/rollprobe_acts (README there) for follow-ups (the user asked to keep them on one of their drives).
 - **Next: layer sweep.** All 61 layers, ~10k continuations on fresh prompts, window 13-31 only (~15 GB): per-layer spectra and capacity profiles. Then deep runs at the interesting layers. The user wants the same results at every layer eventually.
 
 ## Measured instrument facts

@@ -166,6 +166,22 @@ torch.backends.cuda.matmul.allow_tf32 = False
 tr_d, va_d, te_d = (torch.from_numpy(r).to(dev) for r in (tr, va, te))
 
 
+# GPU -> host copies go through a pinned buffer: a pageable copy runs at ~1.4 GB/s, pinned at ~20 GB/s, and each
+# layer moves ~80 GB of kernel blocks at 150k training rows
+BLK = 16384
+PIN = torch.empty(max(len(va), len(te), BLK) * BLK, dtype=torch.float32).pin_memory() if dev.type == 'cuda' else None
+
+
+def acc(dst, src):
+    """dst (CPU view) += src (device)"""
+    if PIN is None:
+        dst.add_(src)
+        return
+    buf = PIN[:src.numel()].view(src.shape)
+    buf.copy_(src)
+    dst.add_(buf)
+
+
 def cool():
     """GPU fan near 45%: wait (up to 2 min) after each layer while it is above"""
     if dev.type != 'cuda':
@@ -187,7 +203,6 @@ n_tr = len(tr)
 Ktr = torch.zeros((n_tr, n_tr), dtype=torch.float32)
 Kva = torch.zeros((len(va), n_tr), dtype=torch.float32)
 Kte = torch.zeros((len(te), n_tr), dtype=torch.float32)
-BLK = 16384
 blocks = [(s, min(s + BLK, n_tr)) for s in range(0, n_tr, BLK)]
 per_layer, stats = {}, {}
 WL = np.zeros((NL, len(NAMES), D), np.float32)
@@ -225,10 +240,10 @@ for L in range(NL):
         del A, Zv, Ze, Ws, pv, pe
     for bi, (i0, i1) in enumerate(blocks):
         for (j0, j1) in blocks[:bi + 1]:
-            Ktr[i0:i1, j0:j1].add_((Ztg[i0:i1] @ Ztg[j0:j1].T).cpu())
+            acc(Ktr[i0:i1, j0:j1], Ztg[i0:i1] @ Ztg[j0:j1].T)
     for (j0, j1) in blocks:
-        Kva[:, j0:j1].add_((Zvg @ Ztg[j0:j1].T).cpu())
-        Kte[:, j0:j1].add_((Zeg @ Ztg[j0:j1].T).cpu())
+        acc(Kva[:, j0:j1], Zvg @ Ztg[j0:j1].T)
+        acc(Kte[:, j0:j1], Zeg @ Ztg[j0:j1].T)
     del Ztg, Zvg, Zeg
     cool()
     say(f'L{L:02d}: ' + (', '.join(f'{nm} {per_layer[L][nm]["test"]:.3f}' for nm in NAMES) if L in per_layer else '') +
