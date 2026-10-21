@@ -25,6 +25,7 @@ baseline features, all-layer predictions on val/test), rollprobe_weights.f32 (al
 ([61][n_targets][6144] then [61][n_targets]). A self-check predicts the test rows from the saved raw weights.
 
 usage: rollprobe_fit.py [--acts /dev/shm/rollprobe] [--seqs /mnt/models/homeo/rollouts2] [--out /mnt/models/homeo/rollprobe]
+       [--lams 100 --tag _l100 --no-layers --no-reliability] [--save-kernels DIR]
 """
 import argparse
 import glob
@@ -42,6 +43,10 @@ ap.add_argument('--seqs', default='/mnt/models/homeo/rollouts2')
 ap.add_argument('--out', default='/mnt/models/homeo/rollprobe')
 ap.add_argument('--threads', type=int, default=64)
 ap.add_argument('--no-layers', action='store_true', help='skip the per-layer profile')
+ap.add_argument('--lams', default='', help='fixed all-layer strengths (comma list) instead of the search on val')
+ap.add_argument('--no-reliability', action='store_true')
+ap.add_argument('--tag', default='', help='suffix for the output files, e.g. _l100')
+ap.add_argument('--save-kernels', default='', help='directory for Ktr / Kva / Kte (f32) + rows, for refits with new targets')
 ap.add_argument('--device', default='cuda' if torch.cuda.is_available() else 'cpu', help='for the per-layer matrix products')
 a = ap.parse_args()
 torch.set_num_threads(a.threads)
@@ -248,6 +253,9 @@ for L in range(NL):
     cool()
     say(f'L{L:02d}: ' + (', '.join(f'{nm} {per_layer[L][nm]["test"]:.3f}' for nm in NAMES) if L in per_layer else '') +
         f'  ({time.time() - tl:.0f} s, total {time.time() - t0:.0f} s)')
+if dev.type == 'cuda':
+    torch.cuda.empty_cache()
+say(f'kernels done, GPU released ({time.time() - t0:.0f} s)')
 
 out = {'names': NAMES, 'baseline_r2': base_r2, 'chunks': chunks, 'n_rows': N, 'n_sequences': int(len(seq_ids)),
        'baseline_coef': {'features': BASE_FEATS, 'next 32': Bw[:, 0].tolist(), 'next 128': Bw[:, 1].tolist()},
@@ -263,6 +271,16 @@ if per_layer:
 for bi, (i0, i1) in enumerate(blocks):
     for (j0, j1) in blocks[:bi]:
         Ktr[j0:j1, i0:i1] = Ktr[i0:i1, j0:j1].T
+if a.save_kernels:
+    os.makedirs(a.save_kernels, exist_ok=True)
+    for nm_k, K_ in (('Ktr', Ktr), ('Kva', Kva), ('Kte', Kte)):
+        K_.numpy().tofile(f'{a.save_kernels}/{nm_k}.f32')
+    np.savez(f'{a.save_kernels}/rows.npz', tr=tr, va=va, te=te, Y=Y, names=np.array(NAMES), uid=uid,
+             mu=np.stack([stats[L][0].numpy() for L in range(NL)]), sd=np.stack([stats[L][1].numpy() for L in range(NL)]))
+    json.dump({'Ktr': [n_tr, n_tr], 'Kva': [len(va), n_tr], 'Kte': [len(te), n_tr], 'dtype': 'f32',
+               'note': 'K = sum over layers 0-60 of Z Z^T, Z standardized with the train mean / sd (rows.npz mu, sd); '
+                       'rows of the fit rows npz in the order tr, va, te; acts in ' + a.acts}, open(f'{a.save_kernels}/kernels.json', 'w'))
+    say(f'kernels saved to {a.save_kernels} ({time.time() - t0:.0f} s)')
 Yt = torch.from_numpy(Y[tr]).float()
 ym = Yt.mean(0)
 sols, pv, pe = {}, {}, {}
@@ -281,19 +299,23 @@ def solve(lam):
         f' ({time.time() - t0:.0f} s)')
 
 
-for lam in JLAMS_COARSE:
-    solve(lam)
-best = {j: max(sols, key=lambda l_: r2(Y[va, j], pv[l_][:, j])) for j in range(len(NAMES))}
 hd = lambda e: float(10 ** (e / 2))  # half-decade grid, exact keys
-for e in sorted({round(2 * np.log10(b_)) + s_ for b_ in best.values() for s_ in (-1, 1)}):
-    solve(hd(e))
-for _ in range(2):  # a best strength at the edge of what was solved: one more half-decade out
+if a.lams:
+    for lam in [float(x) for x in a.lams.split(',')]:
+        solve(lam)
+else:
+    for lam in JLAMS_COARSE:
+        solve(lam)
     best = {j: max(sols, key=lambda l_: r2(Y[va, j], pv[l_][:, j])) for j in range(len(NAMES))}
-    ext = {round(2 * np.log10(b_)) + (1 if b_ == max(sols) else -1) for b_ in best.values() if b_ in (min(sols), max(sols))}
-    if not ext:
-        break
-    for e in sorted(ext):
+    for e in sorted({round(2 * np.log10(b_)) + s_ for b_ in best.values() for s_ in (-1, 1)}):
         solve(hd(e))
+    for _ in range(2):  # a best strength at the edge of what was solved: one more half-decade out
+        best = {j: max(sols, key=lambda l_: r2(Y[va, j], pv[l_][:, j])) for j in range(len(NAMES))}
+        ext = {round(2 * np.log10(b_)) + (1 if b_ == max(sols) else -1) for b_ in best.values() if b_ in (min(sols), max(sols))}
+        if not ext:
+            break
+        for e in sorted(ext):
+            solve(hd(e))
 joint, lam_of = {}, {}
 PRED = np.full((N, len(NAMES)), np.nan)
 for j, nm in enumerate(NAMES):
@@ -335,7 +357,7 @@ i0_, i1_ = np.array([pos_te[r] for r in pr_first]), np.array([pos_te[R['pair'][r
 c_next = R['next 1'][pr_first + 0]  # c_{s+1} for the first row of the pair = surprisal of token d+1
 rel = {}
 JREL = [2, 3]
-for lamc in [hd(round(2 * np.log10(lam_of[3])) + s_) for s_ in (-2, 0, 2)]:
+for lamc in ([] if a.no_reliability else [hd(round(2 * np.log10(lam_of[3])) + s_) for s_ in (-2, 0, 2)]):
     preds_sub = {}
     for nm_s, msk in subsets.items():
         it = torch.from_numpy(np.flatnonzero(msk))
@@ -385,13 +407,13 @@ for L in range(NL):
     W = ((((X[tr] - mu) / sd).T @ AL) / sd[:, None]).numpy()  # [D, n_targets]
     WJ[:, L] = W.T
     bj -= (mu.numpy().astype(np.float64) @ W.astype(np.float64))
-    pchk += X[te].double().numpy() @ W.astype(np.float64)
+    pchk += (X[te].double() @ torch.from_numpy(W).double()).numpy()
     del X
-with open(f'{a.out}/rollprobe_weights.f32', 'wb') as fh:
+with open(f'{a.out}/rollprobe{a.tag}_weights.f32', 'wb') as fh:
     WJ.reshape(-1).tofile(fh)
     bj.astype(np.float32).tofile(fh)
 chk = {nm: float(np.abs(pchk[:, j] + bj[j] - PRED[te, j]).max()) for j, nm in enumerate(NAMES)}
-out['weights'] = {'file': f'{a.out}/rollprobe_weights.f32', 'layout': 'f32 [n_targets][61][6144] then [n_targets] bias; '
+out['weights'] = {'file': f'{a.out}/rollprobe{a.tag}_weights.f32', 'layout': 'f32 [n_targets][61][6144] then [n_targets] bias; '
                   'target = sum_L w_L . h_L + b (raw block outputs); added targets predict the residual of baseline_coef',
                   'selfcheck_max_abs_diff': chk}
 
@@ -423,8 +445,8 @@ for lamc, rr in rel.items():
         say('    ' + '; '.join(f'{NAMES[j]} {what}: rho = n / (n + {rr[f"fit {NAMES[j]} {what}"]["c_sequences"]:.0f}), '
                                f'full train {rr[f"fit {NAMES[j]} {what}"]["rho_full_train"]:.2f}, 0.9 at {rr[f"fit {NAMES[j]} {what}"]["n_for_0.9"]:.0f} seqs'
                                for what in ('df', 'td')))
-json.dump(out, open(f'{a.out}/rollprobe.json', 'w'), indent=1)
-np.savez(f'{a.out}/rollprobe_rows.npz', **{k.replace(' ', '_'): v for k, v in R.items()}, lang_group=LG, split=SPLIT,
+json.dump(out, open(f'{a.out}/rollprobe{a.tag}.json', 'w'), indent=1)
+np.savez(f'{a.out}/rollprobe{a.tag}_rows.npz', **{k.replace(' ', '_'): v for k, v in R.items()}, lang_group=LG, split=SPLIT,
          baseline=pb, Y=Y, pred=PRED, names=np.array(NAMES))
-open(f'{a.out}/rollprobe.txt', 'w').write('\n'.join(lines) + '\n')
-say(f'-> {a.out}/rollprobe.json ({time.time() - t0:.0f} s)')
+open(f'{a.out}/rollprobe{a.tag}.txt', 'w').write('\n'.join(lines) + '\n')
+say(f'-> {a.out}/rollprobe{a.tag}.json ({time.time() - t0:.0f} s)')
