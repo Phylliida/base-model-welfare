@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """New targets for the all-layer rollout probe from saved kernels (rollprobe_fit.py --save-kernels): only the solves.
 
-Default targets: past difficulty, the mean surprisal of the tokens up to and including the current one (c_t = surprisal
-of token t under the model): past 8 / 32 / 128 and past all (tokens 1..s, the entire past context). Same split, same
+--targets past (default): past difficulty, the mean surprisal of the tokens up to and including the current one (c_t =
+surprisal of token t under the model): past 8 / 32 / 128 and past all (tokens 1..s, the entire past context).
+--targets baseline: the fit's baseline features and their relatives, read from the state at s: next-token entropy H_s,
+current surprisal c_s, entropy before the current token H_{s-1}, excess surprisal c_s - H_{s-1}, log(1 + rank of the
+current token under p_{s-1}), log context length log(s + 1). Same split, same
 standardization and kernels as the fit; strength per target on val (--lams); test R2 overall, within sequence, by
 depth and by language group x kind; raw weights in the fit's layout and a self-check.
 Writes OUT/rollprobe{TAG}.json / .txt, rollprobe{TAG}_rows.npz (targets + val/test predictions), rollprobe{TAG}_weights.f32
@@ -24,7 +27,8 @@ ap.add_argument('--kernels', default='/dev/shm/rollprobe_kernels')
 ap.add_argument('--rows', default='/mnt/models/homeo/rollprobe/rollprobe_rows.npz')
 ap.add_argument('--acts', default='/data2/homeo/rollprobe_acts')
 ap.add_argument('--out', default='/mnt/models/homeo/rollprobe')
-ap.add_argument('--tag', default='_past')
+ap.add_argument('--targets', default='past', choices=['past', 'baseline'])
+ap.add_argument('--tag', default=None, help='default: _past / _baseline')
 ap.add_argument('--lams', default='1,10,100,1000')
 ap.add_argument('--threads', type=int, default=64)
 a = ap.parse_args()
@@ -44,16 +48,23 @@ assert (z['split'][tr] == 0).all() and (z['split'][va] == 1).all() and (z['split
 N = len(z['pos'])
 chunk, srow, seq, pos = z['chunk'], z['srow'], z['seq'], z['pos']
 
-# ---- targets: past difficulty ----
-past_all = np.empty(N)
+# ---- targets ----
+a.tag = a.tag if a.tag is not None else f'_{a.targets}'
+past_all, ent_prev, rank_prev = np.empty(N), np.empty(N), np.empty(N)
 for k in np.unique(chunk):
     lab = np.fromfile(f'{a.acts}/c{k}/labels.bin', dtype=LABEL)
     starts = list(np.flatnonzero(lab['pos'] == 0)) + [len(lab)]
     for i in np.flatnonzero(chunk == k):
-        c = lab['surprisal'][starts[seq[i]]:starts[seq[i] + 1]].astype(np.float64)
-        past_all[i] = c[1:pos[i] + 1].mean()
-NAMES = ['past 8', 'past 32', 'past 128', 'past all']
-Y = np.stack([z['m8'], z['m32'], z['m128'], past_all], 1)
+        L_ = lab[starts[seq[i]]:starts[seq[i] + 1]]
+        assert L_['pos'][pos[i]] == pos[i]
+        past_all[i] = L_['surprisal'][1:pos[i] + 1].astype(np.float64).mean()
+        ent_prev[i], rank_prev[i] = L_['entropy_prev'][pos[i]], L_['rank_prev'][pos[i]]
+if a.targets == 'past':
+    NAMES = ['past 8', 'past 32', 'past 128', 'past all']
+    Y = np.stack([z['m8'], z['m32'], z['m128'], past_all], 1)
+else:
+    NAMES = ['entropy', 'surprisal', 'entropy prev', 'excess surprisal', 'log rank', 'log context']
+    Y = np.stack([z['ent'], z['cur'], ent_prev, z['cur'] - ent_prev, np.log1p(rank_prev), z['logd']], 1)
 uid = z['chunk'].astype(np.int64) * 100000 + z['seq']
 LG, KIND = z['lang_group'], z['kind']
 say(f'{N} rows; train {len(tr)}, val {len(va)}, test {len(te)}; targets {", ".join(NAMES)} ({time.time() - t0:.0f} s)')
