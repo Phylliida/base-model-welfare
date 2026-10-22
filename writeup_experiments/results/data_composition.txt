@@ -1,0 +1,7 @@
+rollouts: 7000; length 160-2048 tokens, median 573, mean 740; English 70.0%, Chinese 15.0%, other 15.0% (arb_Arab, deu_Latn, fra_Latn, hin_Deva, ita_Latn, jpn_Jpan, kor_Hang, rus_Cyrl, spa_Latn)
+natural windows: 2333; length 160-2045 tokens, median 544, mean 723; English 70.0%, Chinese 15.0%, other 15.0% (arb_Arab, deu_Latn, fra_Latn, hin_Deva, ita_Latn, jpn_Jpan, kor_Hang, rus_Cyrl, spa_Latn)
+total 9333 sequences: 75.0% rollouts, 25.0% natural
+rollouts generated: 7000; with at least one document end: 28%
+probe positions: 213704 (pairs of consecutive tokens, depth 16-1909); train / val / test 149114 / 23002 / 41588 (split by sequence)
+chunk 0, rollout: mean surprisal 2.601, mean entropy 2.597 nats (733756 tokens)
+chunk 0, pretrain: mean surprisal 2.379, mean entropy 2.262 nats (240093 tokens)

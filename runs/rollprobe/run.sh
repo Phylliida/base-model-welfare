@@ -8,11 +8,13 @@
 # Sample size: 7000 rollouts + 2333 natural windows (~215k rows) if all chunks finish; the probe needs ~100k training
 # rows to match the VL1 all-layer fit. Exposure: none (unsteered sampling and forward passes).
 # usage: run.sh [GEN0_PID]   (GEN0_PID: an already running generator for chunk 0 to wait for)
-R=/home/bepis/prog/llm-tests
-B=$R/base-model-welfare
-M=/home/bepis/prog/SimpleBot/models/GLM-4-32B-Base-32K.i1-Q4_K_S.gguf
-O=/mnt/models/homeo/rollouts2
-S=/dev/shm/rollprobe
+# paths (overridable from the environment, e.g. by writeup_experiments/config.sh)
+R=${R:-/home/bepis/prog/llm-tests}
+B=${B:-$R/base-model-welfare}
+M=${MODEL:-/home/bepis/prog/SimpleBot/models/GLM-4-32B-Base-32K.i1-Q4_K_S.gguf}
+BIN=${LLAMA_BIN:-$R/llama.cpp/build-avx2/bin}
+O=${SEQS:-/mnt/models/homeo/rollouts2}
+S=${ACTS:-/dev/shm/rollprobe}
 DEADLINE=${DEADLINE:-$(date -d 'tomorrow 10:15' +%s)}
 NCHUNK=${NCHUNK:-7}
 cd $B
@@ -20,7 +22,7 @@ log() { echo "$(date '+%F %T') $*"; }
 server_pid() { ss -ltnp | command grep -F ':8056 ' | sed -E 's/.*pid=([0-9]+).*/\1/' | head -1; }
 start_server() {
   [ -n "$(server_pid)" ] && return
-  nohup $R/llama.cpp/build-avx2/bin/llama-server -m $M -ngl 99 -c 66560 -np 32 --port 8056 --host 127.0.0.1 --no-webui \
+  nohup $BIN/llama-server -m $M -ngl 99 -c 66560 -np 32 --port 8056 --host 127.0.0.1 --no-webui \
     >> $O/server_gen.log 2>&1 &
   for i in $(seq 100); do sleep 3; curl -s -m 2 localhost:8056/health | command grep -q ok && break; done
   log "server up"
@@ -44,7 +46,7 @@ for k in $(seq 0 $((NCHUNK - 1))); do
   stop_server
   python3 homeo/rollprobe_sites.py $k --out $O --n-chunks $NCHUNK >> $O/sites.log 2>&1 || { log "sites chunk $k failed"; break; }
   mkdir -p $S/c$k; echo 600 > $S/c$k/pause_ms
-  $R/llama.cpp/build-avx2/bin/homeo-capture -m $M --rollouts $O/capture_c$k.jsonl --out $S/c$k --layers $(seq -s, 0 60) \
+  $BIN/homeo-capture -m $M --rollouts $O/capture_c$k.jsonl --out $S/c$k --layers $(seq -s, 0 60) \
     --n-forced 0 --max-len 2048 --ubatch 512 --pause-ms 600 > $O/capture_c$k.log 2>&1 &
   cp=$!
   sh runs/rollprobe/fan_guard.sh $S/c$k/pause_ms $cp >> $O/capture_fan_guard.log 2>&1 &
@@ -53,5 +55,6 @@ for k in $(seq 0 $((NCHUNK - 1))); do
   log "chunk $k done in $last s: $(tail -1 $O/sites.log)"
 done
 log "GPU phase done"
-if python3 homeo/rollprobe_fit.py > $O/fit.log 2>&1; then log "fit done"
-else log "GPU fit failed, refitting on the CPU"; python3 homeo/rollprobe_fit.py --device cpu > $O/fit_cpu.log 2>&1 && log "fit done (CPU)"; fi
+[ -n "$NO_FIT" ] && exit 0
+if python3 homeo/rollprobe_fit.py --acts $S --seqs $O > $O/fit.log 2>&1; then log "fit done"
+else log "GPU fit failed, refitting on the CPU"; python3 homeo/rollprobe_fit.py --acts $S --seqs $O --device cpu > $O/fit_cpu.log 2>&1 && log "fit done (CPU)"; fi

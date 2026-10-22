@@ -1,0 +1,2 @@
+next 32: probe alone 49.8%, full baseline 43.1%, combined 51.0%, added 7.9 points (stacked) / 5.5 points (strict: probe fit to the baseline residual)
+next 128: probe alone 52.4%, full baseline 44.1%, combined 53.8%, added 9.7 points (stacked) / 6.9 points (strict: probe fit to the baseline residual)

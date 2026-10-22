@@ -1,0 +1,30 @@
+% Difficulty of the next 32 tokens: test R2 (baseline OLS on train; + probe stacked on val)
+\begin{tabular}{lccc}
+  \toprule
+  Baseline features & Baseline & + Probe & Probe Added \\
+  \midrule
+  Mean surprisal of all prior tokens           & 0.253 & 0.501 & $+0.248$ \\
+  \quad + current entropy                      & 0.315 & 0.503 & $+0.187$ \\
+  \quad + current surprisal                    & 0.328 & 0.503 & $+0.175$ \\
+  \quad + mean surprisal of last 8/32/128      & 0.429 & 0.510 & $+0.081$ \\
+  \quad + log context length                   & 0.431 & 0.510 & $+0.079$ \\
+  \midrule
+  Probe alone                                  & \multicolumn{3}{c}{0.498} \\
+  \bottomrule
+\end{tabular}
+
+% Difficulty of the next 128 tokens: test R2 (baseline OLS on train; + probe stacked on val)
+\begin{tabular}{lccc}
+  \toprule
+  Baseline features & Baseline & + Probe & Probe Added \\
+  \midrule
+  Mean surprisal of all prior tokens           & 0.283 & 0.530 & $+0.247$ \\
+  \quad + current entropy                      & 0.330 & 0.531 & $+0.200$ \\
+  \quad + current surprisal                    & 0.339 & 0.531 & $+0.191$ \\
+  \quad + mean surprisal of last 8/32/128      & 0.437 & 0.538 & $+0.101$ \\
+  \quad + log context length                   & 0.441 & 0.538 & $+0.097$ \\
+  \midrule
+  Probe alone                                  & \multicolumn{3}{c}{0.524} \\
+  \bottomrule
+\end{tabular}
+

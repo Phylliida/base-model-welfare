@@ -1,0 +1,10 @@
+all-layer probes, test R2 (within-sequence):
+  past 8    78.6% (74.1%)
+  past 32   78.0% (68.3%)
+  past 128  76.8% (59.1%)
+  past all  69.9% (17.9%)
+entire context by depth: depth 16-64 67.1%, depth 64-256 76.5%, depth 256-1024 66.4%, depth 1024-2048 52.1%
+by kind and language (entire context): en rollout 68.4%, en pretrain 53.3%, zh rollout 71.7%, zh pretrain 64.0%, other rollout 72.4%, other pretrain 73.7%
+text before the last 128 tokens, test R2:
+  depth 256-1024: exact last-8/32/128 means 31.7%, + the probe's entire-context read-out 53.9% (n test 20856)
+  depth 1024-2048: exact last-8/32/128 means 25.2%, + the probe's entire-context read-out 45.7% (n test 5722)

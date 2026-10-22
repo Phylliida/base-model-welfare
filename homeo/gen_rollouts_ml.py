@@ -33,8 +33,8 @@ import urllib.request
 import pyarrow.parquet as pq
 
 R = '/home/bepis/prog/llm-tests'
-FINEWEB = f'{R}/data/fineweb_000.parquet'
-FW2 = f'{R}/data/fineweb2'
+FINEWEB = os.environ.get('FINEWEB', f'{R}/data/fineweb_000.parquet')  # HuggingFaceFW/fineweb sample/10BT/000_00000.parquet
+FW2 = os.environ.get('FINEWEB2_DIR', f'{R}/data/fineweb2')  # HuggingFaceFW/fineweb-2 data/<lang>/test/000_00000.parquet as <lang>.test.parquet
 OTHER = ['fra_Latn', 'deu_Latn', 'rus_Cyrl', 'jpn_Jpan', 'kor_Hang', 'arb_Arab', 'spa_Latn', 'hin_Deva', 'ita_Latn']
 LEN_LO, LEN_HI = 160, 2048
 EOT = 151329  # <|endoftext|>
