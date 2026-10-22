@@ -9,4 +9,5 @@ python3 analysis/baseline_ladder.py
 python3 analysis/layer_figures.py
 python3 analysis/past_difficulty.py
 python3 analysis/data_composition.py
+python3 analysis/probe_cosine.py
 ls -la "$RESULTS"

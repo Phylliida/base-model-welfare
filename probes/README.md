@@ -17,6 +17,7 @@ other languages), 213,704 positions, split by sequence 70 / 10 / 20. Dual ridge 
 | `rollprobe_l100_weights.f32` | same, strength 100 (forecast change ~90% reliable; use for TD work) | same | `rollprobe_fit.py --lams 100 --tag _l100` |
 | `rollprobe_past_weights.f32` | past 8, past 32, past 128, past all | f32 [4][61][6144] then [4] | `homeo/rollprobe_refit.py` |
 | `rollprobe_baseline_weights.f32` | entropy, surprisal, entropy prev, excess surprisal, log rank, log context | f32 [6][61][6144] then [6] | `rollprobe_refit.py --targets baseline` |
+| `rollprobe_standardization.npz` | mean and sd of every raw block-output feature over the training rows (mu, sd: [61][6144]); multiply raw weights by sd for the standardized coordinates the fits worked in | npz | `writeup_experiments/analysis/probe_cosine.py` (from the saved kernels) |
 | `rollprobe_layers_weights.f32` | the six forecast targets, one probe per layer (profile) | f32 [61][6][6144] then [61][6] | `rollprobe_fit.py` |
 | `rollprobe*.json`, `*.txt` | names, test / val R2, strengths, by-group and by-depth results, baseline coefficients, reliability, self-checks | | |
 | `rollprobe_td.{json,txt}` | forecast change / TD error analysis | | `homeo/rollprobe_td.py` |

@@ -2,6 +2,7 @@
 """Figures: test R2 of single-layer probes at every layer, with the all-layer probe (dashed) and, for the future
 targets, the text-statistics baseline (dotted). Future: next 32 / 128 (rollprobe.json per_layer). Past: last 32 / 128
 and the entire past context (rollprobe_layers_more.json from homeo/rollprobe_layers.py; skipped if missing).
+Decoded text statistics (rollprobe_layers_more.json; all-layer values from rollprobe_baseline.json): two figures of three.
 Writes pgfplots figures (needs \\usepackage{pgfplots}, \\pgfplotsset{compat=1.18}, and float for [H]).
 """
 import json
@@ -74,5 +75,20 @@ if os.path.exists(more):
            'context so far) from a linear probe on one layer\'s activations at the current token. Dashed: one probe on '
            f'all 61 layers. Single layers peak at layer {pk["past 32"]} (32), {pk["past 128"]} (128) and {pk["past all"]} (entire context).',
            'fig:layer-r2-past', ymax=90)
+    Bj = json.load(open(f'{PROBES}/rollprobe_baseline.json'))['results']
+    for name, label, targets in (
+            ('fig_decoded_layers_a.tex', 'fig:layer-r2-decoded-a',
+             [('entropy', 'next-token entropy'), ('entropy prev', 'entropy before the current token'), ('log context', 'log context length')]),
+            ('fig_decoded_layers_b.tex', 'fig:layer-r2-decoded-b',
+             [('surprisal', "current token's surprisal"), ('log rank', "current token's log rank"), ('excess surprisal', 'excess surprisal (surprisal $-$ expected)')])):
+        cols = ['blue', 'red', 'black!60!green']
+        vals = {t: [M[str(L)][t]['test'] for L in range(61)] for t, _ in targets}
+        pkd = {t: max(range(61), key=lambda L: vals[t][L]) for t, _ in targets}
+        figure(name,
+               [(c, vals[t], f'{lab[0].upper() + lab[1:]} (single layer)') for c, (t, lab) in zip(cols, targets)],
+               [(c, 'dashed', Bj[t]['test'], f'{lab[0].upper() + lab[1:]}, all layers') for c, (t, lab) in zip(cols, targets)],
+               'Test $R^2$ for decoding text statistics from a linear probe on one layer\'s activations at the current '
+               'token. Dashed: one probe on all 61 layers. Single-layer peaks: ' +
+               ', '.join(f'{lab} layer {pkd[t]}' for t, lab in targets) + '.', label, ymax=100, legend='south east')
 else:
-    print(f'{more} not found: run homeo/rollprobe_layers.py for the past-difficulty figure')
+    print(f'{more} not found: run homeo/rollprobe_layers.py for the past-difficulty and decoded-statistics figures')
