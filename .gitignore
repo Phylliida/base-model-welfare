@@ -2,3 +2,7 @@ __pycache__/
 *.pyc
 tools/ffprof/
 tools/*.png
+*.kate-swp
+*.swp
+serve/logs/
+serve/build/

@@ -2,3 +2,7 @@
 	path = llama.cpp
 	url = https://github.com/Phylliida/llama.cpp.git
 	branch = homeostasis
+[submodule "loom"]
+	path = loom
+	url = https://github.com/Phylliida/minloomwebui
+	branch = value-lens

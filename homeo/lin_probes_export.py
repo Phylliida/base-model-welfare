@@ -15,7 +15,7 @@ for forecasts, the horizon K and percentiles of the forecast change df_t = f(t) 
 Without the rows files (e.g. from the repo copy, probes/rollout) the color scales are taken from an existing
 DIR/lin_probes.json.
 
-usage: lin_probes_export.py [--dir /mnt/models/homeo/rollprobe]
+usage: lin_probes_export.py [--dir /mnt/models/homeo/rollprobe] [--out DIR]
 """
 import argparse
 import json
@@ -26,7 +26,10 @@ import numpy as np
 
 ap = argparse.ArgumentParser()
 ap.add_argument('--dir', default='/mnt/models/homeo/rollprobe')
+ap.add_argument('--out', default=None, help='output directory (default: --dir)')
 a = ap.parse_args()
+OUT = a.out or a.dir
+os.makedirs(OUT, exist_ok=True)
 NL, D = 61, 6144
 SOURCES = [
     ('fc', 'rollprobe', 'forecast (best fit)', 'joint'),
@@ -90,11 +93,11 @@ for prefix, stem, group, key in SOURCES:
     print(f'{stem}: {len(nm)} probes')
 W = np.concatenate(W)
 B = np.concatenate(B)
-with open(f'{a.dir}/lin_probes.f32', 'wb') as fh:
+with open(f'{OUT}/lin_probes.f32', 'wb') as fh:
     W.reshape(-1).tofile(fh)
     B.astype(np.float32).tofile(fh)
 json.dump({'n_embd': D, 'n_layer': NL, 'names': names, 'probes': probes,
            'units': 'nats per token (forecasts, past difficulty, surprisal, entropy); log units for log rank / log context',
            'layout': 'f32 [n][61][6144] then [n] bias; value = sum_L w_L . h_L + b on raw block outputs'},
-          open(f'{a.dir}/lin_probes.json', 'w'), indent=1)
-print(f'{len(names)} probes -> {a.dir}/lin_probes.{{f32,json}}')
+          open(f'{OUT}/lin_probes.json', 'w'), indent=1)
+print(f'{len(names)} probes -> {OUT}/lin_probes.{{f32,json}}')

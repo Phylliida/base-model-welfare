@@ -10,6 +10,8 @@ The first thread looks for homeostasis-like dynamics in a base model: variables 
 - `notes/NOTES-homeostasis.md`: running research notes with the plan, design principles, confounds, results and instrument facts.
 - `logs/welfare_log.csv`: the exposure log kept under the group's Three Rs protocol (every steered run, with dose, tokens or positions in perturbed states, and endpoints).
 - `probes/`: every trained probe and direction with its metadata and results (all-layer difficulty probes, value lens probes, the 183 regulated directions, auto-interpretation results). See `probes/README.md` for layouts and for the large artifacts that live outside git.
+- `loom/`: submodule, the loom web UI with the value view (`Phylliida/minloomwebui`, branch `value-lens`). `serve/`: scripts to host it with the lens server (`serve/up.sh`; see `serve/README.md`).
+- `writeup_experiments/`: everything to reproduce the difficulty-prediction writeup (config, numbered steps, one script per result).
 - `tools/`: helpers that ran outside the repo (the original rollout generator, FineWeb extraction, the loom browser test). `tests/`: a synthetic end-to-end test of the probe fits.
 - `docs/`: HTML sources of the shared write-ups.
 - `llama.cpp/`: submodule pointing at the llama.cpp fork, branch `homeostasis`. The C++ tools are in `tools/homeo/` (homeo-capture, homeo-steer, homeo-band, homeo-steeropt, homeo-loop, homeo-ident, homeo-score, homeo-value) and build on the jspace GLM-4 graph in `tools/jspace/`. `llama-server` in the fork adds `/jlens` (J-lens readouts, `--value-probe`, `--probe-dirs`, `--lin-probes` all-layer probes, exact value lens) and `/steer` (steering along a direction, with an exposure log).
