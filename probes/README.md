@@ -19,6 +19,7 @@ other languages), 213,704 positions, split by sequence 70 / 10 / 20. Dual ridge 
 | `rollprobe_baseline_weights.f32` | entropy, surprisal, entropy prev, excess surprisal, log rank, log context | f32 [6][61][6144] then [6] | `rollprobe_refit.py --targets baseline` |
 | `rollprobe_standardization.npz` | mean and sd of every raw block-output feature over the training rows (mu, sd: [61][6144]); multiply raw weights by sd for the standardized coordinates the fits worked in | npz | `writeup_experiments/analysis/probe_cosine.py` (from the saved kernels) |
 | `rollprobe_layers_weights.f32` | the six forecast targets, one probe per layer (profile) | f32 [61][6][6144] then [61][6] | `rollprobe_fit.py` |
+| `rollprobe_layers_more_weights.f32`, `rollprobe_layers_more.json` | past difficulty (8 / 32 / 128 / all) and the six decoded statistics, one probe per layer, with per-layer test R2 | f32 [61][10][6144] then [61][10] | `homeo/rollprobe_layers.py` |
 | `rollprobe*.json`, `*.txt` | names, test / val R2, strengths, by-group and by-depth results, baseline coefficients, reliability, self-checks | | |
 | `rollprobe_td.{json,txt}` | forecast change / TD error analysis | | `homeo/rollprobe_td.py` |
 | `lin_probes.json` | the bundle served by `llama-server --lin-probes` and shown in the loom: keys, labels, test R2, color-scale percentiles | the matching `lin_probes.f32` is rebuilt from the weights here: `python3 homeo/lin_probes_export.py --dir probes/rollout` | `homeo/lin_probes_export.py` |

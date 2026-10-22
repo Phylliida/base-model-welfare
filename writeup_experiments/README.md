@@ -34,6 +34,7 @@ To regenerate the writeup's results from the data that already exists on the ori
 | Tables 2-3 (baseline ladder, next 32 / 128) and the probe / baseline / combined percentages | `analysis/baseline_ladder.py` -> `results/baseline_ladder.{tex,txt}` | step 04 (`rollprobe_rows.npz`, `rollprobe.json`) + the labels in `$ACTS` |
 | Figure: single-layer R2 by layer, future difficulty | `analysis/layer_figures.py` -> `results/fig_future_layers.tex` | `rollprobe.json` (per-layer profile of step 04.1) |
 | Figure: single-layer R2 by layer, past difficulty | `analysis/layer_figures.py` -> `results/fig_past_layers.tex` | `rollprobe_layers_more.json` (step 04.4) |
+| Figures: single-layer R2 by layer, decoded text statistics (two charts of three) | `analysis/layer_figures.py` -> `results/fig_decoded_layers_{a,b}.tex` | `rollprobe_layers_more.json`, `rollprobe_baseline.json` |
 | Past-difficulty numbers (last 8 / 32 / 128, entire context, by depth, text before the last 128) | `analysis/past_difficulty.py` -> `results/past_difficulty.txt` | `rollprobe_past.json`, `rollprobe_past_rows.npz` (step 04.3) |
 | Probe similarity matrices (cosine of standardized weights; correlation of test-set predictions) | `analysis/probe_cosine.py` -> `results/probe_similarity.{tex,txt,png}` | the weights of steps 04.1 / 04.3, `rollprobe_standardization.npz` |
 | Details (data composition, split, on-policy check) | `analysis/data_composition.py` -> `results/data_composition.txt` | step 02 / 03 files in `$SEQS`, labels in `$ACTS` |
