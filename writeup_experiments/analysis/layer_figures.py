@@ -81,17 +81,18 @@ if os.path.exists(more):
     Bj = json.load(open(f'{PROBES}/rollprobe_baseline.json'))['results']
     for name, label, targets in (
             ('fig_decoded_layers_a.tex', 'fig:layer-r2-decoded-a',
-             [('entropy', 'next-token entropy'), ('entropy prev', 'entropy before the current token'), ('log context', 'log context length')]),
+             [('entropy', 'next-token entropy'), ('entropy prev', 'entropy before the token'), ('log context', 'log context length')]),
             ('fig_decoded_layers_b.tex', 'fig:layer-r2-decoded-b',
-             [('surprisal', "current token's surprisal"), ('log rank', "current token's log rank"), ('excess surprisal', 'excess surprisal (surprisal $-$ expected)')])):
+             [('surprisal', 'surprisal'), ('log rank', 'log rank'), ('excess surprisal', 'excess surprisal')])):
         cols = ['blue', 'red', 'black!60!green']
         vals = {t: [M[str(L)][t]['test'] for L in range(61)] for t, _ in targets}
         pkd = {t: max(range(61), key=lambda L: vals[t][L]) for t, _ in targets}
         figure(name,
-               [(c, vals[t], f'{lab[0].upper() + lab[1:]} (single layer)') for c, (t, lab) in zip(cols, targets)],
+               [(c, vals[t], f'{lab[0].upper() + lab[1:]} (one layer)') for c, (t, lab) in zip(cols, targets)],
                [(c, 'dashed', Bj[t]['test'], f'{lab[0].upper() + lab[1:]}, all layers') for c, (t, lab) in zip(cols, targets)],
                'Test $R^2$ for decoding text statistics from a linear probe on one layer\'s activations at the current '
-               'token. Dashed: one probe on all 61 layers. Single-layer peaks: ' +
+               'token' + (' (surprisal, log rank and excess surprisal $=$ surprisal $-$ expected are of the current token)' if name.endswith('_b.tex') else '') +
+               '. Dashed: one probe on all 61 layers. Single-layer peaks: ' +
                ', '.join(f'{lab} layer {pkd[t]}' for t, lab in targets) + '.', label, ymax=100,
                legend='below' if name.endswith('_b.tex') else 'south east')
 else:
