@@ -18,7 +18,9 @@ Then open `http://<host>:5000/`, set **llama url** in the loom's settings to `ht
 and `serve/loom.sh` run either part in the foreground.
 
 - The lens server also generates text (it is a normal llama-server), so it can be the loom's only backend.
-- Steering from the loom (direction probes -> "Steer from this token") appends exposure rows to `logs/welfare_log.csv`.
+- Steering from the loom appends exposure rows to `logs/welfare_log.csv`: direction probes -> "Steer from this token", and
+  settings -> "Steer generation" (pick a probe, a layer and a strength; Generate then pushes along the probe's activation
+  pattern at every token it writes, via `/steer`; vectors from `probes/rollout/probe_patterns`).
 - The loom keeps its history in `loom/history.jsonl` (ignored by git). To share a history with another loom checkout,
   symlink it.
 - The all-layer probe bundle (`serve/build/lin_probes.{f32,json}`) is built from `probes/rollout` on first start

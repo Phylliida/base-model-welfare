@@ -16,3 +16,4 @@ export VALUE_PROBE=${VALUE_PROBE:-$REPO/probes/value_lens/readout_L40}
 export PROBE_DIRS=${PROBE_DIRS:-$REPO/probes/directions/score/probe_dirs}
 export LIN_PROBES=${LIN_PROBES:-$SV/build/lin_probes}
 export TOKEN_STATS=${TOKEN_STATS:-$REPO/probes/value_lens/token_stats_fineweb.json}
+export PROBE_PATTERNS=${PROBE_PATTERNS:-$REPO/probes/rollout/probe_patterns}   # steering directions for the loom
