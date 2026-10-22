@@ -1,0 +1,72 @@
+/mnt/models/homeo/score/screen: layer 40, lags 13-31, basis /mnt/models/homeo/score/screen.capbasis.f32 (K 128), 51200 continuations / 160 prompts
+kappa spectrum: +0.272 +0.197 +0.129 +0.109 +0.089 +0.082 ... -0.127 -0.153 -0.161 -0.200 -0.251 -0.300
+
+===== most pushed back directions
+
+--- pushback 0: kappa +0.272 +- 0.010 (clustered), capacity 0.64; share in top-32 / top-256 PCA of layer 40: 0.59 / 0.71
+    largest |cos| with known vectors: probe pushback_0 +0.69, probe amplify_1 +0.21, probe amplify_0 +0.10, probe pushback_3 +0.09
+    effector (push +u by 0.25 x |h|, linear): sentence ends per 32 tokens -1.160 (mean 1.60), log p of the written text -0.85 nats (mean -75.8)
+      writes more: ' and' +0.361 | ',' +0.392 | ' or' +0.083 | ' that' +0.108 | ' the' +0.236 | ' to' +0.165 | ' of' +0.150 | ' who' +0.042 | ' with' +0.071 | ' which' +0.029 | ' a' +0.107 | ' as' +0.053 | ' where' +0.018 | ' when' +0.028
+      writes less: '.\n' -0.461 | '|' -0.230 | '_of' -0.111 | '_text' -0.106 | '\n' -0.182 | 'end' -0.064 | '><' -0.055 | 'begin' -0.051 | '.<' -0.044 | '.' -0.243 | 'The' -0.066 | '>' -0.041 | '<|endoftext|>' -0.035 | '!\n' -0.032
+    J-lens promotes:   '但因为' | '但是如果' | '但其' | '但随着' | '但从' | '但是由于' | '但如果' | '紧密结合' | '不过在' | '但这些' | '注意的是' | '但因'
+    J-lens suppresses: '<|endoftext|>' | '.\n' | ' …\n\n' | ' ...\n' | '…\n' | ' .\n' | '.\n\n' | '…"\n\n' | '...\n' | '…\n\n' | ' […' | '..\n\n'
+    natural text: corr since-end -0.32, at-end +0.18, entropy -0.02, surprisal +0.03, |h| +0.74; by tokens since end 0/1/2-3/4-7/8-15/16+ (sd): +0.74 +0.43 +0.43 +0.20 -0.10 -0.39
+      highest u.h: ' will be AT THIS PAGE, so bookmark to come back.\nUPDATE ([[2]]'  ||  ' shall have my flesh, blood, bones, and all,Craig19[[1]]'  ||  'y.com\nURL to article: http://stickygooeycreamych[[ew]]'  ||  ' . . .\n::pause for dramatic build-up::\n. . . .[[ .]]'
+      lowest u.h: 'elated – friends can be the family you never had but always[[ wanted]]'  ||  ' café with that warm bag of beans to brew at home roasted just[[ for]]'  ||  'blood related – friends can be the family you never had but[[ always]]'  ||  "id bosses are addicted to speculative gambling with other people[['s]]"
+
+--- pushback 1: kappa +0.197 +- 0.008 (clustered), capacity 0.60; share in top-32 / top-256 PCA of layer 40: 0.49 / 0.61
+    largest |cos| with known vectors: probe pushback_1 +0.53, probe amplify_2 -0.25, probe amplify_1 -0.22, probe amplify_0 +0.16
+    effector (push +u by 0.25 x |h|, linear): sentence ends per 32 tokens -0.148 (mean 1.60), log p of the written text -1.86 nats (mean -75.8)
+      writes more: ' ' +0.084 | ' (' +0.033 | ' including' +0.010 | ' from' +0.031 | ' of' +0.067 | ',' +0.097 | 'Child' +0.004 | ' Google' +0.005 | '-P' +0.004 | ' II' +0.005 | ' include' +0.006 | ' in' +0.049 | '-' +0.021 | 'ugh' +0.004
+      writes less: ' it' -0.103 | ' I' -0.110 | ' that' -0.097 | ' to' -0.161 | ' you' -0.076 | ' be' -0.057 | ' not' -0.045 | ' so' -0.034 | ' but' -0.040 | ' is' -0.073 | ' we' -0.037 | ' all' -0.035 | ' what' -0.024 | "'t" -0.022
+    J-lens promotes:   ' Fisher' | 'の�' | ' natural' | ' Ring' | 'zec' | '.SizeType' | ' Natural' | '.CustomButton' | '找到一个' | ' Cotton' | ' Berm' | 'keit'
+    J-lens suppresses: ' etc' | '/b' | '/o' | '颤' | ' hasn' | '/K' | ' nad' | ' (%)' | ' gonna' | '新村' | 'ides' | '脊'
+    natural text: corr since-end -0.06, at-end +0.09, entropy +0.22, surprisal +0.03, |h| -0.90; by tokens since end 0/1/2-3/4-7/8-15/16+ (sd): +0.37 +0.30 +0.02 -0.05 -0.06 -0.05
+      highest u.h: "'s not true, please don't tell me, because I don't[[ want]]"  ||  '. Sounds like kismet if I ever saw it.\nOh wait.[[ No]]'  ||  ' “yes” all those years ago made my skin crawl. There was[[ no]]'  ||  'al a little more information than was originally intended. And?[[ So]]'
+      lowest u.h: ' will be AT THIS PAGE, so bookmark to come back.\nUPDATE ([[2]]'  ||  'it. Remember the famous M&M commercial that was used in the Super[[b]]'  ||  'nd the thinking and coordinating part of the brain (cerebral hem[[is]]'  ||  ' cups buttermilk (again with the raw, organic, et c[[eter]]'
+
+--- pushback 2: kappa +0.129 +- 0.005 (clustered), capacity 0.45; share in top-32 / top-256 PCA of layer 40: 0.48 / 0.59
+    largest |cos| with known vectors: probe pushback_3 +0.29, probe pushback_0 -0.25, probe pushback_2 -0.24, probe amplify_1 +0.23
+    effector (push +u by 0.25 x |h|, linear): sentence ends per 32 tokens +0.389 (mean 1.60), log p of the written text +6.03 nats (mean -75.8)
+      writes more: '.' +0.241 | '.\n' +0.088 | ' it' +0.046 | ' He' +0.016 | ' is' +0.054 | ' It' +0.016 | ' are' +0.030 | ' they' +0.018 | ' can' +0.021 | ' The' +0.023 | ' They' +0.007 | 'iture' +0.003 | ' need' +0.009 | 'ennessee' +0.002
+      writes less: ' in' -0.098 | ' ' -0.080 | '.com' -0.012 | ' at' -0.037 | ' &' -0.013 | '8' -0.015 | ' F' -0.010 | ' (' -0.026 | ' by' -0.025 | '201' -0.017 | ' from' -0.029 | ' year' -0.011 | ' of' -0.062 | '.S' -0.009
+    J-lens promotes:   '.\n' | '.' | '.\n\n' | ' \u200b\u200b' | '\u200b\u200b' | '.)\n' | ').\n' | 'ductor' | '’s' | '.).' | '.\n\n\n' | 'bre'
+    J-lens suppresses: 'xCB' | 'EMPLARY' | ' 贝壳找房' | 'Intialized' | ' RTVF' | '|RF' | '每个' | 'atedRoute' | '_TypeInfo' | '-Cds' | ':variables' | '{EIF'
+    natural text: corr since-end +0.12, at-end +0.05, entropy -0.03, surprisal -0.03, |h| -0.53; by tokens since end 0/1/2-3/4-7/8-15/16+ (sd): +0.21 -0.11 -0.29 -0.15 +0.03 +0.15
+      highest u.h: 'tands for Biomedical Picture of the Day. Managed by the MRC[[ London]]'  ||  ' motif. (Copyright 2011 by The Horn Book, Incorporated,[[ Boston]]'  ||  'ildas to Marvell, (Notre Dame: University of Notre Dame[[ Press]]'  ||  'f the Day. Managed by the MRC London Institute of Medical[[ Sciences]]'
+      lowest u.h: ' will be AT THIS PAGE, so bookmark to come back.\nUPDATE ([[2]]'  ||  '. Lenses for digital camera. Lens care. Summary. Project.[[ ]]'  ||  'A-[ID] – materialise.com - non-functional cookie\nPurpose[[ of]]'  ||  'itimizing it in our minds and our hearts, and overcoming a[[ variety]]'
+
+===== most amplified directions
+
+--- amplify 0: kappa -0.300 +- 0.012 (clustered), capacity 0.78; share in top-32 / top-256 PCA of layer 40: 0.60 / 0.73
+    largest |cos| with known vectors: probe amplify_1 -0.70, probe pushback_0 -0.17, probe amplify_0 -0.15, probe pushback_3 -0.09
+    effector (push +u by 0.25 x |h|, linear): sentence ends per 32 tokens -0.595 (mean 1.60), log p of the written text +4.55 nats (mean -75.8)
+      writes more: ' that' +0.165 | ' to' +0.287 | ' the' +0.301 | ' and' +0.228 | ' it' +0.087 | ' they' +0.050 | ' their' +0.049 | ' but' +0.045 | ' of' +0.145 | ' a' +0.138 | ' so' +0.036 | ' or' +0.057 | ' you' +0.072 | ' he' +0.037
+      writes less: '|' -0.189 | '_of' -0.090 | '_text' -0.087 | '.\n' -0.229 | '\n' -0.170 | ' ' -0.222 | 'end' -0.053 | '><' -0.044 | 'begin' -0.041 | '-' -0.071 | ':' -0.094 | '.<' -0.031 | '<' -0.019 | ' &' -0.030
+    J-lens promotes:   ' DevComponents' | ' MetroFramework' | ' rather' | ' instead' | ' neither' | ' succeeding' | ' yet' | ' because' | ' UIControl' | ' reasonably' | ' doing' | ' situations'
+    J-lens suppresses: ' inaugu' | '.simpleButton' | 'GameObjectWithTag' | ' abier' | '->___' | '.linkLabel' | ' swingerclub' | ' cientí' | ' ejerci' | '>{!!' | '.labelX' | ' vivastreet'
+    natural text: corr since-end +0.14, at-end -0.10, entropy +0.12, surprisal -0.02, |h| -0.76; by tokens since end 0/1/2-3/4-7/8-15/16+ (sd): -0.41 -0.13 -0.20 -0.10 +0.06 +0.19
+      highest u.h: ' to take her back home, but I didn’t even know if she[[’d]]'  ||  '’m nervous about my chef catching me doing something wrong, so I[[’m]]'  ||  ' want to be pregnant again, no. Or at least, I don[[’t]]'  ||  ' hours we were at the vet, to the point where I knew she[[ had]]'
+      lowest u.h: ' will be AT THIS PAGE, so bookmark to come back.\nUPDATE ([[2]]'  ||  ' shall have my flesh, blood, bones, and all,Craig19[[1]]'  ||  'y.com\nURL to article: http://stickygooeycreamych[[ew]]'  ||  ' a trumpet sound,\nOr any air of music touch their ears,Craig[[19]]'
+
+--- amplify 1: kappa -0.251 +- 0.009 (clustered), capacity 0.71; share in top-32 / top-256 PCA of layer 40: 0.58 / 0.67
+    largest |cos| with known vectors: probe amplify_0 -0.47, probe amplify_2 +0.41, probe amplify_1 +0.19, probe pushback_1 -0.18
+    effector (push +u by 0.25 x |h|, linear): sentence ends per 32 tokens -0.460 (mean 1.60), log p of the written text +3.98 nats (mean -75.8)
+      writes more: ' and' +0.246 | ',' +0.312 | ' ' +0.104 | ' or' +0.045 | ' of' +0.100 | ' in' +0.077 | ' from' +0.036 | ' high' +0.011 | ' corn' +0.004 | ' (' +0.025 | ' area' +0.008 | ' building' +0.007 | ' president' +0.005 | ' operations' +0.005
+      writes less: '|' -0.121 | '_of' -0.059 | '_text' -0.057 | ' I' -0.118 | ' it' -0.101 | ' you' -0.104 | 'end' -0.035 | '><' -0.030 | '.\n' -0.122 | '!\n' -0.033 | 'begin' -0.027 | '\n' -0.085 | ' this' -0.058 | '.<' -0.021
+    J-lens promotes:   '癫�' | 'の�' | ' oposi' | 'を�' | ' sztu' | ' pornôs' | '。www' | '.menuStrip' | ' prostituer' | ' bezpiecze' | '・・・\n\n' | ' erotisch'
+    J-lens suppresses: ' really' | '!»' | ' gonna' | '小编' | ' why' | 'blog' | ' everything' | ' obviously' | '百度百科企业词条极速创建通道' | ' Blog' | ' please' | ' REALLY'
+    natural text: corr since-end +0.16, at-end -0.21, entropy -0.23, surprisal -0.04, |h| +0.67; by tokens since end 0/1/2-3/4-7/8-15/16+ (sd): -0.87 -0.45 -0.10 +0.04 +0.10 +0.16
+      highest u.h: 'it. Remember the famous M&M commercial that was used in the Super[[b]]'  ||  'nd the thinking and coordinating part of the brain (cerebral hem[[is]]'  ||  ' make combines the signs of Aries, Libra, Cancer and Cap[[ric]]'  ||  ' will be AT THIS PAGE, so bookmark to come back.\nUPDATE ([[2]]'
+      lowest u.h: ' with a lot to say, and I would love to hear from you[[!\n]]'  ||  'along with us this week\nI look forward to seeing your creations[[!!\n]]'  ||  ' lot to say, and I would love to hear from you!\nSo[[……]]'  ||  ' High Hope Blog\nand check them out[[....]]'
+
+--- amplify 2: kappa -0.200 +- 0.007 (clustered), capacity 0.59; share in top-32 / top-256 PCA of layer 40: 0.67 / 0.76
+    largest |cos| with known vectors: probe amplify_0 -0.54, probe amplify_2 -0.52, probe amplify_3 -0.22, probe amplify_1 +0.12
+    effector (push +u by 0.25 x |h|, linear): sentence ends per 32 tokens -0.054 (mean 1.60), log p of the written text +7.89 nats (mean -75.8)
+      writes more: ' of' +0.189 | ' the' +0.169 | ' community' +0.013 | ' our' +0.036 | ' in' +0.078 | ' students' +0.012 | ' health' +0.010 | ' experience' +0.012 | ' global' +0.009 | ' lives' +0.009 | ' has' +0.026 | ' services' +0.010 | ' industry' +0.010 | ' important' +0.009
+      writes less: ' or' -0.066 | ' it' -0.075 | ' ' -0.116 | '!' -0.028 | ' up' -0.036 | ' then' -0.021 | ' like' -0.027 | '!\n' -0.020 | ' you' -0.051 | ' little' -0.016 | ' back' -0.019 | ' he' -0.028 | ' got' -0.012 | 'pm' -0.005
+    J-lens promotes:   ' swingerclub' | ' sextreffen' | ' thaimassage' | ' porrf' | ' sexdate' | ' sexkontakte' | ' organizations' | ' eskorte' | ' datingsider' | ' dejtingsaj' | ' colombi' | 'の�'
+    J-lens suppresses: '/mainwindow' | '年薪' | ' gonna' | ' UIAlert' | '刷卡' | ' gigg' | 'guy' | ' yell' | ' guy' | '打游戏' | ' gotta' | 'fragistics'
+    natural text: corr since-end +0.05, at-end -0.01, entropy -0.08, surprisal -0.10, |h| +0.58; by tokens since end 0/1/2-3/4-7/8-15/16+ (sd): -0.03 -0.21 -0.11 -0.03 +0.04 +0.10
+      highest u.h: ' center as the single point of truth, has generated a large[[ number]]'  ||  ' will be AT THIS PAGE, so bookmark to come back.\nUPDATE ([[2]]'  ||  'nd the thinking and coordinating part of the brain (cerebral hem[[is]]'  ||  ' local Roto-Rooter for help. Not every Roto-[[Root]]'
+      lowest u.h: ' a spinning heel kick. T calls to the crowd. Sidewalk[[ slam]]'  ||  ' move along the story) - Hart pops up and gets T crot[[ched]]'  ||  'ut Nash ducks it. Rey works on the knee with kicks - spinning[[ heel]]'  ||  ' retreats to the corner - bronco buster! Nash pushes him[[ off]]'

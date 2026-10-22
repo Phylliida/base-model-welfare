@@ -1,0 +1,50 @@
+Scored auto-interpretation: 36 directions; blind judges answer held-out items from a description alone (chance 50%).
+auto = descriptions written by explainer agents from activation windows and steering examples; baseline = the current labels (family, natural-text reading, effector tokens).
+
+pooled accuracy (95% interval over items):
+  detect_extreme   auto 0.95 [0.92, 0.97] (206/216)   baseline 0.96 [0.92, 0.98] (207/216)
+  detect_moderate  auto 0.79 [0.73, 0.84] (171/216)   baseline 0.76 [0.70, 0.81] (164/216)
+  intervene        auto 0.92 [0.89, 0.94] (397/432)   baseline 0.93 [0.90, 0.95] (400/432)
+
+  auto - baseline, detect_extreme: -0.005 +- 0.018 (se over 36 directions; auto better on 4, worse on 5)
+  auto - baseline, detect_moderate: +0.032 +- 0.028 (se over 36 directions; auto better on 11, worse on 6)
+  auto - baseline, intervene: -0.007 +- 0.015 (se over 36 directions; auto better on 8, worse on 8)
+
+per direction (accuracy; detection pools extreme + moderate):
+id   direction        family                      kappa | auto det auto int | base det base int | auto label
+D09  L28.amplify.0    chatty vs institutional     -0.05 |     0.92     0.83 |     0.83     0.92 | Chatty spoken register vs. policy/technical nouns
+D18  L28.amplify.1    unidentified                -0.04 |     0.75     0.50 |     0.67     0.75 | Headline/new-post framing vs formal enumeration
+D21  L32.amplify.0    chatty vs institutional     -0.11 |     1.00     0.83 |     0.83     0.83 | Casual chatty voice vs formal institutional
+D31  L32.amplify.1    break vs continue           -0.08 |     0.92     0.92 |     0.83     0.92 | Item break and promotional jump
+D20  L32.pushback.0   sentence position           +0.08 |     0.83     0.83 |     0.75     1.00 | Inside explanatory prose vs snippet boundaries
+D24  L32.pushback.1   proper names                +0.06 |     0.92     0.67 |     0.92     0.58 | Concrete place/object nouns vs opinion discourse
+D07  L36.amplify.0    chatty vs institutional     -0.16 |     0.75     1.00 |     0.83     0.92 | Casual emotive voice vs. formal institutional
+D22  L36.amplify.1    prose vs structured text    -0.12 |     1.00     1.00 |     1.00     1.00 | Web chrome/separators vs discursive essay prose
+D06  L36.pushback.0   sentence position           +0.11 |     0.75     0.75 |     0.75     0.75 | Deep mid-clause vs. new-section start
+D05  L36.pushback.1   sentence position           +0.09 |     1.00     1.00 |     1.00     1.00 | Technical noun heads vs. conversational openers
+D32  L40.amplify.0    chatty vs institutional     -0.20 |     0.92     0.92 |     0.92     0.92 | Personal rhetorical address vs technical description
+D03  L40.amplify.1    prose vs structured text    -0.18 |     0.83     1.00 |     1.00     0.92 | Web chrome/off-topic vs. earnest expository prose
+D15  L40.pushback.0   sentence position           +0.14 |     0.83     1.00 |     0.83     1.00 | Depth into long sentence
+D14  L40.pushback.1   proper names                +0.11 |     0.83     0.42 |     0.83     0.67 | Named-entity detail vs negation/spun text (noisy)
+D29  L42.amplify.0    prose vs structured text    -0.26 |     1.00     0.92 |     1.00     1.00 | Document boundary and web boilerplate
+D19  L42.amplify.1    chatty vs institutional     -0.25 |     0.92     1.00 |     0.83     1.00 | Personal emotive talk vs named-entity catalogs
+D23  L42.pushback.0   sentence position           +0.22 |     1.00     1.00 |     0.92     1.00 | Sentence near closure vs segment just begun
+D28  L42.pushback.1   proper names                +0.14 |     0.83     0.83 |     0.75     0.92 | Concrete named things vs abstract evaluation
+D27  L44.amplify.0    prose vs structured text    -0.27 |     0.83     1.00 |     0.83     1.00 | Title/credit/address lines vs inner narrative
+D13  L44.amplify.1    chatty vs institutional     -0.23 |     0.92     1.00 |     0.83     1.00 | Chatty exclamatory vs corporate-institutional
+D08  L44.pushback.0   sentence position           +0.18 |     0.92     1.00 |     0.92     1.00 | Late in long sentence vs. line start
+D26  L44.pushback.1   proper names                +0.11 |     0.92     0.83 |     0.92     0.92 | Reads named entities; writes generic voice
+D02  L46.amplify.0    prose vs structured text    -0.30 |     0.92     1.00 |     1.00     0.92 | Metadata/boilerplate lines vs. flowing reflective prose
+D30  L46.amplify.1    chatty vs institutional     -0.16 |     0.92     1.00 |     0.83     1.00 | Casual colloquial vs formal institutional
+D16  L46.pushback.0   sentence position           +0.09 |     0.92     1.00 |     0.92     1.00 | Dense content list vs section start
+D01  L46.pushback.1   proper names                +0.06 |     1.00     1.00 |     0.75     0.83 | Named-entity tokens vs. argumentative connective prose
+D04  L50.amplify.0    prose vs structured text    -0.21 |     0.92     1.00 |     1.00     0.92 | URLs/contacts/codes vs. discursive human prose
+D12  L50.amplify.1    predictability              -0.11 |     1.00     0.92 |     0.92     1.00 | Casual personal voice vs formal boilerplate
+D25  L54.amplify.0    prose vs structured text    -0.22 |     0.58     1.00 |     0.67     1.00 | Lists/URLs/metadata gibberish vs fluent prose
+D17  L54.amplify.1    predictability              -0.14 |     0.67     1.00 |     0.92     1.00 | Discursive opinion vs concrete specifics
+D36  L54.pushback.0   unidentified                +0.04 |     0.58     0.92 |     0.58     0.92 | Citation digits; push fragments the text
+D35  L54.pushback.1   unidentified                +0.05 |     1.00     1.00 |     0.92     0.83 | Conversational prose vs citation digits; incoherent push
+D11  L58.amplify.0    break vs continue           -0.38 |     0.92     1.00 |     1.00     1.00 | Structured metadata vs flowing prose
+D34  L58.amplify.1    predictability              -0.18 |     0.83     1.00 |     0.67     1.00 | Running prose vs numbers and metadata
+D33  L58.pushback.0   break vs continue           +0.25 |     0.75     1.00 |     0.92     1.00 | Predictable fluency vs token-salad breakdown
+D10  L58.pushback.1   unidentified                +0.14 |     0.83     1.00 |     0.83     0.92 | Phrase completed vs determiner pending

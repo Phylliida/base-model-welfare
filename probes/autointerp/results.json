@@ -1,0 +1,2530 @@
+{
+ "explanations": {
+  "D01": {
+   "id": "D01",
+   "label": "Named-entity tokens vs. argumentative connective prose",
+   "reads_high": "Tokens inside specific proper names and rare or foreign multi-token words, especially subword pieces in the middle of a name: school, street and building names in addresses (\"Lycée Pierre Cor|ne|ille\", \"1000 Lake Cook Road Glencoe\", \"Roanoke-Ch|owan Community College\"), Hebrew script, \"Pequod\", \"Captain Ahab\", \"Rudolph\", body-organ and disease names. Lists of concrete named things keep the value high the whole way along.",
+   "reads_low": "Function words, connectives and sentence-final periods in opinionated, discursive first-person or argumentative prose with no names nearby: \"Not to mention the fact that\", \"Not only am I free... but also\", \"since the only possible\", \"And? So?\". Evaluative phrases such as \"highly recommended\" or \"Often times\" are also low.",
+   "push_toward_high": "A weak effect. The continuation stays on the current topic and document and uses generic, abstract or explanatory wording (\"it's hard to break down step-by-step what actually happens\", \"absence is equated to absence, presence to presence\"), or keeps an on-topic list going (tray contents). It does not invent new specifics.",
+   "push_toward_low": "The continuation adds more concrete, specific and often odd details and new or invented names (\"Automatic Vehicle Following Device\", \"Pamphkins\", \"laundry sheets notice posted from the landlady\", \"RSM Rotterdam School\"), or quoted speech. It drifts off topic and sometimes ends the document for an unrelated one.",
+   "reading_vs_writing": "They look roughly inverted: reading HIGH means you are inside a named entity, but pushing HIGH gives more generic abstract prose, and pushing LOW brings in more specific names and details. The writing effect is weak.",
+   "confidence": 2
+  },
+  "D02": {
+   "id": "D02",
+   "label": "Metadata/boilerplate lines vs. flowing reflective prose",
+   "reads_high": "Non-prose structural or metadata text: address lines (\"1000 SE Everett Mall Way Ste 201\"), datelines (\"WASHINGTON, DC, US\"), photo credits (\"by SMSgt Jerry Bynum, identified by DVID\"), citations after a quote (\"Craig 1916: 4\"), memorial-fund street addresses, issue lists (\"Hawkeye: Freefall (2020-) #5\"), and \"said Mrs Shepard. More from PinkNews\". Numbers, names and newlines in these lines read highest.",
+   "reads_low": "Smooth, abstract, discursive prose about people's attitudes, beliefs and feelings, using pronouns and modal verbs (\"they have the opportunity to get to know\", \"it's ok to want to check\", \"you have to be willing to make mistakes\", \"those personal beliefs cannot and must not be\"). The value stays low throughout long such sentences.",
+   "push_toward_high": "The continuation breaks out of prose into web junk and metadata: tag or keyword lists (\"BMW Z4 Manual R6S Upload V2 Camaro\"), site boilerplate (\"Werbeagentur |\", \"Course Index Order By : ASC\", a PHP \"Warning: Invalid argument supplied for foreach()\"), headlines, legalistic references (\"square bracket three of paragraph eight\"), proper names. It often ends the document abruptly (<|end_of_text|> or a cut-off).",
+   "push_toward_low": "The continuation stays coherent, generic and explanatory: longer sentences with reasoning connectives (\"That means...\", \"And the reason the forms are the way they are is because...\", \"This may sound like simple advice, but\"), abstract nouns, few or no proper names, and no line-break structure.",
+   "reading_vs_writing": "Same thing on both sides: metadata and boilerplate structure versus reflective explanatory prose.",
+   "confidence": 4
+  },
+  "D03": {
+   "id": "D03",
+   "label": "Web chrome/off-topic vs. earnest expository prose",
+   "reads_high": "Web-page chrome and navigation: \"show source https://www...\", \"| Previous Thread | Next Thread »|\", \"This item has been shown 1770\", \"Print 00:50, 07 Jan 2013 -\", citation lines after quoted verse. Also casual, shouty asides with names (\"Rona, read your gawdam email! The Paul H. Duray Memorial Foundation\") and company names in business blurbs.",
+   "reads_low": "Mid-sentence words in earnest, abstract social or analytical prose: \"they have the opportunity to get to know\", \"We need to value science and not engage in magical thinking\", \"how the mind is working\", literary-critical commentary. The value is very low on verbs and function words in those clauses.",
+   "push_toward_high": "The continuation jumps off topic in a quirky, informal way, with exclamation marks (\"nobody wants that!\", \"her own fan club!!\"), random pop-culture references, all-caps headings or garbled caps (\"THE GTBSTATIC FINGeRPRiNT DATAnET\"), URLs and code fragments (\";/*12 * GL bytecode reader\"), prices and spam (\"@0£1000\", \"loans and creditcards for bad credit\"), or a new whimsical document. Sentences get short and choppy.",
+   "push_toward_low": "The continuation is coherent, serious and expository, with longer sentences of abstract social reasoning (\"a lot of real people fall through the cracks because of this gap in knowledge\", \"there is supposed to be no significant difference between the two states\"), close to the prefix topic and with no formatting.",
+   "reading_vs_writing": "Mostly the same axis, from web chrome and incoherent, informal off-topic material to sustained serious prose, though pushing HIGH adds whimsy and exclamations that the reading side shows only a little.",
+   "confidence": 4
+  },
+  "D04": {
+   "id": "D04",
+   "label": "URLs/contacts/codes vs. discursive human prose",
+   "reads_high": "Machine-ish strings in commercial or contact text: HTML and URLs (\"<a href=https://www...\"), phone numbers and \"tel:\" entries, international numbers (\"+33(0)1 41 49 26 85\"), timestamps, drug-spam (\"generic calcitriol 0.25\"), \"FREE SHIPPING for orders over $45\", speaker labels such as \"GROSS:\". Digits, punctuation and URL pieces read highest.",
+   "reads_low": "Conversational or interview prose about people, relationships and beliefs (\"They add a richness, and they add social interaction\", \"It can be really good to seek reassurance\", \"those personal beliefs cannot...\") and essayistic commentary (on Rousseau).",
+   "push_toward_high": "Coherence collapses into keyword salad and invented tokens: made-up product or brand names with ™ (\"InVidus™ Vanexx™\"), crypto spam (\"infinity base infinity crypto (INNTOXIBET)\"), course codes (\"ROES 606 51S P263\"), timestamps (\"Sun 7:03 AM\"), garbled strings (\"Voice_800HzGloBoCocomcrewety\", \"misrco 2 nubia tiles\"), lists of concrete places, and switches to a new document.",
+   "push_toward_low": "The continuation is ordinary, coherent explanatory prose about human behaviour and reasons (\"This should be common sense practice but is frequently ignored by the majority\", \"The reason the federal form... is because\"), stays on topic, and contains no codes or numbers-as-strings.",
+   "reading_vs_writing": "Same thing on both sides: code-like, contact and commercial strings versus human discursive prose. Pushing HIGH mostly produces gibberish of that kind.",
+   "confidence": 4
+  },
+  "D05": {
+   "id": "D05",
+   "label": "Technical noun heads vs. conversational openers",
+   "reads_high": "The final head noun of long technical or encyclopedic compound noun phrases, usually just before a comma or period: \"under-bark temperature of ash trees\", \"combined cycle power plant\", \"GSM Cellular phones\", \"right/left pulmonary arteries\", \"TUF Gym\", \"Interior Designers Community Conference\". Scientific, engineering, medical and event-naming text.",
+   "reads_low": "Openers at the start of a line in personal, conversational or Q&A writing: \"How is that for getting personal?\", \"First off, I would like to say\", \"Sorry to hear about your situation\", \"So, all in all, as I continue\". First- and second-person forum or interview register, right after a newline.",
+   "push_toward_high": "A weak effect. Sentences get shorter, plainer and more accessible (\"Valuables are often the quickest items to disappear.\", \"Birth is equated to disease.\"), sometimes addressing the reader or switching to a personal essay (\"comes to mind a lot these days, as I watch friends panic\").",
+   "push_toward_low": "Sentences get longer and denser, piling up noun phrases, institutional names and figures (\"a US Center for World Military Medicine in East Point, Georgia... United States Army Medical Materiel\", \"translated into an extremely complicated formula used to calculate the Expected Family Contribution\", long comma lists of game components, long Shakespeare quotes).",
+   "reading_vs_writing": "They look inverted: reading HIGH sits on dense technical nouns, yet pushing HIGH gives plainer, shorter writing and pushing LOW gives denser noun-heavy writing. The writing effect is weak.",
+   "confidence": 2
+  },
+  "D06": {
+   "id": "D06",
+   "label": "Deep mid-clause vs. new-section start",
+   "reads_high": "Function words deep inside a long, still-unfinished sentence in argumentative or narrative prose, especially just before the main predicate completes (\"cannot and must not be| judged\", \"have no impact on| success\", \"long enough for us to| get her home\", \"you just need to| hear it\"). The value builds up as the clause runs on.",
+   "reads_low": "The first tokens of a new section, story or document after a break such as a heading, tracklist, product list or blank line: \"OLYMPIA – Hatchery chinook salmon...\", \"VCC has announced a 3mm...\", '\"It appears most likely...', \"It's nearing that time of year again\". News-lede and new-topic starts.",
+   "push_toward_high": "Writing breaks up. It produces headings on their own lines (\"Add a Steering Wheel Lock\", \"Starting Indicator\"), \"… Read More\" teasers, short sentences, abrupt topic switches, and frequently <|end_of_text|> followed by a new document (in about half the samples).",
+   "push_toward_low": "The continuation is long, continuous run-on sentences that keep elaborating the current point (\"there are numerous ways which a criminal can obtain your keys without having them physically on your person so it is important...\"). It has no headings and never ends the document.",
+   "reading_vs_writing": "Surface-inverted but plausibly one variable, 'how far into an ongoing unit we are': reading HIGH is deep in a long clause, and pushing HIGH makes the model wrap up, add breaks and end the document, while LOW (just-started) makes it keep going.",
+   "confidence": 3
+  },
+  "D07": {
+   "id": "D07",
+   "label": "Casual emotive voice vs. formal institutional",
+   "reads_high": "Informal, emotional, conversational text with ellipses, caps, contractions and exclamations: \"Aha! Now I know where you are!\", \"but.. well..\", \"nah i dont think she peed... so....\", \"I am SO very excited….I LOVE Thai Food!... because I'm super psyched\", \"it doesn't have to be done by you\".",
+   "reads_low": "Formal institutional or organizational noun phrases: job ads (\"Professor of Civil Engineering within the Faculty of Science\"), corporate profiles (\"vertically integrated textile factory\"), \"National Infrastructure Master Plan\", \"associate professor in European Ethnology\", \"Department of Energy\", \"Technicians with Nuclear Experience\".",
+   "push_toward_high": "The writing becomes personal, emotional and colloquial, with first-person anecdotes (\"Javice herself went through it. 'It was such a tough process. I used to grab the paper application & stare at it'\"), casual advice (\"leave your keys with someone you can trust\"), intensifiers (\"An amazing 60%\", \"totally\"), exclamations (\"as well!\"), and opinion-blog openings (\"Well, since I've already spent 3 years living under Obamacare\").",
+   "push_toward_low": "The writing becomes formal, institutional and credential-laden: standards and certificates (\"internationally recognised standard\"), organizations and acronyms (\"Nelnet, one of the nation's\", \"general reading report (GRP)\"), academic phrasing (\"as discussed earlier in Chapter 4\"), CVs (\"Summa Cum Laude graduate of the University of Michigan\"), catalog-style headings (\"Case Study | Tutorial\").",
+   "reading_vs_writing": "Same thing on both sides: casual, personal emotive register versus formal institutional register.",
+   "confidence": 5
+  },
+  "D08": {
+   "id": "D08",
+   "label": "Late in long sentence vs. line start",
+   "reads_high": "Tokens late in long instructional, legal or disclaimer sentences, mid-clause: \"before you must begin paying| the loans\", \"for the ultimate benefit and welfare of... present and future| generations\", \"not intended to diagnose, treat, cure, or prevent| any disease\", \"no longer needed. Consult your pharmacist or local waste disposal\".",
+   "reads_low": "The first token or two right after a newline, at the start of a new paragraph, entry or line: \"⏎When I looked\" after a date line, \"⏎A: Firstly\", '⏎\"It appears', \"⏎Dr. Mamalakis explained\", \"⏎Article printed from\", \"⏎URL to article\", \"⏎List of game show hosts\". Even inside a high stretch, the token after a newline drops to strongly negative.",
+   "push_toward_high": "The writing becomes short and fragmented with many line breaks: one-line fragments and headings (\"How Frank helps.\", \"NOTES\", \"Over the base.\", \"In Sarnia.⏎⏎In spring 2007.⏎⏎A little project.\"), bullet lists, short parallel sentences, and frequent <|end_of_text|>.",
+   "push_toward_low": "The continuation is long, flowing, multi-clause sentences with narrative detail and almost no line breaks (\"it's remarkable how many of our customers tell us that a minibus has been stolen from a car park when the driver leaves it running with\"). It stays in one paragraph and does not end the document.",
+   "reading_vs_writing": "Surface-inverted but consistent with one variable, 'elapsed length of the current sentence or paragraph': reading HIGH is late in a long sentence, and pushing HIGH makes the model close units quickly, while LOW (just after a newline) makes it run on.",
+   "confidence": 4
+  },
+  "D09": {
+   "id": "D09",
+   "label": "Chatty spoken register vs. policy/technical nouns",
+   "reads_high": "Casual, speech-like, often forward-looking talk with contractions and fillers: \"nah i dont think she peed... so....\", \"I'm pretty sure the food is going to\", \"That's gonna be an interesting war\", footballer-interview speech (\"so it didn't matter what happened to City\"). Discourse words such as so, because, gonna and pretty sure read highest.",
+   "reads_low": "Topical modifier nouns and adjectives in formal policy, academic or institutional text: \"Professor of Civil Engineering\", \"environmental protection\", \"Observer legislative intern\", \"environmental systems from an interdisciplinary perspective\", \"electrify households across the country\", \"telecommunications costs\".",
+   "push_toward_high": "The writing becomes more human and narrative: conversational advice (\"If you value your minibus at all then you'd be wise to...\"), journalistic storytelling about people (\"Frank began as an iPhone app in April 2014... Now it's a web tool\"), quotes from friends (\"'Cynthia has always stood up for her beliefs,' said a close family friend\"). It stays coherent and on topic.",
+   "push_toward_low": "The writing becomes formal and impersonal, about policy or technical subjects (\"The safety of food for both humans and farm animals is becoming an increasingly important issue\", \"sustainable each environmentally and socially\"), and sometimes drifts into unrelated technical topics or breaks into boilerplate or code (\"Photo via ... on Unsplash\", a \"kubernetes\" markup snippet, \"organic metallic complexes\").",
+   "reading_vs_writing": "Same axis on both sides, chatty and human versus formal technical-institutional. It is close to D07, but D09 is less about emotion and more about speech-like versus policy-noun register.",
+   "confidence": 3
+  },
+  "D10": {
+   "id": "D10",
+   "label": "Phrase completed vs determiner pending",
+   "reads_high": "Content words that close off a noun or verb phrase, especially the last noun before a period or newline (\"come« up»\", \"parents and« teachers»\", \"back to« Florida»\", \"with the« students»\"), and the newline right after such a sentence (+2). Clause-final nouns in plain narrative or promotional prose reach about +3 to +4.",
+   "reads_low": "Determiners and articles that open a phrase whose content is still to come: sentence-initial \"The\" after a newline, quote or pipe (-3), and \"the\" or \"a\" after a verb or preposition (\"Given that« the»\", \"loved« a»\"). Generally, function words in the middle of a phrase, waiting for their noun, read negative.",
+   "push_toward_high": "Grammar falls apart into a stream of function words: runs of articles and prepositions with no content nouns (\"the a and\", \"the the the for on the\", \"A the.⏎To the available the the.\"), short broken lines, stray numbers. The document is sometimes ended early (\"a. the.<|endoftext|>\").",
+   "push_toward_low": "Fluent, coherent, on-topic prose that is often more elaborated and parallel than the unpushed text (\"Bottom right is a tray for holding... Top left is a tray for...\"), with a careful explanatory or formal tone. Once it switched to a code block, but it stayed well-formed.",
+   "reading_vs_writing": "Same mechanism seen from two sides: reading high marks the point just after a phrase is complete, and forcing that state makes the model keep starting new phrases (determiners) without ever completing them, while low gives normal fluent writing.",
+   "confidence": 5
+  },
+  "D11": {
+   "id": "D11",
+   "label": "Structured metadata vs flowing prose",
+   "reads_high": "Line breaks and tokens in non-prose structured text: newlines between entries in name or contact lists, phone numbers, email addresses, timestamps like \"[02/25/09 - 12:46 PM]\", dates or datelines (\"February 22, 2014 |⏎CARACAS\"), and \"Read more⏎\" links (up to +3 at the newline). It also spikes (+2) on the first sub-word piece of a word split into several tokens inside prose (\"ign|ites\", \"griev|ously\", \"ind|igestion\", \"med|itative\").",
+   "reads_low": "Running continuous prose, strongest in conversational, spoken-style or first-person text (\"But I think, Susan, it's fascinating to me\", \"the bears that I work with are very, very oriented towards\") and in second-person advice (\"which you should use towards your favor\"). Ordinary function words mid-sentence sit around -1 to -2.",
+   "push_toward_high": "Writing breaks down completely into token garbage: mixed scripts (Chinese, Greek, Indonesian), code fragments and shell variables, identifiers, random alphanumeric strings like base64, stray HTML or JS, and <|end_of_text|> markers. It usually happens within a few words.",
+   "push_toward_low": "Plain, simple, coherent English prose that is often vague, padded or repetitive (\"in a new, more in depth and in a different way\", \"a sort of a healthy state\", \"the demand and the demand and the demand\"). It stays on topic but becomes generic and conversational.",
+   "reading_vs_writing": "Roughly the same axis (structured, non-prose material vs continuous prose), but pushing high goes far past metadata into out-of-distribution garbage, so the writing side is much more extreme than the reading side.",
+   "confidence": 4
+  },
+  "D12": {
+   "id": "D12",
+   "label": "Casual personal voice vs formal boilerplate",
+   "reads_high": "Informal, personal web writing such as comments, forum posts and product reviews: chatty rhetorical questions (\"Know what I mean?\"), \"LOL\", lowercase \"i need to try that\", complaints like \"now it sucks\", parenthetical asides. The peaks (+3) fall on punctuation, closing parentheses and line breaks between comments.",
+   "reads_low": "Formal, impersonal, institutional or explanatory text, uniformly about -3 to -4 across whole passages: medical explanation (the physiology of erection), publisher reprint boilerplate (\"We believe this work is culturally important...\"), drug-disposal instructions (\"Consult your pharmacist\"), URLs. Factual sports news reads mildly negative.",
+   "push_toward_high": "The text drifts off-topic into loose, associative and somewhat incoherent material with quirky asides, rhetorical questions (\"Credit issues or bankruptcy got to you?\"), odd fragments (\"Fun? = (\") and random tangents (\"at family events on a Sunday\"). It sometimes ends the document.",
+   "push_toward_low": "Stays on topic with factual, informative and formal statements: biographical facts with dates and awards (\"In 2007, McKinney was a member of the U.S. House...\"), procedural advice, accurate descriptions. Reads like encyclopedic or instructional writing.",
+   "reading_vs_writing": "Broadly the same register axis, but pushing high produces meandering, off-topic writing more than clearly casual chat, while pushing low cleanly produces formal, factual text.",
+   "confidence": 3
+  },
+  "D13": {
+   "id": "D13",
+   "label": "Chatty exclamatory vs corporate-institutional",
+   "reads_high": "Very informal, emotive text: chat or comment speech (\"nah i dont think she peed...\"), \"Laughed out loud. I really did.\", interjections (\"Aha!\", \"but.. well..\"), ellipses, exclamation marks, and fiction dialogue with tags (\"'Half a minute,' I said\"). Question lists and playful asides read moderately high.",
+   "reads_low": "Corporate and organizational \"about us\" or mission-statement prose (-2 to -3): \"was set up in 2001 to tackle skills shortages... within the hospitality industry\", \"primarily aimed at promoting sustainable economic development\", \"responsible for the engineering, production, sales and marketing for\", \"25 years of experience in Predictive Analytics\".",
+   "push_toward_high": "Writing turns chatty, humorous and exclamatory: first-person asides (\"that's a bit rude isn't it\"), capitalized emphasis and \"!!\" (\"worth a LOT more than £3!\"), short numbered tips, emoticons (\";p\"), forum or roleplay markers (\"~flips hair~\", \"Logged\"), and misspelled casual text (\"I dont know what the big one is for cause its\"). It remains mostly coherent.",
+   "push_toward_low": "Vocabulary and topic shift toward institutions, economics and policy: \"organisations that manage... economic and social infrastructure\", \"comprehensive approach to risk management\", \"European initiatives\", \"stock portfolio\", \"commodities and their certificates\", global trade, political polarization, bipartisan Congress. Sentences become bureaucratic and impersonal.",
+   "reading_vs_writing": "Yes, the same thing: chatty, emotive personal voice at the high end and corporate or institutional register at the low end, on both the reading and the writing side.",
+   "confidence": 5
+  },
+  "D14": {
+   "id": "D14",
+   "label": "Named-entity detail vs negation/spun text (noisy)",
+   "reads_high": "Inner sub-word pieces of multi-token proper names and technical terms in clean factual text (\"Nik«ke»i 225\", \"city-«count»y\", \"Scri«b»ners\", \"c«G»MP\", +3). Nearby proper nouns and place names in news or reference prose (Knoxville, Madison, Task Rabbit) also read +1 to +2.",
+   "reads_low": "Negation and limiting words (\"not be« actually»\", \"are« only»\", \"There was« no» guarantee\", -4), especially in article-spun or homoglyph spam text (Cyrillic letters inside English words, garbled machine-rewritten finance copy). Function words in hedged or prohibitive clauses (\"you may certainly not have\") run -2.",
+   "push_toward_high": "Effects are subtle: the continuation usually stays coherent and on the prefix's topic and entities (Frank, Javice, FAFSA, Helena, Bertram), with explanatory sentences. One case drifted into garbled political names.",
+   "push_toward_low": "Somewhat more prone to drifting or degrading: it switched topic to other people or places (\"Rep. Wilson\", Colorado school funding, a 1936 dust-storm document), and once broke into code and German (\"assertFalse(array[1]...)\"). Article-spun phrasing also appeared (\"Laptop Methods allows you to perceive\").",
+   "reading_vs_writing": "Only loosely related: reading is a fairly specific token-level pattern (inside proper names vs negations and spam), while the steering effect is weak and shows mainly as LOW drifting off-topic or into low-quality text more often than HIGH.",
+   "confidence": 2
+  },
+  "D15": {
+   "id": "D15",
+   "label": "Depth into long sentence",
+   "reads_high": "Tokens late in long, clause-stacked sentences: the tail of long institution names (\"École Nationale Supérieure de l'Aéronautique et de« l»'Espace\"), long coordinated legal phrasing (\"the activities of those websites or« their» owners and/or operators\"), and \"cannot and must not be judged, imposed, or legislated« upon» anyone else\". Values climb steadily as a sentence goes on, peaking (+3) near its end.",
+   "reads_low": "The newline and the first few tokens of a new paragraph or block (-2 to -3): \"⏎«\\\"It» appears most likely\", \"⏎You«'ll» find\", \"Saturday, June 6, 2020⏎When I« looked»\", \"6. A plain look\", \"With those celebrations in mind, here are\". The start of a fresh section or topic is lowest.",
+   "push_toward_high": "Shorter sentences and more breaks: clipped statements (\"Marriage is equated to death. Death to life.\"), frequent line breaks and fragments (\"The money storage board underneath⏎The initial setup of the board\"), \"Question:⏎\", and often an early <|end_of_text|> followed by a new document.",
+   "push_toward_low": "Long run-on sentences that keep going without line breaks: long enumerations (\"your ISIR... tax forms, birth certificates, W-2s, social security numbers, bank statements, donation receipts, trust fund information, and\"), stacked subordinate clauses and parentheticals. The document never ends.",
+   "reading_vs_writing": "Same underlying counter (how far into the current sentence or block we are), but the surface looks inverted: reading high is deep into a long sentence, and forcing that state makes the model wrap up quickly, so writing high gives short sentences and breaks.",
+   "confidence": 4
+  },
+  "D16": {
+   "id": "D16",
+   "label": "Dense content list vs section start",
+   "reads_high": "Late positions inside dense expository enumerations of topical terms, just before the sentence's period: \"who your lender is and any current repayment status of« your» loans\", \"Zika, Dengue, or West« Nile» virus\", \"patent, trademark and copyright protection for ideas, technology, and creative« works»\", the anatomical list \"bronchioles, alveolar ducts and al«ve»oli\", and sports-achievement lists. It drops sharply at the period.",
+   "reads_low": "Section and paragraph openings right after a newline (-3 to -4): the newline after a date line or heading (\"Saturday, June 6, 2020«⏎»\", \"FROM THE BLEACHERS«⏎»\"), new-paragraph starters (\"«But» that said\", \"«-»Providing\", \"VIRGA:\", \"New for\", \"Students are required\"), and first-person remarks (\"I'm pleased with the progress\").",
+   "push_toward_high": "Tidy, structured, on-topic, practical writing: short declaratives, headings and bullet lists (\"- A framework to solve business problem.⏎- Integrate theories\"), how-to steps (\"Register your vehicle with Immobilise⏎This is actually a free service\"), promotional wrap-ups (\"register on Frank for free\"), and frequent document ends (\"Inventory complete. Game ready and assembled.\").",
+   "push_toward_low": "Long rambling run-on sentences that drift into unrelated, hallucinated content: COVID-19, drug-laced condoms and a former US President, Osama bin Laden, made-up names (\"Jade Nguyen\", \"Devora Manheimer Henry\"), and once a hyphenated word chain (\"/report-unlock-picture-slip-appear-...\"). Coherence and topic both degrade.",
+   "reading_vs_writing": "Related but not identical: reading tracks being deep in an information-dense list (low at section starts), while pushing high yields tidy, structured, quickly concluded text and pushing low yields run-on topic drift, so the writing side looks partly inverted.",
+   "confidence": 4
+  },
+  "D17": {
+   "id": "D17",
+   "label": "Discursive opinion vs concrete specifics",
+   "reads_high": "Subjective, argumentative or essayistic prose, peaking (+3) at sentence-final punctuation and closing parentheses: \"makes things fuzzy (at best).\", \"noticing issue (5).\", \"it can never be dethroned.\", \"to do so.\" in an opinionated review. Reflective clauses generally read +1 to +2.",
+   "reads_low": "Concrete factual specifics, especially digits, which are extremely low (-4 to -5): years in citations (\"between 1979 and 1998\"), ages (\"under 7 years\"), street addresses (\"1000 Lake Cook Road\"), event times (\"6 p.m., Sept. 22\"), and news attributions with titles (\"Senate Armed Services« Chairman» John McCain, R-Ariz.\").",
+   "push_toward_high": "Abstract, pseudo-intellectual word salad that is loosely grammatical but meaningless (\"writing about part culture distantly not really as used for it is no longer regarding the itself around proven convergence for source unity\"), full of abstract nouns and random proper names. It loses the topic.",
+   "push_toward_low": "Concrete, coherent, fact-dense writing: dates and named events (\"in 2008, she ran for the United States Senate, but lost the race to Republican Johnny Isakson\"), specific personal anecdotes (\"Last year, Javice filled out the FAFSA\"), clear imperative instructions (\"Never leave your keys in the minibus\"), and short bulleted place lists.",
+   "reading_vs_writing": "Same axis (abstract or discursive vs concrete or factual) on both sides, but pushing high also wrecks coherence instead of producing clean opinion prose.",
+   "confidence": 4
+  },
+  "D18": {
+   "id": "D18",
+   "label": "Headline/new-post framing vs formal enumeration",
+   "reads_high": "Boundaries right after a title, subject line or short headline-like sentence that opens a new post (+3 to +4): \"Subject: Re: [RFC] New ...findPointCoords implementation«⏎»\", \"LIVE REVIEW: Shearwater« +» Husky @ Bottom of the Hill\", \"Repair vs Replace«?⏎»\", and a punchy blog lede (\"...not all stuff he makes is created equal«.⏎»\"). Blog and recommendation chatter (\"Failure Ahoy is the blog of\", \"Contact your librarian\") is mildly high.",
+   "reads_low": "Dense, formal parallel enumerations deep inside institutional documents (-3 to -4): school test-subject lists (\"reading, language arts, mathematics, science\"), anatomical term lists, treaty or legal text (\"including, in particular, advance informed agreement, in the field of\"), and regulatory lists (\"Maintain the employee's employment records\").",
+   "push_toward_high": "Writing leans toward journalistic, editorial or narrative framing: a news headline and byline (\"Top marks from us at Strathclyde⏎By Charlotte Ball⏎Reporter, BBC Scotland\"), an essay opening with a quotation, evaluative or thematic statements, and human-interest narrative about family. Occasionally it jumps to an unrelated new document or language.",
+   "push_toward_low": "More functional, institutional and informational text: practical security instructions, formal course descriptions, website or organization boilerplate (\"The links on this page are only examples...\", \"Okemos Fire Department, located in...\"), and accurate literal descriptions. Ends the document at times.",
+   "reading_vs_writing": "Plausibly the same axis (headline or editorial framing vs formal institutional listing), but the steering effect is weak and inconsistent, so treat the writing description as tentative.",
+   "confidence": 2
+  },
+  "D19": {
+   "id": "D19",
+   "label": "Personal emotive talk vs named-entity catalogs",
+   "reads_high": "First- and second-person conversational, emotional or opinionated text (forum arguments, rants, blog asides, direct advice to 'you'): 'you will ever know', 'It is so obvious.', 'am I asking silly, obvious questions here?', 'All I can do is just shrug... a damn SHAME'. The whole passage sits around +2, with peaks of +3 on sentence-final punctuation and on I/you/can/do.",
+   "reads_low": "Dense factual catalogs packed with proper nouns, numbers and technical noun compounds: tour-date lists with venues and cities, '850 MW North Bangkok combined cycle power plant', lists of fish species, land records ('Lot 13, Conc 6, Nelson'). Third-person reference text with no voice; the lowest values fall on list items and the commas between them.",
+   "push_toward_high": "The text drifts to vague, evaluative statements that address the reader or are written in first person ('you'll now be a bunch of tips smarter', 'my goal is... to help you get it', 'I'm glad to find so many useful info right here', 'take a stand for what she believes in'), sometimes exclamatory. Concrete specifics drop out, and it often wraps up or ends the document (end-of-text, stray markup, rambling 'you know i move them around').",
+   "push_toward_low": "The text gets denser with concrete specifics: named places, institutions, dates and enumerated items ('Fisk University, Morehouse College (1970-1972)', 'University of the West Indies, Cave Hill Campus, in Barbados', 'ivory tower roofs, house and tower tiles, minarets'). It is impersonal, third-person and catalog-like, and stays on topic.",
+   "reading_vs_writing": "Same axis on both sides: personal, evaluative, reader-addressed voice (high) against impersonal, entity-dense factual listing (low).",
+   "confidence": 4
+  },
+  "D20": {
+   "id": "D20",
+   "label": "Inside explanatory prose vs snippet boundaries",
+   "reads_high": "The middle of flowing explanatory or advisory sentences, often in second person or listing items: symptom lists in health text ('cough, runny nose... pneumonia, seizures'), loan or wedding advice ('so you can avoid penalties', 'you plan to put in'), clinical prose. Values climb through the sentence and drop at the period or the start of the next sentence.",
+   "reads_low": "Boundaries between snippets: the newline after a truncated excerpt ('[...]⏎', '4:26pm⏎'), the very first token of a news lede, browser-warning boilerplate. Also casual first-person speculative chatter ('We'll see tomorrow which way it goes... My first thought was, why is...').",
+   "push_toward_high": "Noisy. The continuation often abandons the current topic: it switches to an unrelated subject or a new document ('Future Tactics: The Uprising is a turn-based strategy game', Batman pieces in a Shakespeare essay, investor pitch decks), slips into code or garbage ('data-bget-bone = {'), or ends abruptly with end-of-text. Other times it gives generic marketing or advice copy.",
+   "push_toward_low": "The continuation stays inside the current scene and adds on-topic detail. In the essay it quotes and names the play's characters (Helena, the countess); in the game review it gives component inventories ('Included in the game are: - 1 game board'). It leans toward anecdotal first-person-plural talk ('We've all seen the frantic dash...', 'no one taught us'), though a few samples are garbled.",
+   "reading_vs_writing": "They do not clearly match and may be roughly inverted: reading-high marks being deep inside coherent explanatory prose, while pushing high tends to break away from the topic or document.",
+   "confidence": 2
+  },
+  "D21": {
+   "id": "D21",
+   "label": "Casual chatty voice vs formal institutional",
+   "reads_high": "Informal, speech-like first-person writing, especially at the clause after an emotional build-up: 'nah i dont think she peed...', 'because I'm super psyched for it... and I'm pretty sure', 'That's gonna be an interesting war', 'so it is ok if we take a few extra weeks'. Peaks on I, gonna, dont, if; slang, ellipses and '!!' push it up.",
+   "reads_low": "Formal, institutional or professional noun phrases: job ads and bios ('attorney with over 30 years of experience in employment and corporate law', 'Professor of Civil Engineering within the Faculty of Science'), official titles ('former Interior Secretary'), policy nouns ('environmental protection'), library boilerplate.",
+   "push_toward_high": "The writing becomes more casual and spoken: quoted conversational speech ('So we built this sort of magic self-driving car... we'll drive it for you'), 'lol' and '!!', short punchy sentences ('There are false tents.'), gossip and opinions ('A more recent story about McKinney is that she issued a $2,000,000.00 check'). One sample went formal instead.",
+   "push_toward_low": "The writing becomes formal, abstract and institutional: 'Though travelling by minibus is statistically very safe, incidents can occur', 'our Foundation's charitable initiatives', 'liberation of moral consciousness', 'International Year of Water Cooperation 2013', 'enhance environmental efficiency'. Expect longer sentences and Latinate nouns.",
+   "reading_vs_writing": "Same axis on both sides: informal personal register (high) against formal institutional register (low).",
+   "confidence": 4
+  },
+  "D22": {
+   "id": "D22",
+   "label": "Web chrome/separators vs discursive essay prose",
+   "reads_high": "Page furniture and structural separators, usually at the start of a line after a blank line: forum navigation '|« Previous Thread | Next Thread »|', decorative '|:::... My fishing rods ...:::', a username or timestamp stuck onto text ('Craig1916: 4'), a pipe at the start of a caption. Archaic verse reads mildly high.",
+   "reads_low": "Discursive, moralizing or analytical essay prose in mid-sentence, especially function words and infinitive 'to' in long abstract sentences: 'We need to support the underserved... We need to look at how we value', 'strive to present themselves as Orthodox Christians as much as they are able', 'each of us has the right and freedom to believe as we choose'.",
+   "push_toward_high": "The text leaves essay mode: casual concrete tips with exclamation marks, then spam ('PayPal Casino 🎁 Free Cash Deposit Bonus Slots'), web-page chrome ('Send a Thank You to Karen for the Post / Your Comment Could End'), code ('eligibilityGraph = (new DotDigraph(writer)).graph;'), headings ('Inside Left'), fiction fragments or podcast-promo babble.",
+   "push_toward_low": "The text becomes abstract, formal and argumentative, with abstract nouns ('Matrimony and love are equated with an act of sexuality rather than genuine emotion', 'there isn't agreement across the various parties in the system', 'a robust program of civil liberties', 'How do firms impact on society').",
+   "reading_vs_writing": "Broadly the same: non-prose web material and boilerplate (high) against abstract discursive prose (low), though pushing high produces general off-register junk (spam, code, casual talk), not just separators.",
+   "confidence": 4
+  },
+  "D23": {
+   "id": "D23",
+   "label": "Sentence near closure vs segment just begun",
+   "reads_high": "The last words of long, formal sentences built from coordinated noun-phrase chains, just before the period: the full name of a French grande école, 'for the ultimate benefit and welfare of the Palestinian state and people's present and future generations', 'patent, trademark and copyright protection for ideas, technology, and creative works'. It drops sharply right after the period or newline.",
+   "reads_low": "The start of a new block right after a header, dateline or attribution line: 'Saturday, June 6, 2020⏎When I looked', 'FROM THE BLEACHERS⏎\"You both', 'Founder, Swift Trade Inc.⏎I engaged', 'Some of the products used:⏎⏎It's nearing'. It is often the first-person opening of a post.",
+   "push_toward_high": "The text closes things off: shorter sentences, wrap-up lines ('I hope it all makes sense.'), new headings or nav ('Related guides', 'GAME IN PROGRESS'), lists of affiliations, and frequent end-of-text followed by a new document.",
+   "push_toward_low": "The text keeps going in long, run-on sentences with coordinated lists and no breaks: 'standard taxes, harbor, opening, highway and construction cards... the road building track, the large city track and the', 'an act to boost the economy and aid in the creation of new business and new jobs in Africa, eliminate certain trade barriers'.",
+   "reading_vs_writing": "At face value they look inverted (long noun chains read high, but pushing low writes long chains). A consistent reading is 'segment is complete and about to close' (high) against 'segment just opened' (low): reading-high sits at the ends of finished sentences, and pushing high makes the model end sentences, sections and documents.",
+   "confidence": 3
+  },
+  "D24": {
+   "id": "D24",
+   "label": "Concrete place/object nouns vs opinion discourse",
+   "reads_high": "Concrete content nouns for physical places, facilities, devices and commerce in factual, news, real-estate or how-to text: 'clubhouses', 'housing', 'communities', 'plant', 'railroad spur', 'cellphone stores', 'Orcas Islands', 'waterfront homes', 'mobile', 'settings', 'web page', 'e-mail addresses', 'city's population'. The noun heads carry the highs; verbs and function words between them read low.",
+   "reads_low": "Function words and discourse moves in first-person opinion, review or Q&A writing: 'First off, I would like to say that I don't think I can', 'On the one hand, his response may seem like a logical progression, but not', 'i knew i liked this', 'If you read anything above, you can guess my recommendation'.",
+   "push_toward_high": "Weak effect. The continuation stays more grounded in concrete physical or practical detail ('behind locked doors, in holders with locks', 'on a counter top', 'the forms are 30 pages long', 'the large central tray underneath... a tray for the yellow moles'), with occasional web metadata ('en.wikipedia.org | 2018-5-2').",
+   "push_toward_low": "Weak effect. The continuation tends to lose the thread and jump to unrelated material: a van-removal ad, charter-school statistics, a birthday greeting in a game box, a confabulated Emma Goldman pardon, MS SQL databases, or end-of-text. It sometimes turns to abstract, dictionary-like statements ('the permanent cessation of vital...').",
+   "reading_vs_writing": "Only loosely related: reading separates concrete object/place nouns from personal opinion discourse, while the push mainly changes how grounded and on-topic the text stays, not how personal it is.",
+   "confidence": 2
+  },
+  "D25": {
+   "id": "D25",
+   "label": "Lists/URLs/metadata gibberish vs fluent prose",
+   "reads_high": "Non-prose, structured or spammy strings: concert date lists ('June 01, 2013 Friends Arena, Stockholm'), print timestamps ('00:50, 07 Jan 2013 -'), runs of casino game titles, raw HTML/URLs, pharma spam ('generic calcitriol 0.25'), event headers with date ranges. Strings of proper nouns and numbers keep it high.",
+   "reads_low": "Fluent reflective or argumentative prose about people's behaviour and feelings: 'even if things are horribly wrong. That's dangerous, and destructive', 'as colleagues and clients get to know them', 'coping strategies', 'the only way you can learn to do better'.",
+   "push_toward_high": "The text collapses into gibberish within a few tokens: mixed scripts and symbols, code and markup fragments, URLs, random numbers and proper nouns, camel-cased junk ('Unfortunatleyad-Torslanda-master 82}}],', '*佩服 (=ωbioch5E', '$N_tram_line', '#BusinesscollusionreverseEngineering'). It is unmistakable.",
+   "push_toward_low": "The text is clean, fluent, plain-language prose that reasons or explains, often conversational ('If you can't separate, you're not really in love, is one reading', 'you just don't understand what you're doing', 'The game is for 2 to 4 players'). It stays on topic and contains no symbols or lists.",
+   "reading_vs_writing": "Same thing on both sides: degenerate, structured or non-linguistic text (high) against natural discursive prose (low).",
+   "confidence": 5
+  },
+  "D26": {
+   "id": "D26",
+   "label": "Reads named entities; writes generic voice",
+   "reads_high": "Specific proper nouns and technical terms inside descriptive text, especially within multi-token names: '.50 BMG', 'Columbia River', 'Puget', 'Old Faithful area', 'Kepler Cascades', 'main pulmonary artery', 'saddle thrombus', 'Easy Bake Oven', 'DVIDS', road names like 'M60'.",
+   "reads_low": "Connectives and function words in first-person argumentative or conversational prose: 'you ought to not be actually getting into', 'Forgive me, therefore, if I continue', 'I felt that there was no need to cancel', 'And? So?', 'That's all I'm going to say. Not sure why'.",
+   "push_toward_high": "The writing turns more general, evaluative and personal, with fewer names: 'we've built this calculator', 'she has always remained determined, out spoken and brave', 'I have an example of a time when I probably acted differently than I should have... It was stupid', and generalizing parallel clauses ('the minor character is equated with the major character').",
+   "push_toward_low": "The writing packs in more specific names, citations, dates and acronyms: 'Diane Reisch and Lone Wilhelmsen... Howard University in March 2002', '[I:iii]' quotations with character names, 'Singapore Skills Workforce Quality System (Singapore SWQS)', 'the city of Cairo', '\"...by mid-January,\" Javice said.'",
+   "reading_vs_writing": "Inverted: proper nouns and technical terms read high, but pushing high removes them in favour of generic personal or evaluative prose, and pushing low adds them.",
+   "confidence": 3
+  },
+  "D27": {
+   "id": "D27",
+   "label": "Title/credit/address lines vs inner narrative",
+   "reads_high": "Metadata-style lines, often right after a blank line: timestamps ('11/20/2008 4:43:59 PM'), headline-style titles ('LIVE REVIEW: Shearwater + Husky @ Bottom of the Hill, SF'), business name plus street address, name-plus-affiliation credits ('Petra Garberding, associate professor in European Ethnology', 'Kelly Johnson, of West Fargo'), product titles with pipes ('Singlet | Adult | Choose Kindness').",
+   "reads_low": "Narrative or reflective prose about inner states, in mid-sentence, around pronoun-plus-verb: 'But emotionally, and spiritually, he was feeling rather stuck', 'you think you're the weirdest thing that ever walked', 'They do not want commitment, but they do want', 'they have the opportunity'.",
+   "push_toward_high": "The text fills with proper names, titles, acronyms, phone numbers and money amounts, and shifts into headline, byline or listing lines: 'Locknight (020 8288 0122).⏎CCTV tower bought by Nat', 'The Great War and the Shaping of 20th Century⏎by Ross Munro', 'Villa Na Borgzella', 'The ACTA dip ACCT VET', '6. A Valediction: For', 'monthly rates listed below'.",
+   "push_toward_low": "The text becomes abstract and psychological, with no names: 'Maintaining control of your keys can sometimes be overlooked', 'a lack of sustained inner vigilance is equated with care', 'The certainty of death does not allow for the possibility that life might be resurrected', 'any anxiousness you've gotten about whether...'.",
+   "reading_vs_writing": "Same axis on both sides: catalog, title and credit material dense with names (high) against abstract or interior reflective prose (low).",
+   "confidence": 4
+  },
+  "D28": {
+   "id": "D28",
+   "label": "Concrete named things vs abstract evaluation",
+   "reads_high": "Concrete, physical or named nouns, especially inside lists of proper names and addresses: street addresses and suite numbers (\"1000 SE Everett Mall Way Ste 201\"), venue and city names in tour-date lists (\"Hartwall Arena, Helsinki\"), named instruments (marimbas, metallophones, glockenspiel), places (shopping mall, food court) and anatomical terms. The peaks fall on the middle tokens of multi-token names.",
+   "reads_low": "Function words and evaluative words in abstract, personal or advice prose with pronouns: \"that touched me most\", \"I would love to hear from you\", \"help you with your decision\", \"that's the positive thing\", \"boost their confidence\". It is lowest in reflective, conversational or motivational sentences that name no concrete objects.",
+   "push_toward_high": "The text turns more abstract, evaluative and argumentative. It makes general claims about value or society and addresses the reader as \"you\" (\"there's a real opportunity to transform the data\", \"the true problem in American society\", \"The practice of medicine is a science with a purpose\", \"feeling passionate about what you do\"), with fewer concrete particulars.",
+   "push_toward_low": "The text turns concrete and specific: named places, objects and products (\"a cloakroom at school\", \"under the bonnet or spare alloy wheels\", \"spreadsheet software\", a run of brand names like \"Hyundai Aggress Talkback Lucky Dunk\"). It sometimes ends the document and starts a new one headed by an institution or place name (\"U.S. Department of Education ... NCES\", \"The British School of Egypt\").",
+   "reading_vs_writing": "They look reversed: concrete named entities read HIGH, but pushing LOW is what produces concrete names and lists, and pushing HIGH produces abstract evaluative prose.",
+   "confidence": 3
+  },
+  "D29": {
+   "id": "D29",
+   "label": "Document boundary and web boilerplate",
+   "reads_high": "Web-page furniture and document boundaries: \"show source https://...\", \"« Previous Thread | Next Thread »\", \"Read Full Article\", \"Copyright 2016 ...\", the newline where a new unrelated page begins (\"Super Lenny Online Casino Review\"), and view counters. Numbered question headings starting a new section also read mildly high.",
+   "reads_low": "Deep inside long, continuous argumentative or moralizing prose, on function words in mid-sentence: \"we need to look at how we value our environment\", \"each of us has the right and freedom to believe\", \"as a species have a special place with Him\". Sermon-like and opinion-essay sentences with \"we\" and \"be\" are typical.",
+   "push_toward_high": "The text quickly leaves the topic. It ends the document (<|endoftext|>) or jumps to unrelated web content: image captions, blog announcements, ads (\"Download Belfort Today!\"), \"Source: https://...\", code file headers, bulleted product specs (\"- Square Size - 2x2 - $10.00 shipping\"). Lines are short and fragmentary.",
+   "push_toward_low": "The text stays coherent and on topic, with longer explanatory sentences that keep developing the prefix's subject (safe key storage, overlapping financial-aid forms, McKinney's legislative record). No document breaks.",
+   "reading_vs_writing": "Same thing on both sides: high marks page boundaries and boilerplate, and pushing high makes the model produce them, while low marks sustained in-document prose.",
+   "confidence": 5
+  },
+  "D30": {
+   "id": "D30",
+   "label": "Casual colloquial vs formal institutional",
+   "reads_high": "Informal, speech-like, emotional writing: forum chat with ellipses and slang (\"awe dude...\", \"whynot..\", \"muthafucka\", \"ain't\"), heartfelt personal anecdote (\"she used the last of her strength to do it, to tell us she loved us\"), interjections like \"Aha!\" and \"but.. well..\". Also chatty numbered questionnaires (\"Describe the pain... sharp, dull, burning\").",
+   "reads_low": "Formal institutional and academic register, lowest on \"the\" and \"of\" before organization names: \"Associate Professor with the Department of Otolaryngology\", \"master's degree from the École Nationale Supérieure\", \"Professor of Civil Engineering within the Faculty of Science\", \"received a $587,250 grant from the Fish & Wildlife Service\".",
+   "push_toward_high": "Casual, conversational writing in the first and second person, with slang, profanity and emotional asides: \"you're like—take me somewhere else!\", \"the brass tray haha\", \"I've already said I think it's perfect\", \"then there's this thing with the chicken\", \"This is what I fucking like\", \"Sorry, okay okay…\". Also short forum-style lines.",
+   "push_toward_low": "Formal bureaucratic or academic prose dense with abstract nouns and institution names: \"related security infrastructure in physical proximity\", \"management of key holdings at further education\", \"an economic aggregate in developed economies\", \"German Society for Management Sciences\", \"the U.S. Navy\", \"Imperial College\".",
+   "reading_vs_writing": "Same axis on both sides: colloquial and emotive register at the high end, formal institutional register at the low end.",
+   "confidence": 5
+  },
+  "D31": {
+   "id": "D31",
+   "label": "Item break and promotional jump",
+   "reads_high": "The newline that ends a short self-contained item in aggregated web content, especially after a headline or promotional line ending in \"!\" or \"…\": celebrity news blurbs (\"...Penn's photo…⏎A University of...\"), makeup promos (\"super hot!⏎\"), mailing-list headers (\"Subject: Re: [RFC] ...⏎From:\"), the end of a tag list. Publisher boilerplate (\"we believe this work is culturally important\") is mildly high.",
+   "reads_low": "Mid-sentence function words (\"the\", \"we\", \"you\") inside a continuing news story, sports quote or advice paragraph: \"Since then, the LCB has admitted\", \"If we concentrate on our own game then we'll\", \"She said he was able to walk to the\".",
+   "push_toward_high": "The text drifts into SEO, promotional or boilerplate material, headings and document ends: bit.ly links, \"Here are some of the things you will learn by reading this book\", \"How Much Grant Money Can You Get?\", \"Gameplay Video⏎You can play our free online games\", \"Subscribe now\", then <|end_of_text|> followed by an unrelated new document.",
+   "push_toward_low": "The text stays coherent and continues the same thread in concrete detail (where the keys should be kept, Javice's family background, which tray holds which tiles, McKinney losing her seat to Denise Majette), with no headings, links or document breaks.",
+   "reading_vs_writing": "Largely the same: it reads high at boundaries between short web items, and pushing high produces those boundaries and the promotional or aggregator content around them. It closely resembles D29.",
+   "confidence": 4
+  },
+  "D32": {
+   "id": "D32",
+   "label": "Personal rhetorical address vs technical description",
+   "reads_high": "Emotional, opinionated, conversational writing addressed to someone, with rhetorical questions and asides: \"please don't tell me, because I don't want to know\", \"Why does my existence bother you so? Surely,\", forum banter with \"...\" and \"..\", \"is it worth it, you may ask? We\".",
+   "reads_low": "Dense technical, industrial or corporate noun phrases from press releases and descriptions: \"$25 billion National Infrastructure Master Plan\", \"vertically integrated textile factory\", \"850 MW North Bangkok combined cycle power plant\", \"Professor of Civil Engineering\", product-line names like \"Damier Ebene canvas\".",
+   "push_toward_high": "More conversational and personal: shorter sentences, direct \"you\", exclamations, rhetorical questions, emoticons and opinions (\"take your keys with you!\", \"How can you even make a decision...\", \"However.⏎Frank is still not the most fun\", \"Pretty good for a £4 item :)\", \"Id suggest you help her\"). Sometimes it turns into a confrontational forum post.",
+   "push_toward_low": "Impersonal corporate or technical detail with long noun-heavy phrases: \"high-security cabinet can offer high value ... lock solutions\", \"Education Data Exchange that brings insight and reporting capabilities\", \"House Financial Services Committee\", \"a former member of the Israel Defense Forces\", publisher disclaimers, \"claims administration techniques and databases\".",
+   "reading_vs_writing": "Same axis on both sides (personal, rhetorical address vs impersonal technical description). It resembles D30 but leans more on direct address and argument than on slang.",
+   "confidence": 4
+  },
+  "D33": {
+   "id": "D33",
+   "label": "Predictable fluency vs token-salad breakdown",
+   "reads_high": "The \".⏎\" paragraph-break token after a finished sentence (around +3 almost everywhere), and pieces inside rare or multi-token words whose completion is nearly certain (\"miscon|str|ued\", \"d|eth|roned\", \"Lo|oney To|ons\", \"Nir|van|ix\", \"Het|i\", \"att|ested\").",
+   "reads_low": "Ordinary function words in mid-sentence in dense abstract or essayistic prose, where many continuations are possible: \"to\", \"might\", \"it\", \"can\" before a verb (\"were not intended to reveal\", \"might be a good way\", \"must be realized in order to make\").",
+   "push_toward_high": "Fluent, plain, generic and very on-topic prose with predictable wording (\"As the driver, you are responsible for making sure the vehicle is secure at all times\", \"This is where Frank comes in to help\"). It sometimes becomes redundant or loops (\"the large market and the large market and the large market\").",
+   "push_toward_low": "Coherence breaks down into word salad and random rare tokens: unrelated fragments (\"reversed up sleeves hinder Golfari\"), forex spam in Indonesian, code and markup bits, Cyrillic, stray IDs (\"EB175\", \"MASTER B_repr\"), abrupt <|endoftext|>.",
+   "reading_vs_writing": "Probably the same axis, how predictable the next token is: high reads at near-determined word completions and pushing high gives predictable or repetitive text, low reads at open function-word slots and pushing low gives high-entropy salad. The paragraph-break peak fits this less well.",
+   "confidence": 3
+  },
+  "D34": {
+   "id": "D34",
+   "label": "Running prose vs numbers and metadata",
+   "reads_high": "Ordinary running English prose words (verbs, nouns, function words) in fluent sentences, especially lower-quality or off-topic web prose (\"As engineer, you may probably have been noticing issue (5)\", \"The staff in the setting and I were really fascinated by the pictures\", \"Barnes offers a nice solid, lathe turned bore\", trading advice, paddling technique).",
+   "reads_low": "Digits and metadata: years in citations (\"(2000)\", \"between 1979 and 1998\"), dates and timestamps (\"02/25/09 - 12:47 PM\"), a year embedded in prose (\"in 1875\"), email and PGP headers (\"-----BEGIN PGP SIGNED MESSAGE-----\"), author initials, quoted title-case show names (\"CMT's \"Can You Duet\"\").",
+   "push_toward_high": "Strings of common English words without coherence or grammar, with repeated function words and no numbers: \"a villagers she seemed content in a more delicate message the cd with. I do couldst object\", \"partial using partial van some first some partial\", \"of of a good news of the day of this new of it\". Occasionally a code fragment.",
+   "push_toward_low": "Clean, coherent, well-organized factual prose, sometimes with structured lists and numbers (\"Contents:⏎- 1 Game Board⏎- 1 Game Board Stand\", \"in 2004, she ran for her old seat, but lost\"). Clear sentences that stay on topic.",
+   "reading_vs_writing": "Partly the same (prose words read high and pushing high yields nothing but prose words; numbers and structure read low and pushing low brings lists and dates), but the high push mostly destroys coherence, which the reading side does not show.",
+   "confidence": 3
+  },
+  "D35": {
+   "id": "D35",
+   "label": "Conversational prose vs citation digits; incoherent push",
+   "reads_high": "Moderately high (about +2) in first-person blog or conversational prose, on discourse connectives and hedges: \"As I have been showing some waterfront homes... I often can't preview\", \"For other people,\", \"my desire to take photos\", \"So while there is an egg\".",
+   "reads_low": "Strongly low (down to -7) on digits and identifiers in references and addresses: years in citations (\"(2000)\", \"1979\", \"(2004)\"), postal codes (\"40126\", \"L0S 1J0\"), street numbers, author initials (\"J. Kaye and L. Staley\"), Twitter handles. Also mildly low in step-by-step technical or procedural text (polygon drawing, cooking times).",
+   "push_toward_high": "Coherence degrades into rambling drift with odd word choices and rare names, plus code and HTML fragments (\"dest$p2 = p.valigrams;rho\", \"<BR>... <em>... <p>\"), stray numbers (\"1946.4\"), run-on keyword salad (\"evaluate micro stage website the place administration with macro Perry\") and sudden document ends.",
+   "push_toward_low": "Fluent, clean, generic and somewhat platitudinous prose, often advice addressed to the reader (\"keep them somewhere secure and out of sight\", \"First, start early\", \"So good luck, future college students\", \"a world where we can all come together to make the world a better place\").",
+   "reading_vs_writing": "They differ: the reading side separates chatty prose from reference digits, while pushing high mainly makes text incoherent and code-like (closer to the low-reading material), and pushing low makes it smooth and generic.",
+   "confidence": 2
+  },
+  "D36": {
+   "id": "D36",
+   "label": "Citation digits; push fragments the text",
+   "reads_high": "Number-leading tokens in citations, addresses and ages, including the space just before a number (\"under ␣7 years\" at +6), year prefixes (\"(200|7)\", \"19|7|9\", \"199|8\"), street and postal numbers (\"Via Irnerio 48\", \"40126\") and Italian institution names (\"Dipartimento di Biochimica\"). Pieces inside a number can alternate in sign.",
+   "reads_low": "Noisy. Pieces of brand or proper names and some line-initial or verb tokens: \"Nik|ke|i\", \"Click|F|unn|els\", \"Lead|pages\", \"TASCHEN\", \"«Prior» to ClickFunnels\", \"You «don»'t need\", \"may «belong» to another edition\", Twitter handles.",
+   "push_toward_high": "Text becomes fragmented: many short lines and one-phrase lines, markdown headings (\"## Layout\"), odd non-sequitur sentences (\"There is falling in love.⏎The Part.⏎The beginning.\"), archaic or poem-like or genealogical text (\"Clang, clang! Over the fierce surging sea\", \"James Hillary McKinney, M. D.\"), and more document ends (<|endoftext|>).",
+   "push_toward_low": "Long, flowing, connected sentences with many commas that stay on topic and explain at length (\"Only allow staff that really need access to the car, rather than leaving keys on a table where anyone can pick them up, and never...\", \"a hallucinatory correspondence, a psycho-somatic coincidence of opposite terms\").",
+   "reading_vs_writing": "Not clearly the same: the reading side is mostly about digits in references and addresses, while the writing side is about fragmentation versus flowing prose. At most they share a loose \"structured or reference-like text\" theme.",
+   "confidence": 2
+  }
+ },
+ "judgments": {
+  "auto": {
+   "D01": {
+    "detect": [
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B"
+    ],
+    "intervene": [
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A"
+    ]
+   },
+   "D02": {
+    "detect": [
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B"
+    ],
+    "intervene": [
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B"
+    ]
+   },
+   "D03": {
+    "detect": [
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "B"
+    ],
+    "intervene": [
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B"
+    ]
+   },
+   "D04": {
+    "detect": [
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A"
+    ],
+    "intervene": [
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A"
+    ]
+   },
+   "D05": {
+    "detect": [
+     "B",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A"
+    ],
+    "intervene": [
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A"
+    ]
+   },
+   "D06": {
+    "detect": [
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A",
+     "B"
+    ],
+    "intervene": [
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A"
+    ]
+   },
+   "D07": {
+    "detect": [
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A"
+    ],
+    "intervene": [
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A"
+    ]
+   },
+   "D08": {
+    "detect": [
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A"
+    ],
+    "intervene": [
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A"
+    ]
+   },
+   "D09": {
+    "detect": [
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "B",
+     "B",
+     "B"
+    ],
+    "intervene": [
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A"
+    ]
+   },
+   "D10": {
+    "detect": [
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A"
+    ],
+    "intervene": [
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B"
+    ]
+   },
+   "D11": {
+    "detect": [
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "B"
+    ],
+    "intervene": [
+     "B",
+     "B",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A"
+    ]
+   },
+   "D12": {
+    "detect": [
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B"
+    ],
+    "intervene": [
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B"
+    ]
+   },
+   "D13": {
+    "detect": [
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B"
+    ],
+    "intervene": [
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "B"
+    ]
+   },
+   "D14": {
+    "detect": [
+     "A",
+     "B",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A"
+    ],
+    "intervene": [
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B"
+    ]
+   },
+   "D15": {
+    "detect": [
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B"
+    ],
+    "intervene": [
+     "B",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B"
+    ]
+   },
+   "D16": {
+    "detect": [
+     "A",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A",
+     "B",
+     "B"
+    ],
+    "intervene": [
+     "B",
+     "A",
+     "B",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B"
+    ]
+   },
+   "D17": {
+    "detect": [
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A"
+    ],
+    "intervene": [
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B"
+    ]
+   },
+   "D18": {
+    "detect": [
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "B"
+    ],
+    "intervene": [
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B"
+    ]
+   },
+   "D19": {
+    "detect": [
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A"
+    ],
+    "intervene": [
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B"
+    ]
+   },
+   "D20": {
+    "detect": [
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "B"
+    ],
+    "intervene": [
+     "A",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A"
+    ]
+   },
+   "D21": {
+    "detect": [
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B"
+    ],
+    "intervene": [
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B"
+    ]
+   },
+   "D22": {
+    "detect": [
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A",
+     "B"
+    ],
+    "intervene": [
+     "B",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B"
+    ]
+   },
+   "D23": {
+    "detect": [
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B"
+    ],
+    "intervene": [
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A"
+    ]
+   },
+   "D24": {
+    "detect": [
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A"
+    ],
+    "intervene": [
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A"
+    ]
+   },
+   "D25": {
+    "detect": [
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A",
+     "B",
+     "B"
+    ],
+    "intervene": [
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A"
+    ]
+   },
+   "D26": {
+    "detect": [
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A"
+    ],
+    "intervene": [
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A"
+    ]
+   },
+   "D27": {
+    "detect": [
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B"
+    ],
+    "intervene": [
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B"
+    ]
+   },
+   "D28": {
+    "detect": [
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A"
+    ],
+    "intervene": [
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A"
+    ]
+   },
+   "D29": {
+    "detect": [
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A"
+    ],
+    "intervene": [
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A"
+    ]
+   },
+   "D30": {
+    "detect": [
+     "B",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A"
+    ],
+    "intervene": [
+     "A",
+     "B",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B"
+    ]
+   },
+   "D31": {
+    "detect": [
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A"
+    ],
+    "intervene": [
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B"
+    ]
+   },
+   "D32": {
+    "detect": [
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A"
+    ],
+    "intervene": [
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B"
+    ]
+   },
+   "D33": {
+    "detect": [
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A"
+    ],
+    "intervene": [
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B"
+    ]
+   },
+   "D34": {
+    "detect": [
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A"
+    ],
+    "intervene": [
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A"
+    ]
+   },
+   "D35": {
+    "detect": [
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A"
+    ],
+    "intervene": [
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A"
+    ]
+   },
+   "D36": {
+    "detect": [
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A"
+    ],
+    "intervene": [
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A"
+    ]
+   }
+  },
+  "baseline": {
+   "D01": {
+    "detect": [
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A"
+    ],
+    "intervene": [
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A"
+    ]
+   },
+   "D02": {
+    "detect": [
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B"
+    ],
+    "intervene": [
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B"
+    ]
+   },
+   "D03": {
+    "detect": [
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A"
+    ],
+    "intervene": [
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B"
+    ]
+   },
+   "D04": {
+    "detect": [
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A"
+    ],
+    "intervene": [
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A"
+    ]
+   },
+   "D05": {
+    "detect": [
+     "B",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A"
+    ],
+    "intervene": [
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A"
+    ]
+   },
+   "D06": {
+    "detect": [
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A",
+     "B"
+    ],
+    "intervene": [
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A"
+    ]
+   },
+   "D07": {
+    "detect": [
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A"
+    ],
+    "intervene": [
+     "B",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A"
+    ]
+   },
+   "D08": {
+    "detect": [
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A"
+    ],
+    "intervene": [
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A"
+    ]
+   },
+   "D09": {
+    "detect": [
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "B",
+     "B",
+     "B"
+    ],
+    "intervene": [
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A"
+    ]
+   },
+   "D10": {
+    "detect": [
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B"
+    ],
+    "intervene": [
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B"
+    ]
+   },
+   "D11": {
+    "detect": [
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B"
+    ],
+    "intervene": [
+     "B",
+     "B",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A"
+    ]
+   },
+   "D12": {
+    "detect": [
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B"
+    ],
+    "intervene": [
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "B",
+     "B",
+     "B"
+    ]
+   },
+   "D13": {
+    "detect": [
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B"
+    ],
+    "intervene": [
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "B"
+    ]
+   },
+   "D14": {
+    "detect": [
+     "A",
+     "B",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A"
+    ],
+    "intervene": [
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A"
+    ]
+   },
+   "D15": {
+    "detect": [
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B"
+    ],
+    "intervene": [
+     "B",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B"
+    ]
+   },
+   "D16": {
+    "detect": [
+     "A",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A",
+     "B",
+     "B"
+    ],
+    "intervene": [
+     "B",
+     "A",
+     "B",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B"
+    ]
+   },
+   "D17": {
+    "detect": [
+     "A",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "B"
+    ],
+    "intervene": [
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B"
+    ]
+   },
+   "D18": {
+    "detect": [
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B"
+    ],
+    "intervene": [
+     "A",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A",
+     "B"
+    ]
+   },
+   "D19": {
+    "detect": [
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A"
+    ],
+    "intervene": [
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B"
+    ]
+   },
+   "D20": {
+    "detect": [
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B"
+    ],
+    "intervene": [
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A"
+    ]
+   },
+   "D21": {
+    "detect": [
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A"
+    ],
+    "intervene": [
+     "A",
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B"
+    ]
+   },
+   "D22": {
+    "detect": [
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A",
+     "B"
+    ],
+    "intervene": [
+     "B",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B"
+    ]
+   },
+   "D23": {
+    "detect": [
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "B"
+    ],
+    "intervene": [
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A"
+    ]
+   },
+   "D24": {
+    "detect": [
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A"
+    ],
+    "intervene": [
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A"
+    ]
+   },
+   "D25": {
+    "detect": [
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B"
+    ],
+    "intervene": [
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A"
+    ]
+   },
+   "D26": {
+    "detect": [
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B"
+    ],
+    "intervene": [
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A"
+    ]
+   },
+   "D27": {
+    "detect": [
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B"
+    ],
+    "intervene": [
+     "B",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B"
+    ]
+   },
+   "D28": {
+    "detect": [
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A"
+    ],
+    "intervene": [
+     "B",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A"
+    ]
+   },
+   "D29": {
+    "detect": [
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A"
+    ],
+    "intervene": [
+     "A",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A"
+    ]
+   },
+   "D30": {
+    "detect": [
+     "B",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A"
+    ],
+    "intervene": [
+     "A",
+     "B",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B"
+    ]
+   },
+   "D31": {
+    "detect": [
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B"
+    ],
+    "intervene": [
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B"
+    ]
+   },
+   "D32": {
+    "detect": [
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A"
+    ],
+    "intervene": [
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B"
+    ]
+   },
+   "D33": {
+    "detect": [
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "A"
+    ],
+    "intervene": [
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A",
+     "B",
+     "B"
+    ]
+   },
+   "D34": {
+    "detect": [
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A"
+    ],
+    "intervene": [
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A"
+    ]
+   },
+   "D35": {
+    "detect": [
+     "A",
+     "A",
+     "B",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "B",
+     "A",
+     "B"
+    ],
+    "intervene": [
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "B",
+     "A",
+     "B",
+     "B",
+     "B",
+     "B"
+    ]
+   },
+   "D36": {
+    "detect": [
+     "A",
+     "A",
+     "A",
+     "B",
+     "A",
+     "A",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A"
+    ],
+    "intervene": [
+     "B",
+     "A",
+     "A",
+     "B",
+     "B",
+     "B",
+     "A",
+     "A",
+     "A",
+     "B",
+     "B",
+     "A"
+    ]
+   }
+  }
+ }
+}

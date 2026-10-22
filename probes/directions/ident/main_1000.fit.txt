@@ -1,0 +1,17 @@
+/mnt/models/homeo/ident/main: layer 40, K 32, 4000 probes, 32 prefixes x 32 generated tokens, |h| 257.1; 2005 of 8001 records
+unsteered: endpoints 0/32, mean entropy 2.44 nats
+
+=== dose 0.25 (push 64.3 = 0.25 x |h|), 1002 probe pairs
+lag-0 check (must be 0): max |dproj| at lag 0 = 1.54e-05
+fraction of sequences diverged from the unsteered tokens by lag: 0:0.34, 1:0.57, 2:0.76, 4:0.85, 8:0.95, 16:0.99, 31:1.00
+endpoints: loop 10, incoherence 0 of 64128
+entropy: unsteered 2.44, + 2.49, - 2.49 nats
+-- lags 1-4: |odd response| 0.068, |even| 0.110 (per unit push, in-subspace); self-kappa mean -0.006 +- 0.000
+   M fitted (32x32): trace/K +0.0063; most pushed back kappa +0.067 (null 95%: +0.030), most amplified -0.078 (null 5%: -0.030)
+   split halves: top-3 pushed-back directions of half A have kappa on half B +0.017, +0.009, +0.006; top-3 amplified +0.000, -0.041, -0.030
+-- lags 5-12: |odd response| 0.094, |even| 0.128 (per unit push, in-subspace); self-kappa mean -0.012 +- 0.001
+   M fitted (32x32): trace/K +0.0122; most pushed back kappa +0.102 (null 95%: +0.036), most amplified -0.104 (null 5%: -0.037)
+   split halves: top-3 pushed-back directions of half A have kappa on half B +0.044, +0.040, +0.069; top-3 amplified -0.053, -0.037, -0.041
+-- lags 13-31: |odd response| 0.109, |even| 0.131 (per unit push, in-subspace); self-kappa mean -0.025 +- 0.001
+   M fitted (32x32): trace/K +0.0260; most pushed back kappa +0.141 (null 95%: +0.045), most amplified -0.174 (null 5%: -0.045)
+   split halves: top-3 pushed-back directions of half A have kappa on half B +0.124, +0.055, +0.031; top-3 amplified -0.146, -0.151, -0.107

@@ -1,0 +1,32 @@
+{
+ "tool": "homeo-score",
+ "model": "/home/bepis/prog/SimpleBot/models/GLM-4-32B-Base-32K.i1-Q4_K_S.gguf",
+ "ids": "/mnt/models/jlens/fineweb_ids.bin",
+ "ids_offset": 500000,
+ "ids_stride": 100003,
+ "offsets": "base-model-welfare/runs/score/screen_offsets.txt",
+ "layer": 40,
+ "n_prompt": 160,
+ "prefix_len": 256,
+ "n_gen": 32,
+ "n_cont": 320,
+ "n_embd": 6144,
+ "windows": [
+  [
+   1,
+   4
+  ],
+  [
+   5,
+   12
+  ],
+  [
+   13,
+   31
+  ]
+ ],
+ "seed": 2,
+ "record_bytes": 98696,
+ "layout": "i32 prompt, i32 cont, i32 tok[n_gen], f32 logp[n_gen], f32 ent[n_gen], f32 G[n_embd], f32 R[n_win][n_embd]",
+ "lag": "lag k = position prefix_len - 1 + k; pushed positions = lags 0 .. n_gen-1; G = d log p(written tokens) / d h summed over them"
+}

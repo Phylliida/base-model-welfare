@@ -1,0 +1,165 @@
+g_now (normalized) at layer 40: 145534 clean positions; top 10 directions carry 2.8% of the second moment
+
+== direction 1: share 0.0052, split-half |cos| (A_i vs best B) 0.99, sd 0.067, skew +1.6, frac > 0 0.63; cos temp -0.104
+  J-lens +: '_tE' 'fragistics' '_tA' ' DevComponents' '_tF' '_mE' '_tC' '_tD' '_mD' ' è´Ŀå£³æī¾æĪ¿' ' deÄŁiÅŁ' 'ãģ®æĶ'
+  J-lens -: ' with' ' which' ' the' ' for' ' when' ' and' ' we' ' is' ' they' ' some' ' from' ' where'
+  current token at top 1% |proj|: ' able' 3% (x87), ' However' 2% (x90), ' fact' 1% (x49), ',' 1% (x0), '2' 1% (x6), '.' 1% (x0)
+  next token at top 1% |proj|:    ',' 27% (x7), ' of' 18% (x9), ' to' 11% (x5), '.' 9% (x4), ' ' 5% (x4), ' with' 2% (x3)
+  +   +8.6 sd  w479 s126: '... lower back injuries, we agree with the Board that he was entitled to a work disability award for the lower back claim.\\n[However]|, we cannot agree with the'
+  +   +8.4 sd  w188 s109: "... energy and body heat\\nNot really. Banding records show that loons often return to the same lake each year.[ However]|, mates probably don't winter"
+  +   +8.3 sd  w723 s34: '... using the above criteria indicated two times higher short-term mortality risk (data from 6 studies including 1773 patients).\\n[Additionally]|, specific echocardiography'
+  +   +8.2 sd  w1076 s128: '... is ADHD-Hyperactive or Combined Type, they will likely need a fidget toy to assist them in focusing. And[ finally]|, proximity to the homework helper'
+  +   +8.0 sd  w271 s32: '... weekend of activities for graduating students and their families: a clambake on Friday, Class Day address by Nobel Laureate[ Dr]|. Shirin Ebadi on'
+  -   -6.3 sd  w61 s72: '... groove with a diverse dance crew. The show uses poetry to develop an inclusive environment, where everyone feels safe to dance.[ However]| the combination of dance and poetry'
+  -   -6.0 sd  w505 s158: '... amount of taxes are taken out of my paycheck? Whenever you get a new job or some tax related event occurs (e[.g]| change your tax filing status,'
+  -   -5.9 sd  w1154 s68: '... electrification and productive end use in rural areas.\\nWindPower Nepal (WPN), a private company, on the other[ hand]| has won the prestigious contract from'
+  -   -5.2 sd  w667 s126: '... 15, 2012) - 100 Founders Share Their Top "Aha" Moments\\nAdWeek ([Aug]| 6, 2012'
+  -   -5.2 sd  w321 s126: '... women âĢ¢\\ndedicated Latino scholar-activist âĢ¢ Robert\\nEisner, Past President, Am. Econ.[ Assoc]|\\nâĢ¢ Ossie Davis'
+
+== direction 2: share 0.0037, split-half |cos| (A_i vs best B) 0.99, sd 0.060, skew +0.9, frac > 0 0.49; cos temp +0.026
+  J-lens +: '.\\n' '.\\n\\n' '.' ':\\n' '.\\n\\n\\n' '.<' ';\\n' '!\\n' '.âĢĿ\\n' '."\\n' '.č\\n' '.</'
+  J-lens -: 'ofday' '-hole' '_ASSUME' 'ØµÙĦØ§ØŃ' '-li' 'plevel' '_tE' 'ÑĢÐµÐ³Ð¸ÑģÑĤÑĢÐ¸ÑĢÐ¾Ð²' '-hearted' '_mC' 'OrDefault' '_mE'
+  current token at top 1% |proj|: ' you' 1% (x1), ' it' 1% (x1), ' year' 1% (x8), ' up' 1% (x4), ' out' 1% (x4), ' day' 0% (x8)
+  next token at top 1% |proj|:    '.\\n' 35% (x31), '.' 33% (x13), ',' 11% (x3), ' and' 5% (x2), ' of' 4% (x2), '\\n' 2% (x4)
+  +   +7.0 sd  w518 s95: '... and women are making their mark. HereâĢĻs a list of 15 of the best female motivational speakers to get you fired[ up]|.\\nBest Female Motivational'
+  +   +6.9 sd  w760 s151: '... platform you use, internal or customer-facing, when current, shows you embrace digital transformation, and are ready to compete more[ effectively]|.\\nZibtek helps you'
+  +   +6.9 sd  w347 s148: '... got Common Council approval.\\nThe Bay Breeze Condominium Association plans to plant 39 trees and add landscaping to the[ entrance]|.\\nA proposed 2012'
+  +   +6.8 sd  w789 s156: '.... The company also conducts high-end technological training of the professional locksmith team to update them about the challenges posed by modern locking[ systems]|.\\nAt Locksmith Store,'
+  +   +6.8 sd  w900 s91: '...iscuity have on our families, our teens have committed to work towards better equipping themselves and their peers towards making better[ choices]|.\\nEach January, our teens'
+  -   -6.2 sd  w801 s40: '...A fun earring set for the internet-savvy, each laser-cut @ sign is rhodium-plated for permanent[ shine]| and hung from stainless steel French'
+  -   -5.7 sd  w722 s149: '... a variety of safe chemicals and methods to ensure that your meth decontamination issue is handled with a high level of technical[ skill]| and compassion. Often, we'
+  -   -5.4 sd  w1025 s117: '...-term contractual relationships.\\nEthics is doing the right thing when no one is looking. While many of our actions receive public[ review]| and scrutiny, a goodly'
+  -   -5.3 sd  w867 s69: '... that Redeemer often starts groups in September, and as it was January, we might have to wait for a space to[ open]| up. Redeemer had not'
+  -   -5.3 sd  w780 s147: '... stippled and annotated through LiâĢĻs obsessive gestures, creating an almost spiritual contemplation of beauty from the intrinsically imperson[al]| and generic.\\nOil on aluminium'
+
+== direction 3: share 0.0030, split-half |cos| (A_i vs best B) 0.97, sd 0.055, skew +1.4, frac > 0 0.40; cos temp +0.027
+  J-lens +: ',' ',[' 'ÙĭØĮ' '),' ':' ';' '-,' '+,' 'Â®,' ',âĢĶ' '],' '!,'
+  J-lens -: 's' ' proyec' ' spep' 'schen' ' convier' 'sence' ' .\\n' 'ÑĪÑĥ' ' ")\\n' 't' 'sas' 'tition'
+  current token at top 1% |proj|: ' However' 2% (x87), ' example' 1% (x31), ' years' 1% (x11), ' it' 1% (x1), ' time' 1% (x6), ' hand' 1% (x20)
+  next token at top 1% |proj|:    ',' 79% (x21), '.\\n' 3% (x2), ' and' 3% (x1), ' of' 1% (x1), ' the' 1% (x0), '.' 1% (x0)
+  +  +10.2 sd  w1025 s54: '... seemingly objective procurement process, then it is highly likely that someone will think there is something fishy going on. At that[ point]|, you are guilty until proven'
+  +   +9.4 sd  w266 s157: '... accuracy of the search results that Google shows the user, but it does return good quality results.\\nIn fact, in many[ cases]|, we have found that Duck'
+  +   +9.4 sd  w228 s57: '... itâĢĻs âĢľall in their headâĢĿ. There is hope!\\nIn Oriental medicine, the liver governs the muscles. Often[ times]|, liver detoxification and purification'
+  +   +9.3 sd  w185 s91: '... nearly 1200 shells into Iraq and watched a new reporter on CNN named Wolf Blitzer report the nightly war status.\\n[Meanwhile]|, a second investigation and a'
+  +   +9.1 sd  w388 s39: '... of choppers was basically known as the bobbers. Bobbers were those motorcycles that had the heavy parts removed. For[ example]|, the fenders were not'
+  -   -7.5 sd  w1092 s43: '... highway in New South Wales in 1928 and named as the North Western Highway. On 9 October 193[6]| the name was changed to the'
+  -   -7.5 sd  w618 s134: "...atisfied customers to ignore,\\nand also another one of those crucially important testicle\\nmoments to attend to.\\nFrank[ly]| I don't care, it"
+  -   -7.3 sd  w217 s157: '... rally in Sacramento this week to support the Kings and create a greater effort to keep them from leaving, and while he was[ there]| he chatted with radio host'
+  -   -7.3 sd  w388 s124: '... used by Indian scouts. The World War II also experienced a boom in bobbers. When the servicemen returned from the[ war]| they removed all those parts from'
+  -   -7.2 sd  w654 s96: '... and capable of almost any challenge that comes my way.\\nIf you have been a reader of my newsletter for any length of[ time]| you probably are familiar with this'
+
+== direction 4: share 0.0028, split-half |cos| (A_i vs best B) 0.96, sd 0.053, skew +0.4, frac > 0 0.42; cos temp +0.052
+  J-lens +: ' [âĢ¦' ' [âĢ¦]\\n\\n' ' ...\\n' '...\\n' 'âĢ¦\\n\\n\\n' 'âĢ¦\\n' ' [...' ',...\\n' '(...)\\n' ' [âĢ¦]' ',âĢ¦\\n\\n' ' âĢ¦\\n\\n'
+  J-lens -: 'ä½Ĩåħ¶' 'ä½Ĩæĺ¯ä»ĸä»¬' 'ä½Ĩä»İ' 'ä½Ĩä»ĸä»¬' 'ä½Ĩè¿ĻäºĽ' 'ä½ĨéļıçĿĢ' 'ä½Ĩæĺ¯å¯¹äºİ' 'ä½Ĩå¦Ĥæŀľ' 'å½±åĵįçĿĢ' 'è¿Ļè®©' 'ç»Ĩå¾®' 'è¦ģè¯´'
+  current token at top 1% |proj|: ' However' 2% (x74), ' it' 1% (x2), ' said' 1% (x7), 's' 1% (x8), ' fact' 1% (x24), ' to' 1% (x0)
+  next token at top 1% |proj|:    '.\\n' 29% (x26), '.' 29% (x11), ',' 19% (x5), '\\n' 5% (x8), ' ' 2% (x2), ' of' 1% (x1)
+  +   +9.1 sd  w1096 s134: '... at first base, there is likely no way to get him regular playing time in St. Louis at the beginning of the[ season]|.\\nItâĢĻs entirely possible this'
+  +   +8.8 sd  w123 s148: '... who is an investor\\nYou might be tempted to put off investing discussions until your child is grown up and has money to[ invest]|.\\nInvestments take many forms'
+  +   +8.3 sd  w265 s82: '... and correcting excessive alar flare.\\nThe study included 60 cases presenting with a wide nasal base and excessive alar fl[aring]|.\\nThe surgical procedure combined an'
+  +   +8.1 sd  w929 s130: "... up an order of greek salad for 20 people to take over to daughter's for our housewarming family party[ tonight]|.\\nWhen our family gets together"
+  +   +7.9 sd  w144 s96: '... is concerned with the natural world and appeals to those interested in animal care, the countryside, planting and landscaping, and the[ environment]|.\\nJobs and courses are available'
+  -   -8.6 sd  w227 s85: '... water fly fishing with a heavy fly and/or with a long leader can make casting and slack-less presentations difficult to say the[ least]|. Especially if there is any'
+  -   -8.3 sd  w35 s137: '... always caught plenty of fish because kids love fast action, and equally love words of encouragement and praise when they landed a good[ one]|. If their attention lagged'
+  -   -8.2 sd  w862 s148: "... market, with shipments outperforming Amazon's Kindle Fire HD and Google Nexus 7, two of the mini's biggest[ competitors]|. In the first two days"
+  -   -8.0 sd  w1188 s51: '... do to hurt yourself? 4. Describe the pain... sharp, dull, burning, throbbing, etc. [5]|. Is it getting better or'
+  -   -7.8 sd  w501 s35: '... does he know\\nabout life at the top? This brotha? Blackness\\nnow is just fodder for race theory[ later]|. But\\ntoday, Gold'
+
+== direction 5: share 0.0025, split-half |cos| (A_i vs best B) 0.90, sd 0.050, skew +0.4, frac > 0 0.49; cos temp +0.007
+  J-lens +: '-of' '.' 'ness' 'ery' '.,' 'less' 'å½ĵçĦ¶äºĨ' 'son' ' of' 'ial' ' temperature' ' information'
+  J-lens -: ' è´Ŀå£³æī¾æĪ¿' 'ØµÙĦØ§ØŃ' 'Ø·ÙĦØ§ÙĤ' 'Ð·Ð½Ð°ÐºÐ¾Ð¼' 'ÙĤØ¯ÙĬÙħ' ' èģĶç»ľä¿¡æģ¯' '_tE' '_mE' 'tiza' ' [-]:' 'âĢ¦\\n\\n\\n\\n' 'tamos'
+  current token at top 1% |proj|: ',' 2% (x0), ' it' 1% (x2), '.' 1% (x0), '2' 1% (x3), '0' 1% (x5), 's' 0% (x5)
+  next token at top 1% |proj|:    '.' 61% (x24), ',' 9% (x2), '.\\n' 7% (x6), ' ' 3% (x2), ' of' 2% (x1), ' and' 1% (x0)
+  +   +7.7 sd  w628 s116: '... this Product?\\nThere are a lot of people all over the world who found success in implementing the techniques that the product is[ suggesting]|. One of them is a'
+  +   +7.4 sd  w227 s43: '... New Scientific Anglers Bruce Chard Salt Water Grand Slam Fly Line\\ncovers all the bases of a premium salt water fly[ line]|. This is why the\\n'
+  +   +7.1 sd  w302 s117: '... with the buttons below this post.\\nThe religion topic is pinned at the top of the Politics area to make it easy to[ find]|. Please try and keep debates'
+  +   +7.1 sd  w214 s154: '... am eager to try after reading so much rave about their products. This value set is a wonderful introduction to the Tata Harper[ brand]|. The set includes- Reg'
+  +   +6.8 sd  w768 s137: '... to the foundation itself or the brush) so you can apply sparingly for a light finish or build for a more medium[ one]|. after one overall application,'
+  -   -5.7 sd  w673 s116: '... provide a cure.\\nIf you neglect employees with medical conditions, you could face discrimination claimsâĢĵleading to tribunal hearings and business[ damages]|.\\nHealth Assured offers expert'
+  -   -5.5 sd  w981 s143: '... Daddy is no longer supporting SOPA, the "Stop Online Piracy Act" currently working its way through U.S.[ Congress]|.\\n"Fighting online piracy is'
+  -   -5.2 sd  w823 s142: "... Embassy's celebration of Japan's Culture Day, which was held at the Ambassador's residence in Washington, D.C. Master[ O]|chiai, was one of"
+  -   -5.0 sd  w1196 s133: '...12 Championships session one and fifth overall. Junior Jessie Sisler earned the title of Pac-12 Floor Champion.\\nNo[.]| 5 seed Arizona to compete'
+  -   -5.0 sd  w144 s96: '... is concerned with the natural world and appeals to those interested in animal care, the countryside, planting and landscaping, and the[ environment]|.\\nJobs and courses are available'
+
+== direction 6: share 0.0024, split-half |cos| (A_i vs best B) 0.87, sd 0.049, skew +0.2, frac > 0 0.44; cos temp +0.024
+  J-lens +: ' of' ' the' ' among' ' upon' ' The' ' relative' ' associated' 'ãģ®åľ' ' consideration' ' nakne' ' identifiable' ' corresponding'
+  J-lens -: 'fragistics' 'smith' 'outs' 'keeper' 'sters' ' è´Ŀå£³æī¾æĪ¿' 'backs' 'ppers' 'titud' '/+' 'GuidId' '-analytics'
+  current token at top 1% |proj|: '.' 5% (x2), ' of' 5% (x2), ',' 3% (x1), ' it' 3% (x5), ' in' 3% (x2), ' to' 2% (x1)
+  next token at top 1% |proj|:    ' the' 27% (x8), ' of' 8% (x4), ' that' 4% (x6), ' The' 4% (x12), 'âĢĻs' 3% (x10), ' is' 3% (x4)
+  +   +6.0 sd  w1137 s157: '...-related needs and interest of cities; assistance for electric cities in negotiating pole attachment agreements and conducting pole count inventories; assistance[ in]| the development of public, educational'
+  +   +5.7 sd  w113 s71: '... only for the trimming process.\\n- Whatever trimmer you choose to use, read the instructions before using to get an idea[ of]| the operation.\\n- Stand in'
+  +   +5.7 sd  w938 s81: '.... While they might quarrel, fight, and perhaps even be starting a war in Africa, they are still family.[ It]| is going to take a whole'
+  +   +5.5 sd  w258 s141: '....\\nElhanafy, Hossam and Copeland, G.M. (2007) Modified method of characteristics[ for]| the shallow water equations. In'
+  +   +5.3 sd  w295 s149: '..., dance teachers, athletes and courses. Stargym has pink and blue versions of home pages and other pages. The[ design]| of the templates is fully reactive'
+  -   -6.0 sd  w240 s103: "... Caliber. Any info would be appreciated.\\nLehigh bullets make a 245 grain 338 solid bore rider.[ It]|'s BC is higher than the"
+  -   -6.0 sd  w454 s128: '...This filter adjusts the amount of your webcam that is shown. For example, if youâĢĻd like a square image or maybe[ there]|âĢĻs something just off to the'
+  -   -6.0 sd  w220 s140: '... his campaign through social media. The island is now besieged with blood-sport advertisements all over the air-waves.[ It]|âĢĻs up to the public to'
+  -   -5.7 sd  w575 s142: '... who use BogotaâĢĻs recreational lanes on Sunday, have six more minutes of vigorous physical activity (on average) than those[ who]| donâĢĻt.\\nHowever, many'
+  -   -5.5 sd  w626 s105: "... support Londoners with the skills they need for jobs in the green economy, rebuilding the capital post-COVID so that[ it]|'s cleaner, greener and"
+
+== direction 7: share 0.0022, split-half |cos| (A_i vs best B) 0.95, sd 0.047, skew +0.5, frac > 0 0.42; cos temp +0.074
+  J-lens +: 'aways' 'Ð¶Ð´ÑĭÐ¹' 'Ð±ÑĭÑĩÐ½Ð¾' 'Ð¾Ð¿ÑĢÐ¸Ð¼ÐµÑĩ' 'fragistics' 'å§Ĩæĸ¯' 'Ð·Ð½Ð°ÐºÐ¾Ð¼' '$fdata' 'ä»¥èµ´' 'åĬ©äºİ' 'ÑĢÑĥÐ±ÐµÐ¶' 'è§ĤçļĦ'
+  J-lens -: ' and' ',...\\n' ',' ' [âĢ¦' '<|endoftext|>' ' or' '.\\n' ' ...\\n' '...\\n' 'âĢ¦\\n' ',\\n' ' [...'
+  current token at top 1% |proj|: ',' 6% (x2), ' it' 1% (x2), ' you' 1% (x2), '.' 1% (x0), ' I' 1% (x2), ' we' 1% (x3)
+  next token at top 1% |proj|:    '.' 58% (x23), ' and' 11% (x5), '.\\n' 5% (x4), ',' 4% (x1), ' ' 2% (x2), ' is' 2% (x2)
+  +   +7.0 sd  w614 s133: '... concerned and the room was full of vampires tonight. As I looked around the room, I realized that all eyes were upon[ us]|. Someone had even stopped the'
+  +   +6.9 sd  w123 s52: '... teach your children before investment. Plenty of parents start their kids off with a piggy bank to teach them the importance of[ savings]|. However, very few teach'
+  +   +6.7 sd  w1116 s89: '...ence ri withno debt check and no faxing. However, always remember that this is actually not the right alternative for[ everybody]|. You can easily get total'
+  +   +6.7 sd  w697 s130: "...yla has had with idol (19e) and now the NCAA. This has made things incredibly hard on everyone on the[ team]|. Wayne\\'s tough part"
+  +   +6.6 sd  w673 s42: '...ors to specialised therapists, you can provide significant help through these practices.\\nYou can even offer emotional intelligence training through employee assistance[ programmes]|. These allow managers to understand'
+  -   -7.0 sd  w234 s33: '... create their costumes for the show. They all had really exciting ideas. We provided feathers, masks, glitter, glue etc[.]| and the home staff provided us'
+  -   -6.4 sd  w567 s99: "... them an A.\\nThe shoes - the shoes are kind of boring but they certainly don't detract from the dress.[ They]| are simple slip-ons, made"
+  -   -6.1 sd  w644 s99: '...ative (2/4)||May be silent on most topics but when it comes to them and their job they wonâĢĻt[ shut]| up and very open.||'
+  -   -5.8 sd  w163 s102: '.... Was the title inspired by political pop culture icon Joe the Plumber?\\nJoe is a nerdy high school student.[ He]| is an artist, and he'
+  -   -5.8 sd  w493 s61: '...If you can dream it, you can do it." R.A. Dickey was a dreamer who always believed in[ himself]| and his ability to perform on'
+
+== direction 8: share 0.0022, split-half |cos| (A_i vs best B) 0.96, sd 0.047, skew +0.4, frac > 0 0.49; cos temp -0.061
+  J-lens +: ' âĢĭâĢĭ' 'à¹Į' 'fragistics' 'ache' 'ed' 'es' 'e' 'en' 'le' ' councill' 'Ìģ' ' æĽ´å¤ļåĽ¾åĨĮ'
+  J-lens -: 'ohlen' ' geographic' 'irsch' ' critical' ' intermittent' ' physical' ' literature' ' leadership' ' granite' ' psychological' ' fiscal' ' conventional'
+  current token at top 1% |proj|: ',' 7% (x2), ' of' 5% (x3), ' and' 3% (x2), ' in' 2% (x2), ' all' 2% (x9), '.' 2% (x1)
+  next token at top 1% |proj|:    ' the' 15% (x4), ' to' 11% (x5), ' that' 10% (x13), ' and' 7% (x3), ' of' 7% (x3), ',' 3% (x1)
+  +   +7.3 sd  w1063 s35: '... I don\'t think you can build that program without that foundation existing. We\'ve been able to do that over the last[ couple]| of years."\\nThe key to'
+  +   +7.0 sd  w232 s151: '... habits and spoiled. We turned him out for 6 months to gain weight and be a horse. I rode him a[ couple]| of times, then last weekend'
+  +   +6.8 sd  w335 s63: "... the Bankai he worked so hard to improve appearing so weak. He then uses his Shikai to burn the flesh[ off]| of Driscoll's face"
+  +   +6.8 sd  w1142 s106: '... enjoyed the book, whatever it is. I think itâĢĻs funny and also raw, and I swallowed it down in a[ couple]| of large gulps. I'
+  +   +6.8 sd  w646 s149: '...igo folk textile from rural China. These are the simple handwoven cotton fabrics of everyday country folk and were rarely seen[ outside]| of a village life now almost'
+  -   -6.8 sd  w961 s154: '....\\nFor removing blackheads: Combine Â½ cup of boiling water with 3 drops of iodine and 1 tsp[.]| Epsom salt. Stir'
+  -   -5.7 sd  w104 s106: '... reset the password using their new email to gain complete access to the victimâĢĻs account. The attack is executed when a victim[ clicks]| a single malicious link or visits'
+  -   -5.7 sd  w1095 s139: '...375 degrees. On a cutting board or your counter tops, begin to assemble the cabbage rolls. Cut the hard ribs[ off]| the cabbage leaves so you don'
+  -   -5.6 sd  w767 s110: '... at the top of a hill now known as Chinsegut Hill. He sold the plantation to Francis Edrington in[ May]| 1851 and moved to'
+  -   -5.5 sd  w156 s57: "...q because it caused tumors in animals. In June, it was approved. However, it won't be available for another[ half]| year while the FDA considers what"
+
+== direction 9: share 0.0020, split-half |cos| (A_i vs best B) 0.97, sd 0.045, skew +0.1, frac > 0 0.47; cos temp +0.009
+  J-lens +: 'âĢ¦\\n\\n\\n\\n' '...\\n\\n\\n\\n\\n\\n' '|=\\n' 'ãĥ»ãĥ»ãĥ»\\n\\n' 'atis' "',...\\n" 'ially' 'rasz' 'ologically' ']=]' '/{{$' 'ÄŁun'
+  J-lens -: 'e' 't' 's' 'es' 'y' 'd' 'm' 'ly' ' ejerci' ' convir' 'çħĮ' 'tions'
+  current token at top 1% |proj|: ' of' 4% (x2), ' to' 2% (x1), ' in' 2% (x1), ' ' 1% (x1), ' and' 1% (x1), ' the' 1% (x0)
+  next token at top 1% |proj|:    '.\\n' 14% (x13), ' the' 6% (x2), '.' 5% (x2), ' of' 5% (x3), ',' 5% (x1), ' to' 2% (x1)
+  +   +5.9 sd  w369 s115: '... highlighted the work of Ms. Khoury as helping the needy through pro-bono legal work, and the work of[ Ms]|. Varkas in contributing'
+  +   +5.8 sd  w667 s53: "...26, 2012) - Google's disappointing Q3 Earnings Good News for Advertisers\\nAdvertisement Journal ([Oct]|. 26, 201"
+  +   +5.7 sd  w973 s142: '... Joomla meet these requirements?\\nFirst, let us keep in mind that Joomla is built on a highly-extensible platform. Out[-of]|-the box, the basic components'
+  +   +5.4 sd  w583 s54: '... the bench or two âĢĵ you put it in the drawer and decided to get it fixed later on.\\nHow long has that[ hand]|piece been broken?\\nDonâĢĻt'
+  +   +5.4 sd  w57 s74: '... Everyday Paleo: Thai Cuisine\\n, and I am SO very excitedâĢ¦.I LOVE Thai Food! I highly suggest you go[ pre]|-order your copy of it now'
+  -   -6.3 sd  w667 s76: '... (Oct. 26, 2012) - Google Runs Ads 30 Billion Times Per Day\\nSEOmoz ([Oct]| 22, 2012'
+  -   -6.2 sd  w575 s115: '...ycling forms part of a healthier lifestyle, especially among children. A recent study discovered that children aged between 6-10[ years]| old, who use Bogota'
+  -   -5.7 sd  w257 s146: '...f) Inferior vena cava collapsibility is <50% calculated by placing M-mode cursor on inferior vena[ c]|ava and measuring the change in'
+  -   -5.7 sd  w1083 s109: '... Margery, in her hometown of Bartlesville.\\nSchiele was a 1966 graduate of the Massachusetts Institute[ of]| Technology and a native of west'
+  -   -5.4 sd  w107 s84: '..., watery eyes. Complications can include diarrhea, ear infections, pneumonia, seizures and death. According to the Centers[ for]| Disease Control (CDC), developing'
+
+== direction 10: share 0.0019, split-half |cos| (A_i vs best B) 0.98, sd 0.043, skew +0.6, frac > 0 0.48; cos temp -0.016
+  J-lens +: ' and' ' ë°ı' ' vÃł' ' swingerclub' 'ãģĬãĤĪãģ³' 'ĉand' ' &' ' ÙĪ' 'åĴĮå¤ĦçĲĨ' 'åĴĮæĶ¯æĮģ' 'åĴĮåıĳå±ķ' ' Ð¸'
+  J-lens -: ' [âĢ¦]\\n\\n' ' [âĢ¦' ' you' 'âĢ¦\\n\\n' 'âĢ¦\\n' ' [...' ' [...]\\n\\n' '...]\\n\\n' '...\\n' ' thing' ' they' '...\\n\\n'
+  current token at top 1% |proj|: ',' 1% (x0), ' quality' 0% (x23), ' fun' 0% (x26), ' support' 0% (x9), ' services' 0% (x13), 's' 0% (x4)
+  next token at top 1% |proj|:    ' and' 54% (x25), ' of' 12% (x6), ',' 9% (x2), ' or' 5% (x14), ' to' 4% (x2), '.' 2% (x1)
+  +   +9.5 sd  w1028 s150: '... we create a welcoming situation in a context like museums or art galleries - when new communities are invited? How do we provide[ access]| and how do we teach our'
+  +   +9.4 sd  w664 s37: '.... Over the past few years, the discussion of the use of the electromagnetic spectrum1 for digital inclusion has taken on more[ strength]| and importance.\\nOne alternative for'
+  +   +9.1 sd  w395 s110: '..., the outlook for 2019 is positive for the fashion and home furnishings sector. However, there are a variety of[ issues]| and trends to consider as well'
+  +   +9.1 sd  w674 s54: '... LaâĢĻs fluid identity, paying homage to a pan-Islamic world while simultaneously embracing modern style and innovation. Those juxtaposition[s]| and paradoxes are the essence'
+  +   +9.1 sd  w1029 s59: '... Lubitsch touch, it relates to his mentor, the great writer/producer director Ernst Lubitsch and his unique[ style]| and cinematic trademarks he used in'
+  -   -7.9 sd  w248 s68: "... We look forward to working with you!\\n\\nRisking life and limb every week to bring you an in depth look at the[ lives]| of the world's softest"
+  -   -7.7 sd  w253 s70: '... security and to the citizens of Nigeria.\\nâĢľCarson and the State Department continue to downplay Boko HaramâĢĻs Islamist[ nature]|, preferring to see the terrorist'
+  -   -7.6 sd  w924 s59: '... statutes governing non-profits and applicable federal statutes.\\nFebruary 9, 2012\\nThis module will focus on the[ workings]| of the executive and legislative branches'
+  -   -7.6 sd  w689 s68: '... speed extremely in perhaps 1 or 2 of those love languages, therefore when we know how our partner loves to be[ valued]|, then we could satisfy them'
+  -   -7.4 sd  w369 s124: '... as helping the needy through pro-bono legal work, and the work of Ms. Varkas in contributing to the[ formation]| of young children. He commented'
+
+cos with the mean residual direction: +0.07 +0.00 -0.04 -0.02 +0.14 -0.07 -0.13 +0.03 +0.02 +0.01
+coordinates carrying the most of the top-10 subspace: 8 (4.0%), 2380 (3.3%), 4532 (3.1%), 3196 (2.4%), 3891 (2.4%), 2914 (2.3%), 6041 (2.2%), 5831 (1.7%), 1028 (1.7%), 2226 (1.7%)
+share of the subspace in the top 10 coordinates: 24.7% (uniform: 0.16%)

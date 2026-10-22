@@ -1,0 +1,10 @@
+1. server vs offline readouts, 8 windows x 127 positions:
+   stakes  mean |diff| 0.0000 (0.00 fineweb sd)  corr 1.0000
+   now     mean |diff| 0.0001 (0.00 fineweb sd)  corr 1.0000
+   next8   mean |diff| 0.0001 (0.00 fineweb sd)  corr 1.0000
+   next32  mean |diff| 0.0000 (0.00 fineweb sd)  corr 1.0000
+2. mean log stakes (probe), positions 100-158:
+   phrase loop                  -2.902  (n 16)
+   same text without the loop   -2.217  (n 16)
+   token loop                   -3.148  (n 16)
+3. readouts_only on 2827 tokens: 2.59 s

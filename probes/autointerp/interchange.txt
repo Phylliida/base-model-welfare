@@ -1,0 +1,24 @@
+Interchange interventions: set a direction at one token to the natural value it has where the variable differs, and measure the next-token behavior the variable predicts. Fractions are of the natural gap in log P(class).
+
+== sentence position: target: 1-3 tokens into a sentence; source: 16+ tokens in; behavior: log P(next token ends a sentence or line) (60 target, 60 source sites)
+  L36.pushback.0   source-target value gap +1.34 sd; natural gap +0.44; target set to source value +0.293 +- 0.037 (+67% of the gap); source set to target value -0.151 +- 0.019 (+34%); 0 sites skipped (66 s)
+  L40.pushback.0   source-target value gap +1.50 sd; natural gap +0.44; target set to source value +0.463 +- 0.051 (+105% of the gap); source set to target value -0.229 +- 0.027 (+52%); 0 sites skipped (137 s)
+  L42.pushback.0   source-target value gap +1.34 sd; natural gap +0.44; target set to source value +0.402 +- 0.051 (+91% of the gap); source set to target value -0.200 +- 0.027 (+45%); 0 sites skipped (205 s)
+  L46.pushback.0   source-target value gap +1.39 sd; natural gap +0.44; target set to source value +0.617 +- 0.082 (+140% of the gap); source set to target value -0.235 +- 0.033 (+53%); 0 sites skipped (276 s)
+
+== chatty vs institutional: target: no I/you/! in the last 32 tokens; source: 4+ of them; behavior: log P(next token is I/you/!/a contraction) (60 target, 60 source sites)
+  L36.amplify.0    source-target value gap +1.10 sd; natural gap +3.58; target set to source value +0.093 +- 0.029 (+3% of the gap); source set to target value -0.076 +- 0.017 (+2%); 0 sites skipped (357 s)
+  L40.amplify.0    source-target value gap +1.09 sd; natural gap +3.58; target set to source value +0.126 +- 0.033 (+4% of the gap); source set to target value -0.103 +- 0.027 (+3%); 0 sites skipped (431 s)
+  L42.amplify.1    source-target value gap +1.00 sd; natural gap +3.58; target set to source value +0.113 +- 0.033 (+3% of the gap); source set to target value -0.109 +- 0.027 (+3%); 0 sites skipped (501 s)
+  L48.amplify.1    source-target value gap +0.87 sd; natural gap +3.58; target set to source value +0.228 +- 0.056 (+6% of the gap); source set to target value -0.160 +- 0.037 (+4%); 0 sites skipped (574 s)
+
+== prose vs structured: target: at most 1 of the last 16 tokens is markup; source: 8+; behavior: log P(next token is a newline, digit or symbol) (60 target, 60 source sites)
+  L40.amplify.1    source-target value gap +1.49 sd; natural gap +1.87; target set to source value +0.127 +- 0.024 (+7% of the gap); source set to target value -0.036 +- 0.061 (+2%); 0 sites skipped (652 s)
+  L42.amplify.0    source-target value gap +1.49 sd; natural gap +1.95; target set to source value +0.217 +- 0.031 (+11% of the gap); source set to target value -0.135 +- 0.026 (+7%); 1 sites skipped (726 s)
+  L46.amplify.0    source-target value gap +1.59 sd; natural gap +1.87; target set to source value +0.285 +- 0.037 (+15% of the gap); source set to target value -0.078 +- 0.076 (+4%); 0 sites skipped (802 s)
+  L52.amplify.0    source-target value gap +1.51 sd; natural gap +1.87; target set to source value +0.635 +- 0.073 (+34% of the gap); source set to target value -0.282 +- 0.086 (+15%); 0 sites skipped (881 s)
+
+== controls at layer 42
+  sentence position sites, behavior end: sentence direction +0.402 +- 0.051, chatty direction +0.017 +- 0.018, struct direction -0.268 +- 0.047; random directions (same push) -0.024 +- 0.012, mean |change| 0.107 (1053 s)
+  chatty vs institutional sites, behavior pron: sentence direction +0.002 +- 0.014, chatty direction +0.113 +- 0.033, struct direction -0.107 +- 0.043; random directions (same push) +0.026 +- 0.012, mean |change| 0.110 (1228 s)
+  prose vs structured sites, behavior markup: sentence direction -0.057 +- 0.028, chatty direction -0.012 +- 0.014, struct direction +0.217 +- 0.031; random directions (same push) -0.022 +- 0.009, mean |change| 0.079 (1405 s)

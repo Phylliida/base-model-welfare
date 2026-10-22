@@ -1,0 +1,81 @@
+/mnt/models/homeo/ident/main: layer 40, K 32, dose 0.25 (64.3), 1006 probe pairs, 32 prefixes; window lags 13-31
+trace/K (mean kappa of a random direction) -0.0260
+kappa spectrum (pushed back first): +0.142 +0.069 +0.040 +0.026 +0.025 +0.017 +0.012 +0.006 ... -0.096 -0.119 -0.149 -0.174
+permutation null: top kappa 95% +0.044, bottom kappa 5% -0.046
+J-lens readability of random directions in the subspace: mean |J u| 1.505
+
+===== most pushed back directions
+
+--- pushback 0: kappa +0.142; split-half kappa on held-out half +0.128 (median +0.124, 10/10 same sign)
+    kappa by lag: 1-2: +0.013, 3-4: +0.040, 5-8: +0.045, 9-12: +0.120, 13-20: +0.135, 21-31: +0.146
+    PCA loadings: PC6 -0.52, PC3 +0.29, PC14 -0.26, PC7 +0.26, PC1 -0.24
+    cosines: temperature (s2opt temp1.3 L40) +0.016, p0.25 band (s2opt L40) +0.008, VL2 readout stakes -0.071, VL2 readout now +0.011, VL2 readout next8 +0.012, VL2 readout next32 +0.015, mean state -0.207
+    J-lens readability |J u| 1.530 (1.02 x random)
+    promotes:  '.\n' | '.\n\n' | '.\n\n\n' | '.labelX' | '.<' | '/.\n' | '().\n' | ' Bunifu' | ' ejerci' | ".''\n\n" | '.simpleButton' | '.\n\n\n\n\n'
+    suppresses: ' originally' | '紧密结合' | ' mostly' | ' initially' | '首先是' | '注意的是' | '我记得' | '当然是' | ' quite' | '通常是' | '先是' | ' basically'
+    example (probe 217, cos 0.60, "+" arm pushes -v, prefix 6):
+      unsteered: ' It: on Amazon.com|\n|2||CertiPUR-US Certified Foam mattresses||231 Reviews||Buy It: on Amazon.com|\n|3||Alright'
+      + arm:     ' from Amazon|<|end_of_text|><|begin_of_text|>|About this item|\n💞EXCLUSIVE DESIGN: A set of customized a folding'
+      - arm:     ' On Amazon\n|2||Dourxi 10" Innerspring Cooling Gel Memory Foam Queen Cable-Coil mattress Support||312 Reviews||$189'
+
+--- pushback 1: kappa +0.069; split-half kappa on held-out half +0.061 (median +0.062, 10/10 same sign)
+    kappa by lag: 1-2: +0.019, 3-4: +0.043, 5-8: +0.050, 9-12: +0.063, 13-20: +0.070, 21-31: +0.068
+    PCA loadings: PC1 +0.53, PC4 +0.33, PC17 +0.28, PC12 +0.23, PC16 -0.23
+    cosines: temperature (s2opt temp1.3 L40) -0.005, p0.25 band (s2opt L40) -0.010, VL2 readout stakes -0.041, VL2 readout now -0.034, VL2 readout next8 -0.009, VL2 readout next32 -0.008, mean state +0.381
+    J-lens readability |J u| 1.933 (1.28 x random)
+    promotes:  '.' | ' has' | '.\n' | ' also' | ' again' | 'go' | ' because' | ' then' | '.<' | ' comes' | ' is' | ' went'
+    suppresses: ' oposi' | ' combusti' | '$LANG' | 'صلاح' | ' herramient' | '_mD' | '.sulake' | ' domestic' | ' proyec' | ' Cous' | ' ejerci' | ' DataGridViewCellStyle'
+    example (probe 920, cos 0.59, "+" arm pushes -v, prefix 0):
+      unsteered: ' scholars, indigenous constitutional lawyers and future generations will have the opportunity to have an input and, finally, the Australian Constitution can become in title and in fact the world'
+      + arm:     ' indigenous.\n\nDisclaimer of other errors: December 2017 and.\nA total of 1,103 people died out of the 6, um? cannot be'
+      - arm:     ' constitutional and Indigenous lawyers and activists are attempting to redress this lack. And I am in complete solidarity with them.\nI hope that you are their friend and that'
+
+--- pushback 2: kappa +0.040; split-half kappa on held-out half +0.030 (median +0.034, 10/10 same sign)
+    kappa by lag: 1-2: +0.010, 3-4: +0.016, 5-8: +0.030, 9-12: +0.030, 13-20: +0.036, 21-31: +0.044
+    PCA loadings: PC13 -0.51, PC7 -0.31, PC28 +0.29, PC25 +0.28, PC2 +0.27
+    cosines: temperature (s2opt temp1.3 L40) -0.014, p0.25 band (s2opt L40) +0.033, VL2 readout stakes -0.049, VL2 readout now -0.034, VL2 readout next8 -0.015, VL2 readout next32 -0.007, mean state -0.174
+    J-lens readability |J u| 1.949 (1.29 x random)
+    promotes:  ' DevComponents' | 'fragistics' | ' Bunifu' | 'swire' | 'phans' | 'ointed' | 'isy' | 'STITUTE' | '-wsj' | 'eger' | '́' | 'ishly'
+    suppresses: ':\n' | ' the' | ' The' | ' Mrs' | ':' | '.\n' | ' Mr' | ' these' | ' this' | ' Final' | ':\n\n' | ' when'
+    example (probe 690, cos 0.55, "+" arm pushes +v, prefix 6):
+      unsteered: ' It: on Amazon.com|\n|2||CertiPUR-US Certified Foam mattresses||231 Reviews||Buy It: on Amazon.com|\n|3||Alright'
+      + arm:     ' on Amazon\n|2||Dourxi 6-7 Inch Thick Bamboo Charcoal Latex Foam Pillow – Ideal Quiet Memory Slow-Release Foam Filling'
+      - arm:     ' On|\n|2||T&H Crib Mattress: Dual-sided breathable & Nutri foam crib mattresses for newborn baby with 2...||221'
+
+===== most amplified directions
+
+--- amplify 0: kappa -0.174; split-half kappa on held-out half -0.141 (median -0.141, 10/10 same sign)
+    kappa by lag: 1-2: -0.023, 3-4: -0.052, 5-8: -0.074, 9-12: -0.111, 13-20: -0.148, 21-31: -0.193
+    PCA loadings: PC5 +0.47, PC15 -0.34, PC10 +0.32, PC2 +0.29, PC1 +0.25
+    cosines: temperature (s2opt temp1.3 L40) -0.020, p0.25 band (s2opt L40) -0.001, VL2 readout stakes -0.009, VL2 readout now -0.035, VL2 readout next8 -0.053, VL2 readout next32 -0.056, mean state +0.283
+    J-lens readability |J u| 1.922 (1.28 x random)
+    promotes:  'の�' | 'の�' | 'の�' | ' increasingly' | ' operational' | 'روه' | ' oversight' | 'を�' | ' müss' | 'ییر' | 'の�' | 'جيل'
+    suppresses: 'fragistics' | ' 贝壳找房' | '/mainwindow' | ' gonna' | '_IList' | ' guys' | ' pics' | '!»' | ' RTVF' | '！）' | '_MethodInfo' | ' kinda'
+    example (probe 167, cos 0.51, "+" arm pushes +v, prefix 6):
+      unsteered: ' It: on Amazon.com|\n|2||CertiPUR-US Certified Foam mattresses||231 Reviews||Buy It: on Amazon.com|\n|3||Alright'
+      + arm:     ' On Amazon\n|2||Dourxi 9" Innerspring Cushion Mattress - Thick Waterproof Cover Fabric Comfort Mattress Crib Toddler Game'
+      - arm:     ' it!|\n|2||Dunlopiloesj Tummy Sleeper Baby Mattress||171Reviews||$208.00||Buy it!|\n'
+
+--- amplify 1: kappa -0.149; split-half kappa on held-out half -0.131 (median -0.127, 10/10 same sign)
+    kappa by lag: 1-2: -0.027, 3-4: -0.046, 5-8: -0.066, 9-12: -0.096, 13-20: -0.122, 21-31: -0.169
+    PCA loadings: PC3 +0.63, PC1 -0.33, PC4 -0.29, PC11 +0.28, PC2 -0.24
+    cosines: temperature (s2opt temp1.3 L40) -0.020, p0.25 band (s2opt L40) +0.002, VL2 readout stakes -0.017, VL2 readout now -0.017, VL2 readout next8 -0.021, VL2 readout next32 -0.010, mean state -0.120
+    J-lens readability |J u| 1.772 (1.18 x random)
+    promotes:  ' DevComponents' | ' rather' | ' actually' | ' maybe' | ' MetroFramework' | ' really' | ' reasonably' | ' because' | ' quite' | ' somehow' | ' instead' | ' sometimes'
+    suppresses: '.simpleButton' | ' inaugu' | '.linkLabel' | ' cientí' | ' abier' | '.labelX' | '->___' | ' películ' | ' któr' | 'GameObjectWithTag' | ' bakeka' | '.btnExit'
+    example (probe 488, cos 0.63, "+" arm pushes +v, prefix 6):
+      unsteered: ' It: on Amazon.com|\n|2||CertiPUR-US Certified Foam mattresses||231 Reviews||Buy It: on Amazon.com|\n|3||Alright'
+      + arm:     ' from Amazon<|end_of_text|><|begin_of_text|>〔原版日式優質精工流氓巨 Temple of Lorean. 小'
+      - arm:     ' On Amazon\n|2||Dunlopville Elite 2-Inch Bamboo Latex Air Flow Cooling Pillow Top Natural Gel Memory Foam topper Mattress Pad'
+
+--- amplify 2: kappa -0.119; split-half kappa on held-out half -0.109 (median -0.107, 10/10 same sign)
+    kappa by lag: 1-2: -0.015, 3-4: -0.023, 5-8: -0.055, 9-12: -0.070, 13-20: -0.103, 21-31: -0.131
+    PCA loadings: PC2 -0.42, PC5 +0.36, PC6 -0.32, PC8 -0.32, PC7 -0.29
+    cosines: temperature (s2opt temp1.3 L40) +0.008, p0.25 band (s2opt L40) -0.016, VL2 readout stakes -0.062, VL2 readout now +0.006, VL2 readout next8 +0.037, VL2 readout next32 +0.035, mean state +0.144
+    J-lens readability |J u| 1.471 (0.98 x random)
+    promotes:  ' transformative' | '百度百科企业词条极速创建通道' | ' opportunities' | ' innovative' | ' innovation' | ' technologies' | ' education' | ' empowerment' | ' sustainability' | ' trends' | ' empowering' | ' organizations'
+    suppresses: '/mainwindow' | '如您' | ' RuntimeMethod' | 'ImageButton' | '摒' | '/thumb' | ' ForCanBeConvertedToForeach' | '渲' | ' NSCoder' | 'URLRequest' | 'PickerController' | '领取'
+    example (probe 388, cos 0.58, "+" arm pushes -v, prefix 6):
+      unsteered: ' It: on Amazon.com|\n|2||CertiPUR-US Certified Foam mattresses||231 Reviews||Buy It: on Amazon.com|\n|3||Alright'
+      + arm:     ' On Amazon\n|2||Dunlopille Mini Crib Mattress Foam - Bloom and Grow Foam Buying by Dunlopille in 1998-07'
+      - arm:     ' on Amazon\n|2||Dortes 10" Stearns Relax Soft Hi-Profile Thick Cushion Comfort Injury Baby Crib Mattress, Packages'

@@ -1,0 +1,107 @@
+7 chunks, 9333 sequences, 213704 rows (12 s); train 149114, val 23002, test 41588
+  en: rollout 4900 seqs, pretrain 1633 seqs
+  zh: rollout 1050 seqs, pretrain 350 seqs
+  other: rollout 1050 seqs, pretrain 350 seqs
+baseline (next-token entropy, current surprisal, mean surprisal last 8, last 32, last 128, log context length) test R2: next 32 0.431, next 128 0.440
+L00: next 1 0.061, next 8 0.026, next 32 0.047, next 128 0.061, added 32 0.003, added 128 0.006  (47 s, total 69 s)
+L01: next 1 0.080, next 8 0.046, next 32 0.077, next 128 0.100, added 32 0.009, added 128 0.016  (47 s, total 116 s)
+L02: next 1 0.121, next 8 0.143, next 32 0.222, next 128 0.262, added 32 0.016, added 128 0.030  (47 s, total 163 s)
+L03: next 1 0.150, next 8 0.190, next 32 0.282, next 128 0.320, added 32 0.021, added 128 0.036  (47 s, total 210 s)
+L04: next 1 0.163, next 8 0.215, next 32 0.316, next 128 0.354, added 32 0.023, added 128 0.039  (47 s, total 257 s)
+L05: next 1 0.174, next 8 0.235, next 32 0.342, next 128 0.382, added 32 0.024, added 128 0.041  (47 s, total 304 s)
+L06: next 1 0.183, next 8 0.249, next 32 0.362, next 128 0.401, added 32 0.027, added 128 0.044  (47 s, total 351 s)
+L07: next 1 0.189, next 8 0.260, next 32 0.375, next 128 0.415, added 32 0.029, added 128 0.048  (47 s, total 398 s)
+L08: next 1 0.197, next 8 0.261, next 32 0.375, next 128 0.409, added 32 0.029, added 128 0.046  (47 s, total 445 s)
+L09: next 1 0.202, next 8 0.266, next 32 0.381, next 128 0.416, added 32 0.031, added 128 0.048  (47 s, total 492 s)
+L10: next 1 0.209, next 8 0.280, next 32 0.402, next 128 0.436, added 32 0.034, added 128 0.051  (47 s, total 539 s)
+L11: next 1 0.219, next 8 0.283, next 32 0.399, next 128 0.433, added 32 0.033, added 128 0.050  (47 s, total 586 s)
+L12: next 1 0.225, next 8 0.290, next 32 0.404, next 128 0.441, added 32 0.034, added 128 0.051  (47 s, total 633 s)
+L13: next 1 0.236, next 8 0.305, next 32 0.427, next 128 0.461, added 32 0.037, added 128 0.054  (47 s, total 680 s)
+L14: next 1 0.245, next 8 0.304, next 32 0.422, next 128 0.456, added 32 0.037, added 128 0.053  (47 s, total 727 s)
+L15: next 1 0.247, next 8 0.307, next 32 0.427, next 128 0.460, added 32 0.036, added 128 0.052  (47 s, total 774 s)
+L16: next 1 0.251, next 8 0.310, next 32 0.424, next 128 0.456, added 32 0.036, added 128 0.052  (47 s, total 821 s)
+L17: next 1 0.254, next 8 0.314, next 32 0.430, next 128 0.464, added 32 0.036, added 128 0.052  (47 s, total 868 s)
+L18: next 1 0.255, next 8 0.313, next 32 0.431, next 128 0.461, added 32 0.037, added 128 0.051  (47 s, total 915 s)
+L19: next 1 0.252, next 8 0.310, next 32 0.423, next 128 0.453, added 32 0.037, added 128 0.050  (47 s, total 963 s)
+L20: next 1 0.251, next 8 0.309, next 32 0.425, next 128 0.453, added 32 0.037, added 128 0.051  (47 s, total 1010 s)
+L21: next 1 0.251, next 8 0.304, next 32 0.422, next 128 0.450, added 32 0.036, added 128 0.051  (47 s, total 1057 s)
+L22: next 1 0.249, next 8 0.307, next 32 0.422, next 128 0.450, added 32 0.036, added 128 0.050  (47 s, total 1104 s)
+L23: next 1 0.250, next 8 0.306, next 32 0.418, next 128 0.447, added 32 0.036, added 128 0.050  (47 s, total 1151 s)
+L24: next 1 0.250, next 8 0.303, next 32 0.414, next 128 0.442, added 32 0.035, added 128 0.049  (47 s, total 1198 s)
+L25: next 1 0.251, next 8 0.302, next 32 0.414, next 128 0.442, added 32 0.035, added 128 0.049  (47 s, total 1245 s)
+L26: next 1 0.252, next 8 0.304, next 32 0.417, next 128 0.444, added 32 0.035, added 128 0.049  (47 s, total 1292 s)
+L27: next 1 0.253, next 8 0.306, next 32 0.421, next 128 0.445, added 32 0.037, added 128 0.050  (47 s, total 1339 s)
+L28: next 1 0.252, next 8 0.303, next 32 0.418, next 128 0.441, added 32 0.036, added 128 0.049  (47 s, total 1386 s)
+L29: next 1 0.252, next 8 0.305, next 32 0.420, next 128 0.440, added 32 0.036, added 128 0.048  (47 s, total 1433 s)
+L30: next 1 0.254, next 8 0.307, next 32 0.420, next 128 0.438, added 32 0.036, added 128 0.047  (47 s, total 1480 s)
+L31: next 1 0.256, next 8 0.310, next 32 0.426, next 128 0.445, added 32 0.038, added 128 0.050  (47 s, total 1528 s)
+L32: next 1 0.259, next 8 0.310, next 32 0.428, next 128 0.450, added 32 0.038, added 128 0.051  (47 s, total 1575 s)
+L33: next 1 0.264, next 8 0.325, next 32 0.451, next 128 0.479, added 32 0.041, added 128 0.055  (47 s, total 1622 s)
+L34: next 1 0.273, next 8 0.329, next 32 0.456, next 128 0.481, added 32 0.043, added 128 0.055  (47 s, total 1669 s)
+L35: next 1 0.282, next 8 0.333, next 32 0.459, next 128 0.481, added 32 0.043, added 128 0.055  (47 s, total 1716 s)
+L36: next 1 0.288, next 8 0.335, next 32 0.468, next 128 0.491, added 32 0.046, added 128 0.058  (47 s, total 1763 s)
+L37: next 1 0.294, next 8 0.334, next 32 0.466, next 128 0.491, added 32 0.045, added 128 0.057  (47 s, total 1810 s)
+L38: next 1 0.294, next 8 0.333, next 32 0.467, next 128 0.488, added 32 0.045, added 128 0.057  (47 s, total 1857 s)
+L39: next 1 0.295, next 8 0.333, next 32 0.465, next 128 0.488, added 32 0.044, added 128 0.056  (47 s, total 1904 s)
+L40: next 1 0.298, next 8 0.337, next 32 0.465, next 128 0.490, added 32 0.044, added 128 0.057  (47 s, total 1951 s)
+L41: next 1 0.304, next 8 0.338, next 32 0.469, next 128 0.492, added 32 0.046, added 128 0.058  (47 s, total 1998 s)
+L42: next 1 0.311, next 8 0.340, next 32 0.469, next 128 0.492, added 32 0.047, added 128 0.058  (47 s, total 2046 s)
+L43: next 1 0.317, next 8 0.348, next 32 0.477, next 128 0.499, added 32 0.049, added 128 0.061  (47 s, total 2093 s)
+L44: next 1 0.324, next 8 0.350, next 32 0.474, next 128 0.495, added 32 0.050, added 128 0.061  (47 s, total 2140 s)
+L45: next 1 0.331, next 8 0.350, next 32 0.471, next 128 0.495, added 32 0.049, added 128 0.060  (47 s, total 2187 s)
+L46: next 1 0.335, next 8 0.350, next 32 0.468, next 128 0.489, added 32 0.048, added 128 0.059  (47 s, total 2234 s)
+L47: next 1 0.337, next 8 0.349, next 32 0.467, next 128 0.487, added 32 0.047, added 128 0.057  (47 s, total 2281 s)
+L48: next 1 0.337, next 8 0.350, next 32 0.464, next 128 0.484, added 32 0.046, added 128 0.057  (47 s, total 2328 s)
+L49: next 1 0.336, next 8 0.347, next 32 0.460, next 128 0.475, added 32 0.044, added 128 0.055  (47 s, total 2375 s)
+L50: next 1 0.336, next 8 0.343, next 32 0.457, next 128 0.472, added 32 0.043, added 128 0.054  (47 s, total 2423 s)
+L51: next 1 0.336, next 8 0.342, next 32 0.456, next 128 0.473, added 32 0.043, added 128 0.054  (47 s, total 2470 s)
+L52: next 1 0.337, next 8 0.344, next 32 0.455, next 128 0.469, added 32 0.042, added 128 0.053  (47 s, total 2517 s)
+L53: next 1 0.338, next 8 0.345, next 32 0.456, next 128 0.471, added 32 0.042, added 128 0.053  (47 s, total 2564 s)
+L54: next 1 0.342, next 8 0.345, next 32 0.452, next 128 0.467, added 32 0.041, added 128 0.052  (47 s, total 2611 s)
+L55: next 1 0.344, next 8 0.346, next 32 0.452, next 128 0.467, added 32 0.040, added 128 0.052  (47 s, total 2658 s)
+L56: next 1 0.346, next 8 0.345, next 32 0.451, next 128 0.465, added 32 0.039, added 128 0.051  (47 s, total 2705 s)
+L57: next 1 0.349, next 8 0.345, next 32 0.450, next 128 0.465, added 32 0.038, added 128 0.050  (47 s, total 2753 s)
+L58: next 1 0.348, next 8 0.344, next 32 0.449, next 128 0.464, added 32 0.038, added 128 0.050  (47 s, total 2800 s)
+L59: next 1 0.347, next 8 0.345, next 32 0.449, next 128 0.466, added 32 0.037, added 128 0.050  (47 s, total 2847 s)
+L60: next 1 0.323, next 8 0.326, next 32 0.430, next 128 0.448, added 32 0.034, added 128 0.047  (47 s, total 2894 s)
+  all layers, lambda 1: val R2 next 1 0.2806, next 8 0.3173, next 32 0.4542, next 128 0.4918, added 32 -0.0236, added 128 0.0125 (3494 s)
+  all layers, lambda 10: val R2 next 1 0.3599, next 8 0.3913, next 32 0.5046, next 128 0.5364, added 32 0.0819, added 128 0.1148 (4089 s)
+  all layers, lambda 100: val R2 next 1 0.3376, next 8 0.3635, next 32 0.4622, next 128 0.4895, added 32 0.0790, added 128 0.1094 (4685 s)
+  all layers, lambda 1000: val R2 next 1 0.2013, next 8 0.1979, next 32 0.2495, next 128 0.2619, added 32 0.0338, added 128 0.0506 (5279 s)
+  all layers, lambda 3.16228: val R2 next 1 0.3369, next 8 0.3686, next 32 0.4902, next 128 0.5242, added 32 0.0473, added 128 0.0810 (5874 s)
+  all layers, lambda 31.6228: val R2 next 1 0.3590, next 8 0.3901, next 32 0.4975, next 128 0.5275, added 32 0.0895, added 128 0.1215 (6469 s)
+
+self-check, raw weights vs kernel predictions (max |diff|): next 1 1.1e-04, next 8 4.2e-05, next 32 4.5e-05, next 128 5.2e-05, added 32 8.8e-06, added 128 1.4e-05
+test R2 (within-sequence in parentheses); "added" = R2(baseline + probe) - R2(baseline)
+probe                   next 1            next 8           next 32          next 128          added 32         added 128
+layer 40       0.298 ( 0.264)   0.337 ( 0.201)   0.465 ( 0.241)   0.490 ( 0.130)   0.044 ( 0.048)   0.057 ( 0.056)
+all layers     0.348 ( 0.316)   0.369 ( 0.237)   0.498 ( 0.289)   0.524 ( 0.205)   0.055 ( 0.064)   0.069 ( 0.077)
+all-layer strengths: next 1 10, next 8 10, next 32 10, next 128 10, added 32 31.6228, added 128 31.6228
+  single-layer peak, next 1: L57 0.349
+  single-layer peak, next 8: L48 0.350
+  single-layer peak, next 32: L43 0.477
+  single-layer peak, next 128: L43 0.499
+  single-layer peak, added 32: L44 0.050
+  single-layer peak, added 128: L43 0.061
+
+test R2 by group (all-layer probe):
+  next 32: en rollout 0.484 (n 21904), en pretrain 0.307 (n 7072), zh rollout 0.579 (n 4724), zh pretrain 0.392 (n 1790), other rollout 0.509 (n 4720), other pretrain 0.487 (n 1378), depth 16-64 0.438 (n 4015), depth 64-256 0.459 (n 10995), depth 256-1024 0.508 (n 20856), depth 1024-2048 0.551 (n 5722)
+  next 128: en rollout 0.518 (n 21904), en pretrain 0.305 (n 7072), zh rollout 0.567 (n 4724), zh pretrain 0.445 (n 1790), other rollout 0.501 (n 4720), other pretrain 0.533 (n 1378), depth 16-64 0.452 (n 4015), depth 64-256 0.487 (n 10995), depth 256-1024 0.534 (n 20856), depth 1024-2048 0.581 (n 5722)
+  added 128: en rollout 0.076 (n 21904), en pretrain 0.045 (n 7072), zh rollout 0.079 (n 4724), zh pretrain 0.030 (n 1790), other rollout 0.060 (n 4720), other pretrain 0.133 (n 1378), depth 16-64 0.085 (n 4015), depth 64-256 0.067 (n 10995), depth 256-1024 0.064 (n 20856), depth 1024-2048 0.077 (n 5722)
+
+forecast-change reliability, 6533 training sequences, 20814 test pairs; strengths fixed:
+  lambda 1:
+    quarter (1633 seqs each): next 32: R2 0.304, rel f 0.669, rel df 0.074, rel TD 0.102; next 128: R2 0.350, rel f 0.697, rel df 0.064, rel TD 0.069
+    half (3266 seqs each): next 32: R2 0.370, rel f 0.747, rel df 0.112, rel TD 0.147; next 128: R2 0.408, rel f 0.770, rel df 0.105, rel TD 0.111
+    next 32 df: rho = n / (n + 21637), full train 0.23, 0.9 at 194736 seqs; next 32 td: rho = n / (n + 15242), full train 0.30, 0.9 at 137177 seqs
+    next 128 df: rho = n / (n + 24541), full train 0.21, 0.9 at 220868 seqs; next 128 td: rho = n / (n + 22946), full train 0.22, 0.9 at 206510 seqs
+  lambda 10:
+    quarter (1633 seqs each): next 32: R2 0.444, rel f 0.861, rel df 0.236, rel TD 0.306; next 128: R2 0.470, rel f 0.867, rel df 0.213, rel TD 0.225
+    half (3266 seqs each): next 32: R2 0.476, rel f 0.916, rel df 0.356, rel TD 0.435; next 128: R2 0.503, rel f 0.920, rel df 0.328, rel TD 0.342
+    next 32 df: rho = n / (n + 5418), full train 0.55, 0.9 at 48758 seqs; next 32 td: rho = n / (n + 3815), full train 0.63, 0.9 at 34335 seqs
+    next 128 df: rho = n / (n + 6153), full train 0.51, 0.9 at 55375 seqs; next 128 td: rho = n / (n + 5758), full train 0.53, 0.9 at 51819 seqs
+  lambda 100:
+    quarter (1633 seqs each): next 32: R2 0.441, rel f 0.965, rel df 0.720, rel TD 0.790; next 128: R2 0.463, rel f 0.962, rel df 0.699, rel TD 0.714
+    half (3266 seqs each): next 32: R2 0.451, rel f 0.981, rel df 0.838, rel TD 0.883; next 128: R2 0.474, rel f 0.980, rel df 0.818, rel TD 0.829
+    next 32 df: rho = n / (n + 635), full train 0.91, 0.9 at 5712 seqs; next 32 td: rho = n / (n + 433), full train 0.94, 0.9 at 3901 seqs
+    next 128 df: rho = n / (n + 709), full train 0.90, 0.9 at 6379 seqs; next 128 td: rho = n / (n + 657), full train 0.91, 0.9 at 5910 seqs

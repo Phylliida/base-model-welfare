@@ -1,0 +1,29 @@
+{
+  "model": "/home/bepis/prog/SimpleBot/models/GLM-4-32B-Base-32K.i1-Q4_K_S.gguf",
+  "ids": "/mnt/models/jlens/fineweb_ids.bin",
+  "n_tokens": 192,
+  "skip": 32,
+  "horizon": 32,
+  "short": 8,
+  "layers": [
+    40,
+    44,
+    50,
+    56
+  ],
+  "slot_layer": 40,
+  "positions": [
+    32,
+    158
+  ],
+  "n_embd": 6144,
+  "kinds": [
+    "now",
+    "short",
+    "fut"
+  ],
+  "layout": "f16 [n_layers][3][P][n_embd], P = positions[1] - positions[0] + 1",
+  "seed": 0,
+  "n_windows": 1200,
+  "stride": 0
+}

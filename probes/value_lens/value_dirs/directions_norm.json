@@ -1,0 +1,1740 @@
+{
+ "share_top": [
+  0.007282156409129756,
+  0.0033097487594971027,
+  0.0029961632798513544,
+  0.0029081892990158982,
+  0.00240421091694278,
+  0.002243417748183933,
+  0.0019531492620929966,
+  0.0018929544567372202,
+  0.001810697412979093,
+  0.0017772817676637808
+ ],
+ "directions": [
+  {
+   "share": 0.007282156409129756,
+   "split_half": 0.9975058812328992,
+   "sd": 0.08530893176794052,
+   "skew": 0.053976744413375854,
+   "frac_pos": 0.4829002624671916,
+   "jlens_pos": [
+    " roller",
+    " Roll",
+    "ypy",
+    " Viv",
+    "\u00e5\u00b2\u0143",
+    "ialis",
+    " contracting",
+    " Colonial",
+    " nuclear",
+    "\u00c5\u00a5",
+    " collateral",
+    "yon"
+   ],
+   "jlens_neg": [
+    "fragistics",
+    " \u00d0\u00be\u00d0\u00b7\u00d0\u00bd\u00d0\u00b0\u00d0\u00ba\u00d0\u00be\u00d0\u00bc",
+    " \u00d0\u00b8\u00d0\u00b7\u00d0\u00b4\u00d0\u00b5\u00d0\u00bb",
+    " \u00d0\u00bf\u00d0\u00bb\u00d0\u00b0\u00d1\u0124\u00d1\u0126\u00d0\u00be\u00d1\u0122",
+    " \u00d1\u0123\u00d0\u00be\u00d0\u00be\u00d0\u00b1\u00d1\u012b\u00d0\u00b5",
+    "$fdata",
+    "\u00e3\u0125\u00b3\u00e3\u0125\u0132",
+    "apgolly",
+    " cient\u00c3\u0143",
+    " \u00d1\u0123\u00d0\u00bf\u00d0\u00b8\u00d1\u0123\u00d0\u00ba",
+    " \u00d0\u00ba\u00d0\u00b0\u00d1\u0124\u00d0\u00b5\u00d0\u00b3",
+    " fortal"
+   ],
+   "cur_top1pct": [
+    [
+     " and",
+     0.03571428571428571,
+     1.642744265847932
+    ],
+    [
+     ",",
+     0.0260989010989011,
+     0.6885927252587876
+    ],
+    [
+     " to",
+     0.02403846153846154,
+     1.1391772912857252
+    ],
+    [
+     " of",
+     0.019230769230769232,
+     1.0136656172512746
+    ],
+    [
+     " the",
+     0.014423076923076924,
+     0.40420721681553573
+    ],
+    [
+     " in",
+     0.013736263736263736,
+     1.1469267966686212
+    ]
+   ],
+   "next_top1pct": [
+    [
+     ".",
+     0.052884615384615384,
+     2.1161698145132295
+    ],
+    [
+     ",",
+     0.03708791208791209,
+     0.9779946000728751
+    ],
+    [
+     ".\\n",
+     0.03708791208791209,
+     3.2732275305046685
+    ],
+    [
+     " to",
+     0.019230769230769232,
+     0.9131258627180324
+    ],
+    [
+     " of",
+     0.019230769230769232,
+     1.0111021565140061
+    ],
+    [
+     " the",
+     0.016483516483516484,
+     0.46097465178940966
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": 0.020276837050914764,
+    "band p~0.5 (L40)": -0.03264523297548294
+   },
+   "examples_pos": [
+    {
+     "w": 602,
+     "s": 124,
+     "proj": 0.4507826268672943,
+     "text": "...Please visit the Chamber's Own Web-Site at: www.chamber45005.org\\nSince 1947,[ The]| Franklin Area Chamber of Commerce has"
+    },
+    {
+     "w": 710,
+     "s": 124,
+     "proj": 0.4414926767349243,
+     "text": "... are roasted on site via a customized electric fluid-bed air roaster, which takes up minimal space and produces what Martin calls[,]| \u00e2\u0122\u013ea cleaner, more aromatic"
+    },
+    {
+     "w": 664,
+     "s": 39,
+     "proj": 0.4335949718952179,
+     "text": "... the past few years, the discussion of the use of the electromagnetic spectrum1 for digital inclusion has taken on more strength and[ importance]|.\\nOne alternative for digital inclusion"
+    },
+    {
+     "w": 981,
+     "s": 137,
+     "proj": 0.4116431474685669,
+     "text": "... community supports it too:\\nGo Daddy is no longer supporting SOPA, the \"Stop Online Piracy Act\" currently working[ its]| way through U.S. Congress"
+    },
+    {
+     "w": 1110,
+     "s": 58,
+     "proj": 0.4102734327316284,
+     "text": "...ng the attention \u00d0\u00bef your site visitors \u00d1\u0138n a un\u00d1\u0138qu\u00d0\u00b5 and interesting w\u00d0\u00b0\u00d1\u0125 that leads t\u00d0\u00be[ higher]| conversions. It is \u00d1\u0125\u00d0\u00be"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 527,
+     "s": 79,
+     "proj": -0.4428540766239166,
+     "text": "... meet the challenges of growth and change. APA is incorporated in the District of Columbia as a 501 (c)[ ]|3 organization, for charitable,"
+    },
+    {
+     "w": 925,
+     "s": 93,
+     "proj": -0.41430214047431946,
+     "text": "... to be aware of the technical terms like 'CE', 'PE', 'Lot size', 'Strike price', and the[ rest]|.\\nThis is a segment where"
+    },
+    {
+     "w": 557,
+     "s": 108,
+     "proj": -0.41200125217437744,
+     "text": "... The Winery Dogs and I couldn\u00e2\u0122\u013bt be more excited to grab this. If you haven\u00e2\u0122\u013bt heard them, you are[ definitely]| missing out. Give this one"
+    },
+    {
+     "w": 99,
+     "s": 90,
+     "proj": -0.4014672040939331,
+     "text": "... It is a violation of Federal law to use this product in a manner inconsistent with its labeling. Read and follow all directions[ and]| precautions on this product label."
+    },
+    {
+     "w": 1171,
+     "s": 65,
+     "proj": -0.3937990069389343,
+     "text": "... T - English - Adventure/Drama - Chapters: 16 - Words: 129,321 - Reviews: [6]|25 - Favs: "
+    }
+   ]
+  },
+  {
+   "share": 0.0033097487594971027,
+   "split_half": 0.9814478314697339,
+   "sd": 0.05751071497797966,
+   "skew": 0.05639362335205078,
+   "frac_pos": 0.4843307086614173,
+   "jlens_pos": [
+    " ple",
+    " commercial",
+    " domestic",
+    " lur",
+    "roids",
+    " Water",
+    " made",
+    "ereg",
+    " sweep",
+    " Creation",
+    " extreme",
+    " Plain"
+   ],
+   "jlens_neg": [
+    "\u00d0\u00b7\u00d0\u00bd\u00d0\u00b0\u00d0\u00ba\u00d0\u00be\u00d0\u00bc",
+    "\u00d8\u00b5\u00d9\u0126\u00d8\u00a7\u00d8\u0143",
+    " \u00d0\u00bd\u00d0\u00b5\u00d1\u0125\u00d0\u00b4\u00d0\u00b0",
+    " \u00d1\u0123\u00d0\u00be\u00d0\u00be\u00d0\u00b1\u00d1\u012b\u00d0\u00b5",
+    " \u00d0\u00bd\u00d0\u00b5\u00d0\u00b2\u00d0\u00b5\u00d1\u0122\u00d0\u00be",
+    "zazione",
+    "\u00d0\u00b6\u00d0\u00b4\u00d1\u0125",
+    "\u00d1\u0122\u00d0\u00b8\u00d0\u00bb\u00d0\u00be\u00d0\u00b6",
+    "\u00d8\u00b7\u00d9\u0126\u00d8\u00a7\u00d9\u0124",
+    "dem\u00c3\u00a1s",
+    " \u00d0\u00b2\u00d0\u00b5\u00d1\u0122\u00d1\u0124\u00d0\u00b8\u00d0\u00ba",
+    "\u00d0\u00b4\u00d0\u00b0\u00d0\u00b5\u00d0\u00bc"
+   ],
+   "cur_top1pct": [
+    [
+     " the",
+     0.08104395604395605,
+     2.2712595992492006
+    ],
+    [
+     " a",
+     0.040521978021978024,
+     2.4572189789377292
+    ],
+    [
+     " to",
+     0.03502747252747253,
+     1.6599440530163423
+    ],
+    [
+     " and",
+     0.029532967032967032,
+     1.3584231429127132
+    ],
+    [
+     ",",
+     0.02815934065934066,
+     0.7429553088318498
+    ],
+    [
+     " of",
+     0.022664835164835164,
+     1.1946773346175736
+    ]
+   ],
+   "next_top1pct": [
+    [
+     ".",
+     0.03777472527472527,
+     1.5115498675094496
+    ],
+    [
+     ".\\n",
+     0.025412087912087912,
+     2.2427670116420875
+    ],
+    [
+     ",",
+     0.020604395604395604,
+     0.5433303333738194
+    ],
+    [
+     " of",
+     0.019230769230769232,
+     1.0111021565140061
+    ],
+    [
+     " the",
+     0.015796703296703296,
+     0.44176737463151755
+    ],
+    [
+     " to",
+     0.015796703296703296,
+     0.7500676729469551
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": 0.009764806367456913,
+    "band p~0.5 (L40)": 0.0010922099463641644
+   },
+   "examples_pos": [
+    {
+     "w": 459,
+     "s": 80,
+     "proj": 0.39115872979164124,
+     "text": "... Husky @ Bottom of the Hill, SF 7/17/12\\nAs someone who had little to zil[ch]| exposure to Shearwater,"
+    },
+    {
+     "w": 787,
+     "s": 144,
+     "proj": 0.3225131332874298,
+     "text": "... a whirlwind of intrigue and danger.\"\\nIt's sort of in tone with Knight and Day. It's funny and action[-packed]|. I've read that De"
+    },
+    {
+     "w": 299,
+     "s": 37,
+     "proj": 0.3078609108924866,
+     "text": "... a fellow of the American College of Obstetrics and Gynecology.\\nComparing Options for Management: Patient-Centered Results[ for]| Uterine Fibroids ("
+    },
+    {
+     "w": 715,
+     "s": 141,
+     "proj": 0.3073676526546478,
+     "text": "... the knights who are the bad guys.\\nWell be glad to help!What's new in this version:Minor changes,[ optimization]| Avoid the obstacles.How to play"
+    },
+    {
+     "w": 555,
+     "s": 99,
+     "proj": 0.2948160767555237,
+     "text": "... a whirlwind of intrigue and danger.\"\\nIt's sort of in tone with Knight and Day. It's funny and action[-packed]|. I've read that De"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 799,
+     "s": 152,
+     "proj": -0.3362341523170471,
+     "text": "...jury?\\n- Food allergy symptoms typically appear within minutes or develop up to two hours after a person has eaten the food to[ which]| they are allergic. Allergic"
+    },
+    {
+     "w": 596,
+     "s": 93,
+     "proj": -0.31338179111480713,
+     "text": "... you in the form of a Live CD/DVD for regular PC (i386 and x86_64 arc)[ systems]|.\\nApart from the providing Han"
+    },
+    {
+     "w": 37,
+     "s": 140,
+     "proj": -0.30129003524780273,
+     "text": "... Specialist\\nSpecialist client base of famous high net worth individuals\\nReputable Top 50 accountancy practice in London['s]| West End\\nAbout Our Client"
+    },
+    {
+     "w": 602,
+     "s": 124,
+     "proj": -0.2971881926059723,
+     "text": "...Please visit the Chamber's Own Web-Site at: www.chamber45005.org\\nSince 1947,[ The]| Franklin Area Chamber of Commerce has"
+    },
+    {
+     "w": 860,
+     "s": 75,
+     "proj": -0.2929627299308777,
+     "text": ".... The room was beautiful, clean, large, and we loved it. The staff, especially the front desk and exc[usr]|ion desk, were superb."
+    }
+   ]
+  },
+  {
+   "share": 0.0029961632798513544,
+   "split_half": 0.9668814836119942,
+   "sd": 0.0547308549284935,
+   "skew": 0.007179690059274435,
+   "frac_pos": 0.46994094488188976,
+   "jlens_pos": [
+    "\u00d8\u00b7\u00d9\u0126\u00d8\u00a7\u00d9\u0124",
+    "\u00d8\u00b5\u00d9\u0126\u00d8\u00a7\u00d8\u0143",
+    "uppen",
+    " YYS",
+    "orsz",
+    "\u012a\u0134",
+    "&action",
+    " Patr",
+    " Alterna",
+    "\u00e7\u00aa\u0134",
+    "nij",
+    "etz"
+   ],
+   "jlens_neg": [
+    "s",
+    " COPYRIGHT",
+    "*/}\\n",
+    "\\n",
+    " */}\\n",
+    "ska",
+    ".\\n",
+    ":\\n",
+    "isto",
+    "\u00c3\u00aet",
+    "\u00d9\u012a\u00d9\u012c\u00d9\u0126",
+    ",\\n"
+   ],
+   "cur_top1pct": [
+    [
+     " and",
+     0.034340659340659344,
+     1.5795617940845503
+    ],
+    [
+     " the",
+     0.034340659340659344,
+     0.9623981352750851
+    ],
+    [
+     " a",
+     0.029532967032967032,
+     1.79085451007326
+    ],
+    [
+     ",",
+     0.024725274725274724,
+     0.6523510028767461
+    ],
+    [
+     " to",
+     0.021291208791208792,
+     1.0089856008530709
+    ],
+    [
+     " of",
+     0.014423076923076924,
+     0.7602492129384559
+    ]
+   ],
+   "next_top1pct": [
+    [
+     ".\\n",
+     0.030906593406593408,
+     2.72768960875389
+    ],
+    [
+     ".",
+     0.025412087912087912,
+     1.0168608199609026
+    ],
+    [
+     ",",
+     0.024725274725274724,
+     0.6519964000485834
+    ],
+    [
+     " to",
+     0.022664835164835164,
+     1.0761840524891095
+    ],
+    [
+     " of",
+     0.015796703296703296,
+     0.8305481999936479
+    ],
+    [
+     " a",
+     0.013736263736263736,
+     0.8308783901053228
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": -0.00019011925905942917,
+    "band p~0.5 (L40)": -0.018929777666926384
+   },
+   "examples_pos": [
+    {
+     "w": 505,
+     "s": 62,
+     "proj": 0.310917466878891,
+     "text": "... your tax returns, as doing so means you\u00e2\u0122\u013bre overpaying for taxes, and basically giving the US government an interest[ free]| loan. Instead, you should"
+    },
+    {
+     "w": 715,
+     "s": 141,
+     "proj": 0.3081815838813782,
+     "text": "... the knights who are the bad guys.\\nWell be glad to help!What's new in this version:Minor changes,[ optimization]| Avoid the obstacles.How to play"
+    },
+    {
+     "w": 851,
+     "s": 119,
+     "proj": 0.282271146774292,
+     "text": ".... The who \u00e2\u0122\u0135 15 von armedangels chat gratis dating single woman looking for women men. We\u00e2\u0122\u013bre organized in[ einem]| chat gratis dating anbieter kostenlos"
+    },
+    {
+     "w": 44,
+     "s": 137,
+     "proj": 0.28045880794525146,
+     "text": "... \u00e2\u0122\u0135 seek help at once!\\n\\nNewport, RI 02840\\nAbout Geeks to Go\\nCOMPUTER[ PRO]|BLEMS? Call Geeks"
+    },
+    {
+     "w": 990,
+     "s": 69,
+     "proj": 0.2667504847049713,
+     "text": "... Amyloid Hypothesis generally require at least monthly infusions, have serious side effects including inter-cerebral hemorrhaging[/]|edema, and simply don"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 91,
+     "s": 72,
+     "proj": -0.29788053035736084,
+     "text": "... feeds 160 children two meals a day, five days a week, in addition to providing funds for these children to attend[ school]|.\\nHarold Pirtle"
+    },
+    {
+     "w": 155,
+     "s": 95,
+     "proj": -0.28854304552078247,
+     "text": "... pics, funny stuff, and an insider POV.\\n\\nCREATIVE PUNS - I'm sure you've seen these tossed about[ the]| internet.\\n1. The round"
+    },
+    {
+     "w": 563,
+     "s": 79,
+     "proj": -0.26953595876693726,
+     "text": "... all of these cleaning items out of the reach of children.\\nSo, there you have it. Sorry for such a detailed[ account]|. You can just be grateful"
+    },
+    {
+     "w": 918,
+     "s": 148,
+     "proj": -0.26552969217300415,
+     "text": "... return to economic growth, and the beginning of a large glass manufacturing plant. Rinteln managed to survive WWII without any[ serious]| damage. The centre of R"
+    },
+    {
+     "w": 325,
+     "s": 40,
+     "proj": -0.2647774815559387,
+     "text": "... my age and the fact that there were multiple tumors, and to help ensure if there was cancer anywhere else it would be[ taken]| care of.\\nSticking to"
+    }
+   ]
+  },
+  {
+   "share": 0.0029081892990158982,
+   "split_half": 0.9745280700947002,
+   "sd": 0.053923510015010834,
+   "skew": 0.017833132296800613,
+   "frac_pos": 0.4816076115485564,
+   "jlens_pos": [
+    ".\u00e2\u0122\u013f\\n\\n\\n\\n",
+    " \u00e8\u00b4\u013f\u00e5\u00a3\u00b3\u00e6\u012b\u00be\u00e6\u012a\u00bf",
+    "?\"\\n\\n\\n\\n",
+    "fragistics",
+    "\u00e4\u00b8\u00aa\u00e4\u00b9\u012b\u00e9\u00a1\u00b9",
+    "yalty",
+    " \u00e4\u00b8\u012c\u00e9\u0122\u012b\u00e6\u012d\u00a9\u00e6\u00b5\u0131\u00e8\u00a7\u012a",
+    " \u00d0\u00be\u00d1\u0122\u00d0\u00b8\u00d0\u00b3\u00d0\u00b8\u00d0\u00bd",
+    ".\u00e2\u0122\u013b\u00e2\u0122\u013f\\n\\n",
+    "\u00e7\u013b\u00be\u00e5\u00ba\u00a6\u00e7\u013b\u00be\u00e7\u00a7\u0133\u00e4\u00bc\u0123\u00e4\u00b8\u013c\u00e8\u00af\u012f\u00e6\u013f\u00a1\u00e6\u0140\u0123\u00e9\u0122\u0141\u00e5\u012a\u013d\u00e5\u00bb\u00ba\u00e9\u0122\u013c\u00e9\u0123\u0135",
+    "tiza",
+    "-Cds"
+   ],
+   "jlens_neg": [
+    ",",
+    ".",
+    " (",
+    " Belt",
+    ".\\n",
+    "\\n",
+    ";",
+    ":\\n",
+    " wa",
+    " belt",
+    " and",
+    " gre"
+   ],
+   "cur_top1pct": [
+    [
+     " the",
+     0.061813186813186816,
+     1.7323166434951531
+    ],
+    [
+     " to",
+     0.03365384615384615,
+     1.594848207800015
+    ],
+    [
+     ",",
+     0.03159340659340659,
+     0.8335596147869534
+    ],
+    [
+     " and",
+     0.03021978021978022,
+     1.3900143787944041
+    ],
+    [
+     " a",
+     0.0260989010989011,
+     1.5826156135531135
+    ],
+    [
+     ".",
+     0.021291208791208792,
+     0.8510285032188356
+    ]
+   ],
+   "next_top1pct": [
+    [
+     ".\\n",
+     0.032280219780219783,
+     2.8489202580318413
+    ],
+    [
+     ".",
+     0.030906593406593408,
+     1.236722618871368
+    ],
+    [
+     " to",
+     0.018543956043956044,
+     0.8805142247638169
+    ],
+    [
+     ",",
+     0.017857142857142856,
+     0.4708862889239769
+    ],
+    [
+     " the",
+     0.01098901098901099,
+     0.3073164345262731
+    ],
+    [
+     " of",
+     0.01098901098901099,
+     0.5777726608651464
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": -0.006440793629735708,
+    "band p~0.5 (L40)": -0.0037567447870969772
+   },
+   "examples_pos": [
+    {
+     "w": 592,
+     "s": 120,
+     "proj": 0.3574863076210022,
+     "text": "... video at 30fps and 720p at 60fps is generally capable of 1080p at 30[fps]|.\\nAlthough all 1080"
+    },
+    {
+     "w": 584,
+     "s": 90,
+     "proj": 0.2739102840423584,
+     "text": "...arsley \u00e2\u0122\u0135 2 tblsp, finely chopped\\nBaklava Filo \u00e2\u0122\u0135 8 sheets\\nUnsalt[ed]| Butter \u00e2\u0122\u0135 60 gms"
+    },
+    {
+     "w": 1104,
+     "s": 77,
+     "proj": 0.2657315731048584,
+     "text": "... ten others to join.\\n\u00e2\u0122\u013eWe are starting a movement of people dedicated to erasing hate from our schools, workplaces, and[ communities]|,\u00e2\u0122\u013f said Mrs Shepard.\\nMore"
+    },
+    {
+     "w": 430,
+     "s": 38,
+     "proj": 0.2608305513858795,
+     "text": "... Birmingham.\\n\\nTrain departs: Anaheim, 2:39 p.m. (Leaves on time.)\\nTrain arrives:[ San]| Juan Capistrano, "
+    },
+    {
+     "w": 1110,
+     "s": 58,
+     "proj": 0.259620726108551,
+     "text": "...ng the attention \u00d0\u00bef your site visitors \u00d1\u0138n a un\u00d1\u0138qu\u00d0\u00b5 and interesting w\u00d0\u00b0\u00d1\u0125 that leads t\u00d0\u00be[ higher]| conversions. It is \u00d1\u0125\u00d0\u00be"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 356,
+     "s": 84,
+     "proj": -0.31991708278656006,
+     "text": "... herds; later, in real estate. This is how it is effected. Sometimes one lends a sum, always by[ an]| intermediary, on a simple note"
+    },
+    {
+     "w": 990,
+     "s": 69,
+     "proj": -0.2961771786212921,
+     "text": "... Amyloid Hypothesis generally require at least monthly infusions, have serious side effects including inter-cerebral hemorrhaging[/]|edema, and simply don"
+    },
+    {
+     "w": 991,
+     "s": 81,
+     "proj": -0.27916815876960754,
+     "text": "... be listed in my Etsy Shop...\\nTwo Peas in a Pod Baby Shower Cake Topper\\nA Beagle and her[ St]|uffed Bear\\nA Panda Bear"
+    },
+    {
+     "w": 804,
+     "s": 152,
+     "proj": -0.2776949405670166,
+     "text": "... ensure that organizations with an interest in innovation must assess and manage projects and deadlines for their innovations to avoid waste of time and[ capital]|.\\nFocusing on the method"
+    },
+    {
+     "w": 455,
+     "s": 79,
+     "proj": -0.2763010263442993,
+     "text": "... \u00e2\u0122\u0136 the workers and the bourgeoisie \u00e2\u0122\u0136 at the expense of the rights, resources and well being of the rest of us.[ Of]| course, they see the world"
+    }
+   ]
+  },
+  {
+   "share": 0.00240421091694278,
+   "split_half": 0.9794700729119805,
+   "sd": 0.049031902104616165,
+   "skew": 0.04301198199391365,
+   "frac_pos": 0.4782742782152231,
+   "jlens_pos": [
+    "_tE",
+    "_mE",
+    "_mD",
+    "_tF",
+    "tiza",
+    "_tD",
+    "\u00d8\u00b5\u00d9\u0126\u00d8\u00a7\u00d8\u0143",
+    " \u00d0\u00bf\u00d0\u00bb\u00d0\u00b0\u00d1\u0124\u00d1\u0126\u00d0\u00be\u00d1\u0122",
+    "dem\u00c3\u00a1s",
+    "\u00d0\u00b7\u00d0\u00bd\u00d0\u00b0\u00d0\u00ba\u00d0\u00be\u00d0\u00bc",
+    " kt\u00c3\u00b3r",
+    " \u00e8\u00b4\u013f\u00e5\u00a3\u00b3\u00e6\u012b\u00be\u00e6\u012a\u00bf"
+   ],
+   "jlens_neg": [
+    ",",
+    " of",
+    "/",
+    ".",
+    " (",
+    " as",
+    " got",
+    ".\\n",
+    " generation",
+    " because",
+    "-b",
+    " when"
+   ],
+   "cur_top1pct": [
+    [
+     " and",
+     0.03159340659340659,
+     1.4531968505577861
+    ],
+    [
+     ",",
+     0.03159340659340659,
+     0.8335596147869534
+    ],
+    [
+     " to",
+     0.023351648351648352,
+     1.1066293686775615
+    ],
+    [
+     " of",
+     0.022664835164835164,
+     1.1946773346175736
+    ],
+    [
+     " a",
+     0.019917582417582416,
+     1.2077855998168499
+    ],
+    [
+     " the",
+     0.017170329670329672,
+     0.48119906763754255
+    ]
+   ],
+   "next_top1pct": [
+    [
+     ".",
+     0.0521978021978022,
+     2.0886870896494214
+    ],
+    [
+     ".\\n",
+     0.04739010989010989,
+     4.182457400089298
+    ],
+    [
+     ",",
+     0.036401098901098904,
+     0.9598835889604145
+    ],
+    [
+     " the",
+     0.018543956043956044,
+     0.5185964832630858
+    ],
+    [
+     " to",
+     0.018543956043956044,
+     0.8805142247638169
+    ],
+    [
+     " of",
+     0.01304945054945055,
+     0.6861050347773614
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": 0.025131454691290855,
+    "band p~0.5 (L40)": 0.013429339975118637
+   },
+   "examples_pos": [
+    {
+     "w": 981,
+     "s": 65,
+     "proj": 0.294294148683548,
+     "text": "....\\n\\nAs the public backlash continued to grow -- and GoDaddy's support of it seemed entirely tone deaf to what people[ were]| saying -- you knew something had"
+    },
+    {
+     "w": 1148,
+     "s": 128,
+     "proj": 0.293727308511734,
+     "text": "..., corn, red pepper), textured wheat proteins, (wheat gluten, calcium sulfate, preservative: sodium metabis[ul]|phite), rapeseed"
+    },
+    {
+     "w": 994,
+     "s": 60,
+     "proj": 0.2748897671699524,
+     "text": "... YY. Physicochemical properties of nanoparticles regulate translocation across pulmonary surfactant monolayer and formation of lipop[rotein]| corona. ACS Nano."
+    },
+    {
+     "w": 677,
+     "s": 102,
+     "proj": 0.2626155614852905,
+     "text": "... Every Occasion (CTMH). Punch: ticket corner punch (SU).\\n\\nis for hotoke, or the Japanese[ word]| for Buddha. I grew up"
+    },
+    {
+     "w": 373,
+     "s": 143,
+     "proj": 0.2625907361507416,
+     "text": "... brands that I have tried for my 2-month old girl, they fit well and doesn't leak as easily.\\nGreat[ product]| selection, fast delivery to your"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 766,
+     "s": 33,
+     "proj": -0.2896137833595276,
+     "text": "...era epidemic, \u00c3\u013asterbro wasn't build up as quickly and disorganized as its neighbours N\u00c3\u00b8rrebro and Vest[eb]|ro, and it was mainly"
+    },
+    {
+     "w": 629,
+     "s": 117,
+     "proj": -0.2848498225212097,
+     "text": "... million of equity. The two REITs need to close the transactions before SmartStop starts to earn fees related to the[ properties]|.\\nThere is much about this"
+    },
+    {
+     "w": 1177,
+     "s": 88,
+     "proj": -0.2550775110721588,
+     "text": "... Greene over the summer after Politico unearthed Facebook videos showing her making derogatory remarks about Black people, Muslims and Jewish Democratic[ donor]| George Soros. Among them was"
+    },
+    {
+     "w": 610,
+     "s": 42,
+     "proj": -0.24715133011341095,
+     "text": "... Myers, but it\u00e2\u0122\u013bs a weak one. He is as close to a Must-Start as a player gets without officially[ being]| so. I have Mookie"
+    },
+    {
+     "w": 81,
+     "s": 50,
+     "proj": -0.24094218015670776,
+     "text": "... their log cabins and tilling the soil. Those who have inherited these lends can have no idea of the privations and[ inconvenience]| experienced by thos pioneers when"
+    }
+   ]
+  },
+  {
+   "share": 0.002243417748183933,
+   "split_half": 0.9789881318868338,
+   "sd": 0.04736160486936569,
+   "skew": 0.010801011696457863,
+   "frac_pos": 0.47281496062992123,
+   "jlens_pos": [
+    "'gc",
+    " hozz",
+    " de\u00c4\u0141i\u00c5\u0141",
+    "$fdata",
+    "\u00d0\u00b6\u00d0\u00b4\u00d1\u012d\u00d0\u00b9",
+    " \u00d1\u0123\u00d0\u00be\u00d0\u00be\u00d0\u00b1\u00d1\u012b\u00d0\u00b5",
+    " \u00d0\u00bd\u00d0\u00b5\u00d0\u00b2\u00d0\u00b5\u00d1\u0122\u00d0\u00be",
+    "\u00d1\u0122\u00d0\u00b5\u00d0\u00b3\u00d0\u00b8\u00d1\u0123\u00d1\u0124\u00d1\u0122\u00d0\u00b8\u00d1\u0122\u00d0\u00be\u00d0\u00b2",
+    "outil",
+    "skap",
+    "ogenerated",
+    "\u00c5\u013dniej"
+   ],
+   "jlens_neg": [
+    "NS",
+    " and",
+    " facilities",
+    " facility",
+    " mar",
+    " ho",
+    " bridal",
+    " Marin",
+    " wes",
+    "_sid",
+    "_interfaces",
+    " portable"
+   ],
+   "cur_top1pct": [
+    [
+     " the",
+     0.0885989010989011,
+     2.4829871890097195
+    ],
+    [
+     " a",
+     0.03914835164835165,
+     2.37392342032967
+    ],
+    [
+     ",",
+     0.03777472527472527,
+     0.9966473655061399
+    ],
+    [
+     " to",
+     0.029532967032967032,
+     1.3995606721510336
+    ],
+    [
+     " and",
+     0.028846153846153848,
+     1.3268319070310222
+    ],
+    [
+     " ",
+     0.019917582417582416,
+     1.5918096867437888
+    ]
+   ],
+   "next_top1pct": [
+    [
+     ".",
+     0.02403846153846154,
+     0.9618953702332862
+    ],
+    [
+     ".\\n",
+     0.023351648351648352,
+     2.0609210377251617
+    ],
+    [
+     " and",
+     0.01510989010989011,
+     0.6925992904733063
+    ],
+    [
+     ",",
+     0.014423076923076924,
+     0.3803312333616737
+    ],
+    [
+     " the",
+     0.01304945054945055,
+     0.36493826599994933
+    ],
+    [
+     " to",
+     0.011675824175824176,
+     0.5543978452216625
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": 0.007935445755720139,
+    "band p~0.5 (L40)": 0.017910365015268326
+   },
+   "examples_pos": [
+    {
+     "w": 724,
+     "s": 83,
+     "proj": 0.2617766857147217,
+     "text": "... curbside pickup in the airport in almost any dimensions car you desire and We are going to provide you to your lodge[ in]| design.\\nIrving Taxi and"
+    },
+    {
+     "w": 1059,
+     "s": 34,
+     "proj": 0.25259336829185486,
+     "text": "...5. The runway featured 21 collections by 24 designers, many from the Kent State School of Fashion. The Kent[ Student]| Center Ballroom was decked"
+    },
+    {
+     "w": 380,
+     "s": 74,
+     "proj": 0.24889874458312988,
+     "text": "... at Texas Tech University in Lubbock, TX, and has produced translating work for Ediciones Vig\u00c3\u0143a in Matanzas[,]| Cuba.\\nAlexa Horoch"
+    },
+    {
+     "w": 1187,
+     "s": 110,
+     "proj": 0.24127133190631866,
+     "text": "... days, but the process is less expensive, and more simplistic, than typical probate. Discuss your situation with a prob[ate]| attorney to see if this may"
+    },
+    {
+     "w": 113,
+     "s": 69,
+     "proj": 0.236027792096138,
+     "text": "... one hand only for the trimming process.\\n- Whatever trimmer you choose to use, read the instructions before using to get[ an]| idea of the operation.\\n-"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 198,
+     "s": 36,
+     "proj": -0.25566208362579346,
+     "text": "...able. It's roots are said to lie in the missed feeling sailors experienced after returning home during the age of the great[ Portuguese]| discoveries. Not officially all out"
+    },
+    {
+     "w": 131,
+     "s": 39,
+     "proj": -0.2531282305717468,
+     "text": "...ansack taxpayers would last until 2010. \"The bailout ignores the needs of millions of swindled families facing[ foreclosure]|, and it squanders an"
+    },
+    {
+     "w": 247,
+     "s": 132,
+     "proj": -0.24588212370872498,
+     "text": "... and make you strong, firm and steadfast. (1 Peter 5:8-10)\\nIn humility, make it[ your]| goal to live a holy life"
+    },
+    {
+     "w": 921,
+     "s": 63,
+     "proj": -0.23623865842819214,
+     "text": "... junctions, water\\nstations and the HQ start and finish area. Please do bear in mind they are all giving up[ their]| time to\\nsupport you on"
+    },
+    {
+     "w": 38,
+     "s": 58,
+     "proj": -0.23080813884735107,
+     "text": "... the stud wall and half way down the garage put in patio doors. So I can sit at my desk and admire my[ bike]| at the same time. Was"
+    }
+   ]
+  },
+  {
+   "share": 0.0019531492620929966,
+   "split_half": 0.9668330664494995,
+   "sd": 0.04419437050819397,
+   "skew": 0.006103861145675182,
+   "frac_pos": 0.4781955380577428,
+   "jlens_pos": [
+    "\u00e4\u00bb\u012d\u00e7\u00bb\u012f\u00e8\u00af\u00b4",
+    "\u00e5\u013d\u0140\u00e5\u0133\u00b3",
+    "\u00e5\u0122\u00bc\u00e5\u00be\u0139\u00e4\u00b8\u0122\u00e6\u0131\u0132",
+    "\u00e5\u012f\u013c\u00e6\u0138\u0129",
+    "\u00e4\u00ba\u0128\u00e8\u00bf\u0133",
+    "\u00e7\u013c\u0126\u00e6\u013e\u0122\u00e5\u0132\u0130",
+    "matic",
+    "bounds",
+    "\u00e9\u013c\u00be\u00e6\u0122\u00aa",
+    "\u00e7\u00b4\u00a7\u00e5\u00af\u0128\u00e7\u00bb\u0135\u00e5\u0132\u012a",
+    "\u00e8\u00b6\u0123",
+    "mate"
+   ],
+   "jlens_neg": [
+    "_tE",
+    "_tA",
+    "_mE",
+    "_tD",
+    "_mD",
+    "_tF",
+    "ecast",
+    "emaal",
+    " Bunifu",
+    "fragistics",
+    "_mB",
+    "_tC"
+   ],
+   "cur_top1pct": [
+    [
+     " the",
+     0.05631868131868132,
+     1.5783329418511394
+    ],
+    [
+     " and",
+     0.03777472527472527,
+     1.737517973493005
+    ],
+    [
+     ",",
+     0.03777472527472527,
+     0.9966473655061399
+    ],
+    [
+     " a",
+     0.027472527472527472,
+     1.6659111721611721
+    ],
+    [
+     ".",
+     0.025412087912087912,
+     1.0157436973902232
+    ],
+    [
+     " to",
+     0.022664835164835164,
+     1.074081446069398
+    ]
+   ],
+   "next_top1pct": [
+    [
+     ".",
+     0.02815934065934066,
+     1.1267917194161352
+    ],
+    [
+     ",",
+     0.0260989010989011,
+     0.6882184222735047
+    ],
+    [
+     " the",
+     0.017857142857142856,
+     0.4993892061051938
+    ],
+    [
+     " a",
+     0.014423076923076924,
+     0.872422309610589
+    ],
+    [
+     " and",
+     0.013736263736263736,
+     0.6296357186120966
+    ],
+    [
+     " to",
+     0.012362637362637362,
+     0.5870094831758779
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": -0.006842643488198519,
+    "band p~0.5 (L40)": -0.005461246706545353
+   },
+   "examples_pos": [
+    {
+     "w": 939,
+     "s": 148,
+     "proj": 0.23404444754123688,
+     "text": "... Is Toronto so exotic? Could my experience with other human beings be so unlike Heti\u00e2\u0122\u013bs that her real experiences seem ph[ony]| to me?\\nJohn: I"
+    },
+    {
+     "w": 663,
+     "s": 103,
+     "proj": 0.21890881657600403,
+     "text": ".... per Employee 135489 More quote details and news \u00c2\u00bb (MMS), Gordon & Co. spotted a way[ to]| profit from Obamacare. The well"
+    },
+    {
+     "w": 646,
+     "s": 139,
+     "proj": 0.21437151730060577,
+     "text": "... in this Selvedge Magazine interview.\\nVintage indigo folk textile from rural China. These are the simple handwoven[ cotton]| fabrics of everyday country folk and"
+    },
+    {
+     "w": 515,
+     "s": 109,
+     "proj": 0.2121097892522812,
+     "text": "... reports that Trump is considering pardoning several military service members and defense contractors charged with or convicted of war crimes, Margaret Col[gate]| Love, a former U.S"
+    },
+    {
+     "w": 1170,
+     "s": 44,
+     "proj": 0.20640377700328827,
+     "text": "... an intensive care unit for several days as doctors conduct tests to determine why he was feeling ill and disoriented during a conference[ in]| Arizona, a spokeswoman for the"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 600,
+     "s": 90,
+     "proj": -0.22603937983512878,
+     "text": "... step in ensuring your Resume makes the right impact on employers and gets you to that vital interview stage. It really is that[ simple]| when working with Amos."
+    },
+    {
+     "w": 1102,
+     "s": 99,
+     "proj": -0.21860337257385254,
+     "text": "... system is then used by Woolpert to produce accurate longitude-latitude coordinates for each monument.\\nThe monuments are located in pairs[,]| so replacing and adding new ones"
+    },
+    {
+     "w": 51,
+     "s": 43,
+     "proj": -0.20658652484416962,
+     "text": "... co-produced by Andy Taylor of Duran Duran.\\n\u00e2\u0122\u013eThrough the Eyes of Love\u00e2\u0122\u013f was remixed by John \u00e2\u0122\u013e[T]|okes\u00e2\u0122\u013f Potoker for the"
+    },
+    {
+     "w": 1136,
+     "s": 100,
+     "proj": -0.20494085550308228,
+     "text": "... under the 14th Amendment to the Constitution, and therefore entitled to the right to life guaranteed therein.\u00e2\u0122\u013f The Duncan bill[ read]|: \u00e2\u0122\u013eTo implement equal protection"
+    },
+    {
+     "w": 91,
+     "s": 62,
+     "proj": -0.20348790287971497,
+     "text": "... the years. She also directed a nutrition center that feeds 160 children two meals a day, five days a week,[ in]| addition to providing funds for these"
+    }
+   ]
+  },
+  {
+   "share": 0.0018929544567372202,
+   "split_half": 0.9610011962404301,
+   "sd": 0.04349949583411217,
+   "skew": 0.020470745861530304,
+   "frac_pos": 0.4694225721784777,
+   "jlens_pos": [
+    " applicable",
+    " recogn",
+    " economic",
+    " constructive",
+    " flexible",
+    " anticip",
+    " offering",
+    " genetically",
+    " determin",
+    " recognition",
+    " effect",
+    " economies"
+   ],
+   "jlens_neg": [
+    "[gMASK]",
+    "/buttons",
+    "fragistics",
+    "PropertyParams",
+    "dendo",
+    "HeaderCode",
+    "BindingUtil",
+    "(Initialized",
+    "_TypeInfo",
+    "->___",
+    " \u00d0\u013a\u00d1\u0122\u00d0\u00ba\u00d1\u0125\u00d1\u0124",
+    "titud"
+   ],
+   "cur_top1pct": [
+    [
+     " the",
+     0.07348901098901099,
+     2.0595320094886818
+    ],
+    [
+     ",",
+     0.03983516483516483,
+     1.051009949079202
+    ],
+    [
+     " a",
+     0.028846153846153848,
+     1.749206730769231
+    ],
+    [
+     " and",
+     0.02815934065934066,
+     1.2952406711493312
+    ],
+    [
+     " to",
+     0.025412087912087912,
+     1.2042731365020523
+    ],
+    [
+     " of",
+     0.02197802197802198,
+     1.158474991144314
+    ]
+   ],
+   "next_top1pct": [
+    [
+     ".",
+     0.03777472527472527,
+     1.5115498675094496
+    ],
+    [
+     ",",
+     0.0260989010989011,
+     0.6882184222735047
+    ],
+    [
+     ".\\n",
+     0.023351648351648352,
+     2.0609210377251617
+    ],
+    [
+     " and",
+     0.019917582417582416,
+     0.91297179198754
+    ],
+    [
+     " of",
+     0.016483516483516484,
+     0.8666589912977196
+    ],
+    [
+     " the",
+     0.014423076923076924,
+     0.40335282031573344
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": -0.007518450729548931,
+    "band p~0.5 (L40)": -0.01128824707120657
+   },
+   "examples_pos": [
+    {
+     "w": 119,
+     "s": 72,
+     "proj": 0.2876132130622864,
+     "text": "... Refinish Web site at www.ppgrefinish.com.\\nPittsburgh-based PPG is a global supplier of paints[,]| coatings, optical products, specialty"
+    },
+    {
+     "w": 494,
+     "s": 54,
+     "proj": 0.2261432707309723,
+     "text": "... according to an article posted Friday by Kaspersky news service Threatpost.\\n\"It's clear that the infrastructure is being shut[ down]|,\" Kaspersky Lab researcher"
+    },
+    {
+     "w": 958,
+     "s": 99,
+     "proj": 0.22444410622119904,
+     "text": "... at room temperature.\\nServes 4 as a side.\\n\\nEquipped with keen intelligence and a big heart, lawyer Jeff[ery]| Robinson educates and challenges in"
+    },
+    {
+     "w": 402,
+     "s": 51,
+     "proj": 0.22175440192222595,
+     "text": "... standard fiber clamshell designs. The convertible clamshell also improved operational efficiencies within the QSR chain\u00e2\u0122\u013bs restaurants, reducing service[ times]| by 20 percent. While"
+    },
+    {
+     "w": 159,
+     "s": 134,
+     "proj": 0.21627217531204224,
+     "text": "... to his head, to make him conceal mortal danger? It was the money. It\u00e2\u0122\u013bs always the money. Fixing[ the]| seismic problem would have cost the"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 483,
+     "s": 152,
+     "proj": -0.26162275671958923,
+     "text": "... Forks, Kelly Johnson, of West Fargo, and Chuck Todd, of Northwood (now deployed in Kuwait), volunteered[ to]| help with the project. The"
+    },
+    {
+     "w": 422,
+     "s": 112,
+     "proj": -0.23154553771018982,
+     "text": "... names? That's VALUE!\\nPrice range: $1280\\n\\nDesign Strategies for Cloud Hosted Services\\nThe title phrase[ was]| made popular by Adam Savage of"
+    },
+    {
+     "w": 395,
+     "s": 48,
+     "proj": -0.2276068925857544,
+     "text": "...).\\nThe DVD also contains the special feature Illumination Drone #17, Rob Mazurek\u00e2\u0122\u013bs silent video.\\n\\nTop fashion[ and]| home furnishings business trends to watch"
+    },
+    {
+     "w": 547,
+     "s": 95,
+     "proj": -0.2247028797864914,
+     "text": "... the day after the election.\\nIn Florida, advocacy groups, such as the NAACP, Women Voters and AARP,[ have]| called on Gov. Rick Scott"
+    },
+    {
+     "w": 767,
+     "s": 125,
+     "proj": -0.220156729221344,
+     "text": "... sold the plantation to Francis Edrington in May 1851 and moved to Jacksonville. Later Pearson became a justice on[ the]| Florida Supreme Court.\\nAnother early"
+    }
+   ]
+  },
+  {
+   "share": 0.001810697412979093,
+   "split_half": 0.9107835426427375,
+   "sd": 0.0425250306725502,
+   "skew": 0.004161791410297155,
+   "frac_pos": 0.4904527559055118,
+   "jlens_pos": [
+    " Anything",
+    "\u00e5\u012d\u0134\u00e6\u0138\u00af",
+    "\u00e4\u00b8\u012b\u00e6\u013f\u00bf",
+    "arges",
+    " OG",
+    " Ventures",
+    "\u00e5\u00a4\u00b1",
+    " Farrell",
+    " extent",
+    " Hutch",
+    "][:",
+    "heimer"
+   ],
+   "jlens_neg": [
+    " MetroFramework",
+    " llu",
+    "tett",
+    "iben",
+    "\u00e5\u012f\u0125\u00e5\u00b9\u00b4",
+    " blown",
+    "ewhat",
+    " borne",
+    " zmi",
+    "iox",
+    "ieder",
+    "\u00e6\u012a\u0133\u00e4\u00b8\u0122\u00e4\u00b8\u00aa\u00e4\u00ba\u00ba"
+   ],
+   "cur_top1pct": [
+    [
+     " the",
+     0.08104395604395605,
+     2.2712595992492006
+    ],
+    [
+     ",",
+     0.03365384615384615,
+     0.8879221983600155
+    ],
+    [
+     " a",
+     0.028846153846153848,
+     1.749206730769231
+    ],
+    [
+     " to",
+     0.026785714285714284,
+     1.2693689817183793
+    ],
+    [
+     " and",
+     0.02197802197802198,
+     1.0109195482141122
+    ],
+    [
+     " of",
+     0.019230769230769232,
+     1.0136656172512746
+    ]
+   ],
+   "next_top1pct": [
+    [
+     ",",
+     0.023351648351648352,
+     0.6157743778236621
+    ],
+    [
+     ".",
+     0.019917582417582416,
+     0.7969990210504371
+    ],
+    [
+     " the",
+     0.01510989010989011,
+     0.4225600974736255
+    ],
+    [
+     " and",
+     0.014423076923076924,
+     0.6611175045427015
+    ],
+    [
+     " to",
+     0.014423076923076924,
+     0.6848443970385243
+    ],
+    [
+     ".\\n",
+     0.012362637362637362,
+     1.0910758435015562
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": -0.012685277499258518,
+    "band p~0.5 (L40)": -0.0016742630396038294
+   },
+   "examples_pos": [
+    {
+     "w": 51,
+     "s": 120,
+     "proj": 0.2430146187543869,
+     "text": "...used LED indicator with a robust body and round protruding LED position that offers a viewing angle up to 50\u00c2\u00b0.[ The]| L63 series achieves full brightness"
+    },
+    {
+     "w": 636,
+     "s": 43,
+     "proj": 0.2111116647720337,
+     "text": "....S. Military ban lead in our soldiers weapons.\\nabout 3,000 pounds of lead into the environment annually and causes[ the]| death of 20 million birds"
+    },
+    {
+     "w": 809,
+     "s": 115,
+     "proj": 0.2051866352558136,
+     "text": "...\u00eb\u013f\u00bc\u00ea\u00b3\u0142 \u00ed\u0138\u012a\u00ec\u0138\u00b4\u00ec\u013c\u0136. (formal)\\n-> The teacher told me not to come late.\\n26-1)[ Its]| positive form is V - ("
+    },
+    {
+     "w": 1067,
+     "s": 99,
+     "proj": 0.20417457818984985,
+     "text": "... out of it when you travel to the ski resort, hiking trails, and your day trip.\\nLooking for a vacation rental[ in]| Wrightwood? Tripping.com"
+    },
+    {
+     "w": 639,
+     "s": 141,
+     "proj": 0.20368918776512146,
+     "text": "... the west of the municipal building at 406 East 7th Street. Checks Only!\\n\u00e2\u0122\u00a2 Walk In - visit[ our]| office at 406 East"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 900,
+     "s": 34,
+     "proj": -0.2760525941848755,
+     "text": "... the teen and adult Archdiocese Survey results, SOYO responded by establishing the Teen SOYO initiative called \u00e2\u0122\u013ePVC[\u00e2\u0122\u013f]| to address what they believe to"
+    },
+    {
+     "w": 938,
+     "s": 44,
+     "proj": -0.18958887457847595,
+     "text": "...osed capitalist, an outspoken, argumentative eco-warrior committed to the cause, an outer-worldly Buddhist Monk; and[ to]| cap it all, a bible"
+    },
+    {
+     "w": 731,
+     "s": 78,
+     "proj": -0.18728524446487427,
+     "text": "... notification of availability of tickets for a concert including Mahler's Fifth Symphony. She has been waiting for the opportunity to take[ her]| mother to a Mahler concert"
+    },
+    {
+     "w": 1007,
+     "s": 148,
+     "proj": -0.1859613060951233,
+     "text": "... Cup run and has been a part of 11 playoff appearances in 12 years.\\nOvechkin wears the \u00e2\u0122\u013e[C]|,\u00e2\u0122\u013f but Backstrom has built"
+    },
+    {
+     "w": 551,
+     "s": 81,
+     "proj": -0.18577870726585388,
+     "text": ".... If you're new to orienteering or not a runner you can do a Sprint course at your usual pace.[ In]| fact, you may find a"
+    }
+   ]
+  },
+  {
+   "share": 0.0017772817676637808,
+   "split_half": 0.9072729316595566,
+   "sd": 0.042154036462306976,
+   "skew": 0.007160848937928677,
+   "frac_pos": 0.4825,
+   "jlens_pos": [
+    ".pic",
+    "\u00e7\u00b0\u00bf",
+    "Lv",
+    "\u00e7\u0136\u00a8\u00e9\u0122\u0136",
+    "opp",
+    "\u00e9\u0122\u0128",
+    "\u00e6\u012e\u0138",
+    " aunt",
+    " endorse",
+    "Blur",
+    ".Listen",
+    " blurry"
+   ],
+   "jlens_neg": [
+    " v\u00c3\u00a9ri",
+    " kt\u00c3\u00b3r",
+    " convier",
+    "_mE",
+    " comp\u00c3\u00a9",
+    " \u00c3\u00a9lec",
+    "Composition",
+    " sp\u00c3\u00a9ci",
+    "\u00e7\u013b\u00ab\u00e7\u0139",
+    "\u00e4\u00bf\u00a1\u00e6\u0123\u00af\u00e5\u013f\u0129",
+    "scht",
+    "masters"
+   ],
+   "cur_top1pct": [
+    [
+     " the",
+     0.0625,
+     1.7515646062006547
+    ],
+    [
+     ",",
+     0.04326923076923077,
+     1.1416142550343056
+    ],
+    [
+     " a",
+     0.029532967032967032,
+     1.79085451007326
+    ],
+    [
+     " to",
+     0.02403846153846154,
+     1.1391772912857252
+    ],
+    [
+     " of",
+     0.02197802197802198,
+     1.158474991144314
+    ],
+    [
+     " and",
+     0.019917582417582416,
+     0.916145840569039
+    ]
+   ],
+   "next_top1pct": [
+    [
+     ".",
+     0.040521978021978024,
+     1.6214807669646825
+    ],
+    [
+     ".\\n",
+     0.03571428571428571,
+     3.1519968812267174
+    ],
+    [
+     ",",
+     0.027472527472527472,
+     0.7244404444984259
+    ],
+    [
+     " and",
+     0.02403846153846154,
+     1.101862507571169
+    ],
+    [
+     " the",
+     0.016483516483516484,
+     0.46097465178940966
+    ],
+    [
+     " to",
+     0.015796703296703296,
+     0.7500676729469551
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": 0.003903633914887905,
+    "band p~0.5 (L40)": -0.007334990426898003
+   },
+   "examples_pos": [
+    {
+     "w": 1006,
+     "s": 113,
+     "proj": 0.2187877893447876,
+     "text": "... & Monday nights at Mercato\\nA local jazz icon for the past decade, percussionist Quentin Baxter has a style rooted[ in]| Gullah and flowing with nuanced"
+    },
+    {
+     "w": 475,
+     "s": 126,
+     "proj": 0.20965465903282166,
+     "text": "... saying the computer is ready... O well, one can dream...\\nComputer arrived home. I plugged everything in and started to[ use]| the computer. Latter that month"
+    },
+    {
+     "w": 327,
+     "s": 100,
+     "proj": 0.20848840475082397,
+     "text": "... play. Changing attitudes towards photography. Personal styles and approaches. Measuring success. Summary. Projects. 2. Light[:]| how images are formed. Light"
+    },
+    {
+     "w": 769,
+     "s": 86,
+     "proj": 0.2030545473098755,
+     "text": "... Most couples have their ceremony on the vast lawn looking out onto the golf course and rolling hills. The Estate package provides all[ the]| fixings for a rehearsal dinner"
+    },
+    {
+     "w": 387,
+     "s": 41,
+     "proj": 0.19910940527915955,
+     "text": "... agents with perfect knowledge; that is beyond words - we cannot fathom such idiotic thinking) makes things fuzzy (at[ best]|).\\nAlso, some have taken"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 459,
+     "s": 157,
+     "proj": -0.21830686926841736,
+     "text": "... to take to arrive at Bottom of the Hill (why you so close to Bayview?!) The confident musical mastery and[ solemn]|ity that Husky and then"
+    },
+    {
+     "w": 402,
+     "s": 48,
+     "proj": -0.2043219804763794,
+     "text": "... percent lighter than standard fiber clamshell designs. The convertible clamshell also improved operational efficiencies within the QSR chain\u00e2\u0122\u013bs restaurants[,]| reducing service times by 20"
+    },
+    {
+     "w": 540,
+     "s": 133,
+     "proj": -0.20200523734092712,
+     "text": "... have developed a novel observational setup to obtain these signatures, which is based on the acquisition of combined observations of the same ge[ost]|ationary satellite from two different"
+    },
+    {
+     "w": 96,
+     "s": 38,
+     "proj": -0.19432145357131958,
+     "text": "... therefore \"inauthentic\") nature of Cherokee literary production. Whether viewed as classical or Christian symbol, this reading goes,[ the]| phoenix is a firmly Euro-west"
+    },
+    {
+     "w": 736,
+     "s": 119,
+     "proj": -0.18813785910606384,
+     "text": "... K-9 units.\\nEven though the girls are now safe, several questions remain. There was no sign of a forced[ entry]| into their bedroom. Also,"
+    }
+   ]
+  }
+ ],
+ "cos_mean_h": [
+  0.1238822191953659,
+  0.047806352376937866,
+  -0.03590253368020058,
+  -0.06912503391504288,
+  -0.07432900369167328,
+  -0.00903206504881382,
+  0.02600121684372425,
+  -0.0042296163737773895,
+  0.06177922710776329,
+  -0.014926906675100327
+ ],
+ "top_coords": [
+  [
+   1295,
+   0.043103523552417755
+  ],
+  [
+   8,
+   0.010189472697675228
+  ],
+  [
+   2380,
+   0.008569487370550632
+  ],
+  [
+   6041,
+   0.00806373544037342
+  ],
+  [
+   2007,
+   0.0072952816262841225
+  ],
+  [
+   3196,
+   0.007289486471563578
+  ],
+  [
+   3281,
+   0.0056488243862986565
+  ],
+  [
+   4408,
+   0.0038377318996936083
+  ],
+  [
+   740,
+   0.003073567757382989
+  ],
+  [
+   4532,
+   0.0030196805018931627
+  ]
+ ]
+}

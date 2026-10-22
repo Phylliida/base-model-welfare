@@ -1,0 +1,1740 @@
+{
+ "share_top": [
+  0.005227255492265355,
+  0.003659073492612617,
+  0.003037014200790581,
+  0.0028183312146074567,
+  0.002454272708365902,
+  0.0023714051613696815,
+  0.0022347994630893403,
+  0.0021875263733448606,
+  0.0020477951031348286,
+  0.001858358223231751
+ ],
+ "directions": [
+  {
+   "share": 0.005227255492265355,
+   "split_half": 0.9942052843243687,
+   "sd": 0.06652838736772537,
+   "skew": 1.5573102235794067,
+   "frac_pos": 0.6340419947506561,
+   "jlens_pos": [
+    "_tE",
+    "fragistics",
+    "_tA",
+    " DevComponents",
+    "_tF",
+    "_mE",
+    "_tC",
+    "_tD",
+    "_mD",
+    " \u00e8\u00b4\u013f\u00e5\u00a3\u00b3\u00e6\u012b\u00be\u00e6\u012a\u00bf",
+    " de\u00c4\u0141i\u00c5\u0141",
+    "\u00e3\u0123\u00ae\u00e6\u0136"
+   ],
+   "jlens_neg": [
+    " with",
+    " which",
+    " the",
+    " for",
+    " when",
+    " and",
+    " we",
+    " is",
+    " they",
+    " some",
+    " from",
+    " where"
+   ],
+   "cur_top1pct": [
+    [
+     " able",
+     0.02815934065934066,
+     87.19449964928688
+    ],
+    [
+     " However",
+     0.019230769230769232,
+     90.28163771712158
+    ],
+    [
+     " fact",
+     0.012362637362637362,
+     48.626596376596375
+    ],
+    [
+     ",",
+     0.011675824175824176,
+     0.30805464024735235
+    ],
+    [
+     "2",
+     0.010302197802197802,
+     6.462586443728685
+    ],
+    [
+     ".",
+     0.008928571428571428,
+     0.356882920704673
+    ]
+   ],
+   "next_top1pct": [
+    [
+     ",",
+     0.2699175824175824,
+     7.117627367197035
+    ],
+    [
+     " of",
+     0.17513736263736263,
+     9.20825178253827
+    ],
+    [
+     " to",
+     0.11332417582417582,
+     5.380920262445548
+    ],
+    [
+     ".",
+     0.09409340659340659,
+     3.76513330634172
+    ],
+    [
+     " ",
+     0.04601648351648352,
+     3.6695687189522808
+    ],
+    [
+     " with",
+     0.018543956043956044,
+     3.1272028955980287
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": -0.10422854125499725,
+    "band p~0.5 (L40)": 0.05371123179793358
+   },
+   "examples_pos": [
+    {
+     "w": 479,
+     "s": 126,
+     "proj": 0.5698785781860352,
+     "text": "... lower back injuries, we agree with the Board that he was entitled to a work disability award for the lower back claim.\\n[However]|, we cannot agree with the"
+    },
+    {
+     "w": 188,
+     "s": 109,
+     "proj": 0.5587434768676758,
+     "text": "... energy and body heat\\nNot really. Banding records show that loons often return to the same lake each year.[ However]|, mates probably don't winter"
+    },
+    {
+     "w": 723,
+     "s": 34,
+     "proj": 0.551709771156311,
+     "text": "... using the above criteria indicated two times higher short-term mortality risk (data from 6 studies including 1773 patients).\\n[Additionally]|, specific echocardiography"
+    },
+    {
+     "w": 1076,
+     "s": 128,
+     "proj": 0.5429386496543884,
+     "text": "... is ADHD-Hyperactive or Combined Type, they will likely need a fidget toy to assist them in focusing. And[ finally]|, proximity to the homework helper"
+    },
+    {
+     "w": 271,
+     "s": 32,
+     "proj": 0.5338253974914551,
+     "text": "... weekend of activities for graduating students and their families: a clambake on Friday, Class Day address by Nobel Laureate[ Dr]|. Shirin Ebadi on"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 61,
+     "s": 72,
+     "proj": -0.41638630628585815,
+     "text": "... groove with a diverse dance crew. The show uses poetry to develop an inclusive environment, where everyone feels safe to dance.[ However]| the combination of dance and poetry"
+    },
+    {
+     "w": 505,
+     "s": 158,
+     "proj": -0.4024207592010498,
+     "text": "... amount of taxes are taken out of my paycheck? Whenever you get a new job or some tax related event occurs (e[.g]| change your tax filing status,"
+    },
+    {
+     "w": 1154,
+     "s": 68,
+     "proj": -0.39326149225234985,
+     "text": "... electrification and productive end use in rural areas.\\nWindPower Nepal (WPN), a private company, on the other[ hand]| has won the prestigious contract from"
+    },
+    {
+     "w": 667,
+     "s": 126,
+     "proj": -0.34592676162719727,
+     "text": "... 15, 2012) - 100 Founders Share Their Top \"Aha\" Moments\\nAdWeek ([Aug]| 6, 2012"
+    },
+    {
+     "w": 321,
+     "s": 126,
+     "proj": -0.3455509543418884,
+     "text": "... women \u00e2\u0122\u00a2\\ndedicated Latino scholar-activist \u00e2\u0122\u00a2 Robert\\nEisner, Past President, Am. Econ.[ Assoc]|\\n\u00e2\u0122\u00a2 Ossie Davis"
+    }
+   ]
+  },
+  {
+   "share": 0.003659073492612617,
+   "split_half": 0.9912630337368229,
+   "sd": 0.06037411093711853,
+   "skew": 0.911587655544281,
+   "frac_pos": 0.48581364829396323,
+   "jlens_pos": [
+    ".\\n",
+    ".\\n\\n",
+    ".",
+    ":\\n",
+    ".\\n\\n\\n",
+    ".<",
+    ";\\n",
+    "!\\n",
+    ".\u00e2\u0122\u013f\\n",
+    ".\"\\n",
+    ".\u010d\\n",
+    ".</"
+   ],
+   "jlens_neg": [
+    "ofday",
+    "-hole",
+    "_ASSUME",
+    "\u00d8\u00b5\u00d9\u0126\u00d8\u00a7\u00d8\u0143",
+    "-li",
+    "plevel",
+    "_tE",
+    "\u00d1\u0122\u00d0\u00b5\u00d0\u00b3\u00d0\u00b8\u00d1\u0123\u00d1\u0124\u00d1\u0122\u00d0\u00b8\u00d1\u0122\u00d0\u00be\u00d0\u00b2",
+    "-hearted",
+    "_mC",
+    "OrDefault",
+    "_mE"
+   ],
+   "cur_top1pct": [
+    [
+     " you",
+     0.006181318681318681,
+     1.0734988460227124
+    ],
+    [
+     " it",
+     0.006181318681318681,
+     1.28513147566719
+    ],
+    [
+     " year",
+     0.005494505494505495,
+     8.329555860805861
+    ],
+    [
+     " up",
+     0.005494505494505495,
+     4.059072906788643
+    ],
+    [
+     " out",
+     0.005494505494505495,
+     3.6680612965016635
+    ],
+    [
+     " day",
+     0.004807692307692308,
+     8.329555860805861
+    ]
+   ],
+   "next_top1pct": [
+    [
+     ".\\n",
+     0.35096153846153844,
+     30.9744308905164
+    ],
+    [
+     ".",
+     0.3331043956043956,
+     13.329121558946964
+    ],
+    [
+     ",",
+     0.10851648351648352,
+     2.8615397557687827
+    ],
+    [
+     " and",
+     0.052884615384615384,
+     2.424097516656572
+    ],
+    [
+     " of",
+     0.03571428571428571,
+     1.8777611478117255
+    ],
+    [
+     "\\n",
+     0.022664835164835164,
+     3.562099482590843
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": 0.02618410252034664,
+    "band p~0.5 (L40)": 0.0059911273419857025
+   },
+   "examples_pos": [
+    {
+     "w": 518,
+     "s": 95,
+     "proj": 0.42256444692611694,
+     "text": "... and women are making their mark. Here\u00e2\u0122\u013bs a list of 15 of the best female motivational speakers to get you fired[ up]|.\\nBest Female Motivational"
+    },
+    {
+     "w": 760,
+     "s": 151,
+     "proj": 0.41793644428253174,
+     "text": "... platform you use, internal or customer-facing, when current, shows you embrace digital transformation, and are ready to compete more[ effectively]|.\\nZibtek helps you"
+    },
+    {
+     "w": 347,
+     "s": 148,
+     "proj": 0.4156142771244049,
+     "text": "... got Common Council approval.\\nThe Bay Breeze Condominium Association plans to plant 39 trees and add landscaping to the[ entrance]|.\\nA proposed 2012"
+    },
+    {
+     "w": 789,
+     "s": 156,
+     "proj": 0.4132845997810364,
+     "text": ".... The company also conducts high-end technological training of the professional locksmith team to update them about the challenges posed by modern locking[ systems]|.\\nAt Locksmith Store,"
+    },
+    {
+     "w": 900,
+     "s": 91,
+     "proj": 0.4076709747314453,
+     "text": "...iscuity have on our families, our teens have committed to work towards better equipping themselves and their peers towards making better[ choices]|.\\nEach January, our teens"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 801,
+     "s": 40,
+     "proj": -0.37289246916770935,
+     "text": "...A fun earring set for the internet-savvy, each laser-cut @ sign is rhodium-plated for permanent[ shine]| and hung from stainless steel French"
+    },
+    {
+     "w": 722,
+     "s": 149,
+     "proj": -0.345991313457489,
+     "text": "... a variety of safe chemicals and methods to ensure that your meth decontamination issue is handled with a high level of technical[ skill]| and compassion. Often, we"
+    },
+    {
+     "w": 1025,
+     "s": 117,
+     "proj": -0.3266638219356537,
+     "text": "...-term contractual relationships.\\nEthics is doing the right thing when no one is looking. While many of our actions receive public[ review]| and scrutiny, a goodly"
+    },
+    {
+     "w": 867,
+     "s": 69,
+     "proj": -0.3221179246902466,
+     "text": "... that Redeemer often starts groups in September, and as it was January, we might have to wait for a space to[ open]| up. Redeemer had not"
+    },
+    {
+     "w": 780,
+     "s": 147,
+     "proj": -0.321476012468338,
+     "text": "... stippled and annotated through Li\u00e2\u0122\u013bs obsessive gestures, creating an almost spiritual contemplation of beauty from the intrinsically imperson[al]| and generic.\\nOil on aluminium"
+    }
+   ]
+  },
+  {
+   "share": 0.003037014200790581,
+   "split_half": 0.9691990686224321,
+   "sd": 0.054918475449085236,
+   "skew": 1.449806571006775,
+   "frac_pos": 0.40113517060367454,
+   "jlens_pos": [
+    ",",
+    ",[",
+    "\u00d9\u012d\u00d8\u012e",
+    "),",
+    ":",
+    ";",
+    "-,",
+    "+,",
+    "\u00c2\u00ae,",
+    ",\u00e2\u0122\u0136",
+    "],",
+    "!,"
+   ],
+   "jlens_neg": [
+    "s",
+    " proyec",
+    " spep",
+    "schen",
+    " convier",
+    "sence",
+    " .\\n",
+    "\u00d1\u012a\u00d1\u0125",
+    " \")\\n",
+    "t",
+    "sas",
+    "tition"
+   ],
+   "cur_top1pct": [
+    [
+     " However",
+     0.018543956043956044,
+     87.05729351293867
+    ],
+    [
+     " example",
+     0.007554945054945055,
+     30.541704822954824
+    ],
+    [
+     " years",
+     0.006868131868131868,
+     11.106074481074481
+    ],
+    [
+     " it",
+     0.006868131868131868,
+     1.4279238618524335
+    ],
+    [
+     " time",
+     0.006181318681318681,
+     5.622450206043956
+    ],
+    [
+     " hand",
+     0.006181318681318681,
+     20.445273476523475
+    ]
+   ],
+   "next_top1pct": [
+    [
+     ",",
+     0.790521978021978,
+     20.845773790442205
+    ],
+    [
+     ".\\n",
+     0.02815934065934066,
+     2.485228310197989
+    ],
+    [
+     " and",
+     0.027472527472527472,
+     1.259271437224193
+    ],
+    [
+     " of",
+     0.011675824175824176,
+     0.613883452169218
+    ],
+    [
+     " the",
+     0.008241758241758242,
+     0.23048732589470483
+    ],
+    [
+     ".",
+     0.007554945054945055,
+     0.30230997350188993
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": 0.02694280818104744,
+    "band p~0.5 (L40)": -0.03303680568933487
+   },
+   "examples_pos": [
+    {
+     "w": 1025,
+     "s": 54,
+     "proj": 0.5587538480758667,
+     "text": "... seemingly objective procurement process, then it is highly likely that someone will think there is something fishy going on. At that[ point]|, you are guilty until proven"
+    },
+    {
+     "w": 266,
+     "s": 157,
+     "proj": 0.514873743057251,
+     "text": "... accuracy of the search results that Google shows the user, but it does return good quality results.\\nIn fact, in many[ cases]|, we have found that Duck"
+    },
+    {
+     "w": 228,
+     "s": 57,
+     "proj": 0.5135147571563721,
+     "text": "... it\u00e2\u0122\u013bs \u00e2\u0122\u013eall in their head\u00e2\u0122\u013f. There is hope!\\nIn Oriental medicine, the liver governs the muscles. Often[ times]|, liver detoxification and purification"
+    },
+    {
+     "w": 185,
+     "s": 91,
+     "proj": 0.5124006867408752,
+     "text": "... nearly 1200 shells into Iraq and watched a new reporter on CNN named Wolf Blitzer report the nightly war status.\\n[Meanwhile]|, a second investigation and a"
+    },
+    {
+     "w": 388,
+     "s": 39,
+     "proj": 0.5005713105201721,
+     "text": "... of choppers was basically known as the bobbers. Bobbers were those motorcycles that had the heavy parts removed. For[ example]|, the fenders were not"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 1092,
+     "s": 43,
+     "proj": -0.41420769691467285,
+     "text": "... highway in New South Wales in 1928 and named as the North Western Highway. On 9 October 193[6]| the name was changed to the"
+    },
+    {
+     "w": 618,
+     "s": 134,
+     "proj": -0.41135576367378235,
+     "text": "...atisfied customers to ignore,\\nand also another one of those crucially important testicle\\nmoments to attend to.\\nFrank[ly]| I don't care, it"
+    },
+    {
+     "w": 217,
+     "s": 157,
+     "proj": -0.4018228054046631,
+     "text": "... rally in Sacramento this week to support the Kings and create a greater effort to keep them from leaving, and while he was[ there]| he chatted with radio host"
+    },
+    {
+     "w": 388,
+     "s": 124,
+     "proj": -0.39983218908309937,
+     "text": "... used by Indian scouts. The World War II also experienced a boom in bobbers. When the servicemen returned from the[ war]| they removed all those parts from"
+    },
+    {
+     "w": 654,
+     "s": 96,
+     "proj": -0.3959112763404846,
+     "text": "... and capable of almost any challenge that comes my way.\\nIf you have been a reader of my newsletter for any length of[ time]| you probably are familiar with this"
+    }
+   ]
+  },
+  {
+   "share": 0.0028183312146074567,
+   "split_half": 0.9590145121908218,
+   "sd": 0.052823662757873535,
+   "skew": 0.36382514238357544,
+   "frac_pos": 0.41898293963254596,
+   "jlens_pos": [
+    " [\u00e2\u0122\u00a6",
+    " [\u00e2\u0122\u00a6]\\n\\n",
+    " ...\\n",
+    "...\\n",
+    "\u00e2\u0122\u00a6\\n\\n\\n",
+    "\u00e2\u0122\u00a6\\n",
+    " [...",
+    ",...\\n",
+    "(...)\\n",
+    " [\u00e2\u0122\u00a6]",
+    ",\u00e2\u0122\u00a6\\n\\n",
+    " \u00e2\u0122\u00a6\\n\\n"
+   ],
+   "jlens_neg": [
+    "\u00e4\u00bd\u0128\u00e5\u0127\u00b6",
+    "\u00e4\u00bd\u0128\u00e6\u013a\u00af\u00e4\u00bb\u0138\u00e4\u00bb\u00ac",
+    "\u00e4\u00bd\u0128\u00e4\u00bb\u0130",
+    "\u00e4\u00bd\u0128\u00e4\u00bb\u0138\u00e4\u00bb\u00ac",
+    "\u00e4\u00bd\u0128\u00e8\u00bf\u013b\u00e4\u00ba\u013d",
+    "\u00e4\u00bd\u0128\u00e9\u013c\u0131\u00e7\u013f\u0122",
+    "\u00e4\u00bd\u0128\u00e6\u013a\u00af\u00e5\u00af\u00b9\u00e4\u00ba\u0130",
+    "\u00e4\u00bd\u0128\u00e5\u00a6\u0124\u00e6\u0140\u013e",
+    "\u00e5\u00bd\u00b1\u00e5\u0135\u012f\u00e7\u013f\u0122",
+    "\u00e8\u00bf\u013b\u00e8\u00ae\u00a9",
+    "\u00e7\u00bb\u0128\u00e5\u00be\u00ae",
+    "\u00e8\u00a6\u0123\u00e8\u00af\u00b4"
+   ],
+   "cur_top1pct": [
+    [
+     " However",
+     0.015796703296703296,
+     74.15991669620702
+    ],
+    [
+     " it",
+     0.007554945054945055,
+     1.5707162480376768
+    ],
+    [
+     " said",
+     0.006868131868131868,
+     7.039061290821854
+    ],
+    [
+     "s",
+     0.006868131868131868,
+     7.515388746591754
+    ],
+    [
+     " fact",
+     0.006181318681318681,
+     24.313298188298187
+    ],
+    [
+     " to",
+     0.005494505494505495,
+     0.2603833808653086
+    ]
+   ],
+   "next_top1pct": [
+    [
+     ".\\n",
+     0.29120879120879123,
+     25.700897646925547
+    ],
+    [
+     ".",
+     0.28708791208791207,
+     11.487778993071817
+    ],
+    [
+     ",",
+     0.19162087912087913,
+     5.052972100376522
+    ],
+    [
+     "\\n",
+     0.05013736263736264,
+     7.879795825125199
+    ],
+    [
+     " ",
+     0.021291208791208792,
+     1.697860153545085
+    ],
+    [
+     " of",
+     0.012362637362637362,
+     0.6499942434732896
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": 0.05168350785970688,
+    "band p~0.5 (L40)": -0.014372536912560463
+   },
+   "examples_pos": [
+    {
+     "w": 1096,
+     "s": 134,
+     "proj": 0.4817656874656677,
+     "text": "... at first base, there is likely no way to get him regular playing time in St. Louis at the beginning of the[ season]|.\\nIt\u00e2\u0122\u013bs entirely possible this"
+    },
+    {
+     "w": 123,
+     "s": 148,
+     "proj": 0.4634372293949127,
+     "text": "... who is an investor\\nYou might be tempted to put off investing discussions until your child is grown up and has money to[ invest]|.\\nInvestments take many forms"
+    },
+    {
+     "w": 265,
+     "s": 82,
+     "proj": 0.4401475191116333,
+     "text": "... and correcting excessive alar flare.\\nThe study included 60 cases presenting with a wide nasal base and excessive alar fl[aring]|.\\nThe surgical procedure combined an"
+    },
+    {
+     "w": 929,
+     "s": 130,
+     "proj": 0.42628422379493713,
+     "text": "... up an order of greek salad for 20 people to take over to daughter's for our housewarming family party[ tonight]|.\\nWhen our family gets together"
+    },
+    {
+     "w": 144,
+     "s": 96,
+     "proj": 0.41687124967575073,
+     "text": "... is concerned with the natural world and appeals to those interested in animal care, the countryside, planting and landscaping, and the[ environment]|.\\nJobs and courses are available"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 227,
+     "s": 85,
+     "proj": -0.45618849992752075,
+     "text": "... water fly fishing with a heavy fly and/or with a long leader can make casting and slack-less presentations difficult to say the[ least]|. Especially if there is any"
+    },
+    {
+     "w": 35,
+     "s": 137,
+     "proj": -0.44103068113327026,
+     "text": "... always caught plenty of fish because kids love fast action, and equally love words of encouragement and praise when they landed a good[ one]|. If their attention lagged"
+    },
+    {
+     "w": 862,
+     "s": 148,
+     "proj": -0.43231892585754395,
+     "text": "... market, with shipments outperforming Amazon's Kindle Fire HD and Google Nexus 7, two of the mini's biggest[ competitors]|. In the first two days"
+    },
+    {
+     "w": 1188,
+     "s": 51,
+     "proj": -0.42383092641830444,
+     "text": "... do to hurt yourself? 4. Describe the pain... sharp, dull, burning, throbbing, etc. [5]|. Is it getting better or"
+    },
+    {
+     "w": 501,
+     "s": 35,
+     "proj": -0.4131358861923218,
+     "text": "... does he know\\nabout life at the top? This brotha? Blackness\\nnow is just fodder for race theory[ later]|. But\\ntoday, Gold"
+    }
+   ]
+  },
+  {
+   "share": 0.002454272708365902,
+   "split_half": 0.9040425304785144,
+   "sd": 0.049518752843141556,
+   "skew": 0.3791705369949341,
+   "frac_pos": 0.48515748031496064,
+   "jlens_pos": [
+    "-of",
+    ".",
+    "ness",
+    "ery",
+    ".,",
+    "less",
+    "\u00e5\u00bd\u0135\u00e7\u0126\u00b6\u00e4\u00ba\u0128",
+    "son",
+    " of",
+    "ial",
+    " temperature",
+    " information"
+   ],
+   "jlens_neg": [
+    " \u00e8\u00b4\u013f\u00e5\u00a3\u00b3\u00e6\u012b\u00be\u00e6\u012a\u00bf",
+    "\u00d8\u00b5\u00d9\u0126\u00d8\u00a7\u00d8\u0143",
+    "\u00d8\u00b7\u00d9\u0126\u00d8\u00a7\u00d9\u0124",
+    "\u00d0\u00b7\u00d0\u00bd\u00d0\u00b0\u00d0\u00ba\u00d0\u00be\u00d0\u00bc",
+    "\u00d9\u0124\u00d8\u00af\u00d9\u012c\u00d9\u0127",
+    " \u00e8\u0123\u0136\u00e7\u00bb\u013e\u00e4\u00bf\u00a1\u00e6\u0123\u00af",
+    "_tE",
+    "_mE",
+    "tiza",
+    " [-]:",
+    "\u00e2\u0122\u00a6\\n\\n\\n\\n",
+    "tamos"
+   ],
+   "cur_top1pct": [
+    [
+     ",",
+     0.01510989010989011,
+     0.39865894620245595
+    ],
+    [
+     " it",
+     0.008241758241758242,
+     1.7135086342229202
+    ],
+    [
+     ".",
+     0.008241758241758242,
+     0.32943038834277505
+    ],
+    [
+     "2",
+     0.005494505494505495,
+     3.446712769988632
+    ],
+    [
+     "0",
+     0.005494505494505495,
+     4.676241886768203
+    ],
+    [
+     "s",
+     0.004807692307692308,
+     5.260772122614228
+    ]
+   ],
+   "next_top1pct": [
+    [
+     ".",
+     0.6105769230769231,
+     24.43214240392547
+    ],
+    [
+     ",",
+     0.09134615384615384,
+     2.4087644779572663
+    ],
+    [
+     ".\\n",
+     0.0673076923076923,
+     5.940301814619583
+    ],
+    [
+     " ",
+     0.029532967032967032,
+     2.35509634201415
+    ],
+    [
+     " of",
+     0.01510989010989011,
+     0.7944374086895762
+    ],
+    [
+     " and",
+     0.007554945054945055,
+     0.34629964523665313
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": 0.006798103451728821,
+    "band p~0.5 (L40)": 0.02908557467162609
+   },
+   "examples_pos": [
+    {
+     "w": 628,
+     "s": 116,
+     "proj": 0.3790542781352997,
+     "text": "... this Product?\\nThere are a lot of people all over the world who found success in implementing the techniques that the product is[ suggesting]|. One of them is a"
+    },
+    {
+     "w": 227,
+     "s": 43,
+     "proj": 0.3674321174621582,
+     "text": "... New Scientific Anglers Bruce Chard Salt Water Grand Slam Fly Line\\ncovers all the bases of a premium salt water fly[ line]|. This is why the\\n"
+    },
+    {
+     "w": 302,
+     "s": 117,
+     "proj": 0.34972766041755676,
+     "text": "... with the buttons below this post.\\nThe religion topic is pinned at the top of the Politics area to make it easy to[ find]|. Please try and keep debates"
+    },
+    {
+     "w": 214,
+     "s": 154,
+     "proj": 0.3494117558002472,
+     "text": "... am eager to try after reading so much rave about their products. This value set is a wonderful introduction to the Tata Harper[ brand]|. The set includes- Reg"
+    },
+    {
+     "w": 768,
+     "s": 137,
+     "proj": 0.33455076813697815,
+     "text": "... to the foundation itself or the brush) so you can apply sparingly for a light finish or build for a more medium[ one]|. after one overall application,"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 673,
+     "s": 116,
+     "proj": -0.28457027673721313,
+     "text": "... provide a cure.\\nIf you neglect employees with medical conditions, you could face discrimination claims\u00e2\u0122\u0135leading to tribunal hearings and business[ damages]|.\\nHealth Assured offers expert"
+    },
+    {
+     "w": 981,
+     "s": 143,
+     "proj": -0.27286630868911743,
+     "text": "... Daddy is no longer supporting SOPA, the \"Stop Online Piracy Act\" currently working its way through U.S.[ Congress]|.\\n\"Fighting online piracy is"
+    },
+    {
+     "w": 823,
+     "s": 142,
+     "proj": -0.2588439881801605,
+     "text": "... Embassy's celebration of Japan's Culture Day, which was held at the Ambassador's residence in Washington, D.C. Master[ O]|chiai, was one of"
+    },
+    {
+     "w": 1196,
+     "s": 133,
+     "proj": -0.24836817383766174,
+     "text": "...12 Championships session one and fifth overall. Junior Jessie Sisler earned the title of Pac-12 Floor Champion.\\nNo[.]| 5 seed Arizona to compete"
+    },
+    {
+     "w": 144,
+     "s": 96,
+     "proj": -0.2471797913312912,
+     "text": "... is concerned with the natural world and appeals to those interested in animal care, the countryside, planting and landscaping, and the[ environment]|.\\nJobs and courses are available"
+    }
+   ]
+  },
+  {
+   "share": 0.0023714051613696815,
+   "split_half": 0.8742975206267356,
+   "sd": 0.04858578369021416,
+   "skew": 0.18230372667312622,
+   "frac_pos": 0.439494750656168,
+   "jlens_pos": [
+    " of",
+    " the",
+    " among",
+    " upon",
+    " The",
+    " relative",
+    " associated",
+    "\u00e3\u0123\u00ae\u00e5\u013e",
+    " consideration",
+    " nakne",
+    " identifiable",
+    " corresponding"
+   ],
+   "jlens_neg": [
+    "fragistics",
+    "smith",
+    "outs",
+    "keeper",
+    "sters",
+    " \u00e8\u00b4\u013f\u00e5\u00a3\u00b3\u00e6\u012b\u00be\u00e6\u012a\u00bf",
+    "backs",
+    "ppers",
+    "titud",
+    "/+",
+    "GuidId",
+    "-analytics"
+   ],
+   "cur_top1pct": [
+    [
+     ".",
+     0.046703296703296704,
+     1.8667722006090588
+    ],
+    [
+     " of",
+     0.04532967032967033,
+     2.3893546692351473
+    ],
+    [
+     ",",
+     0.03021978021978022,
+     0.7973178924049119
+    ],
+    [
+     " it",
+     0.0260989010989011,
+     5.426110675039247
+    ],
+    [
+     " in",
+     0.0260989010989011,
+     2.1791609136703802
+    ],
+    [
+     " to",
+     0.02197802197802198,
+     1.0415335234612344
+    ]
+   ],
+   "next_top1pct": [
+    [
+     " the",
+     0.2692307692307692,
+     7.52925264589369
+    ],
+    [
+     " of",
+     0.08379120879120878,
+     4.405516539096741
+    ],
+    [
+     " that",
+     0.04120879120879121,
+     5.788880521023378
+    ],
+    [
+     " The",
+     0.03571428571428571,
+     12.115717615717614
+    ],
+    [
+     "\u00e2\u0122\u013bs",
+     0.034340659340659344,
+     10.26228648148566
+    ],
+    [
+     " is",
+     0.030906593406593408,
+     3.6303149030146606
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": 0.023941943421959877,
+    "band p~0.5 (L40)": -0.017007309943437576
+   },
+   "examples_pos": [
+    {
+     "w": 1137,
+     "s": 157,
+     "proj": 0.2908821105957031,
+     "text": "...-related needs and interest of cities; assistance for electric cities in negotiating pole attachment agreements and conducting pole count inventories; assistance[ in]| the development of public, educational"
+    },
+    {
+     "w": 113,
+     "s": 71,
+     "proj": 0.2787335216999054,
+     "text": "... only for the trimming process.\\n- Whatever trimmer you choose to use, read the instructions before using to get an idea[ of]| the operation.\\n- Stand in"
+    },
+    {
+     "w": 938,
+     "s": 81,
+     "proj": 0.27477481961250305,
+     "text": ".... While they might quarrel, fight, and perhaps even be starting a war in Africa, they are still family.[ It]| is going to take a whole"
+    },
+    {
+     "w": 258,
+     "s": 141,
+     "proj": 0.26892930269241333,
+     "text": "....\\nElhanafy, Hossam and Copeland, G.M. (2007) Modified method of characteristics[ for]| the shallow water equations. In"
+    },
+    {
+     "w": 295,
+     "s": 149,
+     "proj": 0.2557503581047058,
+     "text": "..., dance teachers, athletes and courses. Stargym has pink and blue versions of home pages and other pages. The[ design]| of the templates is fully reactive"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 240,
+     "s": 103,
+     "proj": -0.29291149973869324,
+     "text": "... Caliber. Any info would be appreciated.\\nLehigh bullets make a 245 grain 338 solid bore rider.[ It]|'s BC is higher than the"
+    },
+    {
+     "w": 454,
+     "s": 128,
+     "proj": -0.2918184995651245,
+     "text": "...This filter adjusts the amount of your webcam that is shown. For example, if you\u00e2\u0122\u013bd like a square image or maybe[ there]|\u00e2\u0122\u013bs something just off to the"
+    },
+    {
+     "w": 220,
+     "s": 140,
+     "proj": -0.2912355363368988,
+     "text": "... his campaign through social media. The island is now besieged with blood-sport advertisements all over the air-waves.[ It]|\u00e2\u0122\u013bs up to the public to"
+    },
+    {
+     "w": 575,
+     "s": 142,
+     "proj": -0.2763146460056305,
+     "text": "... who use Bogota\u00e2\u0122\u013bs recreational lanes on Sunday, have six more minutes of vigorous physical activity (on average) than those[ who]| don\u00e2\u0122\u013bt.\\nHowever, many"
+    },
+    {
+     "w": 626,
+     "s": 105,
+     "proj": -0.26882052421569824,
+     "text": "... support Londoners with the skills they need for jobs in the green economy, rebuilding the capital post-COVID so that[ it]|'s cleaner, greener and"
+    }
+   ]
+  },
+  {
+   "share": 0.0022347994630893403,
+   "split_half": 0.9451562173163456,
+   "sd": 0.046997230499982834,
+   "skew": 0.4623357951641083,
+   "frac_pos": 0.41731627296587925,
+   "jlens_pos": [
+    "aways",
+    "\u00d0\u00b6\u00d0\u00b4\u00d1\u012d\u00d0\u00b9",
+    "\u00d0\u00b1\u00d1\u012d\u00d1\u0129\u00d0\u00bd\u00d0\u00be",
+    "\u00d0\u00be\u00d0\u00bf\u00d1\u0122\u00d0\u00b8\u00d0\u00bc\u00d0\u00b5\u00d1\u0129",
+    "fragistics",
+    "\u00e5\u00a7\u0128\u00e6\u0138\u00af",
+    "\u00d0\u00b7\u00d0\u00bd\u00d0\u00b0\u00d0\u00ba\u00d0\u00be\u00d0\u00bc",
+    "$fdata",
+    "\u00e4\u00bb\u00a5\u00e8\u00b5\u00b4",
+    "\u00e5\u012c\u00a9\u00e4\u00ba\u0130",
+    "\u00d1\u0122\u00d1\u0125\u00d0\u00b1\u00d0\u00b5\u00d0\u00b6",
+    "\u00e8\u00a7\u0124\u00e7\u013c\u0126"
+   ],
+   "jlens_neg": [
+    " and",
+    ",...\\n",
+    ",",
+    " [\u00e2\u0122\u00a6",
+    "<|endoftext|>",
+    " or",
+    ".\\n",
+    " ...\\n",
+    "...\\n",
+    "\u00e2\u0122\u00a6\\n",
+    ",\\n",
+    " [..."
+   ],
+   "cur_top1pct": [
+    [
+     ",",
+     0.057005494505494504,
+     1.5040314788547202
+    ],
+    [
+     " it",
+     0.011675824175824176,
+     2.427470565149137
+    ],
+    [
+     " you",
+     0.011675824175824176,
+     2.0277200424873456
+    ],
+    [
+     ".",
+     0.011675824175824176,
+     0.4666930501522647
+    ],
+    [
+     " I",
+     0.009615384615384616,
+     1.7492067307692307
+    ],
+    [
+     " we",
+     0.007554945054945055,
+     3.362389521793191
+    ]
+   ],
+   "next_top1pct": [
+    [
+     ".",
+     0.5782967032967034,
+     23.140454335326485
+    ],
+    [
+     " and",
+     0.10851648351648352,
+     4.974122177035563
+    ],
+    [
+     ".\\n",
+     0.04532967032967033,
+     4.000611426172372
+    ],
+    [
+     ",",
+     0.03914835164835165,
+     1.032327633410257
+    ],
+    [
+     " ",
+     0.023351648351648352,
+     1.8621692006623514
+    ],
+    [
+     " is",
+     0.015796703296703296,
+     1.8554942837630486
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": 0.07409919798374176,
+    "band p~0.5 (L40)": -0.024773884564638138
+   },
+   "examples_pos": [
+    {
+     "w": 614,
+     "s": 133,
+     "proj": 0.32891398668289185,
+     "text": "... concerned and the room was full of vampires tonight. As I looked around the room, I realized that all eyes were upon[ us]|. Someone had even stopped the"
+    },
+    {
+     "w": 123,
+     "s": 52,
+     "proj": 0.3228283226490021,
+     "text": "... teach your children before investment. Plenty of parents start their kids off with a piggy bank to teach them the importance of[ savings]|. However, very few teach"
+    },
+    {
+     "w": 1116,
+     "s": 89,
+     "proj": 0.31679072976112366,
+     "text": "...ence ri withno debt check and no faxing. However, always remember that this is actually not the right alternative for[ everybody]|. You can easily get total"
+    },
+    {
+     "w": 697,
+     "s": 130,
+     "proj": 0.3144458532333374,
+     "text": "...yla has had with idol (19e) and now the NCAA. This has made things incredibly hard on everyone on the[ team]|. Wayne\\'s tough part"
+    },
+    {
+     "w": 673,
+     "s": 42,
+     "proj": 0.31140631437301636,
+     "text": "...ors to specialised therapists, you can provide significant help through these practices.\\nYou can even offer emotional intelligence training through employee assistance[ programmes]|. These allow managers to understand"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 234,
+     "s": 33,
+     "proj": -0.32868334650993347,
+     "text": "... create their costumes for the show. They all had really exciting ideas. We provided feathers, masks, glitter, glue etc[.]| and the home staff provided us"
+    },
+    {
+     "w": 567,
+     "s": 99,
+     "proj": -0.2987786531448364,
+     "text": "... them an A.\\nThe shoes - the shoes are kind of boring but they certainly don't detract from the dress.[ They]| are simple slip-ons, made"
+    },
+    {
+     "w": 644,
+     "s": 99,
+     "proj": -0.285260409116745,
+     "text": "...ative (2/4)||May be silent on most topics but when it comes to them and their job they won\u00e2\u0122\u013bt[ shut]| up and very open.||"
+    },
+    {
+     "w": 163,
+     "s": 102,
+     "proj": -0.2730763554573059,
+     "text": ".... Was the title inspired by political pop culture icon Joe the Plumber?\\nJoe is a nerdy high school student.[ He]| is an artist, and he"
+    },
+    {
+     "w": 493,
+     "s": 61,
+     "proj": -0.2702862620353699,
+     "text": "...If you can dream it, you can do it.\" R.A. Dickey was a dreamer who always believed in[ himself]| and his ability to perform on"
+    }
+   ]
+  },
+  {
+   "share": 0.0021875263733448606,
+   "split_half": 0.9622057038856783,
+   "sd": 0.04669316112995148,
+   "skew": 0.37047716975212097,
+   "frac_pos": 0.48708005249343833,
+   "jlens_pos": [
+    " \u00e2\u0122\u012d\u00e2\u0122\u012d",
+    "\u00e0\u00b9\u012e",
+    "fragistics",
+    "ache",
+    "ed",
+    "es",
+    "e",
+    "en",
+    "le",
+    " councill",
+    "\u00cc\u0123",
+    " \u00e6\u013d\u00b4\u00e5\u00a4\u013c\u00e5\u013d\u00be\u00e5\u0128\u012e"
+   ],
+   "jlens_neg": [
+    "ohlen",
+    " geographic",
+    "irsch",
+    " critical",
+    " intermittent",
+    " physical",
+    " literature",
+    " leadership",
+    " granite",
+    " psychological",
+    " fiscal",
+    " conventional"
+   ],
+   "cur_top1pct": [
+    [
+     ",",
+     0.06799450549450549,
+     1.7939652579110517
+    ],
+    [
+     " of",
+     0.05013736263736264,
+     2.642771073547966
+    ],
+    [
+     " and",
+     0.03296703296703297,
+     1.5163793223211681
+    ],
+    [
+     " in",
+     0.021291208791208792,
+     1.7777365348363627
+    ],
+    [
+     " all",
+     0.016483516483516484,
+     9.121338737308319
+    ],
+    [
+     ".",
+     0.015796703296703296,
+     0.6314082443236522
+    ]
+   ],
+   "next_top1pct": [
+    [
+     " the",
+     0.15453296703296704,
+     4.321637360525716
+    ],
+    [
+     " to",
+     0.10782967032967034,
+     5.1200271588118245
+    ],
+    [
+     " that",
+     0.09546703296703296,
+     13.410906540370824
+    ],
+    [
+     " and",
+     0.07280219780219781,
+     3.337069308644112
+    ],
+    [
+     " of",
+     0.06524725274725275,
+     3.430525173886807
+    ],
+    [
+     ",",
+     0.03296703296703297,
+     0.8693285333981112
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": -0.060747239738702774,
+    "band p~0.5 (L40)": 0.040162719786167145
+   },
+   "examples_pos": [
+    {
+     "w": 1063,
+     "s": 35,
+     "proj": 0.34008169174194336,
+     "text": "... I don't think you can build that program without that foundation existing. We've been able to do that over the last[ couple]| of years.\"\\nThe key to"
+    },
+    {
+     "w": 232,
+     "s": 151,
+     "proj": 0.3253125548362732,
+     "text": "... habits and spoiled. We turned him out for 6 months to gain weight and be a horse. I rode him a[ couple]| of times, then last weekend"
+    },
+    {
+     "w": 335,
+     "s": 63,
+     "proj": 0.3182072639465332,
+     "text": "... the Bankai he worked so hard to improve appearing so weak. He then uses his Shikai to burn the flesh[ off]| of Driscoll's face"
+    },
+    {
+     "w": 1142,
+     "s": 106,
+     "proj": 0.3162596821784973,
+     "text": "... enjoyed the book, whatever it is. I think it\u00e2\u0122\u013bs funny and also raw, and I swallowed it down in a[ couple]| of large gulps. I"
+    },
+    {
+     "w": 646,
+     "s": 149,
+     "proj": 0.3162047863006592,
+     "text": "...igo folk textile from rural China. These are the simple handwoven cotton fabrics of everyday country folk and were rarely seen[ outside]| of a village life now almost"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 961,
+     "s": 154,
+     "proj": -0.3170618414878845,
+     "text": "....\\nFor removing blackheads: Combine \u00c2\u00bd cup of boiling water with 3 drops of iodine and 1 tsp[.]| Epsom salt. Stir"
+    },
+    {
+     "w": 104,
+     "s": 106,
+     "proj": -0.2682397961616516,
+     "text": "... reset the password using their new email to gain complete access to the victim\u00e2\u0122\u013bs account. The attack is executed when a victim[ clicks]| a single malicious link or visits"
+    },
+    {
+     "w": 1095,
+     "s": 139,
+     "proj": -0.26712191104888916,
+     "text": "...375 degrees. On a cutting board or your counter tops, begin to assemble the cabbage rolls. Cut the hard ribs[ off]| the cabbage leaves so you don"
+    },
+    {
+     "w": 767,
+     "s": 110,
+     "proj": -0.2611881494522095,
+     "text": "... at the top of a hill now known as Chinsegut Hill. He sold the plantation to Francis Edrington in[ May]| 1851 and moved to"
+    },
+    {
+     "w": 156,
+     "s": 57,
+     "proj": -0.2549460530281067,
+     "text": "...q because it caused tumors in animals. In June, it was approved. However, it won't be available for another[ half]| year while the FDA considers what"
+    }
+   ]
+  },
+  {
+   "share": 0.0020477951031348286,
+   "split_half": 0.9701100528056248,
+   "sd": 0.045252490788698196,
+   "skew": 0.13145358860492706,
+   "frac_pos": 0.4700853018372703,
+   "jlens_pos": [
+    "\u00e2\u0122\u00a6\\n\\n\\n\\n",
+    "...\\n\\n\\n\\n\\n\\n",
+    "|=\\n",
+    "\u00e3\u0125\u00bb\u00e3\u0125\u00bb\u00e3\u0125\u00bb\\n\\n",
+    "atis",
+    "',...\\n",
+    "ially",
+    "rasz",
+    "ologically",
+    "]=]",
+    "/{{$",
+    "\u00c4\u0141un"
+   ],
+   "jlens_neg": [
+    "e",
+    "t",
+    "s",
+    "es",
+    "y",
+    "d",
+    "m",
+    "ly",
+    " ejerci",
+    " convir",
+    "\u00e7\u0127\u012e",
+    "tions"
+   ],
+   "cur_top1pct": [
+    [
+     " of",
+     0.03914835164835165,
+     2.063533577975809
+    ],
+    [
+     " to",
+     0.021291208791208792,
+     1.0089856008530709
+    ],
+    [
+     " in",
+     0.01510989010989011,
+     1.2616194763354833
+    ],
+    [
+     " ",
+     0.014423076923076924,
+     1.1526897731592955
+    ],
+    [
+     " and",
+     0.013736263736263736,
+     0.6318247176338201
+    ],
+    [
+     " the",
+     0.01304945054945055,
+     0.3657112914045323
+    ]
+   ],
+   "next_top1pct": [
+    [
+     ".\\n",
+     0.14423076923076922,
+     12.72921817418482
+    ],
+    [
+     " the",
+     0.057005494505494504,
+     1.5942040041050416
+    ],
+    [
+     ".",
+     0.04945054945054945,
+     1.9787561901941886
+    ],
+    [
+     " of",
+     0.048763736263736264,
+     2.563866182589087
+    ],
+    [
+     ",",
+     0.046703296703296704,
+     1.2315487556473241
+    ],
+    [
+     " to",
+     0.018543956043956044,
+     0.8805142247638169
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": 0.008886649273335934,
+    "band p~0.5 (L40)": -0.012831046245992184
+   },
+   "examples_pos": [
+    {
+     "w": 369,
+     "s": 115,
+     "proj": 0.2679498791694641,
+     "text": "... highlighted the work of Ms. Khoury as helping the needy through pro-bono legal work, and the work of[ Ms]|. Varkas in contributing"
+    },
+    {
+     "w": 667,
+     "s": 53,
+     "proj": 0.26159903407096863,
+     "text": "...26, 2012) - Google's disappointing Q3 Earnings Good News for Advertisers\\nAdvertisement Journal ([Oct]|. 26, 201"
+    },
+    {
+     "w": 973,
+     "s": 142,
+     "proj": 0.2589091360569,
+     "text": "... Joomla meet these requirements?\\nFirst, let us keep in mind that Joomla is built on a highly-extensible platform. Out[-of]|-the box, the basic components"
+    },
+    {
+     "w": 583,
+     "s": 54,
+     "proj": 0.24591030180454254,
+     "text": "... the bench or two \u00e2\u0122\u0135 you put it in the drawer and decided to get it fixed later on.\\nHow long has that[ hand]|piece been broken?\\nDon\u00e2\u0122\u013bt"
+    },
+    {
+     "w": 57,
+     "s": 74,
+     "proj": 0.24257294833660126,
+     "text": "... Everyday Paleo: Thai Cuisine\\n, and I am SO very excited\u00e2\u0122\u00a6.I LOVE Thai Food! I highly suggest you go[ pre]|-order your copy of it now"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 667,
+     "s": 76,
+     "proj": -0.28299179673194885,
+     "text": "... (Oct. 26, 2012) - Google Runs Ads 30 Billion Times Per Day\\nSEOmoz ([Oct]| 22, 2012"
+    },
+    {
+     "w": 575,
+     "s": 115,
+     "proj": -0.2820616364479065,
+     "text": "...ycling forms part of a healthier lifestyle, especially among children. A recent study discovered that children aged between 6-10[ years]| old, who use Bogota"
+    },
+    {
+     "w": 257,
+     "s": 146,
+     "proj": -0.2574201226234436,
+     "text": "...f) Inferior vena cava collapsibility is <50% calculated by placing M-mode cursor on inferior vena[ c]|ava and measuring the change in"
+    },
+    {
+     "w": 1083,
+     "s": 109,
+     "proj": -0.2560252547264099,
+     "text": "... Margery, in her hometown of Bartlesville.\\nSchiele was a 1966 graduate of the Massachusetts Institute[ of]| Technology and a native of west"
+    },
+    {
+     "w": 107,
+     "s": 84,
+     "proj": -0.24542658030986786,
+     "text": "..., watery eyes. Complications can include diarrhea, ear infections, pneumonia, seizures and death. According to the Centers[ for]| Disease Control (CDC), developing"
+    }
+   ]
+  },
+  {
+   "share": 0.001858358223231751,
+   "split_half": 0.9797778779096731,
+   "sd": 0.04310867190361023,
+   "skew": 0.5500884652137756,
+   "frac_pos": 0.4801181102362205,
+   "jlens_pos": [
+    " and",
+    " \u00eb\u00b0\u0131",
+    " v\u00c3\u0142",
+    " swingerclub",
+    "\u00e3\u0123\u012c\u00e3\u0124\u012a\u00e3\u0123\u00b3",
+    "\u0109and",
+    " &",
+    " \u00d9\u012a",
+    "\u00e5\u0134\u012e\u00e5\u00a4\u0126\u00e7\u0132\u0128",
+    "\u00e5\u0134\u012e\u00e6\u0136\u00af\u00e6\u012e\u0123",
+    "\u00e5\u0134\u012e\u00e5\u0131\u0133\u00e5\u00b1\u0137",
+    " \u00d0\u00b8"
+   ],
+   "jlens_neg": [
+    " [\u00e2\u0122\u00a6]\\n\\n",
+    " [\u00e2\u0122\u00a6",
+    " you",
+    "\u00e2\u0122\u00a6\\n\\n",
+    "\u00e2\u0122\u00a6\\n",
+    " [...",
+    " [...]\\n\\n",
+    "...]\\n\\n",
+    "...\\n",
+    " thing",
+    " they",
+    "...\\n\\n"
+   ],
+   "cur_top1pct": [
+    [
+     ",",
+     0.006181318681318681,
+     0.16308775071918652
+    ],
+    [
+     " quality",
+     0.004807692307692308,
+     23.32275641025641
+    ],
+    [
+     " fun",
+     0.004120879120879121,
+     26.07513139034878
+    ],
+    [
+     " support",
+     0.004120879120879121,
+     9.370750343406593
+    ],
+    [
+     " services",
+     0.004120879120879121,
+     12.760170680383448
+    ],
+    [
+     "s",
+     0.003434065934065934,
+     3.757694373295877
+    ]
+   ],
+   "next_top1pct": [
+    [
+     " and",
+     0.5370879120879121,
+     24.618756597732975
+    ],
+    [
+     " of",
+     0.11538461538461539,
+     6.066612939084037
+    ],
+    [
+     ",",
+     0.08791208791208792,
+     2.3182094223949634
+    ],
+    [
+     " or",
+     0.04807692307692308,
+     14.163617253192154
+    ],
+    [
+     " to",
+     0.040521978021978024,
+     1.924086639298711
+    ],
+    [
+     ".",
+     0.019230769230769232,
+     0.769516296186629
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": -0.01577690616250038,
+    "band p~0.5 (L40)": -0.01590743660926819
+   },
+   "examples_pos": [
+    {
+     "w": 1028,
+     "s": 150,
+     "proj": 0.40785789489746094,
+     "text": "... we create a welcoming situation in a context like museums or art galleries - when new communities are invited? How do we provide[ access]| and how do we teach our"
+    },
+    {
+     "w": 664,
+     "s": 37,
+     "proj": 0.40453842282295227,
+     "text": ".... Over the past few years, the discussion of the use of the electromagnetic spectrum1 for digital inclusion has taken on more[ strength]| and importance.\\nOne alternative for"
+    },
+    {
+     "w": 395,
+     "s": 110,
+     "proj": 0.39375656843185425,
+     "text": "..., the outlook for 2019 is positive for the fashion and home furnishings sector. However, there are a variety of[ issues]| and trends to consider as well"
+    },
+    {
+     "w": 674,
+     "s": 54,
+     "proj": 0.3929656147956848,
+     "text": "... La\u00e2\u0122\u013bs fluid identity, paying homage to a pan-Islamic world while simultaneously embracing modern style and innovation. Those juxtaposition[s]| and paradoxes are the essence"
+    },
+    {
+     "w": 1029,
+     "s": 59,
+     "proj": 0.39231595396995544,
+     "text": "... Lubitsch touch, it relates to his mentor, the great writer/producer director Ernst Lubitsch and his unique[ style]| and cinematic trademarks he used in"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 248,
+     "s": 68,
+     "proj": -0.3421564996242523,
+     "text": "... We look forward to working with you!\\n\\nRisking life and limb every week to bring you an in depth look at the[ lives]| of the world's softest"
+    },
+    {
+     "w": 253,
+     "s": 70,
+     "proj": -0.3328798711299896,
+     "text": "... security and to the citizens of Nigeria.\\n\u00e2\u0122\u013eCarson and the State Department continue to downplay Boko Haram\u00e2\u0122\u013bs Islamist[ nature]|, preferring to see the terrorist"
+    },
+    {
+     "w": 924,
+     "s": 59,
+     "proj": -0.3284893035888672,
+     "text": "... statutes governing non-profits and applicable federal statutes.\\nFebruary 9, 2012\\nThis module will focus on the[ workings]| of the executive and legislative branches"
+    },
+    {
+     "w": 689,
+     "s": 68,
+     "proj": -0.3265482187271118,
+     "text": "... speed extremely in perhaps 1 or 2 of those love languages, therefore when we know how our partner loves to be[ valued]|, then we could satisfy them"
+    },
+    {
+     "w": 369,
+     "s": 124,
+     "proj": -0.32088175415992737,
+     "text": "... as helping the needy through pro-bono legal work, and the work of Ms. Varkas in contributing to the[ formation]| of young children. He commented"
+    }
+   ]
+  }
+ ],
+ "cos_mean_h": [
+  0.07130341231822968,
+  0.001716800034046173,
+  -0.04032450169324875,
+  -0.018556226044893265,
+  0.14383132755756378,
+  -0.06576673686504364,
+  -0.134540393948555,
+  0.02784343808889389,
+  0.021654510870575905,
+  0.014733157120645046
+ ],
+ "top_coords": [
+  [
+   8,
+   0.03971463441848755
+  ],
+  [
+   2380,
+   0.03298860043287277
+  ],
+  [
+   4532,
+   0.03054805099964142
+  ],
+  [
+   3196,
+   0.024159492924809456
+  ],
+  [
+   3891,
+   0.024016745388507843
+  ],
+  [
+   2914,
+   0.022504286840558052
+  ],
+  [
+   6041,
+   0.02151939645409584
+  ],
+  [
+   5831,
+   0.017380615696310997
+  ],
+  [
+   1028,
+   0.017282981425523758
+  ],
+  [
+   2226,
+   0.01683596335351467
+  ]
+ ]
+}

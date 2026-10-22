@@ -1,0 +1,529 @@
+{
+ "ids": {
+  "D01": "L46.pushback.1",
+  "D02": "L46.amplify.0",
+  "D03": "L40.amplify.1",
+  "D04": "L50.amplify.0",
+  "D05": "L36.pushback.1",
+  "D06": "L36.pushback.0",
+  "D07": "L36.amplify.0",
+  "D08": "L44.pushback.0",
+  "D09": "L28.amplify.0",
+  "D10": "L58.pushback.1",
+  "D11": "L58.amplify.0",
+  "D12": "L50.amplify.1",
+  "D13": "L44.amplify.1",
+  "D14": "L40.pushback.1",
+  "D15": "L40.pushback.0",
+  "D16": "L46.pushback.0",
+  "D17": "L54.amplify.1",
+  "D18": "L28.amplify.1",
+  "D19": "L42.amplify.1",
+  "D20": "L32.pushback.0",
+  "D21": "L32.amplify.0",
+  "D22": "L36.amplify.1",
+  "D23": "L42.pushback.0",
+  "D24": "L32.pushback.1",
+  "D25": "L54.amplify.0",
+  "D26": "L44.pushback.1",
+  "D27": "L44.amplify.0",
+  "D28": "L42.pushback.1",
+  "D29": "L42.amplify.0",
+  "D30": "L46.amplify.1",
+  "D31": "L32.amplify.1",
+  "D32": "L40.amplify.0",
+  "D33": "L58.pushback.0",
+  "D34": "L58.amplify.1",
+  "D35": "L54.pushback.1",
+  "D36": "L54.pushback.0"
+ },
+ "explain_batches": [
+  [
+   "D01",
+   "D02",
+   "D03",
+   "D04",
+   "D05",
+   "D06",
+   "D07",
+   "D08",
+   "D09"
+  ],
+  [
+   "D10",
+   "D11",
+   "D12",
+   "D13",
+   "D14",
+   "D15",
+   "D16",
+   "D17",
+   "D18"
+  ],
+  [
+   "D19",
+   "D20",
+   "D21",
+   "D22",
+   "D23",
+   "D24",
+   "D25",
+   "D26",
+   "D27"
+  ],
+  [
+   "D28",
+   "D29",
+   "D30",
+   "D31",
+   "D32",
+   "D33",
+   "D34",
+   "D35",
+   "D36"
+  ]
+ ],
+ "judge_halves": [
+  [
+   "D01",
+   "D02",
+   "D03",
+   "D04",
+   "D05",
+   "D06",
+   "D07",
+   "D08",
+   "D09",
+   "D10",
+   "D11",
+   "D12",
+   "D13",
+   "D14",
+   "D15",
+   "D16",
+   "D17",
+   "D18"
+  ],
+  [
+   "D19",
+   "D20",
+   "D21",
+   "D22",
+   "D23",
+   "D24",
+   "D25",
+   "D26",
+   "D27",
+   "D28",
+   "D29",
+   "D30",
+   "D31",
+   "D32",
+   "D33",
+   "D34",
+   "D35",
+   "D36"
+  ]
+ ],
+ "n_items": {
+  "D01": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D02": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D03": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D04": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D05": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D06": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D07": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D08": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D09": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D10": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D11": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D12": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D13": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D14": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D15": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D16": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D17": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D18": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D19": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D20": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D21": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D22": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D23": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D24": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D25": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D26": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D27": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D28": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D29": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D30": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D31": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D32": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D33": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D34": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D35": {
+   "detect": 12,
+   "intervene": 12
+  },
+  "D36": {
+   "detect": 12,
+   "intervene": 12
+  }
+ },
+ "baseline": {
+  "D01": {
+   "label": "proper names",
+   "reads_high": "where the next token is predictable, inside names and in structured text (newlines, digits, symbols). In ordinary text it is high where the next token is predictable, inside names and in structured text (newlines, digits, symbols) (r with |h| divided out: entropy −0.35, names +0.32, markup +0.27).",
+   "reads_low": "where the next token is uncertain, away from names and in running prose",
+   "push_toward_high": "writes more and it but that are; less .⏎ th ‹doc-end› The service",
+   "push_toward_low": "writes more .⏎ th ‹doc-end› The service; less and it but that are"
+  },
+  "D02": {
+   "label": "prose vs structured text",
+   "reads_high": "in structured text (newlines, digits, symbols), where function words are sparse and inside names. In ordinary text it is high in structured text (newlines, digits, symbols), where function words are sparse and inside names (r with |h| divided out: markup +0.42, function words −0.37, names +0.27).",
+   "reads_low": "in running prose, where function words are dense and away from names",
+   "push_toward_high": "writes more ␣ ‹doc-end› ⏎ / 3; less are that to the it",
+   "push_toward_low": "writes more are that to the it; less ␣ ‹doc-end› ⏎ / 3"
+  },
+  "D03": {
+   "label": "prose vs structured text",
+   "reads_high": "in structured text (newlines, digits, symbols), where function words are sparse and inside names. In ordinary text it is high in structured text (newlines, digits, symbols), where function words are sparse and inside names (r with |h| divided out: markup +0.41, function words −0.38, names +0.24).",
+   "reads_low": "in running prose, where function words are dense and away from names",
+   "push_toward_high": "writes more ␣ ‹doc-end› ⏎ !⏎ :; less the and to that are",
+   "push_toward_low": "writes more the and to that are; less ␣ ‹doc-end› ⏎ !⏎ :"
+  },
+  "D04": {
+   "label": "prose vs structured text",
+   "reads_high": "in structured text (newlines, digits, symbols), where function words are sparse and inside names. In ordinary text it is high in structured text (newlines, digits, symbols), where function words are sparse and inside names (r with |h| divided out: markup +0.42, function words −0.35, names +0.24).",
+   "reads_low": "in running prose, where function words are dense and away from names",
+   "push_toward_high": "writes more ␣ ‹doc-end› ⏎ & /; less the that is to are",
+   "push_toward_low": "writes more the that is to are; less ␣ ‹doc-end› ⏎ & /"
+  },
+  "D05": {
+   "label": "sentence position",
+   "reads_high": "deep into sentences, inside names and where the next token is predictable. In ordinary text it is high deep into sentences, inside names and where the next token is predictable (r with |h| divided out: tokens since sentence end +0.31, names +0.21, entropy −0.20), rising steadily through a sentence.",
+   "reads_low": "near sentence ends, away from names and where the next token is uncertain",
+   "push_toward_high": "writes more ‹doc-end› . you look; less M of from Center ,",
+   "push_toward_low": "writes more M of from Center ,; less ‹doc-end› . you look"
+  },
+  "D06": {
+   "label": "sentence position",
+   "reads_high": "deep into sentences, in running prose and where function words are dense. In ordinary text it is high deep into sentences, in running prose and where function words are dense (r with |h| divided out: tokens since sentence end +0.46, markup −0.25, function words +0.25), rising steadily through a sentence.",
+   "reads_low": "near sentence ends, in structured text (newlines, digits, symbols) and where function words are sparse",
+   "push_toward_high": "writes more .⏎ ‹doc-end› ⏎ The :⏎; less the , as that and",
+   "push_toward_low": "writes more the , as that and; less .⏎ ‹doc-end› ⏎ The :⏎"
+  },
+  "D07": {
+   "label": "chatty vs institutional",
+   "reads_high": "in chatty first- and second-person text and away from names. In ordinary text it is high in chatty first- and second-person text and away from names (r with |h| divided out: I/you/! +0.36, names −0.27).",
+   "reads_low": "in impersonal text and inside names",
+   "push_toward_high": "writes more it ‹doc-end› I you !; less and M research , The",
+   "push_toward_low": "writes more and M research , The; less it ‹doc-end› I you !"
+  },
+  "D08": {
+   "label": "sentence position",
+   "reads_high": "deep into sentences, mid-clause and in running prose. In ordinary text it is high deep into sentences, mid-clause and in running prose (r with |h| divided out: tokens since sentence end +0.49, sentence end −0.27, markup −0.27), rising steadily through a sentence.",
+   "reads_low": "near sentence ends, at sentence or line ends and in structured text (newlines, digits, symbols)",
+   "push_toward_high": "writes more ‹doc-end› .⏎ ⏎ .; less , the and to or",
+   "push_toward_low": "writes more , the and to or; less ‹doc-end› .⏎ ⏎ ."
+  },
+  "D09": {
+   "label": "chatty vs institutional",
+   "reads_high": "in chatty first- and second-person text. In ordinary text it is high in chatty first- and second-person text (r with |h| divided out: I/you/! +0.30).",
+   "reads_low": "in impersonal text",
+   "push_toward_high": "writes more I ! there 't about; less include , of research op",
+   "push_toward_low": "writes more include , of research op; less I ! there 't about"
+  },
+  "D10": {
+   "label": "unidentified",
+   "reads_high": "where the next token is predictable, at sentence or line ends and right after expected tokens. In ordinary text it is high where the next token is predictable, at sentence or line ends and right after expected tokens (r with |h| divided out: entropy −0.22, sentence end +0.17, surprisal −0.16).",
+   "reads_low": "where the next token is uncertain, mid-clause and right after surprising tokens",
+   "push_toward_high": "writes more the a of The in; less I to ’t not or",
+   "push_toward_low": "writes more I to ’t not or; less the a of The in"
+  },
+  "D11": {
+   "label": "break vs continue",
+   "reads_high": "in structured text (newlines, digits, symbols), at sentence or line ends and where function words are sparse. In ordinary text it is high in structured text (newlines, digits, symbols), at sentence or line ends and where function words are sparse (r with |h| divided out: markup +0.35, sentence end +0.33, function words −0.29), a spike at the token itself rather than a running count.",
+   "reads_low": "in running prose, mid-clause and where function words are dense",
+   "push_toward_high": "writes more ‹doc-end› ) : ( &; less the a is that it",
+   "push_toward_low": "writes more the a is that it; less ‹doc-end› ) : ( &"
+  },
+  "D12": {
+   "label": "predictability",
+   "reads_high": "where the next token is uncertain, at sentence or line ends and in chatty first- and second-person text. In ordinary text it is high where the next token is uncertain, at sentence or line ends and in chatty first- and second-person text (r with |h| divided out: entropy +0.47, sentence end +0.26, I/you/! +0.21).",
+   "reads_low": "where the next token is predictable, mid-clause and in impersonal text",
+   "push_toward_high": "writes more in ‹doc-end› you make what; less , the ; / ley",
+   "push_toward_low": "writes more , the ; / ley; less in ‹doc-end› you make what"
+  },
+  "D13": {
+   "label": "chatty vs institutional",
+   "reads_high": "in chatty first- and second-person text, near sentence ends and at sentence or line ends. In ordinary text it is high in chatty first- and second-person text, near sentence ends and at sentence or line ends (r with |h| divided out: I/you/! +0.27, tokens since sentence end −0.17, sentence end +0.17).",
+   "reads_low": "in impersonal text, deep into sentences and mid-clause",
+   "push_toward_high": "writes more it ‹doc-end› I just you; less and research of the for",
+   "push_toward_low": "writes more and research of the for; less it ‹doc-end› I just you"
+  },
+  "D14": {
+   "label": "proper names",
+   "reads_high": "inside names, in impersonal text and where the next token is predictable. In ordinary text it is high inside names, in impersonal text and where the next token is predictable (r with |h| divided out: names +0.25, I/you/! −0.21, entropy −0.19).",
+   "reads_low": "away from names, in chatty first- and second-person text and where the next token is uncertain",
+   "push_toward_high": "writes more to ‹doc-end› more just that; less Center by National : el",
+   "push_toward_low": "writes more Center by National : el; less to ‹doc-end› more just that"
+  },
+  "D15": {
+   "label": "sentence position",
+   "reads_high": "deep into sentences, mid-clause and in running prose. In ordinary text it is high deep into sentences, mid-clause and in running prose (r with |h| divided out: tokens since sentence end +0.52, sentence end −0.24, markup −0.23), rising steadily through a sentence.",
+   "reads_low": "near sentence ends, at sentence or line ends and in structured text (newlines, digits, symbols)",
+   "push_toward_high": "writes more ‹doc-end› .⏎ . ⏎; less , the to of or",
+   "push_toward_low": "writes more , the to of or; less ‹doc-end› .⏎ . ⏎"
+  },
+  "D16": {
+   "label": "sentence position",
+   "reads_high": "deep into sentences, where the next token is predictable and mid-clause. In ordinary text it is high deep into sentences, where the next token is predictable and mid-clause (r with |h| divided out: tokens since sentence end +0.50, entropy −0.33, sentence end −0.32), rising steadily through a sentence.",
+   "reads_low": "near sentence ends, where the next token is uncertain and at sentence or line ends",
+   "push_toward_high": "writes more ‹doc-end› .⏎ . ⏎; less , the and of or",
+   "push_toward_low": "writes more , the and of or; less ‹doc-end› .⏎ . ⏎"
+  },
+  "D17": {
+   "label": "predictability",
+   "reads_high": "where the next token is uncertain, in running prose and at sentence or line ends. In ordinary text it is high where the next token is uncertain, in running prose and at sentence or line ends (r with |h| divided out: entropy +0.42, markup −0.18, sentence end +0.18).",
+   "reads_low": "where the next token is predictable, in structured text (newlines, digits, symbols) and mid-clause",
+   "push_toward_high": "writes more in of this make through; less ␣ I , / ;",
+   "push_toward_low": "writes more ␣ I , / ;; less in of this make through"
+  },
+  "D18": {
+   "label": "unidentified",
+   "reads_high": "where the next token is uncertain, near sentence ends and at sentence or line ends. In ordinary text it is high where the next token is uncertain, near sentence ends and at sentence or line ends (r with |h| divided out: entropy +0.22, tokens since sentence end −0.20, sentence end +0.18).",
+   "reads_low": "where the next token is predictable, deep into sentences and mid-clause",
+   "push_toward_high": "writes more !⏎ look worth 1 it; less looks ing / and members",
+   "push_toward_low": "writes more looks ing / and members; less !⏎ look worth 1 it"
+  },
+  "D19": {
+   "label": "chatty vs institutional",
+   "reads_high": "in chatty first- and second-person text, away from names and at sentence or line ends. In ordinary text it is high in chatty first- and second-person text, away from names and at sentence or line ends (r with |h| divided out: I/you/! +0.33, names −0.23, sentence end +0.20).",
+   "reads_low": "in impersonal text, inside names and mid-clause",
+   "push_toward_high": "writes more you ‹doc-end› it we I; less ␣ , and women R",
+   "push_toward_low": "writes more ␣ , and women R; less you ‹doc-end› it we I"
+  },
+  "D20": {
+   "label": "sentence position",
+   "reads_high": "deep into sentences, mid-clause and where function words are dense. In ordinary text it is high deep into sentences, mid-clause and where function words are dense (r with |h| divided out: tokens since sentence end +0.36, sentence end −0.23, function words +0.16), rising steadily through a sentence.",
+   "reads_low": "near sentence ends, at sentence or line ends and where function words are sparse",
+   "push_toward_high": "writes more .⏎ ‹doc-end› .; less and as that in when",
+   "push_toward_low": "writes more and as that in when; less .⏎ ‹doc-end› ."
+  },
+  "D21": {
+   "label": "chatty vs institutional",
+   "reads_high": "in chatty first- and second-person text and away from names. In ordinary text it is high in chatty first- and second-person text and away from names (r with |h| divided out: I/you/! +0.32, names −0.19).",
+   "reads_low": "in impersonal text and inside names",
+   "push_toward_high": "writes more it I ! you look; less and research of , Center",
+   "push_toward_low": "writes more and research of , Center; less it I ! you look"
+  },
+  "D22": {
+   "label": "prose vs structured text",
+   "reads_high": "where function words are sparse, in structured text (newlines, digits, symbols) and inside names. In ordinary text it is high where function words are sparse, in structured text (newlines, digits, symbols) and inside names (r with |h| divided out: function words −0.38, markup +0.38, names +0.25).",
+   "reads_low": "where function words are dense, in running prose and away from names",
+   "push_toward_high": "writes more ‹doc-end› ⏎ ␣ !⏎ 1; less the of that as are",
+   "push_toward_low": "writes more the of that as are; less ‹doc-end› ⏎ ␣ !⏎ 1"
+  },
+  "D23": {
+   "label": "sentence position",
+   "reads_high": "deep into sentences, mid-clause and in running prose. In ordinary text it is high deep into sentences, mid-clause and in running prose (r with |h| divided out: tokens since sentence end +0.49, sentence end −0.31, markup −0.23), rising steadily through a sentence.",
+   "reads_low": "near sentence ends, at sentence or line ends and in structured text (newlines, digits, symbols)",
+   "push_toward_high": "writes more ‹doc-end› .⏎ ⏎; less , and the of who",
+   "push_toward_low": "writes more , and the of who; less ‹doc-end› .⏎ ⏎"
+  },
+  "D24": {
+   "label": "proper names",
+   "reads_high": "inside names, deep into sentences and in impersonal text. In ordinary text it is high inside names, deep into sentences and in impersonal text (r with |h| divided out: names +0.25, tokens since sentence end +0.23, I/you/! −0.18).",
+   "reads_low": "away from names, near sentence ends and in chatty first- and second-person text",
+   "push_toward_high": "writes more . ‹doc-end› .⏎ I look; less man , ; across or",
+   "push_toward_low": "writes more man , ; across or; less . ‹doc-end› .⏎ I look"
+  },
+  "D25": {
+   "label": "prose vs structured text",
+   "reads_high": "in structured text (newlines, digits, symbols), where function words are sparse and inside names. In ordinary text it is high in structured text (newlines, digits, symbols), where function words are sparse and inside names (r with |h| divided out: markup +0.39, function words −0.31, names +0.22).",
+   "reads_low": "in running prose, where function words are dense and away from names",
+   "push_toward_high": "writes more ‹doc-end› & : ⏎; less the a is that are",
+   "push_toward_low": "writes more the a is that are; less ‹doc-end› & : ⏎"
+  },
+  "D26": {
+   "label": "proper names",
+   "reads_high": "inside names, where the next token is predictable and in impersonal text. In ordinary text it is high inside names, where the next token is predictable and in impersonal text (r with |h| divided out: names +0.30, entropy −0.28, I/you/! −0.22).",
+   "reads_low": "away from names, where the next token is uncertain and in chatty first- and second-person text",
+   "push_toward_high": "writes more it that just you they; less from National New the of",
+   "push_toward_low": "writes more from National New the of; less it that just you they"
+  },
+  "D27": {
+   "label": "prose vs structured text",
+   "reads_high": "in structured text (newlines, digits, symbols), where function words are sparse and inside names. In ordinary text it is high in structured text (newlines, digits, symbols), where function words are sparse and inside names (r with |h| divided out: markup +0.40, function words −0.34, names +0.28).",
+   "reads_low": "in running prose, where function words are dense and away from names",
+   "push_toward_high": "writes more ␣ ‹doc-end› ⏎ 1 ⏎⏎; less that to they it are",
+   "push_toward_low": "writes more that to they it are; less ␣ ‹doc-end› ⏎ 1 ⏎⏎"
+  },
+  "D28": {
+   "label": "proper names",
+   "reads_high": "inside names, where function words are sparse and in structured text (newlines, digits, symbols). In ordinary text it is high inside names, where function words are sparse and in structured text (newlines, digits, symbols) (r with |h| divided out: names +0.30, function words −0.26, markup +0.24).",
+   "reads_low": "away from names, where function words are dense and in running prose",
+   "push_toward_high": "writes more that you we and more; less ␣ .⏎ ⏎⏎ National el",
+   "push_toward_low": "writes more ␣ .⏎ ⏎⏎ National el; less that you we and more"
+  },
+  "D29": {
+   "label": "prose vs structured text",
+   "reads_high": "in structured text (newlines, digits, symbols), where function words are sparse and at sentence or line ends. In ordinary text it is high in structured text (newlines, digits, symbols), where function words are sparse and at sentence or line ends (r with |h| divided out: markup +0.40, function words −0.36, sentence end +0.24).",
+   "reads_low": "in running prose, where function words are dense and mid-clause",
+   "push_toward_high": "writes more ‹doc-end› ⏎ ␣ : !⏎; less and the that to of",
+   "push_toward_low": "writes more and the that to of; less ‹doc-end› ⏎ ␣ : !⏎"
+  },
+  "D30": {
+   "label": "chatty vs institutional",
+   "reads_high": "in chatty first- and second-person text, at sentence or line ends and away from names. In ordinary text it is high in chatty first- and second-person text, at sentence or line ends and away from names (r with |h| divided out: I/you/! +0.34, sentence end +0.19, names −0.19).",
+   "reads_low": "in impersonal text, mid-clause and inside names",
+   "push_toward_high": "writes more you it I ! just; less and of research the University",
+   "push_toward_low": "writes more and of research the University; less you it I ! just"
+  },
+  "D31": {
+   "label": "break vs continue",
+   "reads_high": "at sentence or line ends, where function words are sparse and near sentence ends. In ordinary text it is high at sentence or line ends, where function words are sparse and near sentence ends (r with |h| divided out: sentence end +0.29, function words −0.22, tokens since sentence end −0.21), a spike at the token itself rather than a running count.",
+   "reads_low": "mid-clause, where function words are dense and deep into sentences",
+   "push_toward_high": "writes more ‹doc-end› ⏎ 1; less the well in as with",
+   "push_toward_low": "writes more the well in as with; less ‹doc-end› ⏎ 1"
+  },
+  "D32": {
+   "label": "chatty vs institutional",
+   "reads_high": "in chatty first- and second-person text and away from names. In ordinary text it is high in chatty first- and second-person text and away from names (r with |h| divided out: I/you/! +0.36, names −0.24).",
+   "reads_low": "in impersonal text and inside names",
+   "push_toward_high": "writes more it you ‹doc-end› just !; less and research by Center of",
+   "push_toward_low": "writes more and research by Center of; less it you ‹doc-end› just !"
+  },
+  "D33": {
+   "label": "break vs continue",
+   "reads_high": "at sentence or line ends, in structured text (newlines, digits, symbols) and where function words are sparse. In ordinary text it is high at sentence or line ends, in structured text (newlines, digits, symbols) and where function words are sparse (r with |h| divided out: sentence end +0.34, markup +0.27, function words −0.23), a spike at the token itself rather than a running count.",
+   "reads_low": "mid-clause, in running prose and where function words are dense",
+   "push_toward_high": "writes more the a it is to; less ‹doc-end› ) ⏎ (",
+   "push_toward_low": "writes more ‹doc-end› ) ⏎ (; less the a it is to"
+  },
+  "D34": {
+   "label": "predictability",
+   "reads_high": "where the next token is uncertain, in running prose and where function words are dense. In ordinary text it is high where the next token is uncertain, in running prose and where function words are dense (r with |h| divided out: entropy +0.41, markup −0.23, function words +0.21).",
+   "reads_low": "where the next token is predictable, in structured text (newlines, digits, symbols) and where function words are sparse",
+   "push_toward_high": "writes more the of in after against; less I . ␣ , -",
+   "push_toward_low": "writes more I . ␣ , -; less the of in after against"
+  },
+  "D35": {
+   "label": "unidentified",
+   "reads_high": "where the next token is uncertain, where function words are dense and in running prose. In ordinary text it is high where the next token is uncertain, where function words are dense and in running prose (r with |h| divided out: entropy +0.24, function words +0.17, markup −0.16).",
+   "reads_low": "where the next token is predictable, where function words are sparse and in structured text (newlines, digits, symbols)",
+   "push_toward_high": "writes more ‹doc-end› /; less . I was it a",
+   "push_toward_low": "writes more . I was it a; less ‹doc-end› /"
+  },
+  "D36": {
+   "label": "unidentified",
+   "reads_high": "right after expected tokens and deep into sentences. In ordinary text it is high right after expected tokens and deep into sentences (r with |h| divided out: surprisal −0.23, tokens since sentence end +0.22).",
+   "reads_low": "right after surprising tokens and near sentence ends",
+   "push_toward_high": "writes more ‹doc-end› .⏎ ⏎ .<; less , and the or ’m",
+   "push_toward_low": "writes more , and the or ’m; less ‹doc-end› .⏎ ⏎ .<"
+  }
+ },
+ "dir": "/mnt/models/homeo/autointerp/tasks"
+}

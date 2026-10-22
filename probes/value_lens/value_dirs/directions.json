@@ -1,0 +1,1686 @@
+{
+ "share_top": [
+  0.005859651696729526,
+  0.003862602858637844,
+  0.0029757627997454195,
+  0.0028875190887119343,
+  0.0023470875917711545,
+  0.002171196005289409,
+  0.0018943760777915528,
+  0.0018277712866801314,
+  0.0017660624605687718,
+  0.001718726888243703
+ ],
+ "directions": [
+  {
+   "share": 0.005859651696729526,
+   "split_half": 0.11909801906405415,
+   "sd": 0.013087552972137928,
+   "skew": 0.05855051800608635,
+   "frac_pos": 0.4700787401574803,
+   "jlens_pos": [
+    "fragistics",
+    " \u00d0\u00bf\u00d0\u00bb\u00d0\u00b0\u00d1\u0124\u00d1\u0126\u00d0\u00be\u00d1\u0122",
+    " \u00d0\u00b8\u00d0\u00b7\u00d0\u00b4\u00d0\u00b5\u00d0\u00bb",
+    " \u00d1\u0123\u00d0\u00be\u00d0\u00be\u00d0\u00b1\u00d1\u012b\u00d0\u00b5",
+    " \u00d0\u00be\u00d0\u00b7\u00d0\u00bd\u00d0\u00b0\u00d0\u00ba\u00d0\u00be\u00d0\u00bc",
+    "\u00d8\u00b5\u00d9\u0126\u00d8\u00a7\u00d8\u0143",
+    "apgolly",
+    " \u00d1\u0123\u00d0\u00bf\u00d0\u00b8\u00d1\u0123\u00d0\u00ba",
+    " \u00d0\u00ba\u00d0\u00b0\u00d1\u0124\u00d0\u00b5\u00d0\u00b3",
+    "tivos",
+    "\u00d0\u00b5\u00d1\u0126\u00d0\u00be\u00d0\u00bd",
+    " cient\u00c3\u0143"
+   ],
+   "jlens_neg": [
+    " Roll",
+    " roller",
+    " roll",
+    " classes",
+    " commercial",
+    " Palm",
+    "ypy",
+    " Colonial",
+    " Coul",
+    " Viv",
+    "\u00e5\u00b2\u0143",
+    "roll"
+   ],
+   "cur_top1pct": [
+    [
+     ",",
+     0.04945054945054945,
+     1.3047020057534922
+    ],
+    [
+     " the",
+     0.03365384615384615,
+     0.9431501725695832
+    ],
+    [
+     " and",
+     0.027472527472527472,
+     1.2636494352676402
+    ],
+    [
+     " of",
+     0.02197802197802198,
+     1.158474991144314
+    ],
+    [
+     " to",
+     0.019917582417582416,
+     0.9438897556367435
+    ],
+    [
+     " a",
+     0.017170329670329672,
+     1.0411944826007327
+    ]
+   ],
+   "next_top1pct": [
+    [
+     " the",
+     0.07348901098901099,
+     2.0551786558944514
+    ],
+    [
+     ",",
+     0.05563186813186813,
+     1.4669919001093126
+    ],
+    [
+     " and",
+     0.03365384615384615,
+     1.5426075105996364
+    ],
+    [
+     " to",
+     0.028846153846153848,
+     1.3696887940770486
+    ],
+    [
+     " of",
+     0.019230769230769232,
+     1.0111021565140061
+    ],
+    [
+     ".",
+     0.017857142857142856,
+     0.7145508464590126
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": -0.02068936824798584,
+    "band p~0.5 (L40)": 0.027589021250605583
+   },
+   "examples_pos": [
+    {
+     "w": 1089,
+     "s": 38,
+     "proj": 0.32653748989105225,
+     "text": "... salt water, chlorine and not combing (wide tooth comb)out your hair daily. Make sure to wash & condition[ your]| hair at least once a week"
+    },
+    {
+     "w": 185,
+     "s": 41,
+     "proj": 0.30517226457595825,
+     "text": ".... The Navy had named a crew member for planting a explosive timer into one of the powder bags. I went to college[,]| the Gulf War started and I"
+    },
+    {
+     "w": 355,
+     "s": 45,
+     "proj": 0.2338290512561798,
+     "text": "... has been making it forever! Use straight from the jar for pies, cookies, muffins etc. You can also use[ ]|1 cup of oil instead of"
+    },
+    {
+     "w": 265,
+     "s": 155,
+     "proj": 0.2255396544933319,
+     "text": "... correction of any preexisting caudal septal deformities were always completed before the nasal base narrowing.\\nThe mean width[ of]| the external alar wedge exc"
+    },
+    {
+     "w": 868,
+     "s": 42,
+     "proj": 0.19871579110622406,
+     "text": "... Borussia Dortmund ensured Ajax booked a berth in the last-16 as they finally broke down a resolute German side who[ played]| down to 10 men for"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 11,
+     "s": 132,
+     "proj": -0.317680299282074,
+     "text": "...Good cheer, Antonio! What, man, courage yet!\\nThe Jew shall have my flesh, blood, bones, and[ all]|,Craig1916:"
+    },
+    {
+     "w": 803,
+     "s": 41,
+     "proj": -0.2720080018043518,
+     "text": "... daughter of Georgia state representative Billy McKinney. Previously a resident of Jamaica, she ran and won a seat in the House[ of]| Representatives representing Georgia along side her"
+    },
+    {
+     "w": 36,
+     "s": 132,
+     "proj": -0.20298288762569427,
+     "text": "...8. JAVMA 217: 836\u00e2\u0122\u0135840.\\n- 23. Sacks JJ, Lock[wood]| R, Hornreicht J"
+    },
+    {
+     "w": 761,
+     "s": 117,
+     "proj": -0.16568070650100708,
+     "text": "... nose fell a-bleeding on Black-Monday last, at six o\u00e2\u0122\u013bclock i\u00e2\u0122\u013b the morning, falling[ out]| that year on Ash-Wed"
+    },
+    {
+     "w": 30,
+     "s": 63,
+     "proj": -0.1579824984073639,
+     "text": "... saving the sense that all are fast asleep.\u00e2\u0122\u013f\\nIt satisfied him that he could not have guessed the answer. Buddha referred to[ \u00e2\u0122\u013a]|The Grand Cross\u00e2\u0122\u013b, an extremely"
+    }
+   ]
+  },
+  {
+   "share": 0.003862602858637844,
+   "split_half": 0.8866206740479375,
+   "sd": 0.010626539587974548,
+   "skew": 347.32763671875,
+   "frac_pos": 0.47083989501312334,
+   "jlens_pos": [
+    "fragistics",
+    "$fdata",
+    "?\"\\n\\n\\n\\n",
+    ">manual",
+    "\u00d0\u00b6\u00d0\u00b4\u00d1\u012d\u00d0\u00b9",
+    "<LM",
+    " \u00e8\u00b4\u013f\u00e5\u00a3\u00b3\u00e6\u012b\u00be\u00e6\u012a\u00bf",
+    "\u00e7\u013b\u00be\u00e5\u00ba\u00a6\u00e7\u013b\u00be\u00e7\u00a7\u0133\u00e4\u00bc\u0123\u00e4\u00b8\u013c\u00e8\u00af\u012f\u00e6\u013f\u00a1\u00e6\u0140\u0123\u00e9\u0122\u0141\u00e5\u012a\u013d\u00e5\u00bb\u00ba\u00e9\u0122\u013c\u00e9\u0123\u0135",
+    "\u00e4\u00b8\u00aa\u00e4\u00b9\u012b\u00e9\u00a1\u00b9",
+    "EMPLARY",
+    ",UnityEngine",
+    "\u00e7\u00a3\u0127\u00e7\u00a4"
+   ],
+   "jlens_neg": [
+    "s",
+    " calm",
+    "ska",
+    "yka",
+    " codes",
+    " Coding",
+    "sak",
+    " amb",
+    " Cod",
+    " Fluid",
+    " Tr",
+    " caf"
+   ],
+   "cur_top1pct": [
+    [
+     ",",
+     0.03708791208791209,
+     0.9785265043151192
+    ],
+    [
+     " the",
+     0.030906593406593408,
+     0.8661583217475766
+    ],
+    [
+     " and",
+     0.028846153846153848,
+     1.3268319070310222
+    ],
+    [
+     ".",
+     0.026785714285714284,
+     1.0706487621140188
+    ],
+    [
+     " of",
+     0.016483516483516484,
+     0.8688562433582354
+    ],
+    [
+     " to",
+     0.013736263736263736,
+     0.6509584521632714
+    ]
+   ],
+   "next_top1pct": [
+    [
+     " the",
+     0.08516483516483517,
+     2.3817023675786166
+    ],
+    [
+     ",",
+     0.07692307692307693,
+     2.028433244595593
+    ],
+    [
+     " and",
+     0.027472527472527472,
+     1.259271437224193
+    ],
+    [
+     ".",
+     0.025412087912087912,
+     1.0168608199609026
+    ],
+    [
+     " to",
+     0.019917582417582416,
+     0.9457375006722477
+    ],
+    [
+     " of",
+     0.017857142857142856,
+     0.9388805739058628
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": -0.0017204387113451958,
+    "band p~0.5 (L40)": 0.024102088063955307
+   },
+   "examples_pos": [
+    {
+     "w": 11,
+     "s": 132,
+     "proj": 3.9291601181030273,
+     "text": "...Good cheer, Antonio! What, man, courage yet!\\nThe Jew shall have my flesh, blood, bones, and[ all]|,Craig1916:"
+    },
+    {
+     "w": 761,
+     "s": 33,
+     "proj": 0.07201799750328064,
+     "text": "... ill a-brewing towards my rest,\\nFor I did dream of money-bags to-night.\\nI beseech[ you]|, sir, go: my"
+    },
+    {
+     "w": 399,
+     "s": 57,
+     "proj": 0.06667790561914444,
+     "text": "... with relation into the marriage topic, you may have substantially to take into account when determining on when to host your wedding ceremony[ and]| the way you would like your"
+    },
+    {
+     "w": 1089,
+     "s": 38,
+     "proj": 0.06581158936023712,
+     "text": "... salt water, chlorine and not combing (wide tooth comb)out your hair daily. Make sure to wash & condition[ your]| hair at least once a week"
+    },
+    {
+     "w": 1062,
+     "s": 36,
+     "proj": 0.04794410616159439,
+     "text": "...for example, by having sexual fantasies, viewing porn). Sexual stimulation or sexual arousal causes the nerves going to the penis to[ release]| a chemical, nitric oxide"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 255,
+     "s": 37,
+     "proj": -0.14489950239658356,
+     "text": "...6: 72\\nFetching mad bounds, bellowing and neighing loud,\\nWhich is the hot condition of their[ blood]|;\\nIf they but hear perch"
+    },
+    {
+     "w": 464,
+     "s": 116,
+     "proj": -0.0774247795343399,
+     "text": "...Craig1916: 20\\nThan is thy strange-apparent cruelty;\\nAnd where thou now exact\u00e2\u0122\u013bst the[ penalty]|,\u00e2\u0122\u0136\\nWhich is a pound"
+    },
+    {
+     "w": 1062,
+     "s": 84,
+     "proj": -0.07379405200481415,
+     "text": "...MP), in the muscle of the corpora cavernosa. The cGMP causes the muscles of the corpora cavernosa to[ relax]|, and this allows more blood"
+    },
+    {
+     "w": 844,
+     "s": 72,
+     "proj": -0.05846637114882469,
+     "text": "...-Gobain Limited All rights reserved. Saint-Gobain Limited Registered. Office: Saint-Gobain House, Bin[ley]| Business Park, Coventry,"
+    },
+    {
+     "w": 196,
+     "s": 64,
+     "proj": -0.05462590977549553,
+     "text": "... breakdown allows sildenafil to accumulate in the body and potentially may increase the risk of side effects. Therefore, in men over [65]| years of age, in men"
+    }
+   ]
+  },
+  {
+   "share": 0.0029757627997454195,
+   "split_half": 0.3931326973571363,
+   "sd": 0.009326701983809471,
+   "skew": 279.2360534667969,
+   "frac_pos": 0.48578083989501314,
+   "jlens_pos": [
+    "eer",
+    "i",
+    "opro",
+    "eg",
+    " spell",
+    " slipping",
+    " Parents",
+    "oad",
+    "oma",
+    "parents",
+    "eah",
+    "oline"
+   ],
+   "jlens_neg": [
+    "\u00d8\u00b5\u00d9\u0126\u00d8\u00a7\u00d8\u0143",
+    "\u00d0\u00b7\u00d0\u00bd\u00d0\u00b0\u00d0\u00ba\u00d0\u00be\u00d0\u00bc",
+    "\u00d8\u00b7\u00d9\u0126\u00d8\u00a7\u00d9\u0124",
+    "\u00d0\u00be\u00d1\u0124\u00d0\u00b5\u00d0\u00ba\u00d0\u00b8",
+    "|RF",
+    "-Semit",
+    "\u00e6\u013a\u00af\u00e4\u00bb\u0122\u00e5\u00b9\u00ba",
+    " )\\n\\n\\n\\n\\n\\n\\n\\n",
+    "_tF",
+    "$fdata",
+    "\u00d9\u0124\u00d8\u00af\u00d9\u012c\u00d9\u0127",
+    "dem\u00c3\u00a1s"
+   ],
+   "cur_top1pct": [
+    [
+     " the",
+     0.05563186813186813,
+     1.5590849791456376
+    ],
+    [
+     ",",
+     0.05151098901098901,
+     1.3590645893265543
+    ],
+    [
+     ".",
+     0.029532967032967032,
+     1.1804588915616105
+    ],
+    [
+     " and",
+     0.024725274725274724,
+     1.137284491740876
+    ],
+    [
+     " a",
+     0.024725274725274724,
+     1.499320054945055
+    ],
+    [
+     " to",
+     0.021291208791208792,
+     1.0089856008530709
+    ]
+   ],
+   "next_top1pct": [
+    [
+     " the",
+     0.061126373626373624,
+     1.709447667052394
+    ],
+    [
+     ",",
+     0.059065934065934064,
+     1.5575469556716157
+    ],
+    [
+     " and",
+     0.026785714285714284,
+     1.2277896512935882
+    ],
+    [
+     " a",
+     0.02403846153846154,
+     1.454037182684315
+    ],
+    [
+     ".",
+     0.020604395604395604,
+     0.8244817459142453
+    ],
+    [
+     " of",
+     0.018543956043956044,
+     0.9749913652099346
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": -0.02216966822743416,
+    "band p~0.5 (L40)": 0.03150717914104462
+   },
+   "examples_pos": [
+    {
+     "w": 399,
+     "s": 57,
+     "proj": 3.207157611846924,
+     "text": "... with relation into the marriage topic, you may have substantially to take into account when determining on when to host your wedding ceremony[ and]| the way you would like your"
+    },
+    {
+     "w": 162,
+     "s": 45,
+     "proj": 0.0838385596871376,
+     "text": "... Coach at UMass Lowell. Ross joined her alma mater in August of 2013 during UMass Lowell\u00e2\u0122\u013bs inaugural Division[ ]|1 season in the America East"
+    },
+    {
+     "w": 396,
+     "s": 47,
+     "proj": 0.0673593059182167,
+     "text": "... Man On Earth: Tired of Running HERE.\\nYou can still listen to the new album at NPR\u00e2\u0122\u013bs First Listen.[ The]| stream will not last much longer"
+    },
+    {
+     "w": 255,
+     "s": 37,
+     "proj": 0.06418436020612717,
+     "text": "...6: 72\\nFetching mad bounds, bellowing and neighing loud,\\nWhich is the hot condition of their[ blood]|;\\nIf they but hear perch"
+    },
+    {
+     "w": 88,
+     "s": 65,
+     "proj": 0.061380401253700256,
+     "text": "... the photo. \"SO #Inlove. If you didn't get it the first time that is.\" The picture shows[ Brown]|'s hand resting on top of"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 1089,
+     "s": 38,
+     "proj": -0.24815979599952698,
+     "text": "... salt water, chlorine and not combing (wide tooth comb)out your hair daily. Make sure to wash & condition[ your]| hair at least once a week"
+    },
+    {
+     "w": 692,
+     "s": 61,
+     "proj": -0.10036555677652359,
+     "text": "...igans, vests and more related angora sweaters women like cashmer sweaters women, cashmer women sweaters[,]| ladies angora sweaters"
+    },
+    {
+     "w": 319,
+     "s": 48,
+     "proj": -0.08818010985851288,
+     "text": "..., we learn, belonged to her late father.\\nUpon returning to London, however \u00e2\u0122\u0136 the year is 1875 \u00e2\u0122\u0136[ Alice]| learns that her former suitor"
+    },
+    {
+     "w": 761,
+     "s": 117,
+     "proj": -0.08555461466312408,
+     "text": "... nose fell a-bleeding on Black-Monday last, at six o\u00e2\u0122\u013bclock i\u00e2\u0122\u013b the morning, falling[ out]| that year on Ash-Wed"
+    },
+    {
+     "w": 185,
+     "s": 41,
+     "proj": -0.07009616494178772,
+     "text": ".... The Navy had named a crew member for planting a explosive timer into one of the powder bags. I went to college[,]| the Gulf War started and I"
+    }
+   ]
+  },
+  {
+   "share": 0.0028875190887119343,
+   "split_half": 0.09051431498731893,
+   "sd": 0.009187386371195316,
+   "skew": 19.098459243774414,
+   "frac_pos": 0.47368110236220473,
+   "jlens_pos": [
+    "\u00d8\u00b5\u00d9\u0126\u00d8\u00a7\u00d8\u0143",
+    "\u00d0\u00b7\u00d0\u00bd\u00d0\u00b0\u00d0\u00ba\u00d0\u00be\u00d0\u00bc",
+    "dem\u00c3\u00a1s",
+    "umentos",
+    "\u00d8\u00b7\u00d9\u0126\u00d8\u00a7\u00d9\u0124",
+    "zazione",
+    " \u00d0\u00bd\u00d0\u00b5\u00d1\u0125\u00d0\u00b4\u00d0\u00b0",
+    " kt\u00c3\u00b3r",
+    "\u00d0\u00be\u00d0\u00bf\u00d1\u0122\u00d0\u00b8\u00d0\u00bc\u00d0\u00b5\u00d1\u0129",
+    "ticia",
+    "\u00d1\u0122\u00d0\u00b0\u00d0\u00b1\u00d0\u00b0\u00d1\u0124\u00d1\u012d",
+    "torno"
+   ],
+   "jlens_neg": [
+    "ereg",
+    "yard",
+    " creep",
+    " made",
+    " COD",
+    " Lat",
+    " dec",
+    " Federation",
+    " yard",
+    "roids",
+    " Water",
+    " Dip"
+   ],
+   "cur_top1pct": [
+    [
+     " the",
+     0.05563186813186813,
+     1.5590849791456376
+    ],
+    [
+     ",",
+     0.052884615384615384,
+     1.3953063117085958
+    ],
+    [
+     " and",
+     0.026785714285714284,
+     1.232058199385949
+    ],
+    [
+     " a",
+     0.025412087912087912,
+     1.5409678342490842
+    ],
+    [
+     " to",
+     0.021291208791208792,
+     1.0089856008530709
+    ],
+    [
+     " of",
+     0.020604395604395604,
+     1.0860703041977942
+    ]
+   ],
+   "next_top1pct": [
+    [
+     " the",
+     0.06318681318681318,
+     1.7670694985260702
+    ],
+    [
+     ",",
+     0.04326923076923077,
+     1.1409937000850208
+    ],
+    [
+     " a",
+     0.025412087912087912,
+     1.5371250216948473
+    ],
+    [
+     " and",
+     0.02403846153846154,
+     1.101862507571169
+    ],
+    [
+     " of",
+     0.021291208791208792,
+     1.1194345304262212
+    ],
+    [
+     " to",
+     0.016483516483516484,
+     0.7826793109011706
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": -0.010740048252046108,
+    "band p~0.5 (L40)": -0.014958720654249191
+   },
+   "examples_pos": [
+    {
+     "w": 399,
+     "s": 57,
+     "proj": 1.248124599456787,
+     "text": "... with relation into the marriage topic, you may have substantially to take into account when determining on when to host your wedding ceremony[ and]| the way you would like your"
+    },
+    {
+     "w": 1089,
+     "s": 38,
+     "proj": 0.6209961175918579,
+     "text": "... salt water, chlorine and not combing (wide tooth comb)out your hair daily. Make sure to wash & condition[ your]| hair at least once a week"
+    },
+    {
+     "w": 319,
+     "s": 48,
+     "proj": 0.19643479585647583,
+     "text": "..., we learn, belonged to her late father.\\nUpon returning to London, however \u00e2\u0122\u0136 the year is 1875 \u00e2\u0122\u0136[ Alice]| learns that her former suitor"
+    },
+    {
+     "w": 185,
+     "s": 41,
+     "proj": 0.1736030876636505,
+     "text": ".... The Navy had named a crew member for planting a explosive timer into one of the powder bags. I went to college[,]| the Gulf War started and I"
+    },
+    {
+     "w": 265,
+     "s": 155,
+     "proj": 0.13551783561706543,
+     "text": "... correction of any preexisting caudal septal deformities were always completed before the nasal base narrowing.\\nThe mean width[ of]| the external alar wedge exc"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 11,
+     "s": 132,
+     "proj": -0.2561100125312805,
+     "text": "...Good cheer, Antonio! What, man, courage yet!\\nThe Jew shall have my flesh, blood, bones, and[ all]|,Craig1916:"
+    },
+    {
+     "w": 88,
+     "s": 65,
+     "proj": -0.19654233753681183,
+     "text": "... the photo. \"SO #Inlove. If you didn't get it the first time that is.\" The picture shows[ Brown]|'s hand resting on top of"
+    },
+    {
+     "w": 162,
+     "s": 45,
+     "proj": -0.15183524787425995,
+     "text": "... Coach at UMass Lowell. Ross joined her alma mater in August of 2013 during UMass Lowell\u00e2\u0122\u013bs inaugural Division[ ]|1 season in the America East"
+    },
+    {
+     "w": 783,
+     "s": 86,
+     "proj": -0.1267075538635254,
+     "text": "... and the leg he had lost; and the Cape Horn fit; and the silver calabash; and what Captain Pe[leg]| had said of him, when"
+    },
+    {
+     "w": 803,
+     "s": 41,
+     "proj": -0.12417206168174744,
+     "text": "... daughter of Georgia state representative Billy McKinney. Previously a resident of Jamaica, she ran and won a seat in the House[ of]| Representatives representing Georgia along side her"
+    }
+   ]
+  },
+  {
+   "share": 0.0023470875917711545,
+   "split_half": 0.23719322221148204,
+   "sd": 0.008283502422273159,
+   "skew": 0.14417050778865814,
+   "frac_pos": 0.4768241469816273,
+   "jlens_pos": [
+    "\\n",
+    ",\\n",
+    ":\\n",
+    "ska",
+    "s",
+    ",",
+    ".\\n",
+    ".",
+    "spe",
+    " (",
+    "e",
+    ";"
+   ],
+   "jlens_neg": [
+    "oints",
+    ")\u00ef\u00bc\u013c\u00e3\u0122\u012c",
+    "oltip",
+    " zuletzt",
+    "\u00e5\u013e\u00a8\u00e5\u0128\u0127",
+    "\u00e6\u00a7",
+    ".\u00e2\u0122\u013f\\n\\n\\n\\n",
+    " kad",
+    "alej",
+    "\u00e5\u0124\u0127",
+    " YYS",
+    " \u00e8\u00b4\u013f\u00e5\u00a3\u00b3\u00e6\u012b\u00be\u00e6\u012a\u00bf"
+   ],
+   "cur_top1pct": [
+    [
+     ",",
+     0.06318681318681318,
+     1.6671192295739068
+    ],
+    [
+     ".",
+     0.04532967032967033,
+     1.8118671358852627
+    ],
+    [
+     " the",
+     0.03021978021978022,
+     0.8469103590420748
+    ],
+    [
+     " and",
+     0.02197802197802198,
+     1.0109195482141122
+    ],
+    [
+     " to",
+     0.017857142857142856,
+     0.8462459878122528
+    ],
+    [
+     ".\\n",
+     0.016483516483516484,
+     1.458305220615251
+    ]
+   ],
+   "next_top1pct": [
+    [
+     ",",
+     0.0625,
+     1.648102011233919
+    ],
+    [
+     " the",
+     0.054945054945054944,
+     1.5365821726313655
+    ],
+    [
+     " and",
+     0.034340659340659344,
+     1.5740892965302415
+    ],
+    [
+     ".",
+     0.02403846153846154,
+     0.9618953702332862
+    ],
+    [
+     " a",
+     0.017170329670329672,
+     1.0385979876316536
+    ],
+    [
+     " to",
+     0.014423076923076924,
+     0.6848443970385243
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": 0.004729031585156918,
+    "band p~0.5 (L40)": 0.017687106505036354
+   },
+   "examples_pos": [
+    {
+     "w": 1089,
+     "s": 38,
+     "proj": 0.1916664093732834,
+     "text": "... salt water, chlorine and not combing (wide tooth comb)out your hair daily. Make sure to wash & condition[ your]| hair at least once a week"
+    },
+    {
+     "w": 464,
+     "s": 116,
+     "proj": 0.18226945400238037,
+     "text": "...Craig1916: 20\\nThan is thy strange-apparent cruelty;\\nAnd where thou now exact\u00e2\u0122\u013bst the[ penalty]|,\u00e2\u0122\u0136\\nWhich is a pound"
+    },
+    {
+     "w": 11,
+     "s": 132,
+     "proj": 0.12143469601869583,
+     "text": "...Good cheer, Antonio! What, man, courage yet!\\nThe Jew shall have my flesh, blood, bones, and[ all]|,Craig1916:"
+    },
+    {
+     "w": 787,
+     "s": 78,
+     "proj": 0.1177883893251419,
+     "text": "...2010, the film revolves around Frank (Depp), an American tourist visiting Italy to mend a broken heart. El[ise]| (Jolie) is an"
+    },
+    {
+     "w": 555,
+     "s": 33,
+     "proj": 0.11533460021018982,
+     "text": "...2010, the film revolves around Frank (Depp), an American tourist visiting Italy to mend a broken heart. El[ise]| (Jolie) is an"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 265,
+     "s": 155,
+     "proj": -0.15761926770210266,
+     "text": "... correction of any preexisting caudal septal deformities were always completed before the nasal base narrowing.\\nThe mean width[ of]| the external alar wedge exc"
+    },
+    {
+     "w": 803,
+     "s": 41,
+     "proj": -0.1367345154285431,
+     "text": "... daughter of Georgia state representative Billy McKinney. Previously a resident of Jamaica, she ran and won a seat in the House[ of]| Representatives representing Georgia along side her"
+    },
+    {
+     "w": 471,
+     "s": 111,
+     "proj": -0.11914072930812836,
+     "text": "... Grace.\\nI am sorry for thee: thou art come to answer\\nA stony adversary, an inhuman wretch[Craig]|1916: 4"
+    },
+    {
+     "w": 1117,
+     "s": 60,
+     "proj": -0.11108968406915665,
+     "text": "... 594) Millhaven Road.\\n\\nwestside setup for raw bench , should it be in the same order : max[ effort]|, triceps, lats"
+    },
+    {
+     "w": 255,
+     "s": 46,
+     "proj": -0.10872912406921387,
+     "text": "... bellowing and neighing loud,\\nWhich is the hot condition of their blood;\\nIf they but hear perchance a[ trumpet]| sound,\\nOr any air of"
+    }
+   ]
+  },
+  {
+   "share": 0.002171196005289409,
+   "split_half": 0.6619438332800327,
+   "sd": 0.007967058569192886,
+   "skew": 5.221695423126221,
+   "frac_pos": 0.47803805774278213,
+   "jlens_pos": [
+    "zer",
+    " Depths",
+    " BI",
+    "\u00e7\u00ba\u00a2\u00e7\u00b3\u0138",
+    "ODO",
+    "vod",
+    "-ser",
+    " Rudy",
+    " stripper",
+    "/ph",
+    " gx",
+    " \u00ed\u013b\u0136"
+   ],
+   "jlens_neg": [
+    "tiza",
+    "torno",
+    " ejerci",
+    "turas",
+    "tamos",
+    "dem\u00c3\u00a1s",
+    "_tE",
+    "fragistics",
+    "...\\n\\n\\n\\n\\n\\n",
+    "presentar",
+    "tamento",
+    "zazione"
+   ],
+   "cur_top1pct": [
+    [
+     ",",
+     0.048763736263736264,
+     1.2865811445624715
+    ],
+    [
+     " the",
+     0.04326923076923077,
+     1.212621650446607
+    ],
+    [
+     ".",
+     0.02815934065934066,
+     1.125553826837815
+    ],
+    [
+     " and",
+     0.020604395604395604,
+     0.94773707645073
+    ],
+    [
+     " of",
+     0.014423076923076924,
+     0.7602492129384559
+    ],
+    [
+     " ",
+     0.013736263736263736,
+     1.0977997839612337
+    ]
+   ],
+   "next_top1pct": [
+    [
+     ",",
+     0.059752747252747256,
+     1.5756579667840767
+    ],
+    [
+     " the",
+     0.05837912087912088,
+     1.632618558420826
+    ],
+    [
+     " and",
+     0.03021978021978022,
+     1.3851985809466125
+    ],
+    [
+     ".",
+     0.0260989010989011,
+     1.0443435448247107
+    ],
+    [
+     " to",
+     0.021291208791208792,
+     1.0109607765806787
+    ],
+    [
+     " of",
+     0.017857142857142856,
+     0.9388805739058628
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": -0.02077927067875862,
+    "band p~0.5 (L40)": -0.009312214329838753
+   },
+   "examples_pos": [
+    {
+     "w": 1089,
+     "s": 38,
+     "proj": 0.733646810054779,
+     "text": "... salt water, chlorine and not combing (wide tooth comb)out your hair daily. Make sure to wash & condition[ your]| hair at least once a week"
+    },
+    {
+     "w": 319,
+     "s": 48,
+     "proj": 0.2760660946369171,
+     "text": "..., we learn, belonged to her late father.\\nUpon returning to London, however \u00e2\u0122\u0136 the year is 1875 \u00e2\u0122\u0136[ Alice]| learns that her former suitor"
+    },
+    {
+     "w": 88,
+     "s": 65,
+     "proj": 0.12087887525558472,
+     "text": "... the photo. \"SO #Inlove. If you didn't get it the first time that is.\" The picture shows[ Brown]|'s hand resting on top of"
+    },
+    {
+     "w": 23,
+     "s": 72,
+     "proj": 0.12062200903892517,
+     "text": "...cient - they're radically current. The ending is apropot.\\nThanks to @TedManger for the recommendation.\\n\\n[Buy]| Tuvalu Flags\\nFlag of"
+    },
+    {
+     "w": 1024,
+     "s": 46,
+     "proj": 0.11663921922445297,
+     "text": "... 6'8 med heavy paired with a shimano chronarch e series reel absolutely unbelievable buying another one soon!\\nFrom[:]| Garrett: MI\\nComments:"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 185,
+     "s": 41,
+     "proj": -0.22422157227993011,
+     "text": ".... The Navy had named a crew member for planting a explosive timer into one of the powder bags. I went to college[,]| the Gulf War started and I"
+    },
+    {
+     "w": 265,
+     "s": 155,
+     "proj": -0.18025407195091248,
+     "text": "... correction of any preexisting caudal septal deformities were always completed before the nasal base narrowing.\\nThe mean width[ of]| the external alar wedge exc"
+    },
+    {
+     "w": 196,
+     "s": 111,
+     "proj": -0.15550018846988678,
+     "text": "... protease inhibitors, the doctor will initiate sildenafil at a lower dose (25 mg) to avoid accumulation of sildenafil in the[ body]|. A protease inhibitor rit"
+    },
+    {
+     "w": 866,
+     "s": 104,
+     "proj": -0.15223455429077148,
+     "text": "...ute down to 6.25% and use on rights-of-ways, non-crop, and industrial lands ([St]|. Gabriel Labs Burn Out Weed"
+    },
+    {
+     "w": 1089,
+     "s": 44,
+     "proj": -0.14797565340995789,
+     "text": "... combing (wide tooth comb)out your hair daily. Make sure to wash & condition your hair at least once a[ week]|, twice a week is better"
+    }
+   ]
+  },
+  {
+   "share": 0.0018943760777915528,
+   "split_half": 0.24325013260088246,
+   "sd": 0.007441859692335129,
+   "skew": 0.8663367033004761,
+   "frac_pos": 0.477244094488189,
+   "jlens_pos": [
+    " and",
+    " of",
+    ",",
+    " circ",
+    ".",
+    " (",
+    " water",
+    "-of",
+    " or",
+    ".\\n",
+    "/",
+    " means"
+   ],
+   "jlens_neg": [
+    " \u00d0\u00bd\u00d0\u00b5\u00d0\u00b2\u00d0\u00b5\u00d1\u0122\u00d0\u00be",
+    "tiza",
+    " \u00d1\u0123\u00d0\u00be\u00d0\u00be\u00d0\u00b1\u00d1\u012b\u00d0\u00b5",
+    " \u00d0\u00bf\u00d0\u00bb\u00d0\u00b0\u00d1\u0124\u00d1\u0126\u00d0\u00be\u00d1\u0122",
+    "\u00d0\u00b7\u00d0\u00bd\u00d0\u00b0\u00d0\u00ba\u00d0\u00be\u00d0\u00bc",
+    "-wsj",
+    " \u00d0\u00be\u00d1\u0122\u00d0\u00b8\u00d0\u00b3\u00d0\u00b8\u00d0\u00bd",
+    "\u00e4\u00b8\u00aa\u00e4\u00b9\u012b\u00e9\u00a1\u00b9",
+    " \u00d0\u00bf\u00d0\u00be\u00d0\u00b7\u00d0\u00b2\u00d0\u00be\u00d0\u00bd\u00d0\u00b8",
+    " \u00e8\u00b4\u013f\u00e5\u00a3\u00b3\u00e6\u012b\u00be\u00e6\u012a\u00bf",
+    " \u00d0\u00b0\u00d0\u00ba\u00d0\u00b0\u00d0\u00b4\u00d0\u00b5\u00d0\u00bc",
+    " \u00d0\u00be\u00d0\u00b7\u00d0\u00bd\u00d0\u00b0\u00d0\u00ba\u00d0\u00be\u00d0\u00bc"
+   ],
+   "cur_top1pct": [
+    [
+     ",",
+     0.04395604395604396,
+     1.1597351162253264
+    ],
+    [
+     " the",
+     0.034340659340659344,
+     0.9623981352750851
+    ],
+    [
+     ".",
+     0.02815934065934066,
+     1.125553826837815
+    ],
+    [
+     " and",
+     0.017857142857142856,
+     0.821372132923966
+    ],
+    [
+     " a",
+     0.015796703296703296,
+     0.957898923992674
+    ],
+    [
+     " to",
+     0.015796703296703296,
+     0.7486022199877621
+    ]
+   ],
+   "next_top1pct": [
+    [
+     " the",
+     0.06524725274725275,
+     1.8246913299997467
+    ],
+    [
+     ",",
+     0.06318681318681318,
+     1.6662130223463796
+    ],
+    [
+     " and",
+     0.026785714285714284,
+     1.2277896512935882
+    ],
+    [
+     " to",
+     0.021291208791208792,
+     1.0109607765806787
+    ],
+    [
+     " in",
+     0.021291208791208792,
+     1.7716379532417268
+    ],
+    [
+     ".",
+     0.019917582417582416,
+     0.7969990210504371
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": -0.017520423978567123,
+    "band p~0.5 (L40)": -0.006351182237267494
+   },
+   "examples_pos": [
+    {
+     "w": 196,
+     "s": 111,
+     "proj": 0.3744443953037262,
+     "text": "... protease inhibitors, the doctor will initiate sildenafil at a lower dose (25 mg) to avoid accumulation of sildenafil in the[ body]|. A protease inhibitor rit"
+    },
+    {
+     "w": 464,
+     "s": 116,
+     "proj": 0.2326776087284088,
+     "text": "...Craig1916: 20\\nThan is thy strange-apparent cruelty;\\nAnd where thou now exact\u00e2\u0122\u013bst the[ penalty]|,\u00e2\u0122\u0136\\nWhich is a pound"
+    },
+    {
+     "w": 265,
+     "s": 155,
+     "proj": 0.16594238579273224,
+     "text": "... correction of any preexisting caudal septal deformities were always completed before the nasal base narrowing.\\nThe mean width[ of]| the external alar wedge exc"
+    },
+    {
+     "w": 355,
+     "s": 45,
+     "proj": 0.12632781267166138,
+     "text": "... has been making it forever! Use straight from the jar for pies, cookies, muffins etc. You can also use[ ]|1 cup of oil instead of"
+    },
+    {
+     "w": 582,
+     "s": 131,
+     "proj": 0.12091001123189926,
+     "text": "...22 and take the second quarterback, Johnny Manziel of Texas A&M. The last pick of the first round, held[ by]| the Super Bowl champion Seahawks,"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 803,
+     "s": 41,
+     "proj": -0.2509571313858032,
+     "text": "... daughter of Georgia state representative Billy McKinney. Previously a resident of Jamaica, she ran and won a seat in the House[ of]| Representatives representing Georgia along side her"
+    },
+    {
+     "w": 152,
+     "s": 96,
+     "proj": -0.13508862257003784,
+     "text": "... lack of hERG in the brain, rather than the heart.\\nBPoD stands for Biomedical Picture of the[ Day]|. Managed by the MRC"
+    },
+    {
+     "w": 88,
+     "s": 65,
+     "proj": -0.12628386914730072,
+     "text": "... the photo. \"SO #Inlove. If you didn't get it the first time that is.\" The picture shows[ Brown]|'s hand resting on top of"
+    },
+    {
+     "w": 955,
+     "s": 51,
+     "proj": -0.12314344197511673,
+     "text": "... device security\\nCampbell, CALIFORNIA, February 7, 2013\u00e2\u0122\u0136Market research firm Infon[etics]| Research released excerpts from its "
+    },
+    {
+     "w": 1089,
+     "s": 38,
+     "proj": -0.11258770525455475,
+     "text": "... salt water, chlorine and not combing (wide tooth comb)out your hair daily. Make sure to wash & condition[ your]| hair at least once a week"
+    }
+   ]
+  },
+  {
+   "share": 0.0018277712866801314,
+   "split_half": 0.7693611503326188,
+   "sd": 0.0073097688145935535,
+   "skew": 209.81741333007812,
+   "frac_pos": 0.47578740157480315,
+   "jlens_pos": [
+    "_mE",
+    " \u00e8\u00b4\u013f\u00e5\u00a3\u00b3\u00e6\u012b\u00be\u00e6\u012a\u00bf",
+    "_tD",
+    "_IList",
+    "_mD",
+    " kt\u00c3\u00b3r",
+    "actionDate",
+    "_tA",
+    "spNet",
+    "\u00d0\u00be\u00d1\u0124\u00d0\u00b5\u00d0\u00ba\u00d0\u00b8",
+    "GuidId",
+    "ButtonTitles"
+   ],
+   "jlens_neg": [
+    " \\n\\n",
+    ".\\n\\n",
+    " and",
+    " \\n",
+    ".",
+    " range",
+    "<|endoftext|>",
+    " af",
+    ".\\n",
+    " pro",
+    " f",
+    " comb"
+   ],
+   "cur_top1pct": [
+    [
+     ".",
+     0.036401098901098904,
+     1.45498421518059
+    ],
+    [
+     ",",
+     0.036401098901098904,
+     0.9604056431240985
+    ],
+    [
+     " the",
+     0.023351648351648352,
+     0.6544307319870578
+    ],
+    [
+     " and",
+     0.018543956043956044,
+     0.852963368805657
+    ],
+    [
+     "\\n",
+     0.011675824175824176,
+     1.840985260676485
+    ],
+    [
+     " to",
+     0.01098901098901099,
+     0.5207667617306172
+    ]
+   ],
+   "next_top1pct": [
+    [
+     ",",
+     0.09546703296703296,
+     2.51743054463203
+    ],
+    [
+     " the",
+     0.06456043956043957,
+     1.8054840528418545
+    ],
+    [
+     " and",
+     0.046703296703296704,
+     2.140761443281128
+    ],
+    [
+     ".",
+     0.027472527472527472,
+     1.0993089945523271
+    ],
+    [
+     " a",
+     0.022664835164835164,
+     1.3709493436737827
+    ],
+    [
+     " ",
+     0.020604395604395604,
+     1.6430904711726628
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": -0.018637359142303467,
+    "band p~0.5 (L40)": 0.017769241705536842
+   },
+   "examples_pos": [
+    {
+     "w": 196,
+     "s": 111,
+     "proj": 2.273895263671875,
+     "text": "... protease inhibitors, the doctor will initiate sildenafil at a lower dose (25 mg) to avoid accumulation of sildenafil in the[ body]|. A protease inhibitor rit"
+    },
+    {
+     "w": 1061,
+     "s": 55,
+     "proj": 0.5211697816848755,
+     "text": "... protease inhibitors, the doctor will initiate sildenafil at a lower dose (25 mg) to avoid accumulation of sildenafil in the[ body]|. A protease inhibitor rit"
+    },
+    {
+     "w": 1089,
+     "s": 44,
+     "proj": 0.3216884732246399,
+     "text": "... combing (wide tooth comb)out your hair daily. Make sure to wash & condition your hair at least once a[ week]|, twice a week is better"
+    },
+    {
+     "w": 787,
+     "s": 78,
+     "proj": 0.08808130025863647,
+     "text": "...2010, the film revolves around Frank (Depp), an American tourist visiting Italy to mend a broken heart. El[ise]| (Jolie) is an"
+    },
+    {
+     "w": 1195,
+     "s": 71,
+     "proj": 0.08542196452617645,
+     "text": "... card any time a student enters a credit card. A bystander would no longer be able to simply copy the credit card[ number]| and expiration date from the screen"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 11,
+     "s": 37,
+     "proj": -0.16516390442848206,
+     "text": "... decrees of Venice.\\nI stand for judgment: answer; shall I have it?\\nUpon my power I may dismiss this[ court]|,Craig1916:"
+    },
+    {
+     "w": 464,
+     "s": 116,
+     "proj": -0.12743277847766876,
+     "text": "...Craig1916: 20\\nThan is thy strange-apparent cruelty;\\nAnd where thou now exact\u00e2\u0122\u013bst the[ penalty]|,\u00e2\u0122\u0136\\nWhich is a pound"
+    },
+    {
+     "w": 733,
+     "s": 130,
+     "proj": -0.11497552692890167,
+     "text": "..., that are too sterile for luxe traditional model inside design. Interior design additionally includes the specification of furnishings, fixtures, and[ finishes]|, and coordinating their set up"
+    },
+    {
+     "w": 828,
+     "s": 134,
+     "proj": -0.10093078017234802,
+     "text": "... carbohydrate: the total number of carbohydrates, the amount of dietary fiber, and sugars.\\n- Total Carbohydrate: This[ number]|, listed in grams, combines"
+    },
+    {
+     "w": 1179,
+     "s": 39,
+     "proj": -0.09694558382034302,
+     "text": "...ese Foreign Ministry said that visiting Israel was a crime and the Sudanese Refugees Commissioner claimed that Sudanese refugees in Israel[ wanted]| to \"implement Zionism agendas"
+    }
+   ]
+  },
+  {
+   "share": 0.0017660624605687718,
+   "split_half": 0.21771010021458326,
+   "sd": 0.007185012102127075,
+   "skew": 5.680056095123291,
+   "frac_pos": 0.48361548556430445,
+   "jlens_pos": [
+    " sincerity",
+    "\u00e5\u012b\u012f\u00e4\u00bb\u00bb",
+    " thin",
+    " solitary",
+    " fuzzy",
+    " sideline",
+    " absence",
+    "Ep",
+    "_past",
+    " transitioning",
+    " outlet",
+    " presence"
+   ],
+   "jlens_neg": [
+    "MESS",
+    "GameObjectWithTag",
+    "\u00e5\u00b8\u00ae\u00e5\u012c\u00a9\u00e4\u00bd\u0142",
+    "chin",
+    "\u00e7\u013e\u0141\u00e6\u0143\u00a3\u00e5\u0123\u013c\u00e5\u012a\u00b0",
+    "\u00ec\u0137\u00bc",
+    "xec",
+    "otch",
+    "mania",
+    "/WebAPI",
+    "\u00e6\u013f\u00a5\u00e5\u00bd\u00a2\u00e5\u00ae\u00b9",
+    "ingo"
+   ],
+   "cur_top1pct": [
+    [
+     ",",
+     0.05631868131868132,
+     1.4859106176636996
+    ],
+    [
+     ".",
+     0.052884615384615384,
+     2.11384499186614
+    ],
+    [
+     " and",
+     0.0260989010989011,
+     1.2004669635042582
+    ],
+    [
+     ".\\n",
+     0.019230769230769232,
+     1.701356090717793
+    ],
+    [
+     "\\n",
+     0.016483516483516484,
+     2.5990380150726846
+    ],
+    [
+     " the",
+     0.012362637362637362,
+     0.34646332869903057
+    ]
+   ],
+   "next_top1pct": [
+    [
+     ",",
+     0.08104395604395605,
+     2.1370993112703567
+    ],
+    [
+     " the",
+     0.05563186813186813,
+     1.5557894497892575
+    ],
+    [
+     ".",
+     0.03914835164835165,
+     1.566515317237066
+    ],
+    [
+     " and",
+     0.02815934065934066,
+     1.290753223154798
+    ],
+    [
+     " to",
+     0.02197802197802198,
+     1.0435724145348941
+    ],
+    [
+     " a",
+     0.017170329670329672,
+     1.0385979876316536
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": 0.0019840796012431383,
+    "band p~0.5 (L40)": -0.00730088958516717
+   },
+   "examples_pos": [
+    {
+     "w": 196,
+     "s": 111,
+     "proj": 0.7762624025344849,
+     "text": "... protease inhibitors, the doctor will initiate sildenafil at a lower dose (25 mg) to avoid accumulation of sildenafil in the[ body]|. A protease inhibitor rit"
+    },
+    {
+     "w": 1089,
+     "s": 38,
+     "proj": 0.3506281077861786,
+     "text": "... salt water, chlorine and not combing (wide tooth comb)out your hair daily. Make sure to wash & condition[ your]| hair at least once a week"
+    },
+    {
+     "w": 1061,
+     "s": 55,
+     "proj": 0.18163412809371948,
+     "text": "... protease inhibitors, the doctor will initiate sildenafil at a lower dose (25 mg) to avoid accumulation of sildenafil in the[ body]|. A protease inhibitor rit"
+    },
+    {
+     "w": 733,
+     "s": 130,
+     "proj": 0.1677185297012329,
+     "text": "..., that are too sterile for luxe traditional model inside design. Interior design additionally includes the specification of furnishings, fixtures, and[ finishes]|, and coordinating their set up"
+    },
+    {
+     "w": 1179,
+     "s": 39,
+     "proj": 0.14780303835868835,
+     "text": "...ese Foreign Ministry said that visiting Israel was a crime and the Sudanese Refugees Commissioner claimed that Sudanese refugees in Israel[ wanted]| to \"implement Zionism agendas"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 464,
+     "s": 116,
+     "proj": -0.5472711324691772,
+     "text": "...Craig1916: 20\\nThan is thy strange-apparent cruelty;\\nAnd where thou now exact\u00e2\u0122\u013bst the[ penalty]|,\u00e2\u0122\u0136\\nWhich is a pound"
+    },
+    {
+     "w": 1089,
+     "s": 44,
+     "proj": -0.3152781128883362,
+     "text": "... combing (wide tooth comb)out your hair daily. Make sure to wash & condition your hair at least once a[ week]|, twice a week is better"
+    },
+    {
+     "w": 265,
+     "s": 155,
+     "proj": -0.20454999804496765,
+     "text": "... correction of any preexisting caudal septal deformities were always completed before the nasal base narrowing.\\nThe mean width[ of]| the external alar wedge exc"
+    },
+    {
+     "w": 931,
+     "s": 87,
+     "proj": -0.17319393157958984,
+     "text": "... is the primary fundraising event for LSR, providing critical funding for their programs supporting those harmed by domestic and sexual violence as[ well]| as elder abuse. \u00e2\u0122\u013eS"
+    },
+    {
+     "w": 427,
+     "s": 150,
+     "proj": -0.13299976289272308,
+     "text": "... meet pressing environmental challenges, to deliver comfort, convenience and electrical protection and control. General Electric (NYSE: GE) brings[ imagination]| to work, selling products under"
+    }
+   ]
+  },
+  {
+   "share": 0.001718726888243703,
+   "split_half": 0.3620056343024777,
+   "sd": 0.007088256534188986,
+   "skew": 6.160074234008789,
+   "frac_pos": 0.4790419947506562,
+   "jlens_pos": [
+    "\u00e4\u00bb\u012d\u00e7\u00bb\u012f\u00e8\u00af\u00b4",
+    "obar",
+    "\u00e6\u013e\u012b\u00e5\u00bf\u0125",
+    " rein",
+    "asca",
+    "\u00e5\u012f\u0130\u00e5\u00b1\u00b1",
+    " Quar",
+    " Proud",
+    " Fork",
+    " Einsch",
+    ".volley",
+    "\u00e5\u012f\u013c\u00e6\u0138\u0129"
+   ],
+   "jlens_neg": [
+    "\u00e5\u0123\u0129\u00e7\u013c\u0126",
+    "\u00e5\u00af\u00b9\u00e5\u0131\u00a3",
+    "\u00e6\u00b2\u00bb",
+    " fetisch",
+    "bullet",
+    "amo",
+    "&view",
+    " kav",
+    "\u00d9\u0128\u00d9\u012c\u00d9\u0128",
+    " Gegen",
+    "ismatic",
+    "ripper"
+   ],
+   "cur_top1pct": [
+    [
+     ",",
+     0.05357142857142857,
+     1.4134271728996166
+    ],
+    [
+     ".",
+     0.03708791208791209,
+     1.4824367475424878
+    ],
+    [
+     " the",
+     0.03296703296703297,
+     0.9239022098640816
+    ],
+    [
+     " and",
+     0.032280219780219783,
+     1.4847880864394774
+    ],
+    [
+     " a",
+     0.01510989010989011,
+     0.9162511446886447
+    ],
+    [
+     " to",
+     0.01510989010989011,
+     0.7160542973795986
+    ]
+   ],
+   "next_top1pct": [
+    [
+     " the",
+     0.06799450549450549,
+     1.9015204386313147
+    ],
+    [
+     ",",
+     0.059752747252747256,
+     1.5756579667840767
+    ],
+    [
+     " and",
+     0.027472527472527472,
+     1.259271437224193
+    ],
+    [
+     " to",
+     0.021291208791208792,
+     1.0109607765806787
+    ],
+    [
+     ".",
+     0.019917582417582416,
+     0.7969990210504371
+    ],
+    [
+     " in",
+     0.018543956043956044,
+     1.543039507662149
+    ]
+   ],
+   "cos": {
+    "temperature (S2(c), L40)": -0.007387564517557621,
+    "band p~0.5 (L40)": -0.007249992340803146
+   },
+   "examples_pos": [
+    {
+     "w": 1089,
+     "s": 38,
+     "proj": 0.650620698928833,
+     "text": "... salt water, chlorine and not combing (wide tooth comb)out your hair daily. Make sure to wash & condition[ your]| hair at least once a week"
+    },
+    {
+     "w": 464,
+     "s": 116,
+     "proj": 0.3493470549583435,
+     "text": "...Craig1916: 20\\nThan is thy strange-apparent cruelty;\\nAnd where thou now exact\u00e2\u0122\u013bst the[ penalty]|,\u00e2\u0122\u0136\\nWhich is a pound"
+    },
+    {
+     "w": 803,
+     "s": 41,
+     "proj": 0.16130030155181885,
+     "text": "... daughter of Georgia state representative Billy McKinney. Previously a resident of Jamaica, she ran and won a seat in the House[ of]| Representatives representing Georgia along side her"
+    },
+    {
+     "w": 943,
+     "s": 131,
+     "proj": 0.1112976223230362,
+     "text": "... met all the twins in the world yet either.\"\\nIt was strange and somehow frightening to have someone know their secret. They[ slept]| curled around one another that night"
+    },
+    {
+     "w": 841,
+     "s": 57,
+     "proj": 0.10434070229530334,
+     "text": "... or at least watch what your child is doing. Test out the games, then join with your child and have some fun[.]| Make sure to inquire about the"
+    }
+   ],
+   "examples_neg": [
+    {
+     "w": 1179,
+     "s": 39,
+     "proj": -0.2717282772064209,
+     "text": "...ese Foreign Ministry said that visiting Israel was a crime and the Sudanese Refugees Commissioner claimed that Sudanese refugees in Israel[ wanted]| to \"implement Zionism agendas"
+    },
+    {
+     "w": 787,
+     "s": 78,
+     "proj": -0.17149733006954193,
+     "text": "...2010, the film revolves around Frank (Depp), an American tourist visiting Italy to mend a broken heart. El[ise]| (Jolie) is an"
+    },
+    {
+     "w": 619,
+     "s": 148,
+     "proj": -0.13505026698112488,
+     "text": "... The authors report research that considers writing in all levels of schooling, in science, in the public sphere, and in the[ workplace]|, as well as the relationship"
+    },
+    {
+     "w": 692,
+     "s": 49,
+     "proj": -0.13497677445411682,
+     "text": "... from women's clothing & accessories, pullovers, cardigans, vests and more related angora sweaters women[ like]| cashmer sweaters women,"
+    },
+    {
+     "w": 527,
+     "s": 105,
+     "proj": -0.1336667835712433,
+     "text": "... organization, for charitable, educational, literary and scientific research purposes to advance the art and science of planning and the activity of[ planning]| -- physical, economic and social"
+    }
+   ]
+  }
+ ]
+}

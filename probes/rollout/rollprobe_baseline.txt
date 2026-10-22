@@ -1,0 +1,23 @@
+213704 rows; train 149114, val 23002, test 41588; targets entropy, surprisal, entropy prev, excess surprisal, log rank, log context (3 s)
+  lambda 1: val R2 entropy 0.8878, surprisal 0.8518, entropy prev 0.7955, excess surprisal 0.6122, log rank 0.8121, log context 0.9628 (617 s)
+  lambda 10: val R2 entropy 0.8722, surprisal 0.8435, entropy prev 0.7878, excess surprisal 0.6074, log rank 0.8062, log context 0.9310 (1218 s)
+  lambda 100: val R2 entropy 0.7799, surprisal 0.7584, entropy prev 0.7026, excess surprisal 0.4819, log rank 0.7191, log context 0.7660 (1818 s)
+  lambda 1000: val R2 entropy 0.4610, surprisal 0.4180, entropy prev 0.3929, excess surprisal 0.2081, log rank 0.3963, log context 0.3352 (2426 s)
+  lambda 0.1: val R2 entropy 0.8642, surprisal 0.8159, entropy prev 0.7489, excess surprisal 0.5122, log rank 0.7642, log context 0.9663 (3029 s)
+  lambda 0.01: val R2 entropy 0.8093, surprisal 0.7439, entropy prev 0.6454, excess surprisal 0.3100, log rank 0.6636, log context 0.9606 (3636 s)
+
+self-check, raw weights vs kernel predictions (max |diff|): entropy 1.8e-04, surprisal 3.1e-04, entropy prev 2.3e-04, excess surprisal 3.1e-04, log rank 1.7e-04, log context 3.7e-04
+test R2 of the all-layer probe (within-sequence in parentheses), strength chosen on val:
+  entropy   0.885 (0.871)  lambda 1
+  surprisal 0.850 (0.843)  lambda 1
+  entropy prev 0.792 (0.767)  lambda 1
+  excess surprisal 0.614 (0.617)  lambda 1
+  log rank  0.808 (0.802)  lambda 1
+  log context 0.969 (0.957)  lambda 0.1
+by depth / group:
+  entropy: depth 16-64 0.872, depth 64-256 0.880, depth 256-1024 0.888, depth 1024-2048 0.888, en rollout 0.890, en pretrain 0.863, zh rollout 0.888, zh pretrain 0.864, other rollout 0.883, other pretrain 0.864
+  surprisal: depth 16-64 0.834, depth 64-256 0.844, depth 256-1024 0.854, depth 1024-2048 0.856, en rollout 0.866, en pretrain 0.808, zh rollout 0.862, zh pretrain 0.806, other rollout 0.853, other pretrain 0.770
+  entropy prev: depth 16-64 0.770, depth 64-256 0.783, depth 256-1024 0.797, depth 1024-2048 0.800, en rollout 0.796, en pretrain 0.752, zh rollout 0.808, zh pretrain 0.775, other rollout 0.801, other pretrain 0.749
+  excess surprisal: depth 16-64 0.603, depth 64-256 0.602, depth 256-1024 0.624, depth 1024-2048 0.610, en rollout 0.651, en pretrain 0.562, zh rollout 0.604, zh pretrain 0.530, other rollout 0.600, other pretrain 0.450
+  log rank: depth 16-64 0.791, depth 64-256 0.803, depth 256-1024 0.814, depth 1024-2048 0.810, en rollout 0.823, en pretrain 0.762, zh rollout 0.817, zh pretrain 0.779, other rollout 0.813, other pretrain 0.723
+  log context: depth 16-64 0.597, depth 64-256 0.754, depth 256-1024 0.805, depth 1024-2048 -0.711, en rollout 0.971, en pretrain 0.972, zh rollout 0.963, zh pretrain 0.965, other rollout 0.963, other pretrain 0.964

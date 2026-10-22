@@ -1,0 +1,37 @@
+20814 test pairs (15690 rollout, 5124 natural)
+
+forecast change df = f(s+1) - f(s) on the test pairs
+probe                        target     sd f  sd df rel df  r(df, surprise-H)  r(df, y - f_prev)  corrected  var share of K df in TD
+lambda 100                   next 32   0.585  0.175   0.91              0.252              0.161      0.151                     0.71
+lambda 100                   next 128  0.499  0.137   0.90              0.211              0.116      0.105                     0.94
+val-best (lambda 10 / 31.6)  next 32   0.734  0.240   0.55              0.140              0.203      0.132                     0.84
+val-best (lambda 10 / 31.6)  next 128  0.627  0.190   0.51              0.099              0.171      0.095                     0.97
+  by kind (lambda 100, next 128): rollout: corr_df_excess_surprisal: 0.218, rollout: corr_df_error_of_previous_forecast: 0.114, pretrain: corr_df_excess_surprisal: 0.188, pretrain: corr_df_error_of_previous_forecast: 0.129
+
+largest rises (expects harder text), lambda 100, next 128 (context | token read | what followed):
+  df +1.130 rollout  cmn_Hani pos 245: ...'滴干煸豆角喝， sushi入了哈根Alice，\n\n\n\n\n\n突然隆重进入了我们滴生活！<br/>\n<br' | '/>\n' | '夜里一个人入眠时会仔细的聆听隔壁小熊崽'
+  df +1.017 rollout  hin_Deva pos 345: ...'र ब्रेइल टेपर पर भी छप सकती ह' | '�' | '� - यहाँ तक कि'
+  df +0.998 rollout  cmn_Hani pos 109: ...'="https://ypthjv.2h6w.net">快乐十分介绍</a></b><br/>\n<br' | '/>\n' | '吃的再来得不挑口就能就地取材了，咋'
+  df +0.983 rollout  hin_Deva pos 22: ...'दिलेशपुत्र श्रीकृष्ण\n' | 'December' | ' 5, 2013\npublic IP in Windows Azure'
+  df +0.912 rollout  cmn_Hani pos 212: ...'刀 ．腾讯网[引用日期2017-06-22]<|endoftext|> 2012之上海末日\n\n      目录\n\n        ' | ' ' | '1. 1 全新二次元 战斗基本信息\n'
+  df +0.907 rollout  eng_Latn pos 1090: ...'<tr>\n<th>\n   plsqldb.java/\n</th>\n<th>\n   streams/\n</th>\n<th>\n   Bytes' | 'есь' | ' настоящей инструкции.\n    </p>\n    <p>\n'
+  df +0.870 pretrain cmn_Hani pos 98: ...'”正式拉开帷幕。扣人心弦的歌声，\n卡罗琳决定接受这份工作，洁西卡·史瓦' | '兹' | '作为人质。\n美智子的朋友丽卡终于在无意'
+  df +0.777 rollout  eng_Latn pos 139: ...' 2019.08.08 10:34. Repondu în 172ms. 26 icofiles' | ' 图书' | '、文件、档案、卷册\n\n钢包 (On'
+  df +0.776 rollout  eng_Latn pos 581: ...'ds, water, garlic, lemon juice, soy sauce, mustard, basil, and Persian cucumber.' | '<|endoftext|>' | ' scores to start. I will have my students try out a'
+  df +0.756 rollout  cmn_Hani pos 687: ...'\n\n...\n\nE esta é a lista do meu blog A Arruiva militant a loyarist dynasty in the' | ' YouTube' | ' title. La diversidad de tantos extramuros demuestra'
+  df +0.753 rollout  hin_Deva pos 315: ...'ीरे सीखने की विषय-वस्तु ह' | '�' | '�, और ब्रेइल �'
+  df +0.738 rollout  cmn_Hani pos 686: ...'m(kl,2))*stf)/.31830989;\n\niq6=int(sin(rechm(kl' | ',' | '2))*stf)/.31830989;\n\n'
+
+largest falls (expects easier text), lambda 100, next 128 (context | token read | what followed):
+  df -1.145 rollout  cmn_Hani pos 571: ...'      * 第八章：竟是女生本充\n      * 第十章：初遇小智\n      * 第十一章：带头蛋爷' | '\n' | '      * 第十三章：化龙当危机\n      * 第十五章'
+  df -0.963 rollout  deu_Latn pos 928: ...'of light!" + END_OF_TEXT_MARKER;\n\t}\n\n\n\tpublic static string ZedFirstDialogue()\n\t' | '{\n' | '\t\treturn "Hello, I\'m Mister Zed. Want'
+  df -0.949 rollout  deu_Latn pos 361: ...':"\n            ,res ={"bgcolor":"green"}\n        //    ,坏死组织 - 已经腐坏,无修复可能' | '\n' | '\t\t//    ,炎症 - 需要引流'
+  df -0.913 rollout  cmn_Hani pos 649: ...'”\n3、“支付宝钱包”的收钱界面—“ transports.Transport}",\n{"反倒","<NAME>"},\n{"大部分' | '","' | ' greatly"},\n{"别离开了"," do you still remember"},\n{"'
+  df -0.895 rollout  cmn_Hani pos 914: ...':8a:17:bb:44 & gjl27223187    \\\\\n        unicom_chaojin' | '   ' | ' & 08:28:8a:17:bb'
+  df -0.888 rollout  cmn_Hani pos 98: ...'meta property="og:title" content="美国硅谷工程师有史以来第一次采用基因增强技术降低农业的碳排放量' | '"' | ' />\n    <meta property="og:type" content="article'
+  df -0.816 rollout  hin_Deva pos 597: ...'�ौरागढ जनपद<|endoftext|>第21回照手会物語展\n\n' | 'प' | 'िथौरागढ जन'
+  df -0.802 rollout  hin_Deva pos 36: ...' (2000–2001)\n"नई जेनरेशन" (The New Generation)' | ' �' | '�क पेशेवर कुश'
+  df -0.796 rollout  kor_Hang pos 978: ...'{"dfID": "B68X5AoEZWtTFssDUxUX","dfTitle":"聚壹网' | '","' | 'value":"127326"},\n{"dfID": "B'
+  df -0.789 pretrain hin_Deva pos 56: ...'� ऑडी के चीफ एग्जीक्यू' | '�' | '�िव रूपर्ट स'
+  df -0.782 rollout  cmn_Hani pos 442: ...' 1, 1, 1, 2, 1, 1, 1, 1, ' | '1' | ', 1, 2, 1, \n                       '
+  df -0.745 rollout  eng_Latn pos 1666: ...'se {\n        $("table#stats_table_2 tbody tr").remove();\n        for (let i = 0;' | ' i' | ' < statisticalBands.length - 7; i++) {\n'

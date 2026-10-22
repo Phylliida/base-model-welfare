@@ -1,0 +1,291 @@
+{
+ "n_pairs": 20814,
+ "results": {
+  "lambda 100": {
+   "next 32": {
+    "rho_df": 0.9114599339758657,
+    "corr_df_error_corrected": 0.15074361761093033,
+    "sd_f": 0.5845159165662406,
+    "sd_df": 0.17493437495827727,
+    "corr_df_excess_surprisal": 0.25177953382743296,
+    "corr_df_surprisal": 0.15315212534098838,
+    "corr_df_error_of_previous_forecast": 0.1605640984775433,
+    "sd_td": 6.630443851361538,
+    "td_share_from_df": 0.7127956957296697,
+    "rollout: corr_df_excess_surprisal": 0.2632121200300447,
+    "rollout: corr_df_error_of_previous_forecast": 0.1605785778852431,
+    "pretrain: corr_df_excess_surprisal": 0.21173010720614938,
+    "pretrain: corr_df_error_of_previous_forecast": 0.16169771640644628
+   },
+   "next 128": {
+    "rho_df": 0.902129218887126,
+    "corr_df_error_corrected": 0.10539335389403073,
+    "sd_f": 0.4986092650758706,
+    "sd_df": 0.13735846167723625,
+    "corr_df_excess_surprisal": 0.2106535989307027,
+    "corr_df_surprisal": 0.13546892828099363,
+    "corr_df_error_of_previous_forecast": 0.11599535581275623,
+    "sd_td": 18.173601439848664,
+    "td_share_from_df": 0.9359416566649426,
+    "rollout: corr_df_excess_surprisal": 0.21758221231766,
+    "rollout: corr_df_error_of_previous_forecast": 0.11378010300740854,
+    "pretrain: corr_df_excess_surprisal": 0.18756135307561136,
+    "pretrain: corr_df_error_of_previous_forecast": 0.1285441034206324
+   }
+  },
+  "val-best (lambda 10 / 31.6)": {
+   "next 32": {
+    "rho_df": 0.5466699867031283,
+    "corr_df_error_corrected": 0.13177003691569214,
+    "sd_f": 0.734000065252037,
+    "sd_df": 0.24011525052798358,
+    "corr_df_excess_surprisal": 0.14044252149909067,
+    "corr_df_surprisal": 0.0813407761088479,
+    "corr_df_error_of_previous_forecast": 0.2034168183765347,
+    "sd_td": 8.388398798490481,
+    "td_share_from_df": 0.8390373746679598,
+    "rollout: corr_df_excess_surprisal": 0.14708737980955822,
+    "rollout: corr_df_error_of_previous_forecast": 0.19829281698924253,
+    "pretrain: corr_df_excess_surprisal": 0.1187085038337593,
+    "pretrain: corr_df_error_of_previous_forecast": 0.22384628148597874
+   },
+   "next 128": {
+    "rho_df": 0.514985596960604,
+    "corr_df_error_corrected": 0.09486570882773934,
+    "sd_f": 0.6269667305214717,
+    "sd_df": 0.18954764663665266,
+    "corr_df_excess_surprisal": 0.09945351795788591,
+    "corr_df_surprisal": 0.06713727285703655,
+    "corr_df_error_of_previous_forecast": 0.17050837683763004,
+    "sd_td": 24.60880668785627,
+    "td_share_from_df": 0.9720209453501157,
+    "rollout: corr_df_excess_surprisal": 0.10278855697584785,
+    "rollout: corr_df_error_of_previous_forecast": 0.1630754123790233,
+    "pretrain: corr_df_excess_surprisal": 0.08927896707796945,
+    "pretrain: corr_df_error_of_previous_forecast": 0.20350167886976156
+   }
+  }
+ },
+ "examples": {
+  "rises (expects harder text)": [
+   {
+    "df": 1.1303648948669434,
+    "kind": "rollout",
+    "lang": "cmn_Hani",
+    "pos": 245,
+    "context": "滴干煸豆角喝， sushi入了哈根Alice，\n\n\n\n\n\n突然隆重进入了我们滴生活！<br/>\n<br",
+    "token": "/>\n",
+    "after": "夜里一个人入眠时会仔细的聆听隔壁小熊崽"
+   },
+   {
+    "df": 1.0170503854751587,
+    "kind": "rollout",
+    "lang": "hin_Deva",
+    "pos": 345,
+    "context": "र ब्रेइल टेपर पर भी छप सकती ह",
+    "token": "�",
+    "after": "� - यहाँ तक कि"
+   },
+   {
+    "df": 0.997539758682251,
+    "kind": "rollout",
+    "lang": "cmn_Hani",
+    "pos": 109,
+    "context": "=\"https://ypthjv.2h6w.net\">快乐十分介绍</a></b><br/>\n<br",
+    "token": "/>\n",
+    "after": "吃的再来得不挑口就能就地取材了，咋"
+   },
+   {
+    "df": 0.9827510118484497,
+    "kind": "rollout",
+    "lang": "hin_Deva",
+    "pos": 22,
+    "context": "दिलेशपुत्र श्रीकृष्ण\n",
+    "token": "December",
+    "after": " 5, 2013\npublic IP in Windows Azure"
+   },
+   {
+    "df": 0.9118057489395142,
+    "kind": "rollout",
+    "lang": "cmn_Hani",
+    "pos": 212,
+    "context": "刀 ．腾讯网[引用日期2017-06-22]<|endoftext|> 2012之上海末日\n\n      目录\n\n        ",
+    "token": " ",
+    "after": "1. 1 全新二次元 战斗基本信息\n"
+   },
+   {
+    "df": 0.9073634147644043,
+    "kind": "rollout",
+    "lang": "eng_Latn",
+    "pos": 1090,
+    "context": "<tr>\n<th>\n   plsqldb.java/\n</th>\n<th>\n   streams/\n</th>\n<th>\n   Bytes",
+    "token": "есь",
+    "after": " настоящей инструкции.\n    </p>\n    <p>\n"
+   },
+   {
+    "df": 0.8702478408813477,
+    "kind": "pretrain",
+    "lang": "cmn_Hani",
+    "pos": 98,
+    "context": "”正式拉开帷幕。扣人心弦的歌声，\n卡罗琳决定接受这份工作，洁西卡·史瓦",
+    "token": "兹",
+    "after": "作为人质。\n美智子的朋友丽卡终于在无意"
+   },
+   {
+    "df": 0.7770755290985107,
+    "kind": "rollout",
+    "lang": "eng_Latn",
+    "pos": 139,
+    "context": " 2019.08.08 10:34. Repondu în 172ms. 26 icofiles",
+    "token": " 图书",
+    "after": "、文件、档案、卷册\n\n钢包 (On"
+   },
+   {
+    "df": 0.7756415605545044,
+    "kind": "rollout",
+    "lang": "eng_Latn",
+    "pos": 581,
+    "context": " in the article: sliced almonds, water, garlic, lemon juice, soy sauce, mustard, basil, and Persian cucumber.",
+    "token": "<|endoftext|>",
+    "after": " scores to start. I will have my students try out a"
+   },
+   {
+    "df": 0.7560760974884033,
+    "kind": "rollout",
+    "lang": "cmn_Hani",
+    "pos": 687,
+    "context": "-authentication.md)\n\n...\n\nE esta é a lista do meu blog A Arruiva militant a loyarist dynasty in the",
+    "token": " YouTube",
+    "after": " title. La diversidad de tantos extramuros demuestra"
+   },
+   {
+    "df": 0.7525417804718018,
+    "kind": "rollout",
+    "lang": "hin_Deva",
+    "pos": 315,
+    "context": "ीरे सीखने की विषय-वस्तु ह",
+    "token": "�",
+    "after": "�, और ब्रेइल �"
+   },
+   {
+    "df": 0.737503170967102,
+    "kind": "rollout",
+    "lang": "cmn_Hani",
+    "pos": 686,
+    "context": "m(kl,2))*stf)/.31830989;\n\niq6=int(sin(rechm(kl",
+    "token": ",",
+    "after": "2))*stf)/.31830989;\n\n"
+   }
+  ],
+  "falls (expects easier text)": [
+   {
+    "df": -1.1453335285186768,
+    "kind": "rollout",
+    "lang": "cmn_Hani",
+    "pos": 571,
+    "context": "      * 第八章：竟是女生本充\n      * 第十章：初遇小智\n      * 第十一章：带头蛋爷",
+    "token": "\n",
+    "after": "      * 第十三章：化龙当危机\n      * 第十五章"
+   },
+   {
+    "df": -0.9631716012954712,
+    "kind": "rollout",
+    "lang": "deu_Latn",
+    "pos": 928,
+    "context": "'t you? Man made of light!\" + END_OF_TEXT_MARKER;\n\t}\n\n\n\tpublic static string ZedFirstDialogue()\n\t",
+    "token": "{\n",
+    "after": "\t\treturn \"Hello, I'm Mister Zed. Want"
+   },
+   {
+    "df": -0.948544979095459,
+    "kind": "rollout",
+    "lang": "deu_Latn",
+    "pos": 361,
+    "context": ":\"\n            ,res ={\"bgcolor\":\"green\"}\n        //    ,坏死组织 - 已经腐坏,无修复可能",
+    "token": "\n",
+    "after": "\t\t//    ,炎症 - 需要引流"
+   },
+   {
+    "df": -0.9129977226257324,
+    "kind": "rollout",
+    "lang": "cmn_Hani",
+    "pos": 649,
+    "context": "”\n3、“支付宝钱包”的收钱界面—“ transports.Transport}\",\n{\"反倒\",\"<NAME>\"},\n{\"大部分",
+    "token": "\",\"",
+    "after": " greatly\"},\n{\"别离开了\",\" do you still remember\"},\n{\""
+   },
+   {
+    "df": -0.8949345350265503,
+    "kind": "rollout",
+    "lang": "cmn_Hani",
+    "pos": 914,
+    "context": ":8a:17:bb:44 & gjl27223187    \\\\\n        unicom_chaojin",
+    "token": "   ",
+    "after": " & 08:28:8a:17:bb"
+   },
+   {
+    "df": -0.8877815008163452,
+    "kind": "rollout",
+    "lang": "cmn_Hani",
+    "pos": 98,
+    "context": "meta property=\"og:title\" content=\"美国硅谷工程师有史以来第一次采用基因增强技术降低农业的碳排放量",
+    "token": "\"",
+    "after": " />\n    <meta property=\"og:type\" content=\"article"
+   },
+   {
+    "df": -0.8155871629714966,
+    "kind": "rollout",
+    "lang": "hin_Deva",
+    "pos": 597,
+    "context": "�ौरागढ जनपद<|endoftext|>第21回照手会物語展\n\n",
+    "token": "प",
+    "after": "िथौरागढ जन"
+   },
+   {
+    "df": -0.801514744758606,
+    "kind": "rollout",
+    "lang": "hin_Deva",
+    "pos": 36,
+    "context": " (2000–2001)\n\"नई जेनरेशन\" (The New Generation)",
+    "token": " �",
+    "after": "�क पेशेवर कुश"
+   },
+   {
+    "df": -0.7962229251861572,
+    "kind": "rollout",
+    "lang": "kor_Hang",
+    "pos": 978,
+    "context": "{\"dfID\": \"B68X5AoEZWtTFssDUxUX\",\"dfTitle\":\"聚壹网",
+    "token": "\",\"",
+    "after": "value\":\"127326\"},\n{\"dfID\": \"B"
+   },
+   {
+    "df": -0.7890493869781494,
+    "kind": "pretrain",
+    "lang": "hin_Deva",
+    "pos": 56,
+    "context": "� ऑडी के चीफ एग्जीक्यू",
+    "token": "�",
+    "after": "�िव रूपर्ट स"
+   },
+   {
+    "df": -0.7819403409957886,
+    "kind": "rollout",
+    "lang": "cmn_Hani",
+    "pos": 442,
+    "context": " 1, 1, 1, 2, 1, 1, 1, 1, ",
+    "token": "1",
+    "after": ", 1, 2, 1, \n                       "
+   },
+   {
+    "df": -0.7451620101928711,
+    "kind": "rollout",
+    "lang": "eng_Latn",
+    "pos": 1666,
+    "context": " } else {\n        $(\"table#stats_table_2 tbody tr\").remove();\n        for (let i = 0;",
+    "token": " i",
+    "after": " < statisticalBands.length - 7; i++) {\n"
+   }
+  ]
+ }
+}

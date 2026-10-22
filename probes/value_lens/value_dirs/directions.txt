@@ -1,0 +1,161 @@
+g_fut at layer 40: 145534 clean positions; top 10 directions carry 2.7% of the second moment
+
+== direction 1: share 0.0059, split-half |cos| (A_i vs best B) 0.12, sd 0.013, skew +0.1, frac > 0 0.47; cos temp -0.021
+  J-lens +: 'fragistics' ' Ð¿Ð»Ð°ÑĤÑĦÐ¾ÑĢ' ' Ð¸Ð·Ð´ÐµÐ»' ' ÑģÐ¾Ð¾Ð±ÑīÐµ' ' Ð¾Ð·Ð½Ð°ÐºÐ¾Ð¼' 'ØµÙĦØ§ØŃ' 'apgolly' ' ÑģÐ¿Ð¸ÑģÐº' ' ÐºÐ°ÑĤÐµÐ³' 'tivos' 'ÐµÑĦÐ¾Ð½' ' cientÃŃ'
+  J-lens -: ' Roll' ' roller' ' roll' ' classes' ' commercial' ' Palm' 'ypy' ' Colonial' ' Coul' ' Viv' 'å²Ń' 'roll'
+  current token at top 1% |proj|: ',' 5% (x1), ' the' 3% (x1), ' and' 3% (x1), ' of' 2% (x1), ' to' 2% (x1), ' a' 2% (x1)
+  next token at top 1% |proj|:    ' the' 7% (x2), ',' 6% (x1), ' and' 3% (x2), ' to' 3% (x1), ' of' 2% (x1), '.' 2% (x1)
+  +  +25.0 sd  w1089 s38: '... salt water, chlorine and not combing (wide tooth comb)out your hair daily. Make sure to wash & condition[ your]| hair at least once a week'
+  +  +23.3 sd  w185 s41: '.... The Navy had named a crew member for planting a explosive timer into one of the powder bags. I went to college[,]| the Gulf War started and I'
+  +  +17.9 sd  w355 s45: '... has been making it forever! Use straight from the jar for pies, cookies, muffins etc. You can also use[ ]|1 cup of oil instead of'
+  +  +17.2 sd  w265 s155: '... correction of any preexisting caudal septal deformities were always completed before the nasal base narrowing.\\nThe mean width[ of]| the external alar wedge exc'
+  +  +15.2 sd  w868 s42: '... Borussia Dortmund ensured Ajax booked a berth in the last-16 as they finally broke down a resolute German side who[ played]| down to 10 men for'
+  -  -24.3 sd  w11 s132: '...Good cheer, Antonio! What, man, courage yet!\\nThe Jew shall have my flesh, blood, bones, and[ all]|,Craig1916:'
+  -  -20.8 sd  w803 s41: '... daughter of Georgia state representative Billy McKinney. Previously a resident of Jamaica, she ran and won a seat in the House[ of]| Representatives representing Georgia along side her'
+  -  -15.5 sd  w36 s132: '...8. JAVMA 217: 836âĢĵ840.\\n- 23. Sacks JJ, Lock[wood]| R, Hornreicht J'
+  -  -12.7 sd  w761 s117: '... nose fell a-bleeding on Black-Monday last, at six oâĢĻclock iâĢĻ the morning, falling[ out]| that year on Ash-Wed'
+  -  -12.1 sd  w30 s63: '... saving the sense that all are fast asleep.âĢĿ\\nIt satisfied him that he could not have guessed the answer. Buddha referred to[ âĢĺ]|The Grand CrossâĢĻ, an extremely'
+
+== direction 2: share 0.0039, split-half |cos| (A_i vs best B) 0.89, sd 0.011, skew +347.3, frac > 0 0.47; cos temp -0.002
+  J-lens +: 'fragistics' '$fdata' '?"\\n\\n\\n\\n' '>manual' 'Ð¶Ð´ÑĭÐ¹' '<LM' ' è´Ŀå£³æī¾æĪ¿' 'çĻ¾åº¦çĻ¾ç§ĳä¼ģä¸ļè¯įæĿ¡æŀģéĢŁåĪĽå»ºéĢļéģĵ' 'ä¸ªä¹īé¡¹' 'EMPLARY' ',UnityEngine' 'ç£ħç¤'
+  J-lens -: 's' ' calm' 'ska' 'yka' ' codes' ' Coding' 'sak' ' amb' ' Cod' ' Fluid' ' Tr' ' caf'
+  current token at top 1% |proj|: ',' 4% (x1), ' the' 3% (x1), ' and' 3% (x1), '.' 3% (x1), ' of' 2% (x1), ' to' 1% (x1)
+  next token at top 1% |proj|:    ' the' 9% (x2), ',' 8% (x2), ' and' 3% (x1), '.' 3% (x1), ' to' 2% (x1), ' of' 2% (x1)
+  + +369.7 sd  w11 s132: '...Good cheer, Antonio! What, man, courage yet!\\nThe Jew shall have my flesh, blood, bones, and[ all]|,Craig1916:'
+  +   +6.8 sd  w761 s33: '... ill a-brewing towards my rest,\\nFor I did dream of money-bags to-night.\\nI beseech[ you]|, sir, go: my'
+  +   +6.3 sd  w399 s57: '... with relation into the marriage topic, you may have substantially to take into account when determining on when to host your wedding ceremony[ and]| the way you would like your'
+  +   +6.2 sd  w1089 s38: '... salt water, chlorine and not combing (wide tooth comb)out your hair daily. Make sure to wash & condition[ your]| hair at least once a week'
+  +   +4.5 sd  w1062 s36: '...for example, by having sexual fantasies, viewing porn). Sexual stimulation or sexual arousal causes the nerves going to the penis to[ release]| a chemical, nitric oxide'
+  -  -13.6 sd  w255 s37: '...6: 72\\nFetching mad bounds, bellowing and neighing loud,\\nWhich is the hot condition of their[ blood]|;\\nIf they but hear perch'
+  -   -7.3 sd  w464 s116: '...Craig1916: 20\\nThan is thy strange-apparent cruelty;\\nAnd where thou now exactâĢĻst the[ penalty]|,âĢĶ\\nWhich is a pound'
+  -   -6.9 sd  w1062 s84: '...MP), in the muscle of the corpora cavernosa. The cGMP causes the muscles of the corpora cavernosa to[ relax]|, and this allows more blood'
+  -   -5.5 sd  w844 s72: '...-Gobain Limited All rights reserved. Saint-Gobain Limited Registered. Office: Saint-Gobain House, Bin[ley]| Business Park, Coventry,'
+  -   -5.1 sd  w196 s64: '... breakdown allows sildenafil to accumulate in the body and potentially may increase the risk of side effects. Therefore, in men over [65]| years of age, in men'
+
+== direction 3: share 0.0030, split-half |cos| (A_i vs best B) 0.39, sd 0.009, skew +279.2, frac > 0 0.49; cos temp -0.022
+  J-lens +: 'eer' 'i' 'opro' 'eg' ' spell' ' slipping' ' Parents' 'oad' 'oma' 'parents' 'eah' 'oline'
+  J-lens -: 'ØµÙĦØ§ØŃ' 'Ð·Ð½Ð°ÐºÐ¾Ð¼' 'Ø·ÙĦØ§ÙĤ' 'Ð¾ÑĤÐµÐºÐ¸' '|RF' '-Semit' 'æĺ¯ä»Ģå¹º' ' )\\n\\n\\n\\n\\n\\n\\n\\n' '_tF' '$fdata' 'ÙĤØ¯ÙĬÙħ' 'demÃ¡s'
+  current token at top 1% |proj|: ' the' 6% (x2), ',' 5% (x1), '.' 3% (x1), ' and' 2% (x1), ' a' 2% (x1), ' to' 2% (x1)
+  next token at top 1% |proj|:    ' the' 6% (x2), ',' 6% (x2), ' and' 3% (x1), ' a' 2% (x1), '.' 2% (x1), ' of' 2% (x1)
+  + +343.9 sd  w399 s57: '... with relation into the marriage topic, you may have substantially to take into account when determining on when to host your wedding ceremony[ and]| the way you would like your'
+  +   +9.0 sd  w162 s45: '... Coach at UMass Lowell. Ross joined her alma mater in August of 2013 during UMass LowellâĢĻs inaugural Division[ ]|1 season in the America East'
+  +   +7.2 sd  w396 s47: '... Man On Earth: Tired of Running HERE.\\nYou can still listen to the new album at NPRâĢĻs First Listen.[ The]| stream will not last much longer'
+  +   +6.9 sd  w255 s37: '...6: 72\\nFetching mad bounds, bellowing and neighing loud,\\nWhich is the hot condition of their[ blood]|;\\nIf they but hear perch'
+  +   +6.6 sd  w88 s65: '... the photo. "SO #Inlove. If you didn\'t get it the first time that is." The picture shows[ Brown]|\'s hand resting on top of'
+  -  -26.6 sd  w1089 s38: '... salt water, chlorine and not combing (wide tooth comb)out your hair daily. Make sure to wash & condition[ your]| hair at least once a week'
+  -  -10.8 sd  w692 s61: '...igans, vests and more related angora sweaters women like cashmer sweaters women, cashmer women sweaters[,]| ladies angora sweaters'
+  -   -9.5 sd  w319 s48: '..., we learn, belonged to her late father.\\nUpon returning to London, however âĢĶ the year is 1875 âĢĶ[ Alice]| learns that her former suitor'
+  -   -9.2 sd  w761 s117: '... nose fell a-bleeding on Black-Monday last, at six oâĢĻclock iâĢĻ the morning, falling[ out]| that year on Ash-Wed'
+  -   -7.5 sd  w185 s41: '.... The Navy had named a crew member for planting a explosive timer into one of the powder bags. I went to college[,]| the Gulf War started and I'
+
+== direction 4: share 0.0029, split-half |cos| (A_i vs best B) 0.09, sd 0.009, skew +19.1, frac > 0 0.47; cos temp -0.011
+  J-lens +: 'ØµÙĦØ§ØŃ' 'Ð·Ð½Ð°ÐºÐ¾Ð¼' 'demÃ¡s' 'umentos' 'Ø·ÙĦØ§ÙĤ' 'zazione' ' Ð½ÐµÑĥÐ´Ð°' ' ktÃ³r' 'Ð¾Ð¿ÑĢÐ¸Ð¼ÐµÑĩ' 'ticia' 'ÑĢÐ°Ð±Ð°ÑĤÑĭ' 'torno'
+  J-lens -: 'ereg' 'yard' ' creep' ' made' ' COD' ' Lat' ' dec' ' Federation' ' yard' 'roids' ' Water' ' Dip'
+  current token at top 1% |proj|: ' the' 6% (x2), ',' 5% (x1), ' and' 3% (x1), ' a' 3% (x2), ' to' 2% (x1), ' of' 2% (x1)
+  next token at top 1% |proj|:    ' the' 6% (x2), ',' 4% (x1), ' a' 3% (x2), ' and' 2% (x1), ' of' 2% (x1), ' to' 2% (x1)
+  + +135.9 sd  w399 s57: '... with relation into the marriage topic, you may have substantially to take into account when determining on when to host your wedding ceremony[ and]| the way you would like your'
+  +  +67.6 sd  w1089 s38: '... salt water, chlorine and not combing (wide tooth comb)out your hair daily. Make sure to wash & condition[ your]| hair at least once a week'
+  +  +21.4 sd  w319 s48: '..., we learn, belonged to her late father.\\nUpon returning to London, however âĢĶ the year is 1875 âĢĶ[ Alice]| learns that her former suitor'
+  +  +18.9 sd  w185 s41: '.... The Navy had named a crew member for planting a explosive timer into one of the powder bags. I went to college[,]| the Gulf War started and I'
+  +  +14.8 sd  w265 s155: '... correction of any preexisting caudal septal deformities were always completed before the nasal base narrowing.\\nThe mean width[ of]| the external alar wedge exc'
+  -  -27.9 sd  w11 s132: '...Good cheer, Antonio! What, man, courage yet!\\nThe Jew shall have my flesh, blood, bones, and[ all]|,Craig1916:'
+  -  -21.4 sd  w88 s65: '... the photo. "SO #Inlove. If you didn\'t get it the first time that is." The picture shows[ Brown]|\'s hand resting on top of'
+  -  -16.5 sd  w162 s45: '... Coach at UMass Lowell. Ross joined her alma mater in August of 2013 during UMass LowellâĢĻs inaugural Division[ ]|1 season in the America East'
+  -  -13.8 sd  w783 s86: '... and the leg he had lost; and the Cape Horn fit; and the silver calabash; and what Captain Pe[leg]| had said of him, when'
+  -  -13.5 sd  w803 s41: '... daughter of Georgia state representative Billy McKinney. Previously a resident of Jamaica, she ran and won a seat in the House[ of]| Representatives representing Georgia along side her'
+
+== direction 5: share 0.0023, split-half |cos| (A_i vs best B) 0.24, sd 0.008, skew +0.1, frac > 0 0.48; cos temp +0.005
+  J-lens +: '\\n' ',\\n' ':\\n' 'ska' 's' ',' '.\\n' '.' 'spe' ' (' 'e' ';'
+  J-lens -: 'oints' ')ï¼ļãĢĬ' 'oltip' ' zuletzt' 'åľ¨åĨħ' 'æ§' '.âĢĿ\\n\\n\\n\\n' ' kad' 'alej' 'åĤħ' ' YYS' ' è´Ŀå£³æī¾æĪ¿'
+  current token at top 1% |proj|: ',' 6% (x2), '.' 5% (x2), ' the' 3% (x1), ' and' 2% (x1), ' to' 2% (x1), '.\\n' 2% (x1)
+  next token at top 1% |proj|:    ',' 6% (x2), ' the' 5% (x2), ' and' 3% (x2), '.' 2% (x1), ' a' 2% (x1), ' to' 1% (x1)
+  +  +23.1 sd  w1089 s38: '... salt water, chlorine and not combing (wide tooth comb)out your hair daily. Make sure to wash & condition[ your]| hair at least once a week'
+  +  +22.0 sd  w464 s116: '...Craig1916: 20\\nThan is thy strange-apparent cruelty;\\nAnd where thou now exactâĢĻst the[ penalty]|,âĢĶ\\nWhich is a pound'
+  +  +14.7 sd  w11 s132: '...Good cheer, Antonio! What, man, courage yet!\\nThe Jew shall have my flesh, blood, bones, and[ all]|,Craig1916:'
+  +  +14.2 sd  w787 s78: '...2010, the film revolves around Frank (Depp), an American tourist visiting Italy to mend a broken heart. El[ise]| (Jolie) is an'
+  +  +13.9 sd  w555 s33: '...2010, the film revolves around Frank (Depp), an American tourist visiting Italy to mend a broken heart. El[ise]| (Jolie) is an'
+  -  -19.0 sd  w265 s155: '... correction of any preexisting caudal septal deformities were always completed before the nasal base narrowing.\\nThe mean width[ of]| the external alar wedge exc'
+  -  -16.5 sd  w803 s41: '... daughter of Georgia state representative Billy McKinney. Previously a resident of Jamaica, she ran and won a seat in the House[ of]| Representatives representing Georgia along side her'
+  -  -14.4 sd  w471 s111: '... Grace.\\nI am sorry for thee: thou art come to answer\\nA stony adversary, an inhuman wretch[Craig]|1916: 4'
+  -  -13.4 sd  w1117 s60: '... 594) Millhaven Road.\\n\\nwestside setup for raw bench , should it be in the same order : max[ effort]|, triceps, lats'
+  -  -13.1 sd  w255 s46: '... bellowing and neighing loud,\\nWhich is the hot condition of their blood;\\nIf they but hear perchance a[ trumpet]| sound,\\nOr any air of'
+
+== direction 6: share 0.0022, split-half |cos| (A_i vs best B) 0.66, sd 0.008, skew +5.2, frac > 0 0.48; cos temp -0.021
+  J-lens +: 'zer' ' Depths' ' BI' 'çº¢ç³ĸ' 'ODO' 'vod' '-ser' ' Rudy' ' stripper' '/ph' ' gx' ' íĻĶ'
+  J-lens -: 'tiza' 'torno' ' ejerci' 'turas' 'tamos' 'demÃ¡s' '_tE' 'fragistics' '...\\n\\n\\n\\n\\n\\n' 'presentar' 'tamento' 'zazione'
+  current token at top 1% |proj|: ',' 5% (x1), ' the' 4% (x1), '.' 3% (x1), ' and' 2% (x1), ' of' 1% (x1), ' ' 1% (x1)
+  next token at top 1% |proj|:    ',' 6% (x2), ' the' 6% (x2), ' and' 3% (x1), '.' 3% (x1), ' to' 2% (x1), ' of' 2% (x1)
+  +  +92.1 sd  w1089 s38: '... salt water, chlorine and not combing (wide tooth comb)out your hair daily. Make sure to wash & condition[ your]| hair at least once a week'
+  +  +34.7 sd  w319 s48: '..., we learn, belonged to her late father.\\nUpon returning to London, however âĢĶ the year is 1875 âĢĶ[ Alice]| learns that her former suitor'
+  +  +15.2 sd  w88 s65: '... the photo. "SO #Inlove. If you didn\'t get it the first time that is." The picture shows[ Brown]|\'s hand resting on top of'
+  +  +15.1 sd  w23 s72: "...cient - they're radically current. The ending is apropot.\\nThanks to @TedManger for the recommendation.\\n\\n[Buy]| Tuvalu Flags\\nFlag of"
+  +  +14.6 sd  w1024 s46: "... 6'8 med heavy paired with a shimano chronarch e series reel absolutely unbelievable buying another one soon!\\nFrom[:]| Garrett: MI\\nComments:"
+  -  -28.1 sd  w185 s41: '.... The Navy had named a crew member for planting a explosive timer into one of the powder bags. I went to college[,]| the Gulf War started and I'
+  -  -22.6 sd  w265 s155: '... correction of any preexisting caudal septal deformities were always completed before the nasal base narrowing.\\nThe mean width[ of]| the external alar wedge exc'
+  -  -19.5 sd  w196 s111: '... protease inhibitors, the doctor will initiate sildenafil at a lower dose (25 mg) to avoid accumulation of sildenafil in the[ body]|. A protease inhibitor rit'
+  -  -19.1 sd  w866 s104: '...ute down to 6.25% and use on rights-of-ways, non-crop, and industrial lands ([St]|. Gabriel Labs Burn Out Weed'
+  -  -18.6 sd  w1089 s44: '... combing (wide tooth comb)out your hair daily. Make sure to wash & condition your hair at least once a[ week]|, twice a week is better'
+
+== direction 7: share 0.0019, split-half |cos| (A_i vs best B) 0.24, sd 0.007, skew +0.9, frac > 0 0.48; cos temp -0.018
+  J-lens +: ' and' ' of' ',' ' circ' '.' ' (' ' water' '-of' ' or' '.\\n' '/' ' means'
+  J-lens -: ' Ð½ÐµÐ²ÐµÑĢÐ¾' 'tiza' ' ÑģÐ¾Ð¾Ð±ÑīÐµ' ' Ð¿Ð»Ð°ÑĤÑĦÐ¾ÑĢ' 'Ð·Ð½Ð°ÐºÐ¾Ð¼' '-wsj' ' Ð¾ÑĢÐ¸Ð³Ð¸Ð½' 'ä¸ªä¹īé¡¹' ' Ð¿Ð¾Ð·Ð²Ð¾Ð½Ð¸' ' è´Ŀå£³æī¾æĪ¿' ' Ð°ÐºÐ°Ð´ÐµÐ¼' ' Ð¾Ð·Ð½Ð°ÐºÐ¾Ð¼'
+  current token at top 1% |proj|: ',' 4% (x1), ' the' 3% (x1), '.' 3% (x1), ' and' 2% (x1), ' a' 2% (x1), ' to' 2% (x1)
+  next token at top 1% |proj|:    ' the' 7% (x2), ',' 6% (x2), ' and' 3% (x1), ' to' 2% (x1), ' in' 2% (x2), '.' 2% (x1)
+  +  +50.3 sd  w196 s111: '... protease inhibitors, the doctor will initiate sildenafil at a lower dose (25 mg) to avoid accumulation of sildenafil in the[ body]|. A protease inhibitor rit'
+  +  +31.3 sd  w464 s116: '...Craig1916: 20\\nThan is thy strange-apparent cruelty;\\nAnd where thou now exactâĢĻst the[ penalty]|,âĢĶ\\nWhich is a pound'
+  +  +22.3 sd  w265 s155: '... correction of any preexisting caudal septal deformities were always completed before the nasal base narrowing.\\nThe mean width[ of]| the external alar wedge exc'
+  +  +17.0 sd  w355 s45: '... has been making it forever! Use straight from the jar for pies, cookies, muffins etc. You can also use[ ]|1 cup of oil instead of'
+  +  +16.2 sd  w582 s131: '...22 and take the second quarterback, Johnny Manziel of Texas A&M. The last pick of the first round, held[ by]| the Super Bowl champion Seahawks,'
+  -  -33.7 sd  w803 s41: '... daughter of Georgia state representative Billy McKinney. Previously a resident of Jamaica, she ran and won a seat in the House[ of]| Representatives representing Georgia along side her'
+  -  -18.2 sd  w152 s96: '... lack of hERG in the brain, rather than the heart.\\nBPoD stands for Biomedical Picture of the[ Day]|. Managed by the MRC'
+  -  -17.0 sd  w88 s65: '... the photo. "SO #Inlove. If you didn\'t get it the first time that is." The picture shows[ Brown]|\'s hand resting on top of'
+  -  -16.5 sd  w955 s51: '... device security\\nCampbell, CALIFORNIA, February 7, 2013âĢĶMarket research firm Infon[etics]| Research released excerpts from its '
+  -  -15.1 sd  w1089 s38: '... salt water, chlorine and not combing (wide tooth comb)out your hair daily. Make sure to wash & condition[ your]| hair at least once a week'
+
+== direction 8: share 0.0018, split-half |cos| (A_i vs best B) 0.77, sd 0.007, skew +209.8, frac > 0 0.48; cos temp -0.019
+  J-lens +: '_mE' ' è´Ŀå£³æī¾æĪ¿' '_tD' '_IList' '_mD' ' ktÃ³r' 'actionDate' '_tA' 'spNet' 'Ð¾ÑĤÐµÐºÐ¸' 'GuidId' 'ButtonTitles'
+  J-lens -: ' \\n\\n' '.\\n\\n' ' and' ' \\n' '.' ' range' '<|endoftext|>' ' af' '.\\n' ' pro' ' f' ' comb'
+  current token at top 1% |proj|: '.' 4% (x1), ',' 4% (x1), ' the' 2% (x1), ' and' 2% (x1), '\\n' 1% (x2), ' to' 1% (x1)
+  next token at top 1% |proj|:    ',' 10% (x3), ' the' 6% (x2), ' and' 5% (x2), '.' 3% (x1), ' a' 2% (x1), ' ' 2% (x2)
+  + +311.1 sd  w196 s111: '... protease inhibitors, the doctor will initiate sildenafil at a lower dose (25 mg) to avoid accumulation of sildenafil in the[ body]|. A protease inhibitor rit'
+  +  +71.3 sd  w1061 s55: '... protease inhibitors, the doctor will initiate sildenafil at a lower dose (25 mg) to avoid accumulation of sildenafil in the[ body]|. A protease inhibitor rit'
+  +  +44.0 sd  w1089 s44: '... combing (wide tooth comb)out your hair daily. Make sure to wash & condition your hair at least once a[ week]|, twice a week is better'
+  +  +12.0 sd  w787 s78: '...2010, the film revolves around Frank (Depp), an American tourist visiting Italy to mend a broken heart. El[ise]| (Jolie) is an'
+  +  +11.7 sd  w1195 s71: '... card any time a student enters a credit card. A bystander would no longer be able to simply copy the credit card[ number]| and expiration date from the screen'
+  -  -22.6 sd  w11 s37: '... decrees of Venice.\\nI stand for judgment: answer; shall I have it?\\nUpon my power I may dismiss this[ court]|,Craig1916:'
+  -  -17.4 sd  w464 s116: '...Craig1916: 20\\nThan is thy strange-apparent cruelty;\\nAnd where thou now exactâĢĻst the[ penalty]|,âĢĶ\\nWhich is a pound'
+  -  -15.7 sd  w733 s130: '..., that are too sterile for luxe traditional model inside design. Interior design additionally includes the specification of furnishings, fixtures, and[ finishes]|, and coordinating their set up'
+  -  -13.8 sd  w828 s134: '... carbohydrate: the total number of carbohydrates, the amount of dietary fiber, and sugars.\\n- Total Carbohydrate: This[ number]|, listed in grams, combines'
+  -  -13.3 sd  w1179 s39: '...ese Foreign Ministry said that visiting Israel was a crime and the Sudanese Refugees Commissioner claimed that Sudanese refugees in Israel[ wanted]| to "implement Zionism agendas'
+
+== direction 9: share 0.0018, split-half |cos| (A_i vs best B) 0.22, sd 0.007, skew +5.7, frac > 0 0.48; cos temp +0.002
+  J-lens +: ' sincerity' 'åīįä»»' ' thin' ' solitary' ' fuzzy' ' sideline' ' absence' 'Ep' '_past' ' transitioning' ' outlet' ' presence'
+  J-lens -: 'MESS' 'GameObjectWithTag' 'å¸®åĬ©ä½ł' 'chin' 'çľŁæŃ£åģļåĪ°' 'ìķ¼' 'xec' 'otch' 'mania' '/WebAPI' 'æĿ¥å½¢å®¹' 'ingo'
+  current token at top 1% |proj|: ',' 6% (x1), '.' 5% (x2), ' and' 3% (x1), '.\\n' 2% (x2), '\\n' 2% (x3), ' the' 1% (x0)
+  next token at top 1% |proj|:    ',' 8% (x2), ' the' 6% (x2), '.' 4% (x2), ' and' 3% (x1), ' to' 2% (x1), ' a' 2% (x1)
+  + +108.0 sd  w196 s111: '... protease inhibitors, the doctor will initiate sildenafil at a lower dose (25 mg) to avoid accumulation of sildenafil in the[ body]|. A protease inhibitor rit'
+  +  +48.8 sd  w1089 s38: '... salt water, chlorine and not combing (wide tooth comb)out your hair daily. Make sure to wash & condition[ your]| hair at least once a week'
+  +  +25.3 sd  w1061 s55: '... protease inhibitors, the doctor will initiate sildenafil at a lower dose (25 mg) to avoid accumulation of sildenafil in the[ body]|. A protease inhibitor rit'
+  +  +23.3 sd  w733 s130: '..., that are too sterile for luxe traditional model inside design. Interior design additionally includes the specification of furnishings, fixtures, and[ finishes]|, and coordinating their set up'
+  +  +20.6 sd  w1179 s39: '...ese Foreign Ministry said that visiting Israel was a crime and the Sudanese Refugees Commissioner claimed that Sudanese refugees in Israel[ wanted]| to "implement Zionism agendas'
+  -  -76.2 sd  w464 s116: '...Craig1916: 20\\nThan is thy strange-apparent cruelty;\\nAnd where thou now exactâĢĻst the[ penalty]|,âĢĶ\\nWhich is a pound'
+  -  -43.9 sd  w1089 s44: '... combing (wide tooth comb)out your hair daily. Make sure to wash & condition your hair at least once a[ week]|, twice a week is better'
+  -  -28.5 sd  w265 s155: '... correction of any preexisting caudal septal deformities were always completed before the nasal base narrowing.\\nThe mean width[ of]| the external alar wedge exc'
+  -  -24.1 sd  w931 s87: '... is the primary fundraising event for LSR, providing critical funding for their programs supporting those harmed by domestic and sexual violence as[ well]| as elder abuse. âĢľS'
+  -  -18.5 sd  w427 s150: '... meet pressing environmental challenges, to deliver comfort, convenience and electrical protection and control. General Electric (NYSE: GE) brings[ imagination]| to work, selling products under'
+
+== direction 10: share 0.0017, split-half |cos| (A_i vs best B) 0.36, sd 0.007, skew +6.2, frac > 0 0.48; cos temp -0.007
+  J-lens +: 'ä»ĭç»įè¯´' 'obar' 'æľīå¿ĥ' ' rein' 'asca' 'åįİå±±' ' Quar' ' Proud' ' Fork' ' Einsch' '.volley' 'åįļæĸĩ'
+  J-lens -: 'åģĩçļĦ' 'å¯¹åı£' 'æ²»' ' fetisch' 'bullet' 'amo' '&view' ' kav' 'ÙĨÙĬÙĨ' ' Gegen' 'ismatic' 'ripper'
+  current token at top 1% |proj|: ',' 5% (x1), '.' 4% (x1), ' the' 3% (x1), ' and' 3% (x1), ' a' 2% (x1), ' to' 2% (x1)
+  next token at top 1% |proj|:    ' the' 7% (x2), ',' 6% (x2), ' and' 3% (x1), ' to' 2% (x1), '.' 2% (x1), ' in' 2% (x2)
+  +  +91.8 sd  w1089 s38: '... salt water, chlorine and not combing (wide tooth comb)out your hair daily. Make sure to wash & condition[ your]| hair at least once a week'
+  +  +49.3 sd  w464 s116: '...Craig1916: 20\\nThan is thy strange-apparent cruelty;\\nAnd where thou now exactâĢĻst the[ penalty]|,âĢĶ\\nWhich is a pound'
+  +  +22.8 sd  w803 s41: '... daughter of Georgia state representative Billy McKinney. Previously a resident of Jamaica, she ran and won a seat in the House[ of]| Representatives representing Georgia along side her'
+  +  +15.7 sd  w943 s131: '... met all the twins in the world yet either."\\nIt was strange and somehow frightening to have someone know their secret. They[ slept]| curled around one another that night'
+  +  +14.7 sd  w841 s57: '... or at least watch what your child is doing. Test out the games, then join with your child and have some fun[.]| Make sure to inquire about the'
+  -  -38.3 sd  w1179 s39: '...ese Foreign Ministry said that visiting Israel was a crime and the Sudanese Refugees Commissioner claimed that Sudanese refugees in Israel[ wanted]| to "implement Zionism agendas'
+  -  -24.2 sd  w787 s78: '...2010, the film revolves around Frank (Depp), an American tourist visiting Italy to mend a broken heart. El[ise]| (Jolie) is an'
+  -  -19.1 sd  w619 s148: '... The authors report research that considers writing in all levels of schooling, in science, in the public sphere, and in the[ workplace]|, as well as the relationship'
+  -  -19.0 sd  w692 s49: "... from women's clothing & accessories, pullovers, cardigans, vests and more related angora sweaters women[ like]| cashmer sweaters women,"
+  -  -18.9 sd  w527 s105: '... organization, for charitable, educational, literary and scientific research purposes to advance the art and science of planning and the activity of[ planning]| -- physical, economic and social'

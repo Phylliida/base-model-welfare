@@ -1,0 +1,165 @@
+g_fut (normalized) at layer 40: 145534 clean positions; top 10 directions carry 2.9% of the second moment
+
+== direction 1: share 0.0073, split-half |cos| (A_i vs best B) 1.00, sd 0.085, skew +0.1, frac > 0 0.48; cos temp +0.020
+  J-lens +: ' roller' ' Roll' 'ypy' ' Viv' 'å²Ń' 'ialis' ' contracting' ' Colonial' ' nuclear' 'Å¥' ' collateral' 'yon'
+  J-lens -: 'fragistics' ' Ð¾Ð·Ð½Ð°ÐºÐ¾Ð¼' ' Ð¸Ð·Ð´ÐµÐ»' ' Ð¿Ð»Ð°ÑĤÑĦÐ¾ÑĢ' ' ÑģÐ¾Ð¾Ð±ÑīÐµ' '$fdata' 'ãĥ³ãĥĲ' 'apgolly' ' cientÃŃ' ' ÑģÐ¿Ð¸ÑģÐº' ' ÐºÐ°ÑĤÐµÐ³' ' fortal'
+  current token at top 1% |proj|: ' and' 4% (x2), ',' 3% (x1), ' to' 2% (x1), ' of' 2% (x1), ' the' 1% (x0), ' in' 1% (x1)
+  next token at top 1% |proj|:    '.' 5% (x2), ',' 4% (x1), '.\\n' 4% (x3), ' to' 2% (x1), ' of' 2% (x1), ' the' 2% (x0)
+  +   +5.3 sd  w602 s124: "...Please visit the Chamber's Own Web-Site at: www.chamber45005.org\\nSince 1947,[ The]| Franklin Area Chamber of Commerce has"
+  +   +5.2 sd  w710 s124: '... are roasted on site via a customized electric fluid-bed air roaster, which takes up minimal space and produces what Martin calls[,]| âĢľa cleaner, more aromatic'
+  +   +5.1 sd  w664 s39: '... the past few years, the discussion of the use of the electromagnetic spectrum1 for digital inclusion has taken on more strength and[ importance]|.\\nOne alternative for digital inclusion'
+  +   +4.8 sd  w981 s137: '... community supports it too:\\nGo Daddy is no longer supporting SOPA, the "Stop Online Piracy Act" currently working[ its]| way through U.S. Congress'
+  +   +4.8 sd  w1110 s58: '...ng the attention Ð¾f your site visitors Ñĸn a unÑĸquÐµ and interesting wÐ°Ñĥ that leads tÐ¾[ higher]| conversions. It is ÑĥÐ¾'
+  -   -5.2 sd  w527 s79: '... meet the challenges of growth and change. APA is incorporated in the District of Columbia as a 501 (c)[ ]|3 organization, for charitable,'
+  -   -4.9 sd  w925 s93: "... to be aware of the technical terms like 'CE', 'PE', 'Lot size', 'Strike price', and the[ rest]|.\\nThis is a segment where"
+  -   -4.8 sd  w557 s108: '... The Winery Dogs and I couldnâĢĻt be more excited to grab this. If you havenâĢĻt heard them, you are[ definitely]| missing out. Give this one'
+  -   -4.7 sd  w99 s90: '... It is a violation of Federal law to use this product in a manner inconsistent with its labeling. Read and follow all directions[ and]| precautions on this product label.'
+  -   -4.6 sd  w1171 s65: '... T - English - Adventure/Drama - Chapters: 16 - Words: 129,321 - Reviews: [6]|25 - Favs: '
+
+== direction 2: share 0.0033, split-half |cos| (A_i vs best B) 0.98, sd 0.058, skew +0.1, frac > 0 0.48; cos temp +0.010
+  J-lens +: ' ple' ' commercial' ' domestic' ' lur' 'roids' ' Water' ' made' 'ereg' ' sweep' ' Creation' ' extreme' ' Plain'
+  J-lens -: 'Ð·Ð½Ð°ÐºÐ¾Ð¼' 'ØµÙĦØ§ØŃ' ' Ð½ÐµÑĥÐ´Ð°' ' ÑģÐ¾Ð¾Ð±ÑīÐµ' ' Ð½ÐµÐ²ÐµÑĢÐ¾' 'zazione' 'Ð¶Ð´Ñĥ' 'ÑĢÐ¸Ð»Ð¾Ð¶' 'Ø·ÙĦØ§ÙĤ' 'demÃ¡s' ' Ð²ÐµÑĢÑĤÐ¸Ðº' 'Ð´Ð°ÐµÐ¼'
+  current token at top 1% |proj|: ' the' 8% (x2), ' a' 4% (x2), ' to' 4% (x2), ' and' 3% (x1), ',' 3% (x1), ' of' 2% (x1)
+  next token at top 1% |proj|:    '.' 4% (x2), '.\\n' 3% (x2), ',' 2% (x1), ' of' 2% (x1), ' the' 2% (x0), ' to' 2% (x1)
+  +   +6.8 sd  w459 s80: '... Husky @ Bottom of the Hill, SF 7/17/12\\nAs someone who had little to zil[ch]| exposure to Shearwater,'
+  +   +5.6 sd  w787 s144: '... a whirlwind of intrigue and danger."\\nIt\'s sort of in tone with Knight and Day. It\'s funny and action[-packed]|. I\'ve read that De'
+  +   +5.4 sd  w299 s37: '... a fellow of the American College of Obstetrics and Gynecology.\\nComparing Options for Management: Patient-Centered Results[ for]| Uterine Fibroids ('
+  +   +5.3 sd  w715 s141: "... the knights who are the bad guys.\\nWell be glad to help!What's new in this version:Minor changes,[ optimization]| Avoid the obstacles.How to play"
+  +   +5.1 sd  w555 s99: '... a whirlwind of intrigue and danger."\\nIt\'s sort of in tone with Knight and Day. It\'s funny and action[-packed]|. I\'ve read that De'
+  -   -5.8 sd  w799 s152: '...jury?\\n- Food allergy symptoms typically appear within minutes or develop up to two hours after a person has eaten the food to[ which]| they are allergic. Allergic'
+  -   -5.4 sd  w596 s93: '... you in the form of a Live CD/DVD for regular PC (i386 and x86_64 arc)[ systems]|.\\nApart from the providing Han'
+  -   -5.2 sd  w37 s140: "... Specialist\\nSpecialist client base of famous high net worth individuals\\nReputable Top 50 accountancy practice in London['s]| West End\\nAbout Our Client"
+  -   -5.2 sd  w602 s124: "...Please visit the Chamber's Own Web-Site at: www.chamber45005.org\\nSince 1947,[ The]| Franklin Area Chamber of Commerce has"
+  -   -5.1 sd  w860 s75: '.... The room was beautiful, clean, large, and we loved it. The staff, especially the front desk and exc[usr]|ion desk, were superb.'
+
+== direction 3: share 0.0030, split-half |cos| (A_i vs best B) 0.97, sd 0.055, skew +0.0, frac > 0 0.47; cos temp -0.000
+  J-lens +: 'Ø·ÙĦØ§ÙĤ' 'ØµÙĦØ§ØŃ' 'uppen' ' YYS' 'orsz' 'ĪĴ' '&action' ' Patr' ' Alterna' 'çªĴ' 'nij' 'etz'
+  J-lens -: 's' ' COPYRIGHT' '*/}\\n' '\\n' ' */}\\n' 'ska' '.\\n' ':\\n' 'isto' 'Ã®t' 'ÙĪÙĬÙĦ' ',\\n'
+  current token at top 1% |proj|: ' and' 3% (x2), ' the' 3% (x1), ' a' 3% (x2), ',' 2% (x1), ' to' 2% (x1), ' of' 1% (x1)
+  next token at top 1% |proj|:    '.\\n' 3% (x3), '.' 3% (x1), ',' 2% (x1), ' to' 2% (x1), ' of' 2% (x1), ' a' 1% (x1)
+  +   +5.7 sd  w505 s62: '... your tax returns, as doing so means youâĢĻre overpaying for taxes, and basically giving the US government an interest[ free]| loan. Instead, you should'
+  +   +5.6 sd  w715 s141: "... the knights who are the bad guys.\\nWell be glad to help!What's new in this version:Minor changes,[ optimization]| Avoid the obstacles.How to play"
+  +   +5.2 sd  w851 s119: '.... The who âĢĵ 15 von armedangels chat gratis dating single woman looking for women men. WeâĢĻre organized in[ einem]| chat gratis dating anbieter kostenlos'
+  +   +5.1 sd  w44 s137: '... âĢĵ seek help at once!\\n\\nNewport, RI 02840\\nAbout Geeks to Go\\nCOMPUTER[ PRO]|BLEMS? Call Geeks'
+  +   +4.9 sd  w990 s69: '... Amyloid Hypothesis generally require at least monthly infusions, have serious side effects including inter-cerebral hemorrhaging[/]|edema, and simply don'
+  -   -5.4 sd  w91 s72: '... feeds 160 children two meals a day, five days a week, in addition to providing funds for these children to attend[ school]|.\\nHarold Pirtle'
+  -   -5.3 sd  w155 s95: "... pics, funny stuff, and an insider POV.\\n\\nCREATIVE PUNS - I'm sure you've seen these tossed about[ the]| internet.\\n1. The round"
+  -   -4.9 sd  w563 s79: '... all of these cleaning items out of the reach of children.\\nSo, there you have it. Sorry for such a detailed[ account]|. You can just be grateful'
+  -   -4.9 sd  w918 s148: '... return to economic growth, and the beginning of a large glass manufacturing plant. Rinteln managed to survive WWII without any[ serious]| damage. The centre of R'
+  -   -4.8 sd  w325 s40: '... my age and the fact that there were multiple tumors, and to help ensure if there was cancer anywhere else it would be[ taken]| care of.\\nSticking to'
+
+== direction 4: share 0.0029, split-half |cos| (A_i vs best B) 0.97, sd 0.054, skew +0.0, frac > 0 0.48; cos temp -0.006
+  J-lens +: '.âĢĿ\\n\\n\\n\\n' ' è´Ŀå£³æī¾æĪ¿' '?"\\n\\n\\n\\n' 'fragistics' 'ä¸ªä¹īé¡¹' 'yalty' ' ä¸ĬéĢīæĭ©æµıè§Ī' ' Ð¾ÑĢÐ¸Ð³Ð¸Ð½' '.âĢĻâĢĿ\\n\\n' 'çĻ¾åº¦çĻ¾ç§ĳä¼ģä¸ļè¯įæĿ¡æŀģéĢŁåĪĽå»ºéĢļéģĵ' 'tiza' '-Cds'
+  J-lens -: ',' '.' ' (' ' Belt' '.\\n' '\\n' ';' ':\\n' ' wa' ' belt' ' and' ' gre'
+  current token at top 1% |proj|: ' the' 6% (x2), ' to' 3% (x2), ',' 3% (x1), ' and' 3% (x1), ' a' 3% (x2), '.' 2% (x1)
+  next token at top 1% |proj|:    '.\\n' 3% (x3), '.' 3% (x1), ' to' 2% (x1), ',' 2% (x0), ' the' 1% (x0), ' of' 1% (x1)
+  +   +6.6 sd  w592 s120: '... video at 30fps and 720p at 60fps is generally capable of 1080p at 30[fps]|.\\nAlthough all 1080'
+  +   +5.1 sd  w584 s90: '...arsley âĢĵ 2 tblsp, finely chopped\\nBaklava Filo âĢĵ 8 sheets\\nUnsalt[ed]| Butter âĢĵ 60 gms'
+  +   +4.9 sd  w1104 s77: '... ten others to join.\\nâĢľWe are starting a movement of people dedicated to erasing hate from our schools, workplaces, and[ communities]|,âĢĿ said Mrs Shepard.\\nMore'
+  +   +4.8 sd  w430 s38: '... Birmingham.\\n\\nTrain departs: Anaheim, 2:39 p.m. (Leaves on time.)\\nTrain arrives:[ San]| Juan Capistrano, '
+  +   +4.8 sd  w1110 s58: '...ng the attention Ð¾f your site visitors Ñĸn a unÑĸquÐµ and interesting wÐ°Ñĥ that leads tÐ¾[ higher]| conversions. It is ÑĥÐ¾'
+  -   -5.9 sd  w356 s84: '... herds; later, in real estate. This is how it is effected. Sometimes one lends a sum, always by[ an]| intermediary, on a simple note'
+  -   -5.5 sd  w990 s69: '... Amyloid Hypothesis generally require at least monthly infusions, have serious side effects including inter-cerebral hemorrhaging[/]|edema, and simply don'
+  -   -5.2 sd  w991 s81: '... be listed in my Etsy Shop...\\nTwo Peas in a Pod Baby Shower Cake Topper\\nA Beagle and her[ St]|uffed Bear\\nA Panda Bear'
+  -   -5.1 sd  w804 s152: '... ensure that organizations with an interest in innovation must assess and manage projects and deadlines for their innovations to avoid waste of time and[ capital]|.\\nFocusing on the method'
+  -   -5.1 sd  w455 s79: '... âĢĶ the workers and the bourgeoisie âĢĶ at the expense of the rights, resources and well being of the rest of us.[ Of]| course, they see the world'
+
+== direction 5: share 0.0024, split-half |cos| (A_i vs best B) 0.98, sd 0.049, skew +0.0, frac > 0 0.48; cos temp +0.025
+  J-lens +: '_tE' '_mE' '_mD' '_tF' 'tiza' '_tD' 'ØµÙĦØ§ØŃ' ' Ð¿Ð»Ð°ÑĤÑĦÐ¾ÑĢ' 'demÃ¡s' 'Ð·Ð½Ð°ÐºÐ¾Ð¼' ' ktÃ³r' ' è´Ŀå£³æī¾æĪ¿'
+  J-lens -: ',' ' of' '/' '.' ' (' ' as' ' got' '.\\n' ' generation' ' because' '-b' ' when'
+  current token at top 1% |proj|: ' and' 3% (x1), ',' 3% (x1), ' to' 2% (x1), ' of' 2% (x1), ' a' 2% (x1), ' the' 2% (x0)
+  next token at top 1% |proj|:    '.' 5% (x2), '.\\n' 5% (x4), ',' 4% (x1), ' the' 2% (x1), ' to' 2% (x1), ' of' 1% (x1)
+  +   +6.0 sd  w981 s65: "....\\n\\nAs the public backlash continued to grow -- and GoDaddy's support of it seemed entirely tone deaf to what people[ were]| saying -- you knew something had"
+  +   +6.0 sd  w1148 s128: '..., corn, red pepper), textured wheat proteins, (wheat gluten, calcium sulfate, preservative: sodium metabis[ul]|phite), rapeseed'
+  +   +5.6 sd  w994 s60: '... YY. Physicochemical properties of nanoparticles regulate translocation across pulmonary surfactant monolayer and formation of lipop[rotein]| corona. ACS Nano.'
+  +   +5.4 sd  w677 s102: '... Every Occasion (CTMH). Punch: ticket corner punch (SU).\\n\\nis for hotoke, or the Japanese[ word]| for Buddha. I grew up'
+  +   +5.4 sd  w373 s143: "... brands that I have tried for my 2-month old girl, they fit well and doesn't leak as easily.\\nGreat[ product]| selection, fast delivery to your"
+  -   -5.9 sd  w766 s33: "...era epidemic, Ãĺsterbro wasn't build up as quickly and disorganized as its neighbours NÃ¸rrebro and Vest[eb]|ro, and it was mainly"
+  -   -5.8 sd  w629 s117: '... million of equity. The two REITs need to close the transactions before SmartStop starts to earn fees related to the[ properties]|.\\nThere is much about this'
+  -   -5.2 sd  w1177 s88: '... Greene over the summer after Politico unearthed Facebook videos showing her making derogatory remarks about Black people, Muslims and Jewish Democratic[ donor]| George Soros. Among them was'
+  -   -5.0 sd  w610 s42: '... Myers, but itâĢĻs a weak one. He is as close to a Must-Start as a player gets without officially[ being]| so. I have Mookie'
+  -   -4.9 sd  w81 s50: '... their log cabins and tilling the soil. Those who have inherited these lends can have no idea of the privations and[ inconvenience]| experienced by thos pioneers when'
+
+== direction 6: share 0.0022, split-half |cos| (A_i vs best B) 0.98, sd 0.047, skew +0.0, frac > 0 0.47; cos temp +0.008
+  J-lens +: "'gc" ' hozz' ' deÄŁiÅŁ' '$fdata' 'Ð¶Ð´ÑĭÐ¹' ' ÑģÐ¾Ð¾Ð±ÑīÐµ' ' Ð½ÐµÐ²ÐµÑĢÐ¾' 'ÑĢÐµÐ³Ð¸ÑģÑĤÑĢÐ¸ÑĢÐ¾Ð²' 'outil' 'skap' 'ogenerated' 'ÅĽniej'
+  J-lens -: 'NS' ' and' ' facilities' ' facility' ' mar' ' ho' ' bridal' ' Marin' ' wes' '_sid' '_interfaces' ' portable'
+  current token at top 1% |proj|: ' the' 9% (x2), ' a' 4% (x2), ',' 4% (x1), ' to' 3% (x1), ' and' 3% (x1), ' ' 2% (x2)
+  next token at top 1% |proj|:    '.' 2% (x1), '.\\n' 2% (x2), ' and' 2% (x1), ',' 1% (x0), ' the' 1% (x0), ' to' 1% (x1)
+  +   +5.5 sd  w724 s83: '... curbside pickup in the airport in almost any dimensions car you desire and We are going to provide you to your lodge[ in]| design.\\nIrving Taxi and'
+  +   +5.3 sd  w1059 s34: '...5. The runway featured 21 collections by 24 designers, many from the Kent State School of Fashion. The Kent[ Student]| Center Ballroom was decked'
+  +   +5.3 sd  w380 s74: '... at Texas Tech University in Lubbock, TX, and has produced translating work for Ediciones VigÃŃa in Matanzas[,]| Cuba.\\nAlexa Horoch'
+  +   +5.1 sd  w1187 s110: '... days, but the process is less expensive, and more simplistic, than typical probate. Discuss your situation with a prob[ate]| attorney to see if this may'
+  +   +5.0 sd  w113 s69: '... one hand only for the trimming process.\\n- Whatever trimmer you choose to use, read the instructions before using to get[ an]| idea of the operation.\\n-'
+  -   -5.4 sd  w198 s36: "...able. It's roots are said to lie in the missed feeling sailors experienced after returning home during the age of the great[ Portuguese]| discoveries. Not officially all out"
+  -   -5.3 sd  w131 s39: '...ansack taxpayers would last until 2010. "The bailout ignores the needs of millions of swindled families facing[ foreclosure]|, and it squanders an'
+  -   -5.2 sd  w247 s132: '... and make you strong, firm and steadfast. (1 Peter 5:8-10)\\nIn humility, make it[ your]| goal to live a holy life'
+  -   -5.0 sd  w921 s63: '... junctions, water\\nstations and the HQ start and finish area. Please do bear in mind they are all giving up[ their]| time to\\nsupport you on'
+  -   -4.9 sd  w38 s58: '... the stud wall and half way down the garage put in patio doors. So I can sit at my desk and admire my[ bike]| at the same time. Was'
+
+== direction 7: share 0.0020, split-half |cos| (A_i vs best B) 0.97, sd 0.044, skew +0.0, frac > 0 0.48; cos temp -0.007
+  J-lens +: 'ä»ĭç»įè¯´' 'åĽŀåĳ³' 'åĢ¼å¾Ĺä¸ĢæıĲ' 'åįļæĸĩ' 'äºĨè¿ĳ' 'çļĦæľĢåĲİ' 'matic' 'bounds' 'éļ¾æĢª' 'ç´§å¯Ĩç»ĵåĲĪ' 'è¶ģ' 'mate'
+  J-lens -: '_tE' '_tA' '_mE' '_tD' '_mD' '_tF' 'ecast' 'emaal' ' Bunifu' 'fragistics' '_mB' '_tC'
+  current token at top 1% |proj|: ' the' 6% (x2), ' and' 4% (x2), ',' 4% (x1), ' a' 3% (x2), '.' 3% (x1), ' to' 2% (x1)
+  next token at top 1% |proj|:    '.' 3% (x1), ',' 3% (x1), ' the' 2% (x0), ' a' 1% (x1), ' and' 1% (x1), ' to' 1% (x1)
+  +   +5.3 sd  w939 s148: '... Is Toronto so exotic? Could my experience with other human beings be so unlike HetiâĢĻs that her real experiences seem ph[ony]| to me?\\nJohn: I'
+  +   +5.0 sd  w663 s103: '.... per Employee 135489 More quote details and news Â» (MMS), Gordon & Co. spotted a way[ to]| profit from Obamacare. The well'
+  +   +4.9 sd  w646 s139: '... in this Selvedge Magazine interview.\\nVintage indigo folk textile from rural China. These are the simple handwoven[ cotton]| fabrics of everyday country folk and'
+  +   +4.8 sd  w515 s109: '... reports that Trump is considering pardoning several military service members and defense contractors charged with or convicted of war crimes, Margaret Col[gate]| Love, a former U.S'
+  +   +4.7 sd  w1170 s44: '... an intensive care unit for several days as doctors conduct tests to determine why he was feeling ill and disoriented during a conference[ in]| Arizona, a spokeswoman for the'
+  -   -5.1 sd  w600 s90: '... step in ensuring your Resume makes the right impact on employers and gets you to that vital interview stage. It really is that[ simple]| when working with Amos.'
+  -   -4.9 sd  w1102 s99: '... system is then used by Woolpert to produce accurate longitude-latitude coordinates for each monument.\\nThe monuments are located in pairs[,]| so replacing and adding new ones'
+  -   -4.7 sd  w51 s43: '... co-produced by Andy Taylor of Duran Duran.\\nâĢľThrough the Eyes of LoveâĢĿ was remixed by John âĢľ[T]|okesâĢĿ Potoker for the'
+  -   -4.6 sd  w1136 s100: '... under the 14th Amendment to the Constitution, and therefore entitled to the right to life guaranteed therein.âĢĿ The Duncan bill[ read]|: âĢľTo implement equal protection'
+  -   -4.6 sd  w91 s62: '... the years. She also directed a nutrition center that feeds 160 children two meals a day, five days a week,[ in]| addition to providing funds for these'
+
+== direction 8: share 0.0019, split-half |cos| (A_i vs best B) 0.96, sd 0.043, skew +0.0, frac > 0 0.47; cos temp -0.008
+  J-lens +: ' applicable' ' recogn' ' economic' ' constructive' ' flexible' ' anticip' ' offering' ' genetically' ' determin' ' recognition' ' effect' ' economies'
+  J-lens -: '[gMASK]' '/buttons' 'fragistics' 'PropertyParams' 'dendo' 'HeaderCode' 'BindingUtil' '(Initialized' '_TypeInfo' '->___' ' ÐĺÑĢÐºÑĥÑĤ' 'titud'
+  current token at top 1% |proj|: ' the' 7% (x2), ',' 4% (x1), ' a' 3% (x2), ' and' 3% (x1), ' to' 3% (x1), ' of' 2% (x1)
+  next token at top 1% |proj|:    '.' 4% (x2), ',' 3% (x1), '.\\n' 2% (x2), ' and' 2% (x1), ' of' 2% (x1), ' the' 1% (x0)
+  +   +6.6 sd  w119 s72: '... Refinish Web site at www.ppgrefinish.com.\\nPittsburgh-based PPG is a global supplier of paints[,]| coatings, optical products, specialty'
+  +   +5.2 sd  w494 s54: '... according to an article posted Friday by Kaspersky news service Threatpost.\\n"It\'s clear that the infrastructure is being shut[ down]|," Kaspersky Lab researcher'
+  +   +5.2 sd  w958 s99: '... at room temperature.\\nServes 4 as a side.\\n\\nEquipped with keen intelligence and a big heart, lawyer Jeff[ery]| Robinson educates and challenges in'
+  +   +5.1 sd  w402 s51: '... standard fiber clamshell designs. The convertible clamshell also improved operational efficiencies within the QSR chainâĢĻs restaurants, reducing service[ times]| by 20 percent. While'
+  +   +5.0 sd  w159 s134: '... to his head, to make him conceal mortal danger? It was the money. ItâĢĻs always the money. Fixing[ the]| seismic problem would have cost the'
+  -   -6.0 sd  w483 s152: '... Forks, Kelly Johnson, of West Fargo, and Chuck Todd, of Northwood (now deployed in Kuwait), volunteered[ to]| help with the project. The'
+  -   -5.3 sd  w422 s112: "... names? That's VALUE!\\nPrice range: $1280\\n\\nDesign Strategies for Cloud Hosted Services\\nThe title phrase[ was]| made popular by Adam Savage of"
+  -   -5.2 sd  w395 s48: '...).\\nThe DVD also contains the special feature Illumination Drone #17, Rob MazurekâĢĻs silent video.\\n\\nTop fashion[ and]| home furnishings business trends to watch'
+  -   -5.2 sd  w547 s95: '... the day after the election.\\nIn Florida, advocacy groups, such as the NAACP, Women Voters and AARP,[ have]| called on Gov. Rick Scott'
+  -   -5.1 sd  w767 s125: '... sold the plantation to Francis Edrington in May 1851 and moved to Jacksonville. Later Pearson became a justice on[ the]| Florida Supreme Court.\\nAnother early'
+
+== direction 9: share 0.0018, split-half |cos| (A_i vs best B) 0.91, sd 0.043, skew +0.0, frac > 0 0.49; cos temp -0.013
+  J-lens +: ' Anything' 'åĭĴæĸ¯' 'ä¸īæĿ¿' 'arges' ' OG' ' Ventures' 'å¤±' ' Farrell' ' extent' ' Hutch' '][:' 'heimer'
+  J-lens -: ' MetroFramework' ' llu' 'tett' 'iben' 'åįĥå¹´' ' blown' 'ewhat' ' borne' ' zmi' 'iox' 'ieder' 'æĪĳä¸Ģä¸ªäºº'
+  current token at top 1% |proj|: ' the' 8% (x2), ',' 3% (x1), ' a' 3% (x2), ' to' 3% (x1), ' and' 2% (x1), ' of' 2% (x1)
+  next token at top 1% |proj|:    ',' 2% (x1), '.' 2% (x1), ' the' 2% (x0), ' and' 1% (x1), ' to' 1% (x1), '.\\n' 1% (x1)
+  +   +5.7 sd  w51 s120: '...used LED indicator with a robust body and round protruding LED position that offers a viewing angle up to 50Â°.[ The]| L63 series achieves full brightness'
+  +   +5.0 sd  w636 s43: '....S. Military ban lead in our soldiers weapons.\\nabout 3,000 pounds of lead into the environment annually and causes[ the]| death of 20 million birds'
+  +   +4.8 sd  w809 s115: '...ëĿ¼ê³ł íĸĪìĸ´ìļĶ. (formal)\\n-> The teacher told me not to come late.\\n26-1)[ Its]| positive form is V - ('
+  +   +4.8 sd  w1067 s99: '... out of it when you travel to the ski resort, hiking trails, and your day trip.\\nLooking for a vacation rental[ in]| Wrightwood? Tripping.com'
+  +   +4.8 sd  w639 s141: '... the west of the municipal building at 406 East 7th Street. Checks Only!\\nâĢ¢ Walk In - visit[ our]| office at 406 East'
+  -   -6.5 sd  w900 s34: '... the teen and adult Archdiocese Survey results, SOYO responded by establishing the Teen SOYO initiative called âĢľPVC[âĢĿ]| to address what they believe to'
+  -   -4.5 sd  w938 s44: '...osed capitalist, an outspoken, argumentative eco-warrior committed to the cause, an outer-worldly Buddhist Monk; and[ to]| cap it all, a bible'
+  -   -4.4 sd  w731 s78: "... notification of availability of tickets for a concert including Mahler's Fifth Symphony. She has been waiting for the opportunity to take[ her]| mother to a Mahler concert"
+  -   -4.4 sd  w1007 s148: '... Cup run and has been a part of 11 playoff appearances in 12 years.\\nOvechkin wears the âĢľ[C]|,âĢĿ but Backstrom has built'
+  -   -4.4 sd  w551 s81: ".... If you're new to orienteering or not a runner you can do a Sprint course at your usual pace.[ In]| fact, you may find a"
+
+== direction 10: share 0.0018, split-half |cos| (A_i vs best B) 0.91, sd 0.042, skew +0.0, frac > 0 0.48; cos temp +0.004
+  J-lens +: '.pic' 'ç°¿' 'Lv' 'çĶ¨éĢĶ' 'opp' 'éĢĨ' 'æĮĸ' ' aunt' ' endorse' 'Blur' '.Listen' ' blurry'
+  J-lens -: ' vÃ©ri' ' ktÃ³r' ' convier' '_mE' ' compÃ©' ' Ã©lec' 'Composition' ' spÃ©ci' 'çĻ«çĹ' 'ä¿¡æģ¯åĿĩ' 'scht' 'masters'
+  current token at top 1% |proj|: ' the' 6% (x2), ',' 4% (x1), ' a' 3% (x2), ' to' 2% (x1), ' of' 2% (x1), ' and' 2% (x1)
+  next token at top 1% |proj|:    '.' 4% (x2), '.\\n' 4% (x3), ',' 3% (x1), ' and' 2% (x1), ' the' 2% (x0), ' to' 2% (x1)
+  +   +5.2 sd  w1006 s113: '... & Monday nights at Mercato\\nA local jazz icon for the past decade, percussionist Quentin Baxter has a style rooted[ in]| Gullah and flowing with nuanced'
+  +   +5.0 sd  w475 s126: '... saying the computer is ready... O well, one can dream...\\nComputer arrived home. I plugged everything in and started to[ use]| the computer. Latter that month'
+  +   +4.9 sd  w327 s100: '... play. Changing attitudes towards photography. Personal styles and approaches. Measuring success. Summary. Projects. 2. Light[:]| how images are formed. Light'
+  +   +4.8 sd  w769 s86: '... Most couples have their ceremony on the vast lawn looking out onto the golf course and rolling hills. The Estate package provides all[ the]| fixings for a rehearsal dinner'
+  +   +4.7 sd  w387 s41: '... agents with perfect knowledge; that is beyond words - we cannot fathom such idiotic thinking) makes things fuzzy (at[ best]|).\\nAlso, some have taken'
+  -   -5.2 sd  w459 s157: '... to take to arrive at Bottom of the Hill (why you so close to Bayview?!) The confident musical mastery and[ solemn]|ity that Husky and then'
+  -   -4.8 sd  w402 s48: '... percent lighter than standard fiber clamshell designs. The convertible clamshell also improved operational efficiencies within the QSR chainâĢĻs restaurants[,]| reducing service times by 20'
+  -   -4.8 sd  w540 s133: '... have developed a novel observational setup to obtain these signatures, which is based on the acquisition of combined observations of the same ge[ost]|ationary satellite from two different'
+  -   -4.6 sd  w96 s38: '... therefore "inauthentic") nature of Cherokee literary production. Whether viewed as classical or Christian symbol, this reading goes,[ the]| phoenix is a firmly Euro-west'
+  -   -4.5 sd  w736 s119: '... K-9 units.\\nEven though the girls are now safe, several questions remain. There was no sign of a forced[ entry]| into their bedroom. Also,'
+
+cos with the mean residual direction: +0.12 +0.05 -0.04 -0.07 -0.07 -0.01 +0.03 -0.00 +0.06 -0.01
+coordinates carrying the most of the top-10 subspace: 1295 (4.3%), 8 (1.0%), 2380 (0.9%), 6041 (0.8%), 2007 (0.7%), 3196 (0.7%), 3281 (0.6%), 4408 (0.4%), 740 (0.3%), 4532 (0.3%)
+share of the subspace in the top 10 coordinates: 10.0% (uniform: 0.16%)

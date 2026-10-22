@@ -1,0 +1,18 @@
+213704 rows; train 149114, val 23002, test 41588; targets past 8, past 32, past 128, past all (2 s)
+  lambda 1: val R2 past 8 0.7941, past 32 0.7862, past 128 0.7725, past all 0.7037 (612 s)
+  lambda 10: val R2 past 8 0.7872, past 32 0.7740, past 128 0.7523, past all 0.6664 (1207 s)
+  lambda 100: val R2 past 8 0.6912, past 32 0.6682, past 128 0.6302, past all 0.5292 (1804 s)
+  lambda 1000: val R2 past 8 0.3754, past 32 0.3489, past 128 0.3155, past all 0.2536 (2414 s)
+  lambda 0.1: val R2 past 8 0.7501, past 32 0.7511, past 128 0.7396, past all 0.6830 (3023 s)
+
+self-check, raw weights vs kernel predictions (max |diff|): past 8 2.6e-04, past 32 2.4e-04, past 128 1.7e-04, past all 2.0e-04
+test R2 of the all-layer probe (within-sequence in parentheses), strength chosen on val:
+  past 8    0.786 (0.741)  lambda 1
+  past 32   0.780 (0.683)  lambda 1
+  past 128  0.768 (0.591)  lambda 1
+  past all  0.699 (0.179)  lambda 1
+by depth / group:
+  past 8: depth 16-64 0.765, depth 64-256 0.769, depth 256-1024 0.794, depth 1024-2048 0.796, en rollout 0.798, en pretrain 0.662, zh rollout 0.823, zh pretrain 0.746, other rollout 0.808, other pretrain 0.681
+  past 32: depth 16-64 0.734, depth 64-256 0.772, depth 256-1024 0.782, depth 1024-2048 0.796, en rollout 0.783, en pretrain 0.639, zh rollout 0.818, zh pretrain 0.710, other rollout 0.811, other pretrain 0.704
+  past 128: depth 16-64 0.704, depth 64-256 0.780, depth 256-1024 0.756, depth 1024-2048 0.772, en rollout 0.767, en pretrain 0.630, zh rollout 0.796, zh pretrain 0.703, other rollout 0.783, other pretrain 0.734
+  past all: depth 16-64 0.671, depth 64-256 0.765, depth 256-1024 0.664, depth 1024-2048 0.521, en rollout 0.684, en pretrain 0.533, zh rollout 0.717, zh pretrain 0.640, other rollout 0.724, other pretrain 0.737

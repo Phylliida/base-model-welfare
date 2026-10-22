@@ -1,0 +1,6 @@
+window offsets: min gap 6 tokens (windows are 192); 35 overlapping pairs
+layer 40: 145534 of 152400 positions used (clean)
+
+  target       sd   base  probe   comb  added   within:   base  probe   comb  added
+  next 8    1.156  0.159  0.177  0.207 +0.048           -0.064  0.038 -0.018 +0.047
+  next 32   0.771  0.256  0.248  0.305 +0.049           -0.340 -0.095 -0.311 +0.029

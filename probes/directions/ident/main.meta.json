@@ -1,0 +1,157 @@
+{
+  "model": "/home/bepis/prog/SimpleBot/models/GLM-4-32B-Base-32K.i1-Q4_K_S.gguf",
+  "rollouts": "",
+  "basis": "/mnt/models/homeo/ident/basis_pca256_L40.f32",
+  "k": 32,
+  "layer": 40,
+  "resid_norm": 257.149622809644,
+  "n_prefix": 32,
+  "prefix_len": 256,
+  "n_gen": 32,
+  "seed": 1,
+  "probe_seed": 11,
+  "n_probe": 4000,
+  "doses": [
+    0.25
+  ],
+  "record_order": "unsteered, then for dose in doses, probe in 0..n_probe-1, sign in (+, -)",
+  "record_layout": "f16 dproj [NP][G][K], f32 dnorm [NP][G], f32 ent [NP][G], i32 tok [NP][G], i32 first_div [NP], i32 endpoint [NP]",
+  "record_bytes": 78080,
+  "lag0": "state of the last prefix token (no generated token yet): its response must be 0",
+  "endpoints": {
+    "loop_max_period": 16,
+    "loop_min_span": 12,
+    "incoh_h": 6.0,
+    "incoh_run": 16
+  },
+  "prefixes": [
+    [
+      500,
+      0
+    ],
+    [
+      600,
+      1
+    ],
+    [
+      700,
+      2
+    ],
+    [
+      800,
+      3
+    ],
+    [
+      900,
+      4
+    ],
+    [
+      1000,
+      5
+    ],
+    [
+      1100,
+      6
+    ],
+    [
+      1200,
+      7
+    ],
+    [
+      1300,
+      8
+    ],
+    [
+      1400,
+      9
+    ],
+    [
+      1500,
+      10
+    ],
+    [
+      1600,
+      11
+    ],
+    [
+      1700,
+      12
+    ],
+    [
+      1800,
+      13
+    ],
+    [
+      1900,
+      14
+    ],
+    [
+      2000,
+      15
+    ],
+    [
+      2100,
+      16
+    ],
+    [
+      2200,
+      17
+    ],
+    [
+      2300,
+      18
+    ],
+    [
+      2400,
+      19
+    ],
+    [
+      2500,
+      20
+    ],
+    [
+      2600,
+      21
+    ],
+    [
+      2700,
+      22
+    ],
+    [
+      2800,
+      23
+    ],
+    [
+      2900,
+      24
+    ],
+    [
+      3000,
+      25
+    ],
+    [
+      3100,
+      26
+    ],
+    [
+      3200,
+      27
+    ],
+    [
+      3300,
+      28
+    ],
+    [
+      3400,
+      29
+    ],
+    [
+      3500,
+      30
+    ],
+    [
+      3600,
+      31
+    ]
+  ]
+}
