@@ -10,7 +10,7 @@
 Probes: future difficulty (next 1 / 8 / 32 / 128, val-best strength), past difficulty (last 8 / 32 / 128, entire
 context), decoded text statistics (entropy, surprisal, entropy before the current token, excess surprisal, log rank,
 log context length). Standardization from $PROBES/rollprobe_standardization.npz (written from the saved kernels'
-rows.npz the first time). Writes results/probe_similarity.{tex,txt} (colored LaTeX tables with the values; needs
+rows.npz the first time). Writes results/probe_similarity.{tex,txt} and probe_{cosine,corr}_table.tex (colored LaTeX tables with the values; needs
 \\usepackage[table]{xcolor} and graphicx) and results/probe_similarity.png.
 """
 import json
@@ -83,6 +83,9 @@ for title, M, lab in (('Cosine similarity of the all-layer probes\' weights (sta
     t(f'  \\label{{{lab}}}')
     t('\\end{table}')
     t()
+    # each table also in its own file (easier to copy than the combined one)
+    start = max(i for i, l in enumerate(t.lines) if l == '\\begin{table}[H]')
+    open(os.path.join(RESULTS, 'probe_cosine_table.tex' if lab == 'tab:probe-cosine' else 'probe_corr_table.tex'), 'w').write('\n'.join(t.lines[start:]) + '\n')
 t.save()
 
 import matplotlib  # noqa: E402
