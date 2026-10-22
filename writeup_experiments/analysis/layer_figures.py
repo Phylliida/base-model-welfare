@@ -27,7 +27,10 @@ def figure(name, curves, hlines, caption, label, ymax=60, legend='south east'):
     o(f'        xmin=0, xmax=60, ymin=0, ymax={ymax},')
     o('        xtick={0,10,20,30,40,50,60},')
     o('        grid=major, grid style={gray!25},')
-    o(f'        legend pos={legend}, legend cell align=left,')
+    if legend == 'below':  # outside the axes, under the x label, two columns
+        o('        legend style={at={(0.5,-0.25)}, anchor=north, legend columns=2}, legend cell align=left,')
+    else:
+        o(f'        legend pos={legend}, legend cell align=left,')
     o('        legend style={font=\\small},')
     o('      ]')
     for color, vals, leg in curves:
@@ -89,6 +92,7 @@ if os.path.exists(more):
                [(c, 'dashed', Bj[t]['test'], f'{lab[0].upper() + lab[1:]}, all layers') for c, (t, lab) in zip(cols, targets)],
                'Test $R^2$ for decoding text statistics from a linear probe on one layer\'s activations at the current '
                'token. Dashed: one probe on all 61 layers. Single-layer peaks: ' +
-               ', '.join(f'{lab} layer {pkd[t]}' for t, lab in targets) + '.', label, ymax=100, legend='south east')
+               ', '.join(f'{lab} layer {pkd[t]}' for t, lab in targets) + '.', label, ymax=100,
+               legend='below' if name.endswith('_b.tex') else 'south east')
 else:
     print(f'{more} not found: run homeo/rollprobe_layers.py for the past-difficulty and decoded-statistics figures')
